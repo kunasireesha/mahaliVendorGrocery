@@ -1,0 +1,413 @@
+<br />
+<div class="container productDetails">
+  <p>
+    <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+    <a>Fruits & vegetables </a>&nbsp;&nbsp;>&nbsp;vegetables&nbsp;&nbsp;>&nbsp;Potato
+  </p>
+  <div class="row">
+    <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
+      <img id="myImg" src="assets/images/potato.png" alt="Snow" style="width:100%;max-width:300px">
+    </div>
+    <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 details">
+      <h4>Potatoes - Hybrid </h4>
+      <div class="row">
+        <div class="col-md-6">
+          <div class="quantity-price text-center">
+            <select>
+              <option value="" disabled selected>500gms-Rs 20.40</option>
+              <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+              <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+              <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+            </select>
+          </div>
+        </div>
+      </div>
+
+      <br />
+      <p><strong>BD:</strong> 1299
+        <span>
+          <strike><strong>BD : </strong> 1941</strike>(Inclusive of all taxes)</span>
+      </p>
+      <br />
+      <p>
+        <span>Shop for BD.2000 & get 5% Cashback</span>
+      </p>
+      <div class="row">
+        <div class="col-md-6 col-sm-12 cart-btn">
+          <!-- <div class="quantity">
+						<button class="minus-btn" type="button" name="button" (click)="itemDecrease()">
+							<i class="fa fa-minus " aria-hidden="true"></i>
+						</button>
+						<input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly" value="{{item.quantity}}" />
+						<button class="plus-btn" type="button" name="button" (click)="itemIncrease()">
+							<i class="fa fa-plus" aria-hidden="true"></i>
+						</button>
+					</div> -->
+
+          <button class="btn btn-maroon add-cart">Add to Cart</button>
+        </div>
+      </div>
+    </div>
+
+  </div>
+  <!-- The Modal -->
+  <div id="myModal" class="modal">
+    <span class="close">&times;</span>
+    <img class="modal-content" id="img01">
+    <div id="caption"></div>
+  </div>
+  <br />
+
+  <div class="row desription">
+    <h5>Description</h5>
+    <div class="col-md-12">
+      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
+        some form,
+        by injected humour, or randomised words which don't look even slightly believable. If you are going to use a
+        passage
+        of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the
+        Lorem Ipsum
+        generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator
+        on the
+        Internet.
+      </p>
+    </div>
+  </div>
+  <div class="row desription">
+    <h5>More Products Related Your Search</h5>
+    <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
+      <br />
+      <!--Slides-->
+      <div class="carousel-inner product-slider" role="listbox">
+
+        <!--First slide-->
+        <div class="carousel-item active">
+
+          <div class="col-md-3">
+            <div class="card cardProduct">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image " (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+        </div>
+        <!--/.First slide-->
+
+        <!--Second slide-->
+        <div class="carousel-item ">
+          <div class="col-md-3">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!--/.Second slide-->
+
+        <!--Third slide-->
+        <div class="carousel-item ">
+
+          <div class="col-md-3">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+          <div class="col-md-3 hidden-sm-down">
+            <div class="card">
+              <div class="product-image" (click)="showProduxtDetails()">
+                <img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
+              </div>
+              <div class="card-block add-to-cart">
+                <h5 class="text-center">Electric Kettle </h5>
+                <p class="text-center">
+                  BD 7.500
+                  <strike>BD 8.000</strike>
+                </p>
+                <div class="quantity-price text-center">
+                  <select>
+                    <option value="" disabled selected>500gms-Rs 20.40</option>
+                    <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+                    <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+                  </select>
+                </div>
+                <button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+              </div>
+            </div>
+          </div>
+
+
+        </div>
+        <!--/.Third slide-->
+
+      </div>
+      <!--/.Slides-->
+
+      <!--Controls-->
+      <div class="controls-top">
+        <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
+          <i class="fas fa-long-arrow-alt-left"></i>
+        </a>
+        <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example" data-slide="next">
+          <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+      </div>
+      <!--/.Controls-->
+
+    </div>
+    <!-- end deals -->
+  </div>
+
+</div>
+<!-- <link rel="stylesheet" href="assets/css/ninja-slider.css">
+<link rel="stylesheet" href="assets/css/thumbnail-slider.css">
+
+
+<script src="assets/js/thumbnail-slider.js"></script>
+<script src="assets/js/ninja-slider.js"></script> -->

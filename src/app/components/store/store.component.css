@@ -1,0 +1,47 @@
+.store-banner img {
+  width: 100%;
+}
+
+.store-banner {
+  width: 100%;
+}
+
+.spar-store img {
+  width: 100%;
+}
+
+.cust-time {
+  font-weight: 600;
+}
+
+.cld-str h4 {
+  font-weight: 600;
+  color: black;
+}
+
+.shop-now {
+  text-align: center;
+  margin: 20px auto;
+}
+
+.cust-shop {
+  font-size: 20px;
+  background: #7fba00;
+  padding: 6px 50px;
+  margin-top: 30px;
+}
+
+.grid-container img {
+  width: 100%;
+}
+
+.grid-container {
+  display: grid;
+  grid-template-columns: auto auto auto auto;
+  margin-top: 22%;
+}
+
+.grid-item {
+  padding: 10px;
+  text-align: center;
+}

@@ -1,0 +1,417 @@
+<div class="container products">
+  <div class="fresh-veg">
+    <h4>Fresh Vegetables</h4>
+  </div>
+  <div class="row">
+    <div class="col-lg-3 col-md-4 col-sm-12 col-12">
+      <h5>Category</h5>
+      <br />
+      <div class="categories">
+        <p (click)="collapse()">
+          <a>
+            <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories"></i>
+            <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories"></i>
+          </a> &nbsp;&nbsp;Fruits & Vegetables</p>
+        <hr>
+        <p *ngIf="showCategories" class="subCat">&nbsp;&nbsp;Fresh Vegetales
+        </p>
+        <hr *ngIf="showCategories">
+        <p *ngIf="showCategories" class="subCat">&nbsp;&nbsp;Herbs & Seasoning
+        </p>
+        <hr *ngIf="showCategories">
+        <p>
+          <a>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a> &nbsp;&nbsp;Beverages</p>
+        <hr>
+        <p>
+          <a>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a> &nbsp;&nbsp;Foodgrains & Masala</p>
+        <hr>
+        <p>
+          <a>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a> &nbsp;&nbsp;Bakery & Dairy</p>
+        <hr>
+        <p>
+          <a>
+            <i class="fa fa-plus" aria-hidden="true"></i>
+          </a> &nbsp;&nbsp;Beauty & Hygeni</p>
+        <hr>
+
+      </div>
+
+      <h5>Country</h5>
+      <div class="sort">
+        <select>
+          <option>Select Country</option>
+          <option>India</option>
+          <option>Dubai</option>
+          <option>US</option>
+        </select>
+      </div>
+      <br />
+      <h5>Pack Size</h5>
+      <div class="md-form mt-0">
+        <input type="text" class="form-control search-input" id="inputPassword3MD" placeholder="&nbsp;&nbsp;Search For Package size">
+      </div>
+      <br />
+      <div class="price">
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+          <label class="custom-control-label" for="defaultUnchecked1">10Kgs to 30Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
+          <label class="custom-control-label" for="defaultUnchecked2">30Kgs to 50Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
+          <label class="custom-control-label" for="defaultUnchecked3">50Kgs to 70Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
+          <label class="custom-control-label" for="defaultUnchecked4">70Kgs to 90Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
+          <label class="custom-control-label" for="defaultUnchecked5">90Kgs to 100Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
+          <label class="custom-control-label" for="defaultUnchecked6">100Kgs to 130Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
+          <label class="custom-control-label" for="defaultUnchecked7">130Kgs to 150Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
+          <label class="custom-control-label" for="defaultUnchecked8">130Kgs to 150Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
+          <label class="custom-control-label" for="defaultUnchecked9">130Kgs to 150Kgs</label>
+        </div>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
+          <label class="custom-control-label" for="defaultUnchecked10">130Kgs to 150Kgs</label>
+        </div>
+      </div>
+
+    </div>
+    <div class="col-lg-9 col-sm-12 col-md-8 col-12 items">
+      <p>
+        <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+        <a>Fruits & Vegetables</a>&nbsp;&nbsp;>&nbsp;
+        <a>Fresh Vegetables</a>
+      </p>
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid" src="assets/images/tomoto.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Tomato-Hybrid </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item potato-item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-potato" src="assets/images/potato.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Potato </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-finger" src="assets/images/ladies-finger.png" alt="Card image cap">
+            <div class="card-block ladiesfinger-price">
+              <h5 class="text-center">Ladies Finger </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-carrot" src="assets/images/carrot.png" alt="Card image cap">
+            <div class="card-block carrot-price">
+              <h5 class="text-center">Carrot</h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12  item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid" src="assets/images/tomoto.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Tomato-Hybrid </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12  item potato-item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-potato" src="assets/images/potato.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Potato </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12  item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-finger" src="assets/images/ladies-finger.png" alt="Card image cap">
+            <div class="card-block ladiesfinger-price">
+              <h5 class="text-center">Ladies Finger </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12  item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-carrot" src="assets/images/carrot.png" alt="Card image cap">
+            <div class="card-block carrot-price">
+              <h5 class="text-center">Carrot</h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12  item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid" src="assets/images/tomoto.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Tomato-Hybrid </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12  item potato-item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-potato" src="assets/images/potato.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Potato </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-finger" src="assets/images/ladies-finger.png" alt="Card image cap">
+            <div class="card-block ladiesfinger-price">
+              <h5 class="text-center">Ladies Finger </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-carrot" src="assets/images/carrot.png" alt="Card image cap">
+            <div class="card-block carrot-price">
+              <h5 class="text-center">Carrot</h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+
+      <div class="row">
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid" src="assets/images/tomoto.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Tomato-Hybrid </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item potato-item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-potato" src="assets/images/potato.png" alt="Card image cap">
+            <div class="card-block">
+              <h5 class="text-center">Potato </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-finger" src="assets/images/ladies-finger.png" alt="Card image cap">
+            <div class="card-block ladiesfinger-price">
+              <h5 class="text-center">Ladies Finger </h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+
+        <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
+          <div class="card" (click)="showProduxtDetails()">
+            <img class="img-fluid image-carrot" src="assets/images/carrot.png" alt="Card image cap">
+            <div class="card-block carrot-price">
+              <h5 class="text-center">Carrot</h5>
+              <div class="sort">
+                <select>
+                  <option>20kgs - BD 2000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                  <option>30Kgs - BD 3000</option>
+                </select>
+              </div>
+            </div>
+            <button type="button" class="btn cart-btn">Add To Cart</button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+  <div class="row slider-buttons">
+    <div class="controls-top">
+      <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
+        <i class="fas fa-long-arrow-alt-left"></i>
+      </a>
+      <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example" data-slide="next">
+        <i class="fas fa-long-arrow-alt-right"></i>
+      </a>
+    </div>
+  </div>
+</div>

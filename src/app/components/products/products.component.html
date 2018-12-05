@@ -1,0 +1,318 @@
+<div class="container products">
+	<div class="row">
+		<div class="col-md-3">
+			<h5>Category</h5>
+			<br/>
+			<div class="categories">
+				<p (click)="collapse()">
+					<a>
+						<i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories"></i>
+						<i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories"></i>
+					</a> &nbsp;&nbsp;Fruits & vegetables</p>
+				<hr>
+				<p *ngIf="showCategories" class="subCat">Fresh vegetables
+				</p>
+				<hr *ngIf="showCategories">
+				<p *ngIf="showCategories" class="subCat">Herbs & Seasoning
+				</p>
+				<hr *ngIf="showCategories">
+				<p>
+					<a>
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</a> &nbsp;&nbsp;Beverages</p>
+				<hr>
+				<p>
+					<a>
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</a> &nbsp;&nbsp;Foodgrains & Masala</p>
+				<hr>
+				<p>
+					<a>
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</a> &nbsp;&nbsp;Bakery cake & Dairy</p>
+				<hr>
+				<p>
+					<a>
+						<i class="fa fa-plus" aria-hidden="true"></i>
+					</a> &nbsp;&nbsp;Beauty & Hygeini</p>
+				<hr>
+
+			</div>
+			<h5>Sort</h5>
+			<div class="sort">
+				<select>
+					<option>Popular</option>
+					<option>low to high</option>
+					<option>High to low</option>
+					<option>relevence</option>
+				</select>
+			</div>
+			<h5>Country</h5>
+			<div class="sort">
+				<select>
+					<option>India</option>
+					<option>Bangladesh</option>
+					<option>China</option>
+				</select>
+			</div>
+			<br>
+			<h5>Pack of size</h5>
+			<div class="brands">
+				<input type="text" placeholder="Search by Pack of size">
+				<br/>
+				<div class="brand-names">
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+						<label class="custom-control-label" for="defaultUnchecked">100 to 500gms</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+						<label class="custom-control-label" for="defaultUnchecked1">500 to 700 gms</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
+						<label class="custom-control-label" for="defaultUnchecked2">700 to 1kg</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
+						<label class="custom-control-label" for="defaultUnchecked3">100 to 500gms</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
+						<label class="custom-control-label" for="defaultUnchecked4">500 to 700 gms</label>
+					</div>
+					<div class="custom-control custom-checkbox">
+						<input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
+						<label class="custom-control-label" for="defaultUnchecked5">700 to 1kg</label>
+					</div>
+				</div>
+			</div>
+
+
+			<br/>
+			<h5>Price</h5>
+			<div class="price">
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
+					<label class="custom-control-label" for="defaultUnchecked6">Less than 100</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
+					<label class="custom-control-label" for="defaultUnchecked7">Less than 200</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
+					<label class="custom-control-label" for="defaultUnchecked8">Less than 300</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
+					<label class="custom-control-label" for="defaultUnchecked9">Less than 400</label>
+				</div>
+				<div class="custom-control custom-checkbox">
+					<input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
+					<label class="custom-control-label" for="defaultUnchecked10">Less than 500</label>
+				</div>
+			</div>
+
+		</div>
+		<div class="col-md-9 items">
+			<p>
+				<a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+				<a>Grocery</a>
+			</p>
+			<div class="row">
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>

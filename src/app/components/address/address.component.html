@@ -1,0 +1,221 @@
+<div class="container">
+  <h2 class="text-center font-bold pt-4 pb-5 mb-5">
+  </h2>
+  <!-- Stepper -->
+  <div class="steps-form-2">
+    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+      <div class="steps-step-2">
+        <a type="button" class="btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top"
+          title="Business Details" (click)="showBusiness()">
+          <h3>1</h3>
+        </a>
+        <p>Business Details</p>
+      </div>
+      <div class="steps-step-2">
+        <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
+          title="Stationary Complaince & Taxation" (click)="showStationary()">
+          <h3>2</h3>
+        </a>
+        <p>Stationary Complaince
+          <br /> & Taxation</p>
+      </div>
+      <div class="steps-step-2">
+        <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
+          title="Bank Details" (click)="showBank()">
+          <h3>3</h3>
+        </a>
+        <p>Bank Details</p>
+      </div>
+      <div class="steps-step-2">
+        <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top"
+          title="Add Products" (click)="addProd()">
+          <h3>4</h3>
+        </a>
+        <p>Add Products</p>
+      </div>
+    </div>
+  </div>
+
+  <!-- First Step -->
+  <div class="row cust-frst">
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+    <div class="col-sm-8 col-md-8 col-lg-8">
+      <form role="form">
+        <div class="row setup-content-2" *ngIf="showBusinessDetails">
+          <div class="col-md-12">
+            <h3 class="font-weight-bold pl-0 my-4">
+              <strong>Business Details</strong>
+            </h3>
+            <form>
+              <div class="form-group row">
+                <label for="fisrtname" class="col-sm-2 col-form-label">First Name :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="fisrtname" placeholder="First Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="lastname" class="col-sm-2 col-form-label">Last Name :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="mobnumber" class="col-sm-2 col-form-label">Mobile no :</label>
+                <div class="col-sm-10">
+                  <input type="number" class="form-control" id="mobnumber" placeholder="Mobile Number">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="emailform" class="col-sm-2 col-form-label">Email :</label>
+                <div class="col-sm-10">
+                  <input type="email" class="form-control" id="emailform" placeholder="email">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="businessname" class="col-sm-2 col-form-label">Business Name :</label>
+                <div class="col-sm-10">
+                  <input type="text" class="form-control" id="businessname" placeholder="Business Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="address" class="col-sm-2 col-form-label">Address :</label>
+                <div class="col-sm-10">
+                  <input type="textarea" class="form-control" id="address" placeholder="Address">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="address" class="col-sm-2 col-form-label">Country :</label>
+                <div class="col-sm-10">
+                  <select class="custom-select" required>
+                    <option value="">Open this select menu</option>
+                    <option value="1">IND</option>
+                    <option value="2">US</option>
+                    <option value="3">UK</option>
+                  </select>
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="fisrtname" class="col-sm-2 col-form-label">Area :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="fisrtname" placeholder="Area">
+                </div>
+                <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
+                <div class="col-sm-4">
+                  <input type="text" class="form-control" id="fisrtname" placeholder="City">
+                </div>
+              </div>
+
+              <div class="form-group row">
+                <label for="submit" class="col-sm-2 col-form-label"></label>
+                <div class="col-sm-10">
+                  <button class="btn submit-button1" type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Second Step -->
+        <div class="row setup-content-2" *ngIf="showStationaryData">
+          <div class="col-md-12">
+            <h3 class="font-weight-bold pl-0 my-4">
+              <strong>Stationary Complaince & Taxation</strong>
+            </h3>
+            <div class="form-group row">
+              <label for="fisrtname" class="col-sm-2 col-form-label">VAT No :</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="fisrtname" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="lastname" class="col-sm-2 col-form-label">CR No :</label>
+              <div class="col-sm-10">
+                <input type="text" class="form-control" id="lastname" placeholder="">
+              </div>
+            </div>
+            <div class="form-group row">
+              <label for="submit" class="col-sm-2 col-form-label"></label>
+              <div class="col-sm-10">
+                <button class="btn submit-button1" type="submit">Submit</button>
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- Third Step -->
+        <div class="row setup-content-2" *ngIf="showBankDetails">
+          <div class="col-md-12">
+            <h3 class="font-weight-bold pl-0 my-4">
+              <strong>Bank Details</strong>
+            </h3>
+            <form>
+              <div class="form-group row">
+                <label for="holdername" class="col-sm-4 col-form-label">Account Holder Name :</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="holdername" placeholder="Account Holder Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="accnumber" class="col-sm-4 col-form-label">Account Number :</label>
+                <div class="col-sm-8">
+                  <input type="number" class="form-control" id="accnumber" placeholder="Account Number">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="accnumber1" class="col-sm-4 col-form-label">Re-Type Account Number :</label>
+                <div class="col-sm-8">
+                  <input type="number" class="form-control" id="accnumber1" placeholder="Re-Type Account Number">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="bankname" class="col-sm-4 col-form-label">Bank Name :</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="bankname" placeholder="Bank Name">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="ifsc" class="col-sm-4 col-form-label">IFSC Code :</label>
+                <div class="col-sm-8">
+                  <input type="text" class="form-control" id="ifsc" placeholder="IFSC Code">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="fisrtname" class="col-sm-4 col-form-label">Area :</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="fisrtname" placeholder="Area">
+                </div>
+                <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
+                <div class="col-sm-3">
+                  <input type="text" class="form-control" id="fisrtname" placeholder="City">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="branch" class="col-sm-4 col-form-label">Branch :</label>
+                <div class="col-sm-8">
+                  <input type="textarea" class="form-control" id="branch" placeholder="Branch">
+                </div>
+              </div>
+              <div class="form-group row">
+                <label for="submit" class="col-sm-4 col-form-label"></label>
+                <div class="col-sm-8">
+                  <button class="btn submit-button1" type="submit">Submit</button>
+                </div>
+              </div>
+            </form>
+          </div>
+        </div>
+
+        <!-- Fourth Step -->
+        <div class="row setup-content-2 my-4" *ngIf="showAdd">
+          <div class="col-md-12">
+
+            <div class="">
+              <button class="btn submit-button1" routerLink="/addProduct">Add Products</button>
+            </div>
+          </div>
+        </div>
+      </form>
+    </div>
+    <div class="col-sm-2 col-md-2 col-lg-2"></div>
+  </div>
+</div>
