@@ -2,7 +2,7 @@ import { appService } from './../../services/mahaliServices/mahali.service';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-
+import { Router } from '@angular/router';
 
 @Component({
     selector: 'app-useraccount',
@@ -15,7 +15,8 @@ export class UseraccountComponent implements OnInit {
     constructor(
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
-        private appService: appService) {
+        private appService: appService,
+        private router: Router) {
         this.page = this.route.snapshot.data[0]['page'];
         if (this.page === 'profile') {
             this.showProfile = true;
@@ -38,6 +39,7 @@ export class UseraccountComponent implements OnInit {
         quantity: 1
     }
     ngOnInit() {
+        this.getProfile();
         this.resetForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
@@ -350,11 +352,43 @@ export class UseraccountComponent implements OnInit {
             return;
         }
         this.appService.changePwd(this.resetForm.value).subscribe(resp => {
+            swal(resp.json().message, "", "success");
+            this.router.navigate(['/'])
 
         })
 
 
     }
+    email;
+    profileData = {
+        first_name: '',
+        email: '',
+        mobile_number: ''
+
+    }
+    getProfile() {
+        this.email = (localStorage.email);
+        this.appService.loginDetailsbyEmail(this.email).subscribe(response => {
+            this.profileData = response.json().data[0];
+        })
+    }
+    updateProfile() {
+        var inDate = {
+            first_name: this.profileData.first_name,
+            email: this.profileData.email,
+            mobile_number: this.profileData.mobile_number
+
+        }
+        this.appService.updateProfile(inDate).subscribe(response => {
+            swal(response.json().message, "", "success");
+            this.getProfile();
+        })
+    }
+    cancel() {
+        this.showProfile = true;
+        this.editUserProfile = false;
+    }
+
 
 }
 

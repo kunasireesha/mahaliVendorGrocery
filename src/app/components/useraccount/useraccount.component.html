@@ -8,7 +8,8 @@
                 <hr>
                 <li [ngClass]="{'active':showProfile || editUserProfile}" (click)="profile()">My Profile</li>
                 <li [ngClass]="{'active':showAccountDetails || editAccount}" (click)="accountDetails()">Account Details</li>
-                <li [ngClass]="{'active':showDeliveryAddress || showAddAddress}" (click)="deliveryAddress()">Delivery Address
+                <li [ngClass]="{'active':showDeliveryAddress || showAddAddress}" (click)="deliveryAddress()">Delivery
+                    Address
                 </li>
                 <li>
                     <strong>MANAGE PRODUCTS</strong>
@@ -19,7 +20,8 @@
                     <strong>MANAGE ORDERS</strong>
                 </li>
                 <li [ngClass]="{'active':showMyOrders || showOrderDetails}" (click)="myOrder()">Vendor Orders</li>
-                <li [ngClass]="{'active':showOfferZone || showManageUserOrders}" (click)="offerZone()">Manage User Orders
+                <li [ngClass]="{'active':showOfferZone || showManageUserOrders}" (click)="offerZone()">Manage User
+                    Orders
                 </li>
             </ul>
         </div>
@@ -30,22 +32,23 @@
             <div class="details">
                 <p>
                     <i class="fa fa-user" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-                    <span>N. Tarun Kumar </span>
+                    <span>{{profileData?.first_name}}&nbsp;{{profileData?.last_name}}</span>
                 </p>
                 <p>
                     <i class="fa fa-at" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
                     <span>
-                        tarunkumar321@gmail.com</span>
+                        {{profileData?.email}}</span>
                 </p>
                 <p>
                     <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-                    <span>8586854500</span>
+                    <span>{{profileData?.mobile_number}}</span>
                 </p>
                 <span class="status-text">
-                    <p>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; &nbsp;Unispace Bussiness Center, Modern TechPark, majestic Street Banglore
+                    <!-- <p>
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; &nbsp;Unispace Bussiness
+                        Center, Modern TechPark, majestic Street Banglore
                         500038
-                    </p>
+                    </p> -->
                 </span>
             </div>
             <div class="row">
@@ -65,7 +68,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputname1" placeholder="N.Tarun Kumar">
+                        <input type="text" class="form-control input-feild" id="inputname1" name="first_name"
+                            [(ngModel)]="profileData.first_name">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -73,7 +77,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com">
+                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com"
+                            name="email" [(ngModel)]="profileData.email">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -81,7 +86,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500">
+                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500"
+                            [(ngModel)]="profileData.mobile_number" name="mobile_number">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -122,11 +128,11 @@
                         <input type="text" class="form-control input-feild" id="inputpincode" placeholder="500038">
                         <div class="row justify-content-center">
                             <div class="col-sm-5 col-lg-5">
-                                <button type="button" class="btn save-btn">Save</button>
+                                <button type="button" class="btn save-btn" (click)="updateProfile()">Save</button>
                             </div>
                             <div class="col-sm-2 col-lg-2"></div>
                             <div class="col-sm-5 col-lg-5">
-                                <button type="button" class="btn save-btn">Cancel</button>
+                                <button type="button" class="btn save-btn" (click)="cancel()">Cancel</button>
                             </div>
                         </div>
                     </div>
@@ -377,7 +383,8 @@
                             <div class="col-lg-6">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -465,7 +472,8 @@
                             <div class="col-lg-6">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -579,7 +587,8 @@
                 <div class="col-lg-10 ">
                     <h3>HOME</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near masab tank, Tolichowki,
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near
+                        masab tank, Tolichowki,
                         <br /> mehidipatnam , Hyderabad ,50038
                         <br />
                     </P>
@@ -596,7 +605,8 @@
                             <i class="fa fa-trash" aria-hidden="true"></i>
                         </button>
                     </div>
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1" checked>
+                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
+                        checked>
                     <label class="form-check-label radio-btn" for="exampleRadios1">
                     </label>
                 </div>
@@ -605,7 +615,8 @@
                 <div class="col-lg-10 ">
                     <h3>OFFICE</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near masab tank, Tolichowki,
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near
+                        masab tank, Tolichowki,
                         <br /> mehidipatnam , Hyderabad ,50038
                         <br />
                     </P>
@@ -623,7 +634,8 @@
                 <div class="col-lg-10 ">
                     <h3>OTHER</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near masab tank, Tolichowki,
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near
+                        masab tank, Tolichowki,
                         <br /> mehidipatnam , Hyderabad ,50038
                         <br />
                     </P>
@@ -869,7 +881,8 @@
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <form class="form-inline form-rt">
                         <i class="fa fa-search item-search" aria-hidden="true"></i>
-                        <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name" aria-label="Search">
+                        <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                            aria-label="Search">
                     </form>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -996,7 +1009,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1097,7 +1111,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1320,7 +1335,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1427,7 +1443,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1616,7 +1633,8 @@
                 <li>
                     <i class="fa fa-phone" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98540 98540</li>
                 <li>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok plaza, Near Masab Tank, Tolichowki, Mehadipatnam,
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-11-16/A/43/1,
+                    Ashok plaza, Near Masab Tank, Tolichowki, Mehadipatnam,
                     Hyderabad 50038
                 </li>
             </ul>
@@ -1666,8 +1684,7 @@
                     <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                            />
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
                                 <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -1675,8 +1692,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Enter Password</label>
-                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                            />
+                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                 <div *ngIf="f.password.errors.required">Password is required</div>
                                 <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -1684,11 +1700,11 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" formControlName="new_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.new_password.errors }"
-                            />
+                            <input type="password" formControlName="new_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.new_password.errors }" />
                             <div *ngIf="submitted && f.new_password.errors" class="invalid-feedback">
                                 <div *ngIf="f.new_password.errors.required">Confirm Password is required</div>
-                                <div *ngIf="f.new_password.errors.minlength">Confirm Password must be at least 6 characters
+                                <div *ngIf="f.new_password.errors.minlength">Confirm Password must be at least 6
+                                    characters
                                 </div>
                             </div>
                         </div>
@@ -1702,181 +1718,185 @@
 </div>
 
 <!-- Add products popup -->
-<div class="modal" id="addProd" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header c-modalheader">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="cust-close">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="row">
-                    <div class="col-sm-5">
-                        <div class="add-popup">
-                            <img src="assets/images/potatoes.png" alt="potato" />
-                            <p>
-                                <span class="pot">Potatoes</span>
-                                <br />Brand 1</p>
+<div *ngIf="showModal">
+    <div class="modal" id="addProd" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header c-modalheader">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="cust-close">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="row">
+                        <div class="col-sm-5">
+                            <div class="add-popup">
+                                <img src="assets/images/potatoes.png" alt="potato" />
+                                <p>
+                                    <span class="pot">Potatoes</span>
+                                    <br />Brand 1</p>
+                            </div>
+                        </div>
+                        <div class="col-sm-7">
+                            <div class="row">
+                                <form class="add-pop">
+                                    <div class="form-group row">
+                                        <label for="price" class="col-sm-3 col-form-label">Price</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="price" placeholder="Enter your price">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="quantity" class="col-sm-3 col-form-label">Quantity</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="quantity2" placeholder="Enter your quantity">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="discount" class="col-sm-3 col-form-label">Discount</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="discount" placeholder="Enter your discount">
+                                        </div>
+                                    </div>
+                                    <div class="form-group row">
+                                        <label for="status" class="col-sm-3 col-form-label">Status</label>
+                                        <div class="col-sm-8">
+                                            <input type="text" class="form-control" id="status" placeholder="Enter your status">
+                                            <button type="submit" class="btn add-button pop-save" data-dismiss="modal">SAVE</button>
+                                        </div>
+                                    </div>
+                                </form>
+                            </div>
                         </div>
                     </div>
-                    <div class="col-sm-7">
-                        <div class="row">
-                            <form class="add-pop">
-                                <div class="form-group row">
-                                    <label for="price" class="col-sm-3 col-form-label">Price</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="price" placeholder="Enter your price">
+                    <div class="row cust-price">
+                        <p>*Price you have entered is calculated as per 1kg</p>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+
+    <!-- search not found -->
+    <div class="modal" id="notfound" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header c-modalheader">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="cust-close">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <p>Cauliflower item is not found</p>
+                    <button type="submit" class="btn request-admin" data-dismiss="modal" data-toggle="modal"
+                        data-target="#product-name">Request
+                        Admin
+                    </button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Product Name -->
+    <div class="modal" id="product-name" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header c-modalheader">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="cust-close">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <form>
+                        <div class="form-group row">
+                            <label for="quantity" class="col-sm-4 col-form-label">Product Name</label>
+                            <div class="col-sm-7">
+                                <input type="text" class="form-control" id="quantity" placeholder="Enter your quantity">
+                                <button type="submit" class="btn request-admin" data-dismiss="modal">Request Admin</button>
+                            </div>
+                        </div>
+                    </form>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Order Filter -->
+    <div class="modal" id="filter" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header c-modalheader">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="cust-close">&times;</span>
+                    </button>
+                </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="cust-date">
+                            <strong>Select Date</strong>
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">From Date</label>
+                                        <input type="date" class="form-control" placeholder="From Date">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">To Date</label>
+                                        <input type="date" class="form-control" placeholder="To Date">
+                                    </div>
+                                    <div class="col-md-12 cust-apply">
+                                        <button type="submit" data-dismiss="modal">Apply</button>
                                     </div>
                                 </div>
-                                <div class="form-group row">
-                                    <label for="quantity" class="col-sm-3 col-form-label">Quantity</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="quantity2" placeholder="Enter your quantity">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="discount" class="col-sm-3 col-form-label">Discount</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="discount" placeholder="Enter your discount">
-                                    </div>
-                                </div>
-                                <div class="form-group row">
-                                    <label for="status" class="col-sm-3 col-form-label">Status</label>
-                                    <div class="col-sm-8">
-                                        <input type="text" class="form-control" id="status" placeholder="Enter your status">
-                                        <button type="submit" class="btn add-button pop-save" data-dismiss="modal">SAVE</button>
-                                    </div>
-                                </div>
+
                             </form>
                         </div>
                     </div>
                 </div>
-                <div class="row cust-price">
-                    <p>*Price you have entered is calculated as per 1kg</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Vendor Order Details filter2 -->
+    <div class="modal" id="filter2" tabindex="-1" role="dialog">
+        <div class="modal-dialog" role="document">
+            <div class="modal-content">
+                <div class="modal-header c-modalheader">
+                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
+                        <span aria-hidden="true" class="cust-close">&times;</span>
+                    </button>
                 </div>
-            </div>
+                <div class="modal-body">
+                    <div class="container">
+                        <div class="cust-date">
+                            <strong>Select Date</strong>
+                            <form>
+                                <div class="form-row">
+                                    <div class="form-group col-md-6">
+                                        <label for="inputEmail4">From Date</label>
+                                        <input type="date" class="form-control" placeholder="From Date">
+                                    </div>
+                                    <div class="form-group col-md-6">
+                                        <label for="inputPassword4">To Date</label>
+                                        <input type="date" class="form-control" placeholder="To Date">
+                                    </div>
 
-        </div>
-    </div>
-</div>
-
-<!-- search not found -->
-<div class="modal" id="notfound" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header c-modalheader">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="cust-close">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <p>Cauliflower item is not found</p>
-                <button type="submit" class="btn request-admin" data-dismiss="modal" data-toggle="modal" data-target="#product-name">Request Admin
-                </button>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Product Name -->
-<div class="modal" id="product-name" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header c-modalheader">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="cust-close">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <form>
-                    <div class="form-group row">
-                        <label for="quantity" class="col-sm-4 col-form-label">Product Name</label>
-                        <div class="col-sm-7">
-                            <input type="text" class="form-control" id="quantity" placeholder="Enter your quantity">
-                            <button type="submit" class="btn request-admin" data-dismiss="modal">Request Admin</button>
+                                    <div class="form-group col-md-12">
+                                        <label for="inputState">Select Type</label>
+                                        <select id="inputState" class="form-control">
+                                            <option selected>Immediate</option>
+                                            <option>type 1</option>
+                                            <option>type 2</option>
+                                            <option>type 3</option>
+                                        </select>
+                                    </div>
+                                    <div class="col-md-12 cust-apply">
+                                        <button type="submit" data-dismiss="modal">Select Type</button>
+                                    </div>
+                                </div>
+                            </form>
                         </div>
-                    </div>
-                </form>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Order Filter -->
-<div class="modal" id="filter" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header c-modalheader">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="cust-close">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="cust-date">
-                        <strong>Select Date</strong>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">From Date</label>
-                                    <input type="date" class="form-control" placeholder="From Date">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">To Date</label>
-                                    <input type="date" class="form-control" placeholder="To Date">
-                                </div>
-                                <div class="col-md-12 cust-apply">
-                                    <button type="submit" data-dismiss="modal">Apply</button>
-                                </div>
-                            </div>
-
-                        </form>
-                    </div>
-                </div>
-            </div>
-        </div>
-    </div>
-</div>
-
-<!-- Vendor Order Details filter2 -->
-<div class="modal" id="filter2" tabindex="-1" role="dialog">
-    <div class="modal-dialog" role="document">
-        <div class="modal-content">
-            <div class="modal-header c-modalheader">
-                <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                    <span aria-hidden="true" class="cust-close">&times;</span>
-                </button>
-            </div>
-            <div class="modal-body">
-                <div class="container">
-                    <div class="cust-date">
-                        <strong>Select Date</strong>
-                        <form>
-                            <div class="form-row">
-                                <div class="form-group col-md-6">
-                                    <label for="inputEmail4">From Date</label>
-                                    <input type="date" class="form-control" placeholder="From Date">
-                                </div>
-                                <div class="form-group col-md-6">
-                                    <label for="inputPassword4">To Date</label>
-                                    <input type="date" class="form-control" placeholder="To Date">
-                                </div>
-
-                                <div class="form-group col-md-12">
-                                    <label for="inputState">Select Type</label>
-                                    <select id="inputState" class="form-control">
-                                        <option selected>Immediate</option>
-                                        <option>type 1</option>
-                                        <option>type 2</option>
-                                        <option>type 3</option>
-                                    </select>
-                                </div>
-                                <div class="col-md-12 cust-apply">
-                                    <button type="submit" data-dismiss="modal">Select Type</button>
-                                </div>
-                            </div>
-                        </form>
                     </div>
                 </div>
             </div>

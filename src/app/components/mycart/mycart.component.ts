@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { appService } from './../../services/mahaliServices/mahali.service';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { ItemsComponent } from '../../components/items/items.component';
 import { PromocodesComponent } from '../../components/promocodes/promocodes.component';
@@ -14,9 +15,10 @@ export class MycartComponent implements OnInit {
   showPaymentMethode = false;
   showDeliveryType = false;
   addresses = false;
-  constructor(public dialog: MatDialog) { }
+  constructor(public dialog: MatDialog, private appService: appService) { }
 
   ngOnInit() {
+    this.getCart();
 
   }
 
@@ -79,5 +81,14 @@ export class MycartComponent implements OnInit {
     dialogConfig.autoFocus = true;
     this.dialog.open(PromocodesComponent, dialogConfig);
 
+  }
+  cartData;
+  getCart() {
+    var inData = localStorage.getItem('userId');
+    this.appService.getCart(inData).subscribe(res => {
+      this.cartData = res.json().cart_details;
+    }, err => {
+
+    })
   }
 }

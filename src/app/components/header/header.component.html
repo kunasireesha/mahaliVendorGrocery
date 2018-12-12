@@ -9,7 +9,7 @@
                         {{"common.login"|translate}}
                     </a>
                 </li>
-                <li class="nav-item cust-bar">
+                <li class="nav-item cust-bar" *ngIf="showLoginScreen">
                     |
                 </li>
                 <li class="nav-item">
@@ -17,9 +17,10 @@
                         {{"common.signup"|translate}}
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="modal" data-target="#myaccountmdl">
-                    <a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light" mdbRippleRadius>
-                        <i class="fa fa-user" aria-hidden="true"></i> &nbsp;{{"common.myAccount"|translate}}
+                <li class="nav-item" data-toggle="modal" data-target="#myaccountmdl" *ngIf="myAccount">
+                    <a dropdownToggle mdbRippleRadius type="button" class="nav-link dropdown-toggle waves-light"
+                        mdbRippleRadius>
+                        <i class="fa fa-user" aria-hidden="true"></i> &nbsp;{{userName}}
                         <span class="caret"></span>
                     </a>
                     <div *dropdownMenu class="dropdown-menu dropdown dropdown-primary cust-menu" role="menu">
@@ -86,7 +87,7 @@
 </div>
 
 <nav class="navbar cust-navbar navbar-expand-md sticky-top navbar-dark">
-    <a href="/" class="navbar-brand">
+    <a routerLink="/" href="#/" class="navbar-brand">
         <img src="assets/images/logo.png" class="img-fluid cust-logo" alt="Responsive image">
     </a>
     <button class="navbar-toggler togl-btn" type="button" data-toggle="collapse" data-target="#navbar5">
@@ -328,7 +329,8 @@
                 <div class="row">
                     <div class="col-sm-12">
                         <a href="" class="cust-anchr">
-                            <i class="fa fa-location-arrow cust-arr" aria-hidden="true"></i> &nbsp;Choose Current Location
+                            <i class="fa fa-location-arrow cust-arr" aria-hidden="true"></i> &nbsp;Choose Current
+                            Location
                         </a>
                     </div>
                 </div>
@@ -364,8 +366,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.email.errors }"
-                                    />
+                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.email.errors }" />
                                     <div *ngIf="loginSubmitted && f1.email.errors" class="invalid-feedback">
                                         <div *ngIf="f1.email.errors.required">Email Id is required</div>
                                         <div *ngIf="f1.email.errors.email">Email must be a valid email address</div>
@@ -377,14 +378,15 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.password.errors }"
-                                    />
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': loginSubmitted && f1.password.errors }" />
                                     <div *ngIf="loginSubmitted && f1.password.errors" class="invalid-feedback">
                                         <div *ngIf="f1.password.errors.required">Password is required</div>
-                                        <div *ngIf="f1.password.errors.minlength">Password must be at least 6 characters
+                                        <div *ngIf="f1.password.errors.minlength">Password must be at least 6
+                                            characters
                                         </div>
                                     </div>
-                                    <a href="#" data-toggle="modal" data-target="#forgotpass" data-dismiss="modal" class="frgt-a">
+                                    <a href="#" data-toggle="modal" data-target="#forgotpass" data-dismiss="modal"
+                                        class="frgt-a">
                                         <small>Forgot Password</small>
                                     </a>
 
@@ -401,7 +403,8 @@
                         <div class="cust-acnt text-center">
                             <p class="text-center">Dont have an account ?
                                 <span style="color: blue;">
-                                    <a href="" data-toggle="modal" data-target="#signupmodal" data-dismiss="modal">Sign Up now
+                                    <a href="" data-toggle="modal" data-target="#signupmodal" data-dismiss="modal">Sign
+                                        Up now
                                     </a>
                                 </span>
                             </p>
@@ -436,8 +439,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }"
-                                    />
+                                    <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
                                     <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.first_name.errors.required">First Name is required</div>
                                     </div>
@@ -448,8 +450,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }"
-                                    />
+                                    <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
                                     <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.last_name.errors.required">Last Name is required</div>
                                     </div>
@@ -460,8 +461,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                                    />
+                                    <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                                     <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                         <div *ngIf="f.email.errors.required">Email is required</div>
                                         <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -473,7 +473,8 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="number" class="form-control" formControlName="mobile_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
+                                    <input type="number" class="form-control" formControlName="mobile_number" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                     <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                         <div *ngIf="f.mobile_number.errors.required">Mobile number is required</div>
                                     </div>
@@ -484,8 +485,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                                    />
+                                    <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                                     <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                         <div *ngIf="f.password.errors.required">Password is required</div>
                                         <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -503,7 +503,8 @@
                         <div class="cust-acnt text-center">
                             <p class="text-center">Have an account ?
                                 <span style="color: blue;">
-                                    <a href="" data-toggle="modal" data-target="#loginmodal" data-dismiss="modal">login now
+                                    <a href="" data-toggle="modal" data-target="#loginmodal" data-dismiss="modal">login
+                                        now
                                     </a>
                                 </span>
                             </p>
@@ -539,12 +540,18 @@
                                 </label>
 
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="number" formControlName="number" class="form-control" />
-                                    <div class="form-group cust-frmgrp">
-                                        <div class="col-sm-12">
-                                            <button class="btn btn-danger cust-logbtn submt-btn">Submit</button>
+                                    <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
+                                        <input type="number" formControlName="mob_number" class="form-control"
+                                            [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
+                                        <div *ngIf="forgotSubmitted && f1.mob_number.errors" class="invalid-feedback">
+                                            <div *ngIf="f1.mob_number.errors.required">Mobile number is required</div>
                                         </div>
-                                    </div>
+                                        <div class="form-group cust-frmgrp">
+                                            <div class="col-sm-12">
+                                                <button class="btn btn-danger cust-logbtn submt-btn">Submit</button>
+                                            </div>
+                                        </div>
+                                    </form>
                                 </div>
                             </div>
 
@@ -571,30 +578,18 @@
                     <ul *ngFor="let cat of category">
                         <li>
                             <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
-                            <a (mouseenter)="showSubCat()" (click)="showVegetables()">{{cat.category_name}}</a>
+                            <a (mouseenter)="showSubCat(cat.id)" (click)="showVegetables()">{{cat.category_name}}</a>
                             <div class="subcatcat" *ngIf="showSubCats">
                                 <div class="subcatsCat row">
                                     <div class="col-md-6">
-                                        <ul>
-                                            <h6>ladies finger</h6>
+                                        <ul *ngFor="let sub of subcat">
+                                            <!-- <h6>ladies finger</h6> -->
                                             <li>
-                                                <a>Brinjal</a>
-                                            </li>
-                                            <li>
-                                                <a>Tomato</a>
-                                            </li>
-                                            <li>
-                                                <a>cauliflower</a>
-                                            </li>
-                                            <li>
-                                                <a>Onions</a>
-                                            </li>
-                                            <li>
-                                                <a>carrot</a>
+                                                <a>{{sub.sub_category_name}}</a>
                                             </li>
                                         </ul>
                                     </div>
-                                    <div class="col-md-6">
+                                    <!-- <div class="col-md-6">
                                         <ul>
                                             <h6>Fruits</h6>
                                             <li>
@@ -613,8 +608,8 @@
                                                 <a>Cherry</a>
                                             </li>
                                         </ul>
-                                    </div>
-                                    <div class="col-md-6">
+                                    </div> -->
+                                    <!-- <div class="col-md-6">
                                         <ul>
                                             <h6>ladies finger</h6>
                                             <li>
@@ -633,7 +628,7 @@
                                                 <a>carrot</a>
                                             </li>
                                         </ul>
-                                    </div>
+                                    </div> -->
                                 </div>
                             </div>
                         </li>

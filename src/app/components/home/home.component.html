@@ -289,10 +289,10 @@
 			<h4>Sell Products</h4>
 		</div>
 		<div class="row " *ngIf="showVegetablesScreen">
-			<div class="col-md-3 ">
+			<div class="col-md-3 " *ngFor="let item of product">
 				<div class="card">
 					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+						<img class="img-fluid" src="item.product_image" alt="Card image cap">
 					</div>
 					<div class="card-block add-to-cart">
 						<h5 class="text-center">Tomato-Hybride </h5>
@@ -311,7 +311,7 @@
 					</div>
 				</div>
 			</div>
-			<div class="col-md-3">
+			<!-- <div class="col-md-3">
 				<div class="card">
 					<div class="product-image" (click)="showProduxtDetails()">
 						<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
@@ -333,8 +333,8 @@
 						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3">
+			</div> -->
+			<!-- <div class="col-md-3">
 				<div class="card">
 					<div class="product-image" (click)="showProduxtDetails()">
 						<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
@@ -356,8 +356,8 @@
 						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
 					</div>
 				</div>
-			</div>
-			<div class="col-md-3">
+			</div> -->
+			<!-- <div class="col-md-3">
 				<div class="card">
 					<div class="product-image" (click)="showProduxtDetails()">
 						<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
@@ -379,11 +379,11 @@
 						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
 					</div>
 				</div>
-			</div>
+			</div> -->
 		</div>
 		<!-- vegetables -->
 		<!-- fruits -->
-		<div class="row " *ngIf="showFruitScreen">
+		<!-- <div class="row " *ngIf="showFruitScreen">
 			<div class="col-md-3">
 				<div class="card">
 					<div class="product-image" (click)="showProduxtDetails()">
@@ -476,7 +476,7 @@
 					</div>
 				</div>
 			</div>
-		</div>
+		</div> -->
 		<!-- friuts -->
 		<!-- tea -->
 		<div class="row " *ngIf="showTeaScreen">
@@ -775,6 +775,49 @@
 	</div>
 </div>
 
+<!-- <div id="testimonial-slider" class="owl-carousel">
+	<div class="testimonial">
+		<div class="testimonial-content">
+			<div class="testimonial-icon">
+				<i class="fa fa-quote-left"></i>
+			</div>
+			<p class="description">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet
+				hendrerit nisi vehicula.
+			</p>
+		</div>
+		<h3 class="title">williamson</h3>
+		<span class="post">Web Developer</span>
+	</div>
+
+	<div class="testimonial">
+		<div class="testimonial-content">
+			<div class="testimonial-icon">
+				<i class="fa fa-quote-left"></i>
+			</div>
+			<p class="description">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet
+				hendrerit nisi vehicula.
+			</p>
+		</div>
+		<h3 class="title">Kristina</h3>
+		<span class="post">Web Designer</span>
+	</div>
+
+	<div class="testimonial">
+		<div class="testimonial-content">
+			<div class="testimonial-icon">
+				<i class="fa fa-quote-left"></i>
+			</div>
+			<p class="description">
+				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet
+				hendrerit nisi vehicula.
+			</p>
+		</div>
+		<h3 class="title">williamson</h3>
+		<span class="post">Web Developer</span>
+	</div>
+</div> -->
 <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
 	<br />
 	<!--Slides-->
@@ -784,19 +827,18 @@
 			<!--First slide-->
 			<div class="carousel-item active">
 
-				<div class="col-md-3">
+				<div class="col-md-3" *ngFor="let item of product">
 					<div class="card">
 						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
+							<img class="img-fluid" [src]="item.product_image" alt="Card image cap">
 						</div>
 						<div class="card-block add-to-cart">
-							<h5 class="text-center">Tomato-Hybride </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
+							<h5 class="text-center">{{item.brand}} </h5>
+							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add</button>
 						</div>
 					</div>
-
 					<br />
-					<div class="card">
+					<!-- <div class="card">
 						<div class="product-image" (click)="showProduxtDetails()">
 							<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
 						</div>
@@ -804,10 +846,10 @@
 							<h5 class="text-center">Tomato-Hybride </h5>
 							<button type="text" class="btn waves-effect waves-light">Add</button>
 						</div>
-					</div>
+					</div> -->
 				</div>
 
-				<div class="col-md-3 hidden-sm-down">
+				<!-- <div class="col-md-3 hidden-sm-down">
 					<div class="card">
 						<div class="product-image" (click)="showProduxtDetails()">
 							<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
@@ -827,9 +869,9 @@
 							<button type="text" class="btn waves-effect waves-light">Add</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="col-md-3 hidden-sm-down">
+				<!-- <div class="col-md-3 hidden-sm-down">
 					<div class="card">
 						<div class="product-image" (click)="showProduxtDetails()">
 							<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
@@ -849,9 +891,9 @@
 							<button type="text" class="btn waves-effect waves-light">Add</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 
-				<div class="col-md-3 hidden-sm-down">
+				<!-- <div class="col-md-3 hidden-sm-down">
 					<div class="card">
 						<div class="product-image " (click)="showProduxtDetails()">
 							<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
@@ -871,101 +913,101 @@
 							<button type="text" class="btn waves-effect waves-light">Add</button>
 						</div>
 					</div>
-				</div>
+				</div> -->
 			</div>
 			<!--/.First slide-->
 
 			<!--Second slide-->
-			<div class="carousel-item">
-
-				<div class="col-md-3">
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
+			<!-- <div class="carousel-item">
+	
+					<div class="col-md-3">
+						<div class="card">
+							<div class="product-image" (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Tomato-Hybride </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Tomato-Hybride </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-					<br />
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Tomato-Hybride </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 hidden-sm-down">
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
+						<br />
+						<div class="card">
+							<div class="product-image" (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Tomato-Hybride </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
 					</div>
-					<br />
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
+	
+					<div class="col-md-3 hidden-sm-down">
+						<div class="card">
+							<div class="product-image" (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Ladie's Finger </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-				</div>
-
-				<div class="col-md-3 hidden-sm-down">
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-					<br />
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
+						<br />
+						<div class="card">
+							<div class="product-image" (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Ladie's Finger </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
 					</div>
-				</div>
-
-				<div class="col-md-3 hidden-sm-down">
-					<div class="card">
-						<div class="product-image " (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
+	
+					<div class="col-md-3 hidden-sm-down">
+						<div class="card">
+							<div class="product-image" (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Ladie's Finger </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Carrot </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
+						<br />
+						<div class="card">
+							<div class="product-image" (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Ladie's Finger </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
 					</div>
-					<br />
-					<div class="card">
-						<div class="product-image " (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
+	
+					<div class="col-md-3 hidden-sm-down">
+						<div class="card">
+							<div class="product-image " (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Carrot </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Carrot </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
+						<br />
+						<div class="card">
+							<div class="product-image " (click)="showProduxtDetails()">
+								<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
+							</div>
+							<div class="card-block add-to-cart">
+								<h5 class="text-center">Carrot </h5>
+								<button type="text" class="btn waves-effect waves-light">Add</button>
+							</div>
 						</div>
 					</div>
-				</div>
-			</div>
+				</div> -->
 			<!--/.Second slide-->
 		</div>
 

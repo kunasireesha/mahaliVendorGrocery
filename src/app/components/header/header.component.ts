@@ -15,8 +15,10 @@ declare var jQuery: any;
 export class HeaderComponent implements OnInit {
     registerForm: FormGroup;
     loginForm: FormGroup;
+    forgotForm: FormGroup;
     submitted = false;
     loginSubmitted = false;
+    forgotSubmitted = false;
     category: any;
     product: any;
     loginDetails: any;
@@ -28,12 +30,14 @@ export class HeaderComponent implements OnInit {
     showLoginScreen = true;
     showRegistration = true;
     showOpacity = false;
+    subcat = [];
 
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) { }
     item = {
         quantity: 1
     }
     userMobile;
+    userName;
     ngOnInit() {
         if (localStorage.token === undefined) {
             this.showRegistration = true;
@@ -45,6 +49,7 @@ export class HeaderComponent implements OnInit {
             this.myAccount = true;
             this.phone = true;
             this.userMobile = JSON.parse(localStorage.getItem('phone'));
+            this.userName = (localStorage.getItem('userName'));
         }
         // if ((localStorage.token)! === undefined) {
         //     this.showRegistration = false;
@@ -62,12 +67,21 @@ export class HeaderComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]]
         });
+        this.forgotForm = this.formBuilder.group({
+            mob_number: ['', [Validators.required]],
+        });
         this.getCategories();
         this.getProduct();
         this.login();
     }
-    showSubCat() {
+    showSubCat(Id) {
         this.showSubCats = true;
+
+        this.appService.getSubCat(Id).subscribe(resp => {
+            this.subcat = resp.json().sub_category;
+        }, error => {
+
+        })
     }
     hideSubCats() {
         this.showSubCats = false;
@@ -156,13 +170,16 @@ export class HeaderComponent implements OnInit {
         this.appService.login(this.loginForm.value).subscribe(resp => {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
-                localStorage.setItem('token', JSON.stringify(resp.json().token));
+                localStorage.setItem('token', (resp.json().token));
                 jQuery("#loginmodal").modal("hide");
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.myAccount = true;
-                this.appService.loginDetailsbyEmail(this.loginForm.value).subscribe(response => {
+                this.appService.loginDetailsbyEmail(this.loginForm.value.email).subscribe(response => {
                     localStorage.setItem('phone', JSON.stringify(response.json().data[0].mobile_number));
+                    localStorage.setItem('email', (response.json().data[0].email));
+                    localStorage.setItem('userId', (response.json().data[0].id));
+                    localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
                     this.loginDetails = response.json().data[0];
                     this.phone = true;
 
@@ -181,8 +198,30 @@ export class HeaderComponent implements OnInit {
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
             this.product = resp.json().products;
-            console.log(this.product);
         });
+    }
+
+    get f2() { return this.forgotForm.controls; }
+    forgot() {
+        this.forgotSubmitted = true;
+        if (this.forgotForm.invalid) {
+            return;
+        }
+        var inData = {
+            mobile_number: this.forgotForm.value.mob_number
+        }
+        this.appService.forgotPassword(inData).subscribe(resp => {
+            if (resp.json().status === 200) {
+                jQuery("#forgotpass").modal("hide");
+                swal(resp.json().message, "", "success");
+            } else {
+                swal(resp.json().message, "", "error");
+            }
+
+
+        }, err => {
+            swal(err.json().message, "", "error");
+        })
     }
 
 }

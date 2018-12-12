@@ -10,13 +10,13 @@
 				<h4 class="text-center"> My Cart</h4>
 				<div class="col-md-12 cart-1">
 					<div class="cart-item">
-						<div class="row items align-items-center">
+						<div class="row items align-items-center" *ngFor="let item of cartData">
 
 							<div class="col-md-3 text-center">
 								<img src="assets/images/potatoes.png">
 							</div>
 							<div class="col-md-2 text-center">
-								<h6>Potatoes</h6>
+								<h6>{{item.cart_id}}</h6>
 							</div>
 							<div class="col-md-3">
 								<div class="sort">
@@ -32,11 +32,14 @@
 								<p>Price: BD.1990 &nbsp;&nbsp;
 									<i class="fa fa-times-circle cust-circle" aria-hidden="true"></i>
 								</p>
+								<div>
+									hello
+								</div>
 							</div>
+
 						</div>
 
-						<hr>
-						<div class="row items align-items-center">
+						<!-- <div class="row items align-items-center">
 							<div class="col-md-3 text-center">
 								<img src="assets/images/tomatoes.png">
 							</div>
@@ -58,10 +61,10 @@
 									<i class="fa fa-times-circle cust-circle" aria-hidden="true"></i>
 								</p>
 							</div>
-						</div>
+						</div> -->
 						<hr>
 					</div>
-					<div class="sub-total">
+					<!-- <div class="sub-total">
 						<table class="table table-borderless">
 							<tbody>
 								<tr>
@@ -77,7 +80,7 @@
 						</table>
 						<p>*Sold by Goodluck retail stores</p>
 						<button class="btn btn-maroon" value="Checkout">Checkout</button>
-					</div>
+					</div> -->
 				</div>
 
 			</div>
@@ -99,7 +102,7 @@
 
 				<div class="col-md-12 cart-2">
 					<a (click)="addAddress()" *ngIf="showAddresses">
-						<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;Add new address</a>
+						<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;Add new delivery address</a>
 					<!-- delivery address -->
 					<div class="row del-address" *ngIf="showAddresses">
 						<div class="col-md-6">
@@ -355,9 +358,9 @@
 			</div>
 			<!-- total amount -->
 			<!-- payment option -->
-			<h4>Select Payment Option</h4>
 			<div class="row justify-content-center">
 				<div class="col-md-9 payment">
+					<h5 class="payment">Select Payment Option</h5>
 					<div class="row">
 						<div class="col-md-12">
 							<div class="custom-control custom-radio mahali-radio">
