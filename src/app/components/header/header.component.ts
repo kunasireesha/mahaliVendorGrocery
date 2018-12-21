@@ -119,7 +119,7 @@ export class HeaderComponent implements OnInit {
         });
         this.getCategories();
         this.getProduct();
-        this.login();
+        // this.login();
         // this.getLocation();
         this.getCart();
     }
@@ -198,7 +198,7 @@ export class HeaderComponent implements OnInit {
                 swal(resp.json().message, "", "success");
                 // $("#signupmodal").modal("hide");
                 // this.showRegistration = false;
-
+                localStorage.setItem('userId', (resp.json().id));
                 // this.myAccount = true
                 // this.showOpacity = false;
                 // this.onCloseCancel();

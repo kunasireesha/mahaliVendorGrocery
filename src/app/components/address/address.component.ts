@@ -58,7 +58,7 @@ export class AddressComponent implements OnInit {
         this.bankForm = this.formBuilder.group({
             account_holder_name: ['', Validators.required],
             account_number: ['', Validators.required],
-            re_account_number: ['', Validators.required],
+            // re_account_number: ['', Validators.required],
             bank_name: ['', Validators.required],
             ifsc_code: ['', Validators.required],
             bank_area: ['', Validators.required],
@@ -116,16 +116,17 @@ export class AddressComponent implements OnInit {
         if (this.bankForm.invalid) {
             return;
         }
-        if (this.bankData.account_number == this.bankData.retype_acc) {
+        // if (this.bankData.account_number == this.bankData.retype_acc) {
             this.appService.bankDetails(this.bankForm.value).subscribe(res => {
                 swal(res.json().message, "", "success");
                 this.router.navigate(['/']);
             }, err => {
 
             })
-        } else {
-            swal("Account number missmatch", "", "error");
-        }
+        // }
+        //  else {
+        //     swal("Account number missmatch", "", "error");
+        // }
 
     }
 
