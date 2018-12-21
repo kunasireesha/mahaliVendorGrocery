@@ -253,11 +253,16 @@ export class HeaderComponent implements OnInit {
     }
     subCatData =[]
     showSubCat(Id) {
+        console.log(this.category);
+        this.getCategories();
+        debugger;
         this.showSubCats = true;
         for(var i=0;i<this.category.lenght;i++){
         for(var j=0;j<this.category[i].subcategory.lenght;j++){
             if(Id===this.category[i].subcategory[j].category_id){
               this.subCatData =  this.category[i].subcategory[j];
+              console.log(this.subCatData);
+              debugger;
             }
         }
         }

@@ -11,7 +11,10 @@ import { Router } from '@angular/router';
 })
 export class UseraccountComponent implements OnInit {
     resetForm: FormGroup;
+    addressForm:FormGroup;
     submitted = false;
+    
+    
     constructor(
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
@@ -53,6 +56,34 @@ export class UseraccountComponent implements OnInit {
             password: ['', [Validators.required, Validators.minLength(6)]],
             new_password: ['', [Validators.required, Validators.minLength(6)]],
         });
+        this.addressForm = this.formBuilder.group({
+            full_name: ['', Validators.required],
+            mobile_number: ['', Validators.required],
+            house_no: ['', Validators.required],
+            city: ['', Validators.required],
+            state: ['', Validators.required],
+            landmark: ['', Validators.required],
+            pin_code: ['', Validators.required],
+        });
+
+    }
+    get f1() { return this.addressForm.controls; }
+
+    saveAddress() {
+        this.submitted = true;
+        // stop here if form is invalid
+        if (this.addressForm.invalid) {                                                                                                                                                                                                                                                                                                                                                                                                                                            
+            return;
+        }
+          this.appService.addaddress(this.addressForm.value).subscribe(res=> {
+            this.addressForm.reset();
+              swal(res.json().message,"","success");
+      this.getAdd();
+    //   this.addressForm.reset();
+      // this.showAddresses = true;
+      //     this.addresses = false;
+      
+          })
     }
 
     page;
@@ -479,27 +510,10 @@ export class UseraccountComponent implements OnInit {
       Type(type){
         this.type = type;
       }
-      saveAddress() {
-        var inData  = {
-          "full_name": this.addData.full_name,
-          "mobile_number":this.addData.mobile_number ,
-          "house_no": this.addData.house_no,
-          "city": this.addData.city,
-          "state": this.addData.state,
-          "landmark": this.addData.landmark,
-          "pin_code": this.addData.pin_code,
-          "address_type": this.type,
-          
-        }
-        this.appService.addaddress(inData).subscribe(res=> {
-            swal(res.json().message,"","success");
-    this.getAdd();
-    // this.showAddresses = true;
-    //     this.addresses = false;
-    
-        })
+    //   saveAddress() {
+      
         
-      }
+    //   }
       cancelAdd(){
         this.showDeliveryAddress = true;   
         this.editAccount = false;
