@@ -11,7 +11,11 @@ import { Router } from '@angular/router';
 })
 export class UseraccountComponent implements OnInit {
     resetForm: FormGroup;
+    addressForm: FormGroup;
+    productForm: FormGroup
     submitted = false;
+
+
     constructor(
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
@@ -53,6 +57,58 @@ export class UseraccountComponent implements OnInit {
             password: ['', [Validators.required, Validators.minLength(6)]],
             new_password: ['', [Validators.required, Validators.minLength(6)]],
         });
+        this.addressForm = this.formBuilder.group({
+            full_name: ['', Validators.required],
+            mobile_number: ['', Validators.required],
+            house_no: ['', Validators.required],
+            city: ['', Validators.required],
+            state: ['', Validators.required],
+            landmark: ['', Validators.required],
+            pin_code: ['', Validators.required],
+        });
+        this.productForm = this.formBuilder.group({
+            deal_price: ['', Validators.required],
+            quantity: ['', Validators.required],
+            status: ['', Validators.required],
+            discount: ['', Validators.required],
+            vendor_id: localStorage.userId,
+            product_id: this.productId
+        });
+
+    }
+    get f1() { return this.addressForm.controls; }
+
+    saveAddress() {
+        this.submitted = true;
+        // stop here if form is invalid
+        if (this.addressForm.invalid) {
+            return;
+        }
+        this.appService.addaddress(this.addressForm.value).subscribe(res => {
+            this.addressForm.reset();
+            swal(res.json().message, "", "success");
+            this.getAdd();
+            //   this.addressForm.reset();
+            // this.showAddresses = true;
+            //     this.addresses = false;
+
+        })
+    }
+    get f2() { return this.productForm.controls; }
+    productId;
+    save(prodId) {
+        this.productId = prodId;
+        this.submitted = true;
+        // stop here if form is invalid
+        if (this.productForm.invalid) {
+            return;
+        }
+        console.log(this.productForm.value);
+        this.appService.update(this.productForm.value).subscribe(resp => {
+            swal("Your order under process for Approvel", "", "success");
+
+        })
+
     }
 
     page;
@@ -272,16 +328,16 @@ export class UseraccountComponent implements OnInit {
     ordData = [];
     orderDet = [];
     count;
-    ordDetails(ordId){
+    ordDetails(ordId) {
         this.ordId = ordId;
         this.appService.orderById(ordId).subscribe(resp => {
-           this.ordData = resp.json().Order.products;
-           for(var i=0;i<this.ordData.length;i++){
-           this.ordData[i].size = this.ordData[i].sku_details[0].size;
-           this.ordData[i].selling_price = this.ordData[i].sku_details[0].selling_price;
-           }
-           this.orderDet =  resp.json().Order.details[0];
-           this.count = resp.json().Order.total_selling_price;
+            this.ordData = resp.json().Order.products;
+            for (var i = 0; i < this.ordData.length; i++) {
+                this.ordData[i].size = this.ordData[i].sku_details[0].size;
+                this.ordData[i].selling_price = this.ordData[i].sku_details[0].selling_price;
+            }
+            this.orderDet = resp.json().Order.details[0];
+            this.count = resp.json().Order.total_selling_price;
 
         })
     }
@@ -358,31 +414,31 @@ export class UseraccountComponent implements OnInit {
     }
     prodId;
     reqProds = [];
-    getProducts(Id){
-   this.prodId = Id;
-   this.appService.reqOrder(Id).subscribe(resp => {
-   this.reqProds = resp.json().Order;
+    getProducts(Id) {
+        this.prodId = Id;
+        this.appService.reqOrder(Id).subscribe(resp => {
+            this.reqProds = resp.json().Order;
 
-})
+        })
     }
     price;
     qunt;
     dis;
     status;
-    save(proId){
-        var inData ={
-                "vendor_id":localStorage.userId,
-                "product_id":proId,
-                "deal_price":this.price,
-                "quantity":this.qunt,
-                "status":this.status,
-                "discount":this.dis
-        }
-        this.appService.update(inData).subscribe(resp => {
-            swal("Your order under process for Approvel", "", "success");
+    // save(proId) {
+    //     var inData = {
+    //         "vendor_id": localStorage.userId,
+    //         "product_id": proId,
+    //         "deal_price": this.price,
+    //         "quantity": this.qunt,
+    //         "status": this.status,
+    //         "discount": this.dis
+    //     }
+    //     this.appService.update(inData).subscribe(resp => {
+    //         swal("Your order under process for Approvel", "", "success");
 
-        })  
-    }
+    //     })
+    // }
     itemIncrease() {
         let thisObj = this;
 
@@ -447,116 +503,99 @@ export class UseraccountComponent implements OnInit {
         this.editUserProfile = false;
     }
     getAddData = [];
-    States = ["Andhrapradhesh","Gujarath","Telangana"];
-    Cities = ["Hyderabad","Kadapa","Vijayawada"];
-    getAdd(){
-        this.appService.getAddress().subscribe(res=> {
-          this.getAddData = res.json().delivery_address;
-          
-              })
-      }
-      seleOpt;
-      addId;
-      seleAddOptn(index,addId){
-      this.seleOpt = index;
-      this.editDel = true;
-      this.addId = addId;
-      }
-      addData = {
-        full_name: "",
-        mobile_number:"",
-        house_no: "",
-          city: "",
-          state: "",
-          landmark: "",
-          pin_code: "",
-            address_type: "",
-           vendor_id: 44
-           
-        
-      }
-      type;
-      Type(type){
-        this.type = type;
-      }
-      saveAddress() {
-        var inData  = {
-          "full_name": this.addData.full_name,
-          "mobile_number":this.addData.mobile_number ,
-          "house_no": this.addData.house_no,
-          "city": this.addData.city,
-          "state": this.addData.state,
-          "landmark": this.addData.landmark,
-          "pin_code": this.addData.pin_code,
-          "address_type": this.type,
-          
-        }
-        this.appService.addaddress(inData).subscribe(res=> {
-            swal(res.json().message,"","success");
-    this.getAdd();
-    // this.showAddresses = true;
-    //     this.addresses = false;
-    
+    States = ["Andhrapradhesh", "Gujarath", "Telangana"];
+    Cities = ["Hyderabad", "Kadapa", "Vijayawada"];
+    getAdd() {
+        this.appService.getAddress().subscribe(res => {
+            this.getAddData = res.json().delivery_address;
+
         })
-        
-      }
-      cancelAdd(){
-        this.showDeliveryAddress = true;   
+    }
+    seleOpt;
+    addId;
+    seleAddOptn(index, addId) {
+        this.seleOpt = index;
+        this.editDel = true;
+        this.addId = addId;
+    }
+    addData = {
+        full_name: "",
+        mobile_number: "",
+        house_no: "",
+        city: "",
+        state: "",
+        landmark: "",
+        pin_code: "",
+        address_type: "",
+        vendor_id: 44
+
+
+    }
+    type;
+    Type(type) {
+        this.type = type;
+    }
+    //   saveAddress() {
+
+
+    //   }
+    cancelAdd() {
+        this.showDeliveryAddress = true;
         this.editAccount = false;
         this.showAddAddress = false;
-      }
-      delAdd(delId){
-        this.appService.delAddress(delId).subscribe(res=> {
-           swal(res.json().message,"","success");
+    }
+    delAdd(delId) {
+        this.appService.delAddress(delId).subscribe(res => {
+            swal(res.json().message, "", "success");
             this.getAdd();
-                })
-      }
-      selectAdd(){
-        this.appService.setDelAdd(this.addId).subscribe(res=> {
-            swal(res.json().message,"","success");
+        })
+    }
+    selectAdd() {
+        this.appService.setDelAdd(this.addId).subscribe(res => {
+            swal(res.json().message, "", "success");
             console.log(res.json());
-                 })
-       
-      }
-      accDet :any;
-      getAccDet(){
-        this.appService.getAccDetails().subscribe(res=> {
-            this.accDet = res.json().data[0];
-                 },err=> {
+        })
 
-                 })
-      }
-      saveDetails(){
-          var inData =  {
+    }
+    accDet: any;
+    getAccDet() {
+        this.appService.getAccDetails().subscribe(res => {
+            this.accDet = res.json().data[0];
+        }, err => {
+
+        })
+    }
+    saveDetails() {
+        var inData = {
             account_holder_name: this.accDet.account_holder_name,
             account_number: this.accDet.account_number,
             bank_area: this.accDet.bank_area,
             bank_branch: this.accDet.bank_branch,
             bank_city: this.accDet.bank_city,
-            bank_name:this.accDet.bank_name,
+            bank_name: this.accDet.bank_name,
             ifsc_code: this.accDet.ifsc_code
-          }
-        this.appService.updateAcc(inData).subscribe(res=> {
-            swal(res.json().message,"","success");
+        }
+        this.appService.updateAcc(inData).subscribe(res => {
+            swal(res.json().message, "", "success");
             this.getAccDet();
-                 },err=> {
+        }, err => {
 
-                 })
-      }
-      cancelDetails(){
+        })
+    }
+    cancelDetails() {
         this.showAccountDetails = true;
-        this.editAccount = false;  
-      }
-      orders = [];
-      getOrders(){
-        this.appService.getPlaceOrder().subscribe(res=> {
+        this.editAccount = false;
+    }
+    orders = [];
+    getOrders() {
+        this.appService.getPlaceOrder().subscribe(res => {
             this.orders = res.json().Orders;
-                 },err=> {
+        }, err => {
 
-                 }) 
-      }
-      category=[]
-      getCategories() {
+        })
+    }
+    category = []
+    getCategories() {
         this.appService.getCategories().subscribe(resp => {
             this.category = resp.json().categories;
         })

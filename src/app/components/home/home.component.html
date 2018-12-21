@@ -1,1031 +1,161 @@
 <main role="main">
 
-	<!--Carousel Wrapper-->
-	<div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
-		<!--Indicators-->
-		<ol class="carousel-indicators">
-			<li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-			<li data-target="#carousel-example-1z" data-slide-to="1"></li>
-			<li data-target="#carousel-example-1z" data-slide-to="2"></li>
-		</ol>
-		<!--/.Indicators-->
-		<!--Slides-->
-		<div class="carousel-inner" role="listbox">
-			<!--First slide-->
-			<div class="carousel-item" *ngFor="let item of mainData; let i =index;" [ngClass]="{'active':i == 0}">
-				<img class="d-block w-100" [src]="item.website_banner" alt="First slide">
-			</div>
-			<!--/First slide-->
-			<!--Second slide-->
-			<!-- <div class="carousel-item">
-				<img class="d-block w-100" src="assets/images/home-banner.jpg" alt="Second slide">
-			</div> -->
-			<!--/Second slide-->
-			<!--Third slide-->
-			<!-- <div class="carousel-item">
-				<img class="d-block w-100" src="assets/images/home-banner.jpg" alt="Third slide">
-			</div> -->
-			<!--/Third slide-->
-		</div>
-		<!--/.Slides-->
-		<!--Controls-->
-		<a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-			<span class="carousel-control-prev-icon" aria-hidden="true"></span>
-			<span class="sr-only">Previous</span>
-		</a>
-		<a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-			<span class="carousel-control-next-icon" aria-hidden="true"></span>
-			<span class="sr-only">Next</span>
-		</a>
-		<!--/.Controls-->
-	</div>
-	<!--/.Carousel Wrapper-->
+  <!--Carousel Wrapper-->
+  <div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
+    <!--Indicators-->
+    <ol class="carousel-indicators">
+      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+    </ol>
+    <!--/.Indicators-->
+    <!--Slides-->
+    <div class="carousel-inner" role="listbox">
+      <!--First slide-->
+      <div class="carousel-item" *ngFor="let item of mainData; let i =index;" [ngClass]="{'active':i == 0}">
+        <img class="d-block w-100" [src]="item.website_banner" alt="First slide">
+      </div>
+
+    </div>
+    <!--/.Slides-->
+    <!--Controls-->
+    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+      <span class="sr-only">Previous</span>
+    </a>
+    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+      <span class="carousel-control-next-icon" aria-hidden="true"></span>
+      <span class="sr-only">Next</span>
+    </a>
+    <!--/.Controls-->
+  </div>
+  <!--/.Carousel Wrapper-->
 
 </main>
 <br />
 <!-- delas -->
 <div class="container-fluid cust-productcat">
 
-	<div class="container">
-		<div class="cust-buy">
-			<h4>Buy a Products</h4>
-			<p>Your Nearest Shops</p>
-		</div>
+  <div class="container">
+    <div class="cust-buy">
+      <h4>Buy a Products</h4>
+      <p>Your Nearest Shops</p>
+    </div>
 
-		<!-- Nearest Shops -->
-		<div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
-			<br />
-			<!--Slides 1-->
-			<div class="carousel-inner" role="listbox">
+    <!-- Nearest Shops -->
+    <div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
+      <br />
+      <!--Slides 1-->
+      <div class="carousel-inner" role="listbox">
 
-				<!--First slide-->
-				<div class="carousel-item" *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i == 0}">
+        <!--First slide-->
+        <div class="carousel-item" *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i == 0}">
 
-					<div class="col-md-6">
-						<div class="card" (click)="showStore(item.id)">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" [src]="item.image_one" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<!-- <h5 class="">Spar
-									</h5> -->
-									<h4>{{item.bussiness_name}}</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; {{item.business_area}}, {{item.business_city}} 
-										{{item.business_country}}
-										</p>
-
-
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
-
-								</div>
-							</div>
-						</div>
-					</div>
-						<br />
-						<!-- <div class="col-md-6">
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">Shoib
-									</h5>
-									<h4>Cold Store</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+          <div class="col-md-6">
+            <div class="card" (click)="showStore(item.id)">
+              <div class="row">
+                <div class="col-md-6">
+                  <img class="img-fluid" [src]="item.image_one" alt="Card image cap">
+                </div>
+                <div class="card-block col-md-6 recmded">
+                  <!-- <h5 class="">Spar
+										  </h5> -->
+                  <h4>{{item.bussiness_name}}</h4>
+                  <p>
+                    <i class="fas fa-map-marker-alt"></i>
+                    &nbsp; {{item.business_area}}, {{item.business_city}}
+                    {{item.business_country}}
+                  </p>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
-								</div>
-							</div>
-						
-						</div>
-					</div> -->
-
-					<!-- <div class="col-md-6 hidden-sm-down">
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store-2.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">Good Guest
-									</h5>
-									<h4>Cold Store</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+                  <i class="fa fa-clock-o" aria-hidden="true"></i>
+                  &nbsp;
+                  <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
-								</div>
-							</div>
-						</div>
-						<br />
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/my-market.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">My market
-									</h5>
-									<h4>Cold Store</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
-								</div>
-							</div>
-						</div>
+      </div>
+    </div>
 
-					</div> -->
-				</div>
-				<!--/.First slide-->
-
-				<!--Second slide-->
-				<!-- <div class="carousel-item">
-					<div class="col-md-6">
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store-1.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">Spar
-									</h5>
-									<h4>Cold Store</h4>
-
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+    <div class="controls-top">
+      <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
+        <i class="fas fa-long-arrow-alt-left"></i>
+      </a>
+      <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
+        <i class="fas fa-long-arrow-alt-right"></i>
+      </a>
+    </div>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
+  </div>
 
-								</div>
-							</div>
-						</div>
+  <div class="container prod-data">
 
-						<br />
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store-1.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">Shoib
-									</h5>
-									<h4>Cold Store</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+    <!-- products -->
+    <div class="sell-products">
+      <h4>Sell Products</h4>
+    </div>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
-								</div>
-							</div>
-						</div>
-					</div>
-
-					<div class="col-md-6 hidden-sm-down">
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store-2.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">Good Guest
-									</h5>
-									<h4>Cold Store</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+    <div ng2-carouselamos class="slides-wrapper" [items]="product" [width]="1400" [$prev]="prev" [$next]="next" [$item]="item">
+    </div>
+    <ng-template #item let-item let-i="index">
+      <div class="proitems">
+        <img src="{{item.product_image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+        <p>{{item.brand}}</p>
+        <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
+      </div>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
-								</div>
-							</div>
-						</div>
-
-						<br />
-						<div class="card" (click)="showStore()">
-							<div class="row">
-								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store-2.jpg" alt="Card image cap">
-								</div>
-								<div class="card-block col-md-6 recmded">
-									<h5 class="">Shoib
-									</h5>
-									<h4>Cold Store</h4>
-									<p>
-										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+    </ng-template>
 
 
-									<i class="fa fa-clock-o" aria-hidden="true"></i>
-									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
-								</div>
-							</div>
-						</div>
-					</div>
-				</div> -->
-				<!--/.Second slide-->
+    <div class="controls-top col-lg-12 float-right">
+      <ng-template #prev>
+        <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
+          <i class="fas fa-long-arrow-alt-left"></i>
+        </a>
+      </ng-template>
+      <ng-template #next>
+        <a class="btn-floating btn-small slider-btn-right1" href="#multi-item-example" data-slide="next">
+          <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+      </ng-template>
+    </div>
 
-			</div>
-			<!--/.Slides-->
-
-
-			<!--/.Slides-->
-			<!--Controls-->
-			<!-- <div class="controls-top controls">
-				<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
-					<i class="fas fa-long-arrow-alt-left"></i>
-				</a>
-				<a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
-					<i class="fas fa-long-arrow-alt-right"></i>
-				</a>
-			</div> -->
-			<!--/.Controls-->
-		</div>
-
-		<!-- vegetables -->
-		<div class="sell-products">
-			<h4>Sell Products</h4>
-		</div>
-		<div class="row " *ngIf="showVegetablesScreen">
-			<div class="col-md-3 " *ngFor="let item of product">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="item.product_image" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Tomato-Hybride </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-					</div>
-				</div>
-			</div>
-			<!-- <div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div> -->
-			<!-- <div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div> -->
-			<!-- <div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div> -->
-		</div>
-		<!-- vegetables -->
-		<!-- fruits -->
-		<!-- <div class="row " *ngIf="showFruitScreen">
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 ">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-		</div> -->
-		<!-- friuts -->
-		<!-- tea -->
-		<div class="row " *ngIf="showTeaScreen">
-
-
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 ">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- tea -->
-		<!-- bread -->
-		<div class="row " *ngIf="showBreadScreen">
-			<div class="col-md-3 ">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- bread -->
-		<!-- juices -->
-		<div class="row " *ngIf="showJuiceScreen">
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3 ">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-			<div class="col-md-3">
-				<div class="card">
-					<div class="product-image" (click)="showProduxtDetails()">
-						<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
-					</div>
-					<div class="card-block add-to-cart">
-						<h5 class="text-center">Electric Kettle </h5>
-						<p class="text-center">
-							BD 7.500
-							<strike>BD 8.000</strike>
-						</p>
-						<div class="quantity-price text-center">
-							<select>
-								<option value="" disabled selected>500gms-Rs 20.40</option>
-								<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-								<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
-							</select>
-						</div>
-						<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
-					</div>
-				</div>
-			</div>
-
-		</div>
-		<!-- juices -->
-	</div>
-</div>
-
-<!-- <div id="testimonial-slider" class="owl-carousel">
-	<div class="testimonial">
-		<div class="testimonial-content">
-			<div class="testimonial-icon">
-				<i class="fa fa-quote-left"></i>
-			</div>
-			<p class="description">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet
-				hendrerit nisi vehicula.
-			</p>
-		</div>
-		<h3 class="title">williamson</h3>
-		<span class="post">Web Developer</span>
-	</div>
-
-	<div class="testimonial">
-		<div class="testimonial-content">
-			<div class="testimonial-icon">
-				<i class="fa fa-quote-left"></i>
-			</div>
-			<p class="description">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet
-				hendrerit nisi vehicula.
-			</p>
-		</div>
-		<h3 class="title">Kristina</h3>
-		<span class="post">Web Designer</span>
-	</div>
-
-	<div class="testimonial">
-		<div class="testimonial-content">
-			<div class="testimonial-icon">
-				<i class="fa fa-quote-left"></i>
-			</div>
-			<p class="description">
-				Lorem ipsum dolor sit amet, consectetur adipiscing elit. Praesent bibendum dolor sit amet eros imperdiet, sit amet
-				hendrerit nisi vehicula.
-			</p>
-		</div>
-		<h3 class="title">williamson</h3>
-		<span class="post">Web Developer</span>
-	</div>
-</div> -->
-<div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
-	<br />
-	<!--Slides-->
-	<div class="carousel-inner product-slider" role="listbox">
-
-		<div class="row">
-			<!--First slide-->
-			<div class="carousel-item active">
-
-				<div class="col-md-3" *ngFor="let item of product">
-					<div class="card">
-						<div class="product-image">
+    <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
+      <br />
+      <!--Slides-->
+      <!-- <div class="carousel-inner product-slider" role="listbox">
+				  <div class="row">
+					<div class="carousel-item active">
+			  
+					  <div class="col-md-3" *ngFor="let item of product">
+						<div class="card">
+						  <div class="product-image">
 							<img class="img-fluid" [src]="item.product_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
-						</div>
-						<div class="card-block add-to-cart">
+						  </div>
+						  <div class="card-block add-to-cart">
 							<h5 class="text-center">{{item.brand}} </h5>
-							<button  type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
+							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
+						  </div>
 						</div>
+					  </div>
 					</div>
-					<br />
-					<!-- <div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Tomato-Hybride </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div> -->
-				</div>
-
-				<!-- <div class="col-md-3 hidden-sm-down">
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-					<br />
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
+				  </div>
 				</div> -->
+      <!--/.Slides-->
 
-				<!-- <div class="col-md-3 hidden-sm-down">
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-					<br />
-					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Ladie's Finger </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-				</div> -->
+      <!--Controls-->
 
-				<!-- <div class="col-md-3 hidden-sm-down">
-					<div class="card">
-						<div class="product-image " (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Carrot </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-					<br />
-					<div class="card">
-						<div class="product-image " (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
-						</div>
-						<div class="card-block add-to-cart">
-							<h5 class="text-center">Carrot </h5>
-							<button type="text" class="btn waves-effect waves-light">Add</button>
-						</div>
-					</div>
-				</div> -->
-			</div>
-			<!--/.First slide-->
-
-			<!--Second slide-->
-			<!-- <div class="carousel-item">
-	
-					<div class="col-md-3">
-						<div class="card">
-							<div class="product-image" (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Tomato-Hybride </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-						<br />
-						<div class="card">
-							<div class="product-image" (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/tomato-hybride.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Tomato-Hybride </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-					</div>
-	
-					<div class="col-md-3 hidden-sm-down">
-						<div class="card">
-							<div class="product-image" (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Ladie's Finger </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-						<br />
-						<div class="card">
-							<div class="product-image" (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/ladies-finger.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Ladie's Finger </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-					</div>
-	
-					<div class="col-md-3 hidden-sm-down">
-						<div class="card">
-							<div class="product-image" (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Ladie's Finger </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-						<br />
-						<div class="card">
-							<div class="product-image" (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/ladies-finger2.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Ladie's Finger </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-					</div>
-	
-					<div class="col-md-3 hidden-sm-down">
-						<div class="card">
-							<div class="product-image " (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Carrot </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-						<br />
-						<div class="card">
-							<div class="product-image " (click)="showProduxtDetails()">
-								<img class="img-fluid" src="assets/images/carrot.png" alt="Card image cap">
-							</div>
-							<div class="card-block add-to-cart">
-								<h5 class="text-center">Carrot </h5>
-								<button type="text" class="btn waves-effect waves-light">Add</button>
-							</div>
-						</div>
-					</div>
-				</div> -->
-			<!--/.Second slide-->
-		</div>
-
-
-	</div>
-	<!--/.Slides-->
-
-	<!--Controls-->
-	<div class="controls-top">
-		<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
-			<i class="fas fa-long-arrow-alt-left"></i>
-		</a>
-		<a class="btn-floating btn-small slider-btn-right" href="#multi-item-example" data-slide="next">
-			<i class="fas fa-long-arrow-alt-right"></i>
-		</a>
-	</div>
-	<!--/.Controls-->
-
+    </div>
+  </div>
 </div>
-<!-- end deals -->
+
+<br /><br /><br />

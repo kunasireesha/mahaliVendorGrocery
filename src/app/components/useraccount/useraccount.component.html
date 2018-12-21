@@ -594,10 +594,14 @@
                 <div class="col-lg-10 ">
                     <h3>{{add.address_type}}</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
-                        {{add.landmark}},{{add.house_no}}
-                        <br /> {{add.city}} ,{{add.pin_code}}
-                        <br />
+                        <<<<<<< HEAD <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                            {{add.landmark}},{{add.house_no}}
+                            =======
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                            {{add.landmark}},{{add.house_no}}
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
+                            <br /> {{add.city}} ,{{add.pin_code}}
+                            <br />
                     </P>
                     <p>
                         <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>{{add.mobile_number}}
@@ -627,36 +631,65 @@
             <p>
                 <strong>Add New Adrress</strong>
             </p>
-            <form>
+            <form [formGroup]="addressForm">
                 <div class="form-group row">
                     <label for="inputname1" class="col-sm-2 col-form-label">Full Name
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputname1" name="full_name"
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputname1" name="full_name"
                             [(ngModel)]="addData.full_name">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name"
+                                [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
+                            <div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
+                                <div *ngIf="f1.full_name.errors.required">Full Name is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputMblnbr" class="col-sm-2 col-form-label">Mobile Number
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number"
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number"
                             [(ngModel)]="addData.mobile_number">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number"
+                                [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
+                            <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
+                                <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputhouseno" class="col-sm-2 col-form-label">House: No
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" name="house_no"
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputhouseno" name="house_no"
                             [(ngModel)]="addData.house_no">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputhouseno" formControlName="house_no"
+                                [ngClass]="{ 'is-invalid': submitted && f1.house_no.errors }">
+                            <div *ngIf="submitted && f1.house_no.errors" class="invalid-feedback">
+                                <div *ngIf="f1.house_no.errors.required">House Number is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputstate" class="col-sm-2 col-form-label">Landmark
                     </label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control input-feild" id="inputLand" name="landmark" [(ngModel)]="addData.landmark">
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputLand" name="landmark"
+                            [(ngModel)]="addData.landmark">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputLand" formControlName="landmark"
+                                [ngClass]="{ 'is-invalid': submitted && f1.landmark.errors }">
+                            <div *ngIf="submitted && f1.landmark.errors" class="invalid-feedback">
+                                <div *ngIf="f1.landmark.errors.required">Landmark is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                     <label for="inputcity" class="col-sm-2 col-form-label">City
                     </label>
@@ -665,7 +698,11 @@
                             <option selected>Choose City</option>
                             <option *ngFor="let city of Cities" [ngValue]="city">{{city}}</option>
                         </select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode" name="city" [(ngModel)]="addData.city">
+                        <input type="text" class="form-control input-feild" id="inputpincode" formControlName="city"
+                            [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
+                        <div *ngIf="submitted && f1.city.errors" class="invalid-feedback">
+                            <div *ngIf="f1.city.errors.required">City is required</div>
+                        </div>
                     </div>
                 </div>
                 <div class="form-group row">
@@ -676,13 +713,24 @@
                             <option selected>Choose State</option>
                             <option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
                         </select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode1" name="state" [(ngModel)]="addData.state">
+                        <input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state"
+                            [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
+                        <div *ngIf="submitted && f1.state.errors" class="invalid-feedback">
+                            <div *ngIf="f1.state.errors.required">state is required</div>
+                        </div>
                     </div>
                     <label for="inputcity" class="col-sm-2 col-form-label">Pin-code
                     </label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code"
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code"
                             [(ngModel)]="addData.pin_code">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code"
+                                [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
+                            <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
+                                <div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                     <div class="addType">
                         <p>Choose nick name for this address</p>
@@ -695,7 +743,7 @@
                 </div>
             </form>
 
-            <button type="button" class="btn address-btn" (click)="saveAddress()">SUBMIT</button>
+            <button type="button" class="btn address-btn" (click)="saveAddress(newItem)">SUBMIT</button>
             <button type="button" class="btn address-btn" (click)="cancelAdd()">CANCEL</button>
 
         </div>
@@ -1582,8 +1630,8 @@
                     <i class="fa fa-phone" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98540 98540</li>
                 <li>
                     <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-11-16/A/43/1,
-                    Ashok plaza, Near Masab Tank, Tolichowki, Mehadipatnam,
-                    Hyderabad 50038
+                    Ashok
+                    plaza, Near Masab Tank, Tolichowki, Mehadipatnam, Hyderabad 50038
                 </li>
             </ul>
             <div class="order-details">
@@ -1687,35 +1735,65 @@
                         </div>
                         <div class="col-sm-7">
                             <div class="row">
-                                <form class="add-pop">
+                                <form class="add-pop" [formGroup]="productForm">
                                     <div class="form-group row">
                                         <label for="price" class="col-sm-3 col-form-label">Price</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="price" [(ngModel)]="price" name="price"
-                                                placeholder="Enter your price">
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="price" [(ngModel)]="price"
+                                                name="price" placeholder="Enter your price">
+                                                =======
+                                                <input type="text" class="form-control" id="price" formControlName="deal_price"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.deal_price.errors }">
+                                                <div *ngIf="submitted && f2.deal_price.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.deal_price.errors.required">Account Holder is
+                                                        required</div>
+                                                </div>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="quantity" class="col-sm-3 col-form-label">Quantity</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="quantity2" [(ngModel)]="qunt"
-                                                name="qunt" placeholder="Enter your quantity">
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="quantity2"
+                                                [(ngModel)]="qunt" name="qunt" placeholder="Enter your quantity">
+                                                =======
+                                                <input type="text" class="form-control" id="quantity2" formControlName="quantity"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.quantity.errors }">
+                                                <div *ngIf="submitted && f2.quantity.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.quantity.errors.required">Account Holder is required</div>
+                                                </div>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="discount" class="col-sm-3 col-form-label">Discount</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="discount" [(ngModel)]="dis"
-                                                name="dis" placeholder="Enter your discount">
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="discount"
+                                                [(ngModel)]="dis" name="dis" placeholder="Enter your discount">
+                                                =======
+                                                <input type="text" class="form-control" id="discount" formControlName="status"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.status.errors }">
+                                                <div *ngIf="submitted && f2.status.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.status.errors.required">Account Holder is required</div>
+                                                </div>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="status" class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="status" [(ngModel)]="status"
-                                                name="status" placeholder="Enter your status">
-                                            <button type="submit" class="btn add-button pop-save" data-dismiss="modal"
-                                                (click)="save(reqProds.product_id)">SAVE</button>
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="status"
+                                                [(ngModel)]="status" name="status" placeholder="Enter your status">
+                                                <button type="submit" class="btn add-button pop-save" data-dismiss="modal"
+                                                    (click)="save(reqProds.product_id)">SAVE</button>
+                                                =======
+                                                <input type="text" class="form-control" id="status" formControlName="discount"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.discount.errors }">
+                                                <div *ngIf="submitted && f2.discount.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.discount.errors.required">Account Holder is required</div>
+                                                </div>
+                                                <button type="submit" class="btn add-button pop-save" (click)="save(reqProds.product_id)">SAVE</button>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                 </form>
