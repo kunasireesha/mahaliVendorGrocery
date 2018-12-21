@@ -249,20 +249,21 @@ export class HeaderComponent implements OnInit {
     getCategories() {
         this.appService.getCategories().subscribe(resp => {
             this.category = resp.json().categories;
+            // this.showSubCat(this.subId);
         })
     }
-    subCatData =[]
+    subCatData =[];
+    subId;
     showSubCat(Id) {
-        console.log(this.category);
-        this.getCategories();
-        debugger;
+        this.subId = Id;
+        this.subCatData=[];
         this.showSubCats = true;
-        for(var i=0;i<this.category.lenght;i++){
-        for(var j=0;j<this.category[i].subcategory.lenght;j++){
+        for(var i=0;i<this.category.length;i++){
+        for(var j=0;j<this.category[i].subcategory.length;j++){
             if(Id===this.category[i].subcategory[j].category_id){
-              this.subCatData =  this.category[i].subcategory[j];
+              this.subCatData.push(this.category[i].subcategory[j]);
               console.log(this.subCatData);
-              debugger;
+              
             }
         }
         }

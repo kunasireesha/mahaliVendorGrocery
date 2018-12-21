@@ -36,7 +36,11 @@ export class FreshvegetablesComponent implements OnInit {
   getCatProducts(){
     this.appService.productByCatId(this.catId).subscribe(res=> {
       this.prodData = res.json().products;
-      // alert(this.prodData);
+    for(var i=0;i<this.prodData.length;i++){
+      for(var j=0;j<this.prodData[i].sku_details.length;j++){
+        this.skuData.push(this.prodData[i].sku_details[j]);
+      }
+    }
       if(res.json().message==="No records Found"){
       this.noData = true;
       }
@@ -59,6 +63,14 @@ export class FreshvegetablesComponent implements OnInit {
   getSubProducts(){
     this.appService.productBySubCatId(this.subId).subscribe(res=> {
       this.prodData = res.json().products;
+      this.skuData = [];
+      for(var i=0;i<this.prodData.length;i++){
+        for(var j=0;j<this.prodData[i].sku_details.length;j++){
+          this.skuData.push(this.prodData[i].sku_details[j]);
+          console.log(this.skuData);
+          debugger;
+        }
+      }
       if(res.json().message==="No records Found"){
         this.noData = true;
               }
@@ -71,14 +83,47 @@ export class FreshvegetablesComponent implements OnInit {
   getCategories() {
     this.appService.getCategories().subscribe(resp => {
         this.category = resp.json().categories;
-        for(var i=0;i<this.category.length;i++){
-          this.skuData =this.category[i].sku_details;
-          // this.category[i].skuValue=this.category[i].sku_details.size;
-          // this.category[i].skid=this.category[i].sku_details[0].skid;
-          // this.category[i].selling_price=this.category[i].sku_details[0].selling_price;
-          // this.category[i].prodName = this.category[i].product_name;
-          this.category[i].img=this.category[i].sku_details[0].image;
-         }
     })
+}
+cartDetails;
+cartCount;
+showProduxtDetails(prodId) {
+  this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
+}
+
+addtoCart(Id,skId) {
+  var inData = {
+      "products": [{
+          product_id:Id,
+          sku_id:skId 
+      }],
+      "vendor_id": JSON.parse(localStorage.getItem('userId'))
+  }
+  this.appService.addtoCart(inData).subscribe(res => {
+      this.cartDetails = res.json().selling_price_total;
+      this.cartCount = res.json().count;
+      this.getCart();
+      swal(res.json().message,"","success");
+  }, err => {
+
+  })
+}
+getCart() {
+  var inData = localStorage.getItem('userId');
+  this.appService.getCart(inData).subscribe(res => {
+      this.cartDetails = res.json().cart_details;
+    this.cartCount = res.json().count;
+  }, err => {
+
+  })
+}
+changeSize(Id){
+for(var i=0;i<this.skuData.length;i++){
+  if(Id===this.skuData[i].skid){
+    this.skuData[i].img = this.skuData[i].product_image;
+    this.skuData[i].selling_price = this.skuData[i].selling_price;
+    this.skuData[i].actual_price = this.skuData[i].actual_price;
+  }
+}
 }
 }
