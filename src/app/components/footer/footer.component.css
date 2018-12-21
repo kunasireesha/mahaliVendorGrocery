@@ -92,13 +92,17 @@ a {
   font-size: 25px;
   color: #bbbbbb9e !important;
 }
-
+@media screen and (max-width: 991px){
+  .bttom {
+    text-align:center;
+  }
+   
+  }
 @media screen and (max-width: 520px){
   .insta{
     text-align: center;
 }
 }
-
 .cust-hr{
   border-top: 11px solid white;
   margin-bottom: -43px;

@@ -8,7 +8,8 @@
                 <hr>
                 <li [ngClass]="{'active':showProfile || editUserProfile}" (click)="profile()">My Profile</li>
                 <li [ngClass]="{'active':showAccountDetails || editAccount}" (click)="accountDetails()">Account Details</li>
-                <li [ngClass]="{'active':showDeliveryAddress || showAddAddress}" (click)="deliveryAddress()">Delivery Address
+                <li [ngClass]="{'active':showDeliveryAddress || showAddAddress}" (click)="deliveryAddress()">Delivery
+                    Address
                 </li>
                 <li>
                     <strong>MANAGE PRODUCTS</strong>
@@ -19,7 +20,8 @@
                     <strong>MANAGE ORDERS</strong>
                 </li>
                 <li [ngClass]="{'active':showMyOrders || showOrderDetails}" (click)="myOrder()">Vendor Orders</li>
-                <li [ngClass]="{'active':showOfferZone || showManageUserOrders}" (click)="offerZone()">Manage User Orders
+                <li [ngClass]="{'active':showOfferZone || showManageUserOrders}" (click)="offerZone()">Manage User
+                    Orders
                 </li>
             </ul>
         </div>
@@ -66,7 +68,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputname1" name="first_name" [(ngModel)]="profileData.first_name">
+                        <input type="text" class="form-control input-feild" id="inputname1" name="first_name"
+                            [(ngModel)]="profileData.first_name">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -74,8 +77,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com" name="email"
-                            [(ngModel)]="profileData.email">
+                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="tarunkumar321@gmail.com"
+                            name="email" [(ngModel)]="profileData.email">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -83,8 +86,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500" [(ngModel)]="profileData.mobile_number"
-                            name="mobile_number">
+                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500"
+                            [(ngModel)]="profileData.mobile_number" name="mobile_number">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -240,8 +243,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputname1" [(ngModel)]="accDet.account_holder_name" name="account_holder_name"
-                            placeholder="Vijay Kumar">
+                        <input type="text" class="form-control input-feild" id="inputname1" [(ngModel)]="accDet.account_holder_name"
+                            name="account_holder_name" placeholder="Vijay Kumar">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -250,8 +253,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" [(ngModel)]="accDet.account_number" name="account_number"
-                            placeholder="09876547995432">
+                        <input type="email" class="form-control input-feild" id="inputEmail3" [(ngModel)]="accDet.account_number"
+                            name="account_number" placeholder="09876547995432">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -260,7 +263,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" [(ngModel)]="accDet.bank_name" name="bank_name" placeholder="Lorem Bank">
+                        <input type="text" class="form-control input-feild" id="inputphoneno" [(ngModel)]="accDet.bank_name"
+                            name="bank_name" placeholder="Lorem Bank">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -269,7 +273,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" [(ngModel)]="accDet.ifsc_code" name="ifsc_code" placeholder="54500">
+                        <input type="text" class="form-control input-feild" id="inputhouseno" [(ngModel)]="accDet.ifsc_code"
+                            name="ifsc_code" placeholder="54500">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -278,7 +283,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" class="form-control input-feild" id="inputstate" [(ngModel)]="accDet.bank_area" name="bank_area" placeholder="Lorem">
+                        <input type="text" class="form-control input-feild" id="inputstate" [(ngModel)]="accDet.bank_area"
+                            name="bank_area" placeholder="Lorem">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -287,7 +293,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" class="form-control input-feild" id="inputcity" [(ngModel)]="accDet.bank_city" name="bank_city" placeholder="Lorem">
+                        <input type="text" class="form-control input-feild" id="inputcity" [(ngModel)]="accDet.bank_city"
+                            name="bank_city" placeholder="Lorem">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -296,8 +303,8 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputpincode" [(ngModel)]="accDet.bank_branch" name="bank_branch"
-                            placeholder="Lorem">
+                        <input type="text" class="form-control input-feild" id="inputpincode" [(ngModel)]="accDet.bank_branch"
+                            name="bank_branch" placeholder="Lorem">
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <button type="button" class="btn save-btn" (click)="saveDetails()">Save</button>
@@ -383,7 +390,8 @@
                             <div class="col-lg-6">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -586,9 +594,14 @@
                 <div class="col-lg-10 ">
                     <h3>{{add.address_type}}</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; {{add.landmark}},{{add.house_no}}
-                        <br /> {{add.city}} ,{{add.pin_code}}
-                        <br />
+                        <<<<<<< HEAD <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                            {{add.landmark}},{{add.house_no}}
+                            =======
+                            <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                            {{add.landmark}},{{add.house_no}}
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
+                            <br /> {{add.city}} ,{{add.pin_code}}
+                            <br />
                     </P>
                     <p>
                         <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>{{add.mobile_number}}
@@ -623,40 +636,60 @@
                     <label for="inputname1" class="col-sm-2 col-form-label">Full Name
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name" [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
-                        <div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
-                            <div *ngIf="f1.full_name.errors.required">Full Name is required</div>
-                        </div>
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputname1" name="full_name"
+                            [(ngModel)]="addData.full_name">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name"
+                                [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
+                            <div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
+                                <div *ngIf="f1.full_name.errors.required">Full Name is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputMblnbr" class="col-sm-2 col-form-label">Mobile Number
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number" [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
-                        <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
-                            <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
-                        </div>
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number"
+                            [(ngModel)]="addData.mobile_number">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number"
+                                [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
+                            <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
+                                <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputhouseno" class="col-sm-2 col-form-label">House: No
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" formControlName="house_no" [ngClass]="{ 'is-invalid': submitted && f1.house_no.errors }">
-                        <div *ngIf="submitted && f1.house_no.errors" class="invalid-feedback">
-                            <div *ngIf="f1.house_no.errors.required">House Number is required</div>
-                        </div>
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputhouseno" name="house_no"
+                            [(ngModel)]="addData.house_no">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputhouseno" formControlName="house_no"
+                                [ngClass]="{ 'is-invalid': submitted && f1.house_no.errors }">
+                            <div *ngIf="submitted && f1.house_no.errors" class="invalid-feedback">
+                                <div *ngIf="f1.house_no.errors.required">House Number is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputstate" class="col-sm-2 col-form-label">Landmark
                     </label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control input-feild" id="inputLand" formControlName="landmark" [ngClass]="{ 'is-invalid': submitted && f1.landmark.errors }">
-                        <div *ngIf="submitted && f1.landmark.errors" class="invalid-feedback">
-                            <div *ngIf="f1.landmark.errors.required">Landmark is required</div>
-                        </div>
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputLand" name="landmark"
+                            [(ngModel)]="addData.landmark">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputLand" formControlName="landmark"
+                                [ngClass]="{ 'is-invalid': submitted && f1.landmark.errors }">
+                            <div *ngIf="submitted && f1.landmark.errors" class="invalid-feedback">
+                                <div *ngIf="f1.landmark.errors.required">Landmark is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                     <label for="inputcity" class="col-sm-2 col-form-label">City
                     </label>
@@ -665,7 +698,8 @@
                             <option selected>Choose City</option>
                             <option *ngFor="let city of Cities" [ngValue]="city">{{city}}</option>
                         </select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode" formControlName="city" [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
+                        <input type="text" class="form-control input-feild" id="inputpincode" formControlName="city"
+                            [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
                         <div *ngIf="submitted && f1.city.errors" class="invalid-feedback">
                             <div *ngIf="f1.city.errors.required">City is required</div>
                         </div>
@@ -679,7 +713,8 @@
                             <option selected>Choose State</option>
                             <option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
                         </select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state" [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
+                        <input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state"
+                            [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
                         <div *ngIf="submitted && f1.state.errors" class="invalid-feedback">
                             <div *ngIf="f1.state.errors.required">state is required</div>
                         </div>
@@ -687,10 +722,15 @@
                     <label for="inputcity" class="col-sm-2 col-form-label">Pin-code
                     </label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code" [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
-                        <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
-                            <div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
-                        </div>
+                        <<<<<<< HEAD <input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code"
+                            [(ngModel)]="addData.pin_code">
+                            =======
+                            <input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code"
+                                [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
+                            <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
+                                <div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>
+                            </div>
+                            >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                     </div>
                     <div class="addType">
                         <p>Choose nick name for this address</p>
@@ -870,7 +910,8 @@
                 <div class="col-lg-6 col-sm-6 col-md-6">
                     <form class="form-inline form-rt">
                         <i class="fa fa-search item-search" aria-hidden="true"></i>
-                        <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name" aria-label="Search">
+                        <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                            aria-label="Search">
                     </form>
                 </div>
                 <div class="col-sm-12 col-md-12 col-lg-12">
@@ -997,7 +1038,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1289,7 +1331,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1396,7 +1439,8 @@
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <form class="form-inline form-rt">
                                     <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id" aria-label="Search">
+                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
+                                        aria-label="Search">
                                 </form>
                             </div>
                             <div class="table-responsive my-4">
@@ -1585,7 +1629,8 @@
                 <li>
                     <i class="fa fa-phone" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;98540 98540</li>
                 <li>
-                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Ashok
+                    <i class="fa fa-map-marker" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;16-11-16/A/43/1,
+                    Ashok
                     plaza, Near Masab Tank, Tolichowki, Mehadipatnam, Hyderabad 50038
                 </li>
             </ul>
@@ -1635,8 +1680,7 @@
                     <form [formGroup]="resetForm" (ngSubmit)="onSubmit()">
                         <div class="form-group">
                             <label for="exampleInputEmail1">Email address</label>
-                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }"
-                            />
+                            <input type="text" formControlName="email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.email.errors }" />
                             <div *ngIf="submitted && f.email.errors" class="invalid-feedback">
                                 <div *ngIf="f.email.errors.required">Email is required</div>
                                 <div *ngIf="f.email.errors.email">Email must be a valid email address</div>
@@ -1644,8 +1688,7 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Enter Password</label>
-                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }"
-                            />
+                            <input type="password" formControlName="password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.password.errors }" />
                             <div *ngIf="submitted && f.password.errors" class="invalid-feedback">
                                 <div *ngIf="f.password.errors.required">Password is required</div>
                                 <div *ngIf="f.password.errors.minlength">Password must be at least 6 characters</div>
@@ -1653,15 +1696,15 @@
                         </div>
                         <div class="form-group">
                             <label for="exampleInputPassword1">Confirm Password</label>
-                            <input type="password" formControlName="new_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.new_password.errors }"
-                            />
+                            <input type="password" formControlName="new_password" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.new_password.errors }" />
                             <div *ngIf="submitted && f.new_password.errors" class="invalid-feedback">
                                 <div *ngIf="f.new_password.errors.required">Confirm Password is required</div>
-                                <div *ngIf="f.new_password.errors.minlength">Confirm Password must be at least 6 characters
+                                <div *ngIf="f.new_password.errors.minlength">Confirm Password must be at least 6
+                                    characters
                                 </div>
                             </div>
                         </div>
-                        <button class="btn btn-primary">Submit</button>
+                        <button class="btn  password-submit">Submit</button>
                     </form>
                 </div>
 
@@ -1696,38 +1739,61 @@
                                     <div class="form-group row">
                                         <label for="price" class="col-sm-3 col-form-label">Price</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="price" formControlName="deal_price" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.deal_price.errors }">
-                                            <div *ngIf="submitted && f2.deal_price.errors" class="invalid-feedback">
-                                                <div *ngIf="f2.deal_price.errors.required">Account Holder is required</div>
-                                            </div>
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="price" [(ngModel)]="price"
+                                                name="price" placeholder="Enter your price">
+                                                =======
+                                                <input type="text" class="form-control" id="price" formControlName="deal_price"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.deal_price.errors }">
+                                                <div *ngIf="submitted && f2.deal_price.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.deal_price.errors.required">Account Holder is
+                                                        required</div>
+                                                </div>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="quantity" class="col-sm-3 col-form-label">Quantity</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="quantity2" formControlName="quantity" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.quantity.errors }">
-                                            <div *ngIf="submitted && f2.quantity.errors" class="invalid-feedback">
-                                                <div *ngIf="f2.quantity.errors.required">Account Holder is required</div>
-                                            </div>
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="quantity2"
+                                                [(ngModel)]="qunt" name="qunt" placeholder="Enter your quantity">
+                                                =======
+                                                <input type="text" class="form-control" id="quantity2" formControlName="quantity"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.quantity.errors }">
+                                                <div *ngIf="submitted && f2.quantity.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.quantity.errors.required">Account Holder is required</div>
+                                                </div>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="discount" class="col-sm-3 col-form-label">Discount</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="discount" formControlName="status" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.status.errors }">
-                                            <div *ngIf="submitted && f2.status.errors" class="invalid-feedback">
-                                                <div *ngIf="f2.status.errors.required">Account Holder is required</div>
-                                            </div>
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="discount"
+                                                [(ngModel)]="dis" name="dis" placeholder="Enter your discount">
+                                                =======
+                                                <input type="text" class="form-control" id="discount" formControlName="status"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.status.errors }">
+                                                <div *ngIf="submitted && f2.status.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.status.errors.required">Account Holder is required</div>
+                                                </div>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="status" class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="status" formControlName="discount" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.discount.errors }">
-                                            <div *ngIf="submitted && f2.discount.errors" class="invalid-feedback">
-                                                <div *ngIf="f2.discount.errors.required">Account Holder is required</div>
-                                            </div>
-                                            <button type="submit" class="btn add-button pop-save" (click)="save(reqProds.product_id)">SAVE</button>
+                                            <<<<<<< HEAD <input type="text" class="form-control" id="status"
+                                                [(ngModel)]="status" name="status" placeholder="Enter your status">
+                                                <button type="submit" class="btn add-button pop-save" data-dismiss="modal"
+                                                    (click)="save(reqProds.product_id)">SAVE</button>
+                                                =======
+                                                <input type="text" class="form-control" id="status" formControlName="discount"
+                                                    class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.discount.errors }">
+                                                <div *ngIf="submitted && f2.discount.errors" class="invalid-feedback">
+                                                    <div *ngIf="f2.discount.errors.required">Account Holder is required</div>
+                                                </div>
+                                                <button type="submit" class="btn add-button pop-save" (click)="save(reqProds.product_id)">SAVE</button>
+                                                >>>>>>> 6e3f11f4b66bde87edf9dd70c75e5e41b28239ab
                                         </div>
                                     </div>
                                 </form>
@@ -1754,7 +1820,8 @@
                 </div>
                 <div class="modal-body">
                     <p>Cauliflower item is not found</p>
-                    <button type="submit" class="btn request-admin" data-dismiss="modal" data-toggle="modal" data-target="#product-name">Request
+                    <button type="submit" class="btn request-admin" data-dismiss="modal" data-toggle="modal"
+                        data-target="#product-name">Request
                         Admin
                     </button>
                 </div>
