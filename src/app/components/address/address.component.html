@@ -1,222 +1,278 @@
 <div class="container">
-  <h2 class="text-center font-bold pt-4 pb-5 mb-5">
-  </h2>
-  <!-- Stepper -->
-  <div class="steps-form-2">
-    <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
-      <div class="steps-step-2">
-        <a type="button" class="btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top"
-          title="Business Details" (click)="showBusiness()">
-          <h3>1</h3>
-        </a>
-        <p>Business Details</p>
-      </div>
-      <div class="steps-step-2">
-        <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
-          title="Stationary Complaince & Taxation" (click)="showStationary()">
-          <h3>2</h3>
-        </a>
-        <p>Stationary Complaince
-          <br /> & Taxation</p>
-      </div>
-      <div class="steps-step-2">
-        <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top"
-          title="Bank Details" (click)="showBank()">
-          <h3>3</h3>
-        </a>
-        <p>Bank Details</p>
-      </div>
-      <div class="steps-step-2">
-        <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top"
-          title="Add Products" (click)="addProd()">
-          <h3>4</h3>
-        </a>
-        <p>Add Products</p>
-      </div>
+    <h2 class="text-center font-bold pt-4 pb-5 mb-5">
+    </h2>
+    <!-- Stepper -->
+    <div class="steps-form-2">
+        <div class="steps-row-2 setup-panel-2 d-flex justify-content-between">
+            <div class="steps-step-2">
+                <a type="button" class="btn btn-amber btn-circle-2 waves-effect ml-0" data-toggle="tooltip" data-placement="top" title="Business Details"
+                    (click)="showBusiness()">
+                    <h3>1</h3>
+                </a>
+                <p>Business Details</p>
+            </div>
+            <div class="steps-step-2">
+                <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Stationary Complaince & Taxation"
+                    (click)="showStationary()">
+                    <h3>2</h3>
+                </a>
+                <p>Stationary Complaince
+                    <br /> & Taxation</p>
+            </div>
+            <div class="steps-step-2">
+                <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect" data-toggle="tooltip" data-placement="top" title="Bank Details"
+                    (click)="showBank()">
+                    <h3>3</h3>
+                </a>
+                <p>Bank Details</p>
+            </div>
+            <div class="steps-step-2">
+                <a type="button" class="btn btn-blue-grey btn-circle-2 waves-effect mr-0" data-toggle="tooltip" data-placement="top" title="Add Products"
+                    (click)="addProd()">
+                    <h3>4</h3>
+                </a>
+                <p>Add Products</p>
+            </div>
+        </div>
     </div>
-  </div>
 
-  <!-- First Step -->
-  <div class="row cust-frst">
-    <div class="col-sm-2 col-md-2 col-lg-2"></div>
-    <div class="col-sm-8 col-md-8 col-lg-8">
-      <form role="form">
-        <div class="row setup-content-2" *ngIf="showBusinessDetails">
-          <div class="col-md-12">
-            <h3 class="font-weight-bold pl-0 my-4">
-              <strong>Business Details</strong>
-            </h3>
-            <form>
-              <div class="form-group row">
-                <label for="fisrtname" class="col-sm-2 col-form-label">First Name :</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="fisrtname" name="first_name" [(ngModel)]="businessData.first_name" placeholder="First Name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="lastname" class="col-sm-2 col-form-label">Last Name :</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="last_name" name="last_name" [(ngModel)]="businessData.last_name" placeholder="Last Name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="mobnumber" class="col-sm-2 col-form-label">Mobile no :</label>
-                <div class="col-sm-10">
-                  <input type="number" class="form-control" id="mobile_number" name="mobile_number" [(ngModel)]="businessData.mobile_number" placeholder="Mobile Number">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="emailform" class="col-sm-2 col-form-label">Email :</label>
-                <div class="col-sm-10">
-                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="businessData.email" placeholder="email">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="businessname" class="col-sm-2 col-form-label">Business Name :</label>
-                <div class="col-sm-10">
-                  <input type="text" class="form-control" id="bussiness_name" name="bussiness_name" [(ngModel)]="businessData.bussiness_name" placeholder="Business Name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="address" class="col-sm-2 col-form-label">Address :</label>
-                <div class="col-sm-10">
-                  <input type="textarea" class="form-control" id="business_address" name="business_address" [(ngModel)]="businessData.business_address" placeholder="Address">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="address" class="col-sm-2 col-form-label">Country :</label>
-                <div class="col-sm-10">
-                  <!-- <select class="custom-select" required>
-                    <option value="">Open this select menu</option>
-                    <option value="1">IND</option>
-                    <option value="2">US</option>
-                    <option value="3">UK</option>
-                  </select> -->
-                  <input type="text" class="form-control" id="business_country" name="business_country" [(ngModel)]="businessData.business_country" placeholder="Counrty">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="fisrtname" class="col-sm-2 col-form-label">Area :</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="business_area" name="business_area" [(ngModel)]="businessData.business_area" placeholder="Area">
-                </div>
-                <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
-                <div class="col-sm-4">
-                  <input type="text" class="form-control" id="business_city" name="business_city" [(ngModel)]="businessData.business_city" placeholder="City">
-                </div>
-              </div>
+    <!-- First Step -->
+    <div class="row cust-frst">
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
+        <div class="col-sm-8 col-md-8 col-lg-8">
+            <form role="form">
+                <div class="row setup-content-2" *ngIf="showBusinessDetails">
+                    <div class="col-md-12">
+                        <h3 class="font-weight-bold pl-0 my-4">
+                            <strong>Business Details</strong>
+                        </h3>
+                        <form [formGroup]="bussinessForm">
+                            <div class="form-group row">
+                                <label for="fisrtname" class="col-sm-2 col-form-label">First Name :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="fisrtname" formControlName="bussiness_first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bussiness_first_name.errors }">
+                                    <div *ngIf="submitted && f.bussiness_first_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.bussiness_first_name.errors.required">First Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastname" class="col-sm-2 col-form-label">Last Name :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="last_name" formControlName="bussiness_last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bussiness_last_name.errors }">
+                                    <div *ngIf="submitted && f.bussiness_last_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.bussiness_last_name.errors.required">Last Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="mobnumber" class="col-sm-2 col-form-label">Mobile no :</label>
+                                <div class="col-sm-10">
+                                    <input type="number" class="form-control" id="mobile_number" formControlName="mobile_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
+                                    <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f.mobile_number.errors.required">Mobile Number is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="emailform" class="col-sm-2 col-form-label">Email :</label>
+                                <div class="col-sm-10">
+                                    <input type="email" class="form-control" id="email" formControlName="bussiness_email" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bussiness_email.errors }">
+                                    <div *ngIf="submitted && f.bussiness_email.errors" class="invalid-feedback">
+                                        <div *ngIf="f.bussiness_email.errors.required">Email is required</div>
+                                        <div *ngIf="f.bussiness_email.errors.email">Email must be a valid email address</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="businessname" class="col-sm-2 col-form-label">Business Name :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="bussiness_name" formControlName="bussiness_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.bussiness_name.errors }">
+                                    <div *ngIf="submitted && f.bussiness_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f.bussiness_name.errors.required">Business Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address" class="col-sm-2 col-form-label">Address :</label>
+                                <div class="col-sm-10">
+                                    <input type="textarea" class="form-control" id="business_address" formControlName="business_address" class="form-control"
+                                        [ngClass]="{ 'is-invalid': submitted && f.business_address.errors }">
+                                    <div *ngIf="submitted && f.business_address.errors" class="invalid-feedback">
+                                        <div *ngIf="f.business_address.errors.required">Address is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="address" class="col-sm-2 col-form-label">Country :</label>
+                                <div class="col-sm-10">
 
-              <div class="form-group row">
-                <label for="submit" class="col-sm-2 col-form-label"></label>
-                <div class="col-sm-10">
-                  <button class="btn submit-button1" type="submit" (click)="businessDetails()">Submit</button>
+                                    <input type="text" class="form-control" id="business_country" formControlName="business_country" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.business_country.errors }">
+                                    <div *ngIf="submitted && f.business_country.errors" class="invalid-feedback">
+                                        <div *ngIf="f.business_country.errors.required">Country is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fisrtname" class="col-sm-2 col-form-label">Area :</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="business_area" formControlName="business_area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.business_area.errors }">
+                                    <div *ngIf="submitted && f.business_area.errors" class="invalid-feedback">
+                                        <div *ngIf="f.business_area.errors.required">Area is required</div>
+                                    </div>
+                                </div>
+                                <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
+                                <div class="col-sm-4">
+                                    <input type="text" class="form-control" id="business_city" formControlName="business_city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.business_city.errors }">
+                                    <div *ngIf="submitted && f.business_city.errors" class="invalid-feedback">
+                                        <div *ngIf="f.business_city.errors.required">City is required</div>
+                                    </div>
+                                </div>
+                            </div>
+
+                            <div class="form-group row">
+                                <label for="submit" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button class="btn submit-button1" (click)="businessDetails()">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
                 </div>
-              </div>
+
+                <!-- Second Step -->
+                <div class="row setup-content-2" *ngIf="showStationaryData">
+                    <div class="col-md-12">
+                        <h3 class="font-weight-bold pl-0 my-4">
+                            <strong>Stationary Complaince & Taxation</strong>
+                        </h3>
+                        <form [formGroup]="StationaryForm">
+                            <div class="form-group row">
+                                <label for="fisrtname" class="col-sm-2 col-form-label">VAT No :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="vatNo" formControlName="vat_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f1.vat_number.errors }">
+                                    <div *ngIf="submitted && f1.vat_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f1.vat_number.errors.required">VAT No is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="lastname" class="col-sm-2 col-form-label">CR No :</label>
+                                <div class="col-sm-10">
+                                    <input type="text" class="form-control" id="cr_number" formControlName="cr_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f1.cr_number.errors }">
+                                    <div *ngIf="submitted && f1.cr_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f1.cr_number.errors.required">CR No is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="submit" class="col-sm-2 col-form-label"></label>
+                                <div class="col-sm-10">
+                                    <button class="btn submit-button1" (click)="tax()">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Third Step -->
+                <div class="row setup-content-2" *ngIf="showBankDetails">
+                    <div class="col-md-12">
+                        <h3 class="font-weight-bold pl-0 my-4">
+                            <strong>Bank Details</strong>
+                        </h3>
+                        <form [formGroup]="bankForm">
+                            <div class="form-group row">
+                                <label for="holdername" class="col-sm-4 col-form-label">Account Holder Name :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="holdername" formControlName="account_holder_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.account_holder_name.errors }">
+                                    <div *ngIf="submitted && f2.account_holder_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.account_holder_name.errors.required">Account Holder is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="accnumber" class="col-sm-4 col-form-label">Account Number :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="accnumber" formControlName="account_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.account_number.errors }">
+                                    <div *ngIf="submitted && f2.account_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.account_number.errors.required">Account Number is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="accnumber1" class="col-sm-4 col-form-label">Re-Type Account Number :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="accnumber1" formControlName="re_account_number" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.re_account_number.errors }">
+                                    <div *ngIf="submitted && f2.re_account_number.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.re_account_number.errors.required">Re-Type Account is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="bankname" class="col-sm-4 col-form-label">Bank Name :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="bankname" formControlName="bank_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.bank_name.errors }">
+                                    <div *ngIf="submitted && f2.bank_name.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.bank_name.errors.required">Bank Name is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="ifsc" class="col-sm-4 col-form-label">IFSC Code :</label>
+                                <div class="col-sm-8">
+                                    <input type="text" class="form-control" id="ifsc" formControlName="ifsc_code" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.ifsc_code.errors }">
+                                    <div *ngIf="submitted && f2.ifsc_code.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.ifsc_code.errors.required">IFSC code is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="fisrtname" class="col-sm-4 col-form-label">Area :</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="bank_area" formControlName="bank_area" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.bank_area.errors }">
+                                    <div *ngIf="submitted && f2.bank_area.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.bank_area.errors.required">Area is required</div>
+                                    </div>
+                                </div>
+                                <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
+                                <div class="col-sm-3">
+                                    <input type="text" class="form-control" id="bank_city" formControlName="bank_city" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.bank_city.errors }">
+                                    <div *ngIf="submitted && f2.bank_city.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.bank_city.errors.required">City is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="branch" class="col-sm-4 col-form-label">Branch :</label>
+                                <div class="col-sm-8">
+                                    <input type="textarea" class="form-control" id="branch" formControlName="bank_branch" class="form-control" [ngClass]="{ 'is-invalid': submitted && f2.bank_branch.errors }">
+                                    <div *ngIf="submitted && f2.bank_branch.errors" class="invalid-feedback">
+                                        <div *ngIf="f2.bank_branch.errors.required">Branch is required</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="form-group row">
+                                <label for="submit" class="col-sm-4 col-form-label"></label>
+                                <div class="col-sm-8">
+                                    <button class="btn submit-button1" (click)="bankDeatails()">Submit</button>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+
+                <!-- Fourth Step -->
+                <div class="row setup-content-2 my-4" *ngIf="showAdd">
+                    <div class="col-md-12">
+
+                        <div class="">
+                            <button class="btn submit-button1" routerLink="/addProduct">Add Products</button>
+                        </div>
+                    </div>
+                </div>
             </form>
-          </div>
         </div>
-
-        <!-- Second Step -->
-        <div class="row setup-content-2" *ngIf="showStationaryData">
-          <div class="col-md-12">
-            <h3 class="font-weight-bold pl-0 my-4">
-              <strong>Stationary Complaince & Taxation</strong>
-            </h3>
-            <div class="form-group row">
-              <label for="fisrtname" class="col-sm-2 col-form-label">VAT No :</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="vatNo" name="business_city" [(ngModel)]="taxData.vat_number" placeholder="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="lastname" class="col-sm-2 col-form-label">CR No :</label>
-              <div class="col-sm-10">
-                <input type="text" class="form-control" id="cr_number" name="cr_number" [(ngModel)]="taxData.cr_number" placeholder="">
-              </div>
-            </div>
-            <div class="form-group row">
-              <label for="submit" class="col-sm-2 col-form-label"></label>
-              <div class="col-sm-10">
-                <button class="btn submit-button1" type="submit" (click)="tax()">Submit</button>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        <!-- Third Step -->
-        <div class="row setup-content-2" *ngIf="showBankDetails">
-          <div class="col-md-12">
-            <h3 class="font-weight-bold pl-0 my-4">
-              <strong>Bank Details</strong>
-            </h3>
-            <form>
-              <div class="form-group row">
-                <label for="holdername" class="col-sm-4 col-form-label">Account Holder Name :</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="holdername" name="account_holder_name" [(ngModel)]="bankData.account_holder_name" placeholder="Account Holder Name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="accnumber" class="col-sm-4 col-form-label">Account Number :</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="accnumber" name="account_number" [(ngModel)]="bankData.account_number" placeholder="Account Number">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="accnumber1" class="col-sm-4 col-form-label">Re-Type Account Number :</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="accnumber1" name="retype_acc" [(ngModel)]="bankData.retype_acc" placeholder="Re-Type Account Number">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="bankname" class="col-sm-4 col-form-label">Bank Name :</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="bankname" name="bank_name" [(ngModel)]="bankData.bank_name" placeholder="Bank Name">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="ifsc" class="col-sm-4 col-form-label">IFSC Code :</label>
-                <div class="col-sm-8">
-                  <input type="text" class="form-control" id="ifsc" name="ifsc_code" [(ngModel)]="bankData.ifsc_code" placeholder="IFSC Code">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="fisrtname" class="col-sm-4 col-form-label">Area :</label> 
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" id="bank_area" name="bank_area" [(ngModel)]="bankData.bank_area" placeholder="Area">
-                </div>
-                <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
-                <div class="col-sm-3">
-                  <input type="text" class="form-control" id="bank_city" name="bank_city" [(ngModel)]="bankData.bank_city" placeholder="City">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="branch" class="col-sm-4 col-form-label">Branch :</label>
-                <div class="col-sm-8">
-                  <input type="textarea" class="form-control" id="branch" name="bank_branch" [(ngModel)]="bankData.bank_branch" placeholder="Branch">
-                </div>
-              </div>
-              <div class="form-group row">
-                <label for="submit" class="col-sm-4 col-form-label"></label>
-                <div class="col-sm-8">
-                  <button class="btn submit-button1" type="submit" (click)="bankDeatails()">Submit</button>
-                </div>
-              </div>
-            </form>
-          </div>
-        </div>
-
-        <!-- Fourth Step -->
-        <div class="row setup-content-2 my-4" *ngIf="showAdd">
-          <div class="col-md-12">
-
-            <div class="">
-              <button class="btn submit-button1" routerLink="/addProduct">Add Products</button>
-            </div>
-          </div>
-        </div>
-      </form>
+        <div class="col-sm-2 col-md-2 col-lg-2"></div>
     </div>
-    <div class="col-sm-2 col-md-2 col-lg-2"></div>
-  </div>
 </div>
