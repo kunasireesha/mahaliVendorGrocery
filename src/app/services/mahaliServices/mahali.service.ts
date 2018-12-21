@@ -66,114 +66,114 @@ export class appService {
         });
         return this.http.put(AppSettings.updateProfile, params, { headers: headers })
     }
-    getBanners(){
+    getBanners() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.get(AppSettings.getBanners , { headers: headers });       
+        return this.http.get(AppSettings.getBanners, { headers: headers });
     }
-    getProductById(params){
+    getProductById(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.get(AppSettings.ProductById + "/" + params, { headers: headers });   
+        return this.http.get(AppSettings.ProductById + "/" + params, { headers: headers });
     }
-    getWholesellerById(params){
+    getWholesellerById(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.get(AppSettings.wholesellerById + "/" + params, { headers: headers });   
+        return this.http.get(AppSettings.wholesellerById + "/" + params, { headers: headers });
     }
     vendor_id
-    delCart(params){
+    delCart(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.getItem('userId');
-        return this.http.delete(AppSettings.delCart + "/" + this.vendor_id + "/" + params, { headers: headers });     
+        return this.http.delete(AppSettings.delCart + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
-    addaddress(params){
+    addaddress(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.getItem('userId');
-        return this.http.post(AppSettings.addaddress + "/" + this.vendor_id,params, { headers: headers });
+        return this.http.post(AppSettings.addaddress + "/" + this.vendor_id, params, { headers: headers });
     }
-    getAddress(){
+    getAddress() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.getItem('userId');
         return this.http.get(AppSettings.getAddress + "/" + this.vendor_id, { headers: headers });
     }
-    delAddress(params){
+    delAddress(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.delete(AppSettings.delAddress + "/" +params , { headers: headers });
+        return this.http.delete(AppSettings.delAddress + "/" + params, { headers: headers });
     }
-    setDelAdd(params){
+    setDelAdd(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.getItem('userId');
-        return this.http.put(AppSettings.setDelAdd + "/" +this.vendor_id+"/"+params , { headers: headers });
+        return this.http.put(AppSettings.setDelAdd + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
-    paymentType(){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.paymentType , { headers: headers });
-    }
-    palceOrder(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.post(AppSettings.palceOrder ,params, { headers: headers });    
-    }
-    getPlaceOrder(){
+    paymentType() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.getItem('userId'); 
-        return this.http.get(AppSettings.getPlaceOrd+"/"+this.vendor_id , { headers: headers });    
+        return this.http.get(AppSettings.paymentType, { headers: headers });
     }
-    orderSummary(ordId){
+    palceOrder(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        return this.http.get(AppSettings.orderSummary+"/"+ordId, { headers: headers });     
+        return this.http.post(AppSettings.palceOrder, params, { headers: headers });
     }
-    productByCatId(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.productByCatId+"/"+ params, { headers: headers });   
+    getPlaceOrder() {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        this.vendor_id = localStorage.getItem('userId');
+        return this.http.get(AppSettings.getPlaceOrd + "/" + this.vendor_id, { headers: headers });
     }
-    productBySubCatId(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.productBySubCatId+"/"+ params, { headers: headers });   
+    orderSummary(ordId) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.orderSummary + "/" + ordId, { headers: headers });
     }
-    businessDetails(params){
+    productByCatId(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.productByCatId + "/" + params, { headers: headers });
+    }
+    productBySubCatId(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.productBySubCatId + "/" + params, { headers: headers });
+    }
+    businessDetails(params) {
         this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.put(AppSettings.businessDetails+"/"+this.vendor_id,params, { headers: headers });
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.put(AppSettings.businessDetails + "/" + this.vendor_id, params, { headers: headers });
     }
-    taxDetails(params){
+    taxDetails(params) {
         this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.put(AppSettings.taxDetails+"/"+this.vendor_id,params, { headers: headers });
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.put(AppSettings.taxDetails + "/" + this.vendor_id, params, { headers: headers });
     }
-    bankDetails(parmas){
+    bankDetails(parmas) {
         this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.put(AppSettings.bankDetails+"/"+this.vendor_id,parmas, { headers: headers });
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.put(AppSettings.bankDetails + "/" + this.vendor_id, parmas, { headers: headers });
     }
-    getAccDetails(){
+    getAccDetails() {
         this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.getAccDetails+"/"+this.vendor_id, { headers: headers });
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.getAccDetails + "/" + this.vendor_id, { headers: headers });
     }
-    updateAcc(params){
+    updateAcc(params) {
         this.vendor_id = localStorage.userId;
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.put(AppSettings.updateAcc+"/"+this.vendor_id,params, { headers: headers });
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.put(AppSettings.updateAcc + "/" + this.vendor_id, params, { headers: headers });
     }
-    searchProducts(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.searchProducts+"/"+params, { headers: headers });
+    searchProducts(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.searchProducts + "/" + params, { headers: headers });
     }
-    wholeProducts(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.wholeProducts+"/"+params, { headers: headers });
+    wholeProducts(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.wholeProducts + "/" + params, { headers: headers });
     }
-    orderById(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
-        return this.http.get(AppSettings.ordById+"/"+params, { headers: headers });
+    orderById(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.ordById + "/" + params, { headers: headers });
     }
-    reqOrder(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
+    reqOrder(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
-        return this.http.get(AppSettings.reqProducts+"/"+this.vendor_id+"/"+params, { headers: headers });
+        return this.http.get(AppSettings.reqProducts + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
-    update(params){
-        const headers = new Headers({ 'Content-Type': "application/JSON" }); 
+    update(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
-        return this.http.put(AppSettings.updateProd,params, { headers: headers });
+        return this.http.put(AppSettings.updateProd, params, { headers: headers });
     }
 }
 

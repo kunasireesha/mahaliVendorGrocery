@@ -6,7 +6,7 @@ import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
- var $: any;
+var $: any;
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -30,11 +30,11 @@ export class HeaderComponent implements OnInit {
     showLoginScreen = true;
     showRegistration = true;
     showOpacity = false;
-    showLogin=false;
-    IsmodelShow=false;
+    showLogin = false;
+    IsmodelShow = false;
     subcat = [];
 
-    constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) { 
+    constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
         if (localStorage.token === undefined) {
             this.showRegistration = true;
             this.showLoginScreen = true;
@@ -76,9 +76,9 @@ export class HeaderComponent implements OnInit {
         //     navigator.geolocation.getCurrentPosition(position => {
         //         this.lat=position.coords.latitude;
         //         this.long=position.coords.longitude;
-               
+
         //         var latlng = { lat: this.lat, lng:this.long };
-        
+
         //        let geocoder = new google.maps.Geocoder();
         //      geocoder.geocode(  {'location':latlng}, (results, status) => {
         //      if (status == google.maps.GeocoderStatus.OK) {
@@ -96,19 +96,19 @@ export class HeaderComponent implements OnInit {
         //    };
 
         console.log(this.location);
-        if(navigator.geolocation){
+        if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
-              this.location = position.coords;
+                this.location = position.coords;
             });
-         }
+        }
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             mobile_number: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(6)]],
-            business_latitude:16.398956,
-            business_longitude:78.637009
+            business_latitude: 16.398956,
+            business_longitude: 78.637009
         });
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -123,7 +123,7 @@ export class HeaderComponent implements OnInit {
         // this.getLocation();
         this.getCart();
     }
-    
+
     hideSubCats() {
         this.showSubCats = false;
     }
@@ -143,8 +143,8 @@ export class HeaderComponent implements OnInit {
     //     this.dialog.open(RegistrationComponent, dialogConfig);
 
     // }
-    showLoginPop(){
-        this.showLogin=true;
+    showLoginPop() {
+        this.showLogin = true;
     }
     showCartItems() {
         this.showCartDetail = !this.showCartDetail;
@@ -169,13 +169,13 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showProbyCat(catId,action) {
+    showProbyCat(catId, action) {
         this.showSubCats = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId,action:action } });
+        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action } });
     }
-    showProbySubCat(SubCatId,action){
+    showProbySubCat(SubCatId, action) {
         this.showSubCats = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId,action:action } });    
+        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action } });
     }
     signOut() {
         localStorage.removeItem('token');
@@ -221,12 +221,12 @@ export class HeaderComponent implements OnInit {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
                 // $("#loginmodal").modal("hide");
-                this.IsmodelShow=true;
-               
+                this.IsmodelShow = true;
+
                 localStorage.setItem('token', (resp.json().token));
                 this.showRegistration = false;
                 this.showLoginScreen = false;
-                this.showLogin=false;
+                this.showLogin = false;
                 this.myAccount = true;
                 this.appService.loginDetailsbyEmail(this.loginForm.value.email).subscribe(response => {
                     localStorage.setItem('phone', JSON.stringify(response.json().data[0].mobile_number));
@@ -266,8 +266,8 @@ export class HeaderComponent implements OnInit {
               
             }
         }
-        }
     }
+}
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
             this.product = resp.json().products;
@@ -304,7 +304,7 @@ export class HeaderComponent implements OnInit {
     //             this.lat=position.coords.latitude;
     //             this.long=position.coords.longitude;
     //             var latlng = { lat: this.lat, lng:this.long };
-        
+
     //            let geocoder = new google.maps.Geocoder();
     //          geocoder.geocode(  {'location':latlng}, (results, status) => {
     //          if (status == google.maps.GeocoderStatus.OK) {
@@ -329,35 +329,35 @@ export class HeaderComponent implements OnInit {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartData = res.json().cart_details;
-            for(var i=0;i<this.cartData.length;i++){
-                this.cartData[i].products.skuValue=this.cartData[i].products.sku_details[0].size;
-                this.cartData[i].products.skid=this.cartData[i].products.sku_details[0].skid;
-                this.cartData[i].products.selling_price=this.cartData[i].products.sku_details[0].selling_price;
-                this.cartData[i].prodName=this.cartData[i].products.product_name;
+            for (var i = 0; i < this.cartData.length; i++) {
+                this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+                this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
+                this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+                this.cartData[i].prodName = this.cartData[i].products.product_name;
                 this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
-               }
-               this.cartCount = res.json().count;
-               this.billing = res.json().selling_Price_bill;
+            }
+            this.cartCount = res.json().count;
+            this.billing = res.json().selling_Price_bill;
         }, err => {
-    
+
         })
-      }
-      delCart(cartId){
+    }
+    delCart(cartId) {
         var inData = cartId;
-      this.appService.delCart(inData).subscribe(res=> {
-      console.log(res.json());
-      swal(res.json().message,"","success");
-      this.getCart();
-      },err=> {
-      
-      })
-      }
-      search(product,action){
+        this.appService.delCart(inData).subscribe(res => {
+            console.log(res.json());
+            swal(res.json().message, "", "success");
+            this.getCart();
+        }, err => {
+
+        })
+    }
+    search(product, action) {
         // this.appService.searchProducts(product).subscribe(res=> {
         //     console.log(res.json());
-            this.router.navigate(['/products'], { queryParams: { product: product,action:action } });
-            // },err=> {
-            
-            // })    
-      }
+        this.router.navigate(['/products'], { queryParams: { product: product, action: action } });
+        // },err=> {
+
+        // })    
+    }
 }

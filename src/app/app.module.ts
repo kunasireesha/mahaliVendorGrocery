@@ -10,7 +10,9 @@ import { MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
-import swal from 'sweetalert'
+import swal from 'sweetalert';
+
+import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
 
 //components
@@ -77,6 +79,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MDBBootstrapModule.forRoot(),
+		Ng2CarouselamosModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,

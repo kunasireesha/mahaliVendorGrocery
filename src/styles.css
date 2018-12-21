@@ -188,3 +188,8 @@ h4 a {
     height: auto;
   }
 }
+
+.ng2-carouselamos-wrapper {
+  width: 1045px !important;
+  position: relative;
+}

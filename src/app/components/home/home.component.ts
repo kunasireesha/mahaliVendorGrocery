@@ -120,7 +120,7 @@ export class HomeComponent implements OnInit {
     wholeData = [];
     getWholeSellers() {
         this.appService.getWholeSellers().subscribe(resp => {
-        this.wholeData = resp.json().data;
+            this.wholeData = resp.json().data;
 
         })
     }
@@ -130,11 +130,16 @@ export class HomeComponent implements OnInit {
             this.product = resp.json().products;
         });
     }
-    addtoCart(Id,skId) {
+    addtoCart(Id, skId) {
+
+        if (localStorage.userId === undefined) {
+            swal('Please Login', '', 'warning');
+            return;
+        }
         var inData = {
             "products": [{
-                product_id:Id,
-                sku_id:skId 
+                product_id: Id,
+                sku_id: skId
             }],
             "vendor_id": JSON.parse(localStorage.getItem('userId'))
         }
@@ -142,17 +147,17 @@ export class HomeComponent implements OnInit {
             this.cartDetails = res.json().selling_price_total;
             this.cartCount = res.json().count;
             this.getCart();
-            swal(res.json().message,"","success");
+            swal(res.json().message, "", "success");
         }, err => {
 
         })
     }
     mainData = [];
-    getBanners(){
-        this.appService.getBanners().subscribe(res=> {
-        this.mainData = res.json().result[0].banner_details;
-        console.log(this.mainData);
-        },err=> {
+    getBanners() {
+        this.appService.getBanners().subscribe(res => {
+            this.mainData = res.json().result[0].banner_details;
+            console.log(this.mainData);
+        }, err => {
 
         })
     }
@@ -162,11 +167,11 @@ export class HomeComponent implements OnInit {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
-          this.cartCount = res.json().count;
+            this.cartCount = res.json().count;
         }, err => {
-    
+
         })
-      }
+    }
 
 
 }
