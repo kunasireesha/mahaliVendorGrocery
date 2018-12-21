@@ -12,19 +12,19 @@
 		<!--Slides-->
 		<div class="carousel-inner" role="listbox">
 			<!--First slide-->
-			<div class="carousel-item active">
-				<img class="d-block w-100" src="assets/images/home-banner.jpg" alt="First slide">
+			<div class="carousel-item" *ngFor="let item of mainData; let i =index;" [ngClass]="{'active':i == 0}">
+				<img class="d-block w-100" [src]="item.website_banner" alt="First slide">
 			</div>
 			<!--/First slide-->
 			<!--Second slide-->
-			<div class="carousel-item">
+			<!-- <div class="carousel-item">
 				<img class="d-block w-100" src="assets/images/home-banner.jpg" alt="Second slide">
-			</div>
+			</div> -->
 			<!--/Second slide-->
 			<!--Third slide-->
-			<div class="carousel-item">
+			<!-- <div class="carousel-item">
 				<img class="d-block w-100" src="assets/images/home-banner.jpg" alt="Third slide">
-			</div>
+			</div> -->
 			<!--/Third slide-->
 		</div>
 		<!--/.Slides-->
@@ -54,40 +54,40 @@
 
 		<!-- Nearest Shops -->
 		<div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
-
 			<br />
 			<!--Slides 1-->
 			<div class="carousel-inner" role="listbox">
 
 				<!--First slide-->
-				<div class="carousel-item active">
+				<div class="carousel-item" *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i == 0}">
 
 					<div class="col-md-6">
-						<div class="card" (click)="showStore()">
+						<div class="card" (click)="showStore(item.id)">
 							<div class="row">
 								<div class="col-md-6">
-									<img class="img-fluid" src="assets/images/cold-store-1.jpg" alt="Card image cap">
+									<img class="img-fluid" [src]="item.image_one" alt="Card image cap">
 								</div>
 								<div class="card-block col-md-6 recmded">
-									<h5 class="">Spar
-									</h5>
-									<h4>Cold Store</h4>
+									<!-- <h5 class="">Spar
+									</h5> -->
+									<h4>{{item.bussiness_name}}</h4>
 									<p>
 										<i class="fas fa-map-marker-alt"></i>
-										&nbsp; Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer
-										took a galley
-										of type</p>
+										&nbsp; {{item.business_area}}, {{item.business_city}} 
+										{{item.business_country}}
+										</p>
 
 
 									<i class="fa fa-clock-o" aria-hidden="true"></i>
 									&nbsp;
-									<span class="cust-time">7:00AM To 9:00PM</span>
+									<span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
 
 								</div>
 							</div>
 						</div>
-
+					</div>
 						<br />
+						<!-- <div class="col-md-6">
 						<div class="card" (click)="showStore()">
 							<div class="row">
 								<div class="col-md-6">
@@ -109,10 +109,11 @@
 									<span class="cust-time">7:00AM To 9:00PM</span>
 								</div>
 							</div>
+						
 						</div>
-					</div>
+					</div> -->
 
-					<div class="col-md-6 hidden-sm-down">
+					<!-- <div class="col-md-6 hidden-sm-down">
 						<div class="card" (click)="showStore()">
 							<div class="row">
 								<div class="col-md-6">
@@ -159,12 +160,12 @@
 							</div>
 						</div>
 
-					</div>
+					</div> -->
 				</div>
 				<!--/.First slide-->
 
 				<!--Second slide-->
-				<div class="carousel-item">
+				<!-- <div class="carousel-item">
 					<div class="col-md-6">
 						<div class="card" (click)="showStore()">
 							<div class="row">
@@ -264,7 +265,7 @@
 							</div>
 						</div>
 					</div>
-				</div>
+				</div> -->
 				<!--/.Second slide-->
 
 			</div>
@@ -273,14 +274,14 @@
 
 			<!--/.Slides-->
 			<!--Controls-->
-			<div class="controls-top controls">
+			<!-- <div class="controls-top controls">
 				<a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
 					<i class="fas fa-long-arrow-alt-left"></i>
 				</a>
 				<a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
 					<i class="fas fa-long-arrow-alt-right"></i>
 				</a>
-			</div>
+			</div> -->
 			<!--/.Controls-->
 		</div>
 
@@ -829,12 +830,12 @@
 
 				<div class="col-md-3" *ngFor="let item of product">
 					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" [src]="item.product_image" alt="Card image cap">
+						<div class="product-image">
+							<img class="img-fluid" [src]="item.product_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
 						</div>
 						<div class="card-block add-to-cart">
 							<h5 class="text-center">{{item.brand}} </h5>
-							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add</button>
+							<button  type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
 						</div>
 					</div>
 					<br />

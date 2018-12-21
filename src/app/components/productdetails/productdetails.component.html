@@ -6,27 +6,26 @@
   </p>
   <div class="row">
     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6">
-      <img id="myImg" src="assets/images/potato.png" alt="Snow" style="width:100%;max-width:300px">
+      <img id="myImg" src="{{product_image}}" alt="Snow" style="width:100%;max-width:300px">
     </div>
     <div class="col-md-6 col-sm-6 col-xs-12 col-lg-6 details">
-      <h4>Potatoes - Hybrid </h4>
+      <h4>{{prodName}} </h4>
       <div class="row">
         <div class="col-md-6">
           <div class="quantity-price text-center">
-            <select>
-              <option value="" disabled selected>500gms-Rs 20.40</option>
-              <option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-              <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-              <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+            <select (change)="changeSize($event.target.value)">
+              <option value="" data-icon="images/sample-1.jpg" class="left" *ngFor="let sku of prodData" value="{{sku.skid}}">{{sku.size}} - BD {{sku.offer_price}}</option>
+              <!-- <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+              <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option> -->
             </select>
           </div>
         </div>
       </div>
 
       <br />
-      <p><strong>BD:</strong> 1299
+      <p><strong>BD:</strong> {{offer_price}}
         <span>
-          <strike><strong>BD : </strong> 1941</strike>(Inclusive of all taxes)</span>
+          <strike><strong>BD : </strong> {{actual_price}}</strike>(Inclusive of all taxes)</span>
       </p>
       <br />
       <p>
@@ -44,7 +43,7 @@
 						</button>
 					</div> -->
 
-          <button class="btn btn-maroon add-cart">Add to Cart</button>
+          <button class="btn btn-maroon add-cart" value="{{prodsData.product_id}}" (click)="addtoCart($event.target.value)">Add to Cart</button>
         </div>
       </div>
     </div>
@@ -61,21 +60,14 @@
   <div class="row desription">
     <h5>Description</h5>
     <div class="col-md-12">
-      <p>There are many variations of passages of Lorem Ipsum available, but the majority have suffered alteration in
-        some form,
-        by injected humour, or randomised words which don't look even slightly believable. If you are going to use a
-        passage
-        of Lorem Ipsum, you need to be sure there isn't anything embarrassing hidden in the middle of text. All the
-        Lorem Ipsum
-        generators on the Internet tend to repeat predefined chunks as necessary, making this the first true generator
-        on the
-        Internet.
+      <p>{{description}}
       </p>
     </div>
   </div>
   <div class="row desription">
-    <h5>More Products Related Your Search</h5>
-    <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
+    <h5>More Products Related Your Search</h5><br/>
+    No Data
+    <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel" hidden>
       <br />
       <!--Slides-->
       <div class="carousel-inner product-slider" role="listbox">

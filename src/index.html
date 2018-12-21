@@ -73,6 +73,16 @@
         });
     });
 </script>
+<script>
+$('.panel-collapse').on('show.bs.collapse', function () {
+  $(this).parent('.panel').find('.fa-minus').show();
+  $(this).parent('.panel').find('.fa-plus').hide();
+})
+$('.panel-collapse').on('hide.bs.collapse', function () {
+  $(this).parent('.panel').find('.fa-minus').hide();
+  $(this).parent('.panel').find('.fa-plus').show();
+})
+</script>
 <script type="text/javascript" src="https://code.jquery.com/jquery-1.12.0.min.js"></script>
 <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/owl-carousel/1.3.3/owl.carousel.min.js"></script>
 

@@ -6,7 +6,7 @@ import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-declare var jQuery: any;
+ var $: any;
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -30,14 +30,30 @@ export class HeaderComponent implements OnInit {
     showLoginScreen = true;
     showRegistration = true;
     showOpacity = false;
+    showLogin=false;
+    IsmodelShow=false;
     subcat = [];
 
-    constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) { }
+    constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) { 
+        if (localStorage.token === undefined) {
+            this.showRegistration = true;
+            this.showLoginScreen = true;
+            this.myAccount = false;
+        } else {
+            this.showRegistration = false;
+            this.showLoginScreen = false;
+            this.myAccount = true;
+            this.phone = true;
+            this.userMobile = JSON.parse(localStorage.getItem('phone'));
+            this.userName = (localStorage.getItem('userName'));
+        }
+    }
     item = {
         quantity: 1
     }
     userMobile;
     userName;
+    location;
     ngOnInit() {
         if (localStorage.token === undefined) {
             this.showRegistration = true;
@@ -56,12 +72,43 @@ export class HeaderComponent implements OnInit {
         //     this.showLoginScreen = false;
         //     this.myAccount = true;
         // }
+        // if(navigator.geolocation){
+        //     navigator.geolocation.getCurrentPosition(position => {
+        //         this.lat=position.coords.latitude;
+        //         this.long=position.coords.longitude;
+               
+        //         var latlng = { lat: this.lat, lng:this.long };
+        
+        //        let geocoder = new google.maps.Geocoder();
+        //      geocoder.geocode(  {'location':latlng}, (results, status) => {
+        //      if (status == google.maps.GeocoderStatus.OK) {
+        //      let result = results[0];
+        //      let rsltAdrComponent = result.address_components;
+        //      let resultLength = rsltAdrComponent.length;
+        //      if (result != null) {
+        //      console.log(rsltAdrComponent[resultLength-5].short_name)
+        //      } else {
+        //      window.alert('Geocoder failed due to: ' + status);
+        //      }
+        //      }
+        //      });
+        //      });     
+        //    };
+
+        console.log(this.location);
+        if(navigator.geolocation){
+            navigator.geolocation.getCurrentPosition(position => {
+              this.location = position.coords;
+            });
+         }
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
             email: ['', [Validators.required, Validators.email]],
             mobile_number: ['', [Validators.required]],
-            password: ['', [Validators.required, Validators.minLength(6)]]
+            password: ['', [Validators.required, Validators.minLength(6)]],
+            business_latitude:16.398956,
+            business_longitude:78.637009
         });
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -73,16 +120,10 @@ export class HeaderComponent implements OnInit {
         this.getCategories();
         this.getProduct();
         this.login();
+        // this.getLocation();
+        this.getCart();
     }
-    showSubCat(Id) {
-        this.showSubCats = true;
-
-        this.appService.getSubCat(Id).subscribe(resp => {
-            this.subcat = resp.json().sub_category;
-        }, error => {
-
-        })
-    }
+    
     hideSubCats() {
         this.showSubCats = false;
     }
@@ -102,7 +143,9 @@ export class HeaderComponent implements OnInit {
     //     this.dialog.open(RegistrationComponent, dialogConfig);
 
     // }
-
+    showLoginPop(){
+        this.showLogin=true;
+    }
     showCartItems() {
         this.showCartDetail = !this.showCartDetail;
     }
@@ -126,11 +169,18 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showVegetables() {
-        this.router.navigate(['/freshvegetables'], { queryParams: { order: 'popular' } });
+    showProbyCat(catId,action) {
+        this.showSubCats = false;
+        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId,action:action } });
+    }
+    showProbySubCat(SubCatId,action){
+        this.showSubCats = false;
+        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId,action:action } });    
     }
     signOut() {
         localStorage.removeItem('token');
+        localStorage.removeItem('email');
+        localStorage.removeItem('phone');
         this.showRegistration = true;
         this.showLoginScreen = true;
         this.myAccount = false;
@@ -146,7 +196,7 @@ export class HeaderComponent implements OnInit {
             // this.users = resp.json();
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
-                jQuery("#signupmodal").modal("hide");
+                // $("#signupmodal").modal("hide");
                 // this.showRegistration = false;
 
                 // this.myAccount = true
@@ -170,10 +220,13 @@ export class HeaderComponent implements OnInit {
         this.appService.login(this.loginForm.value).subscribe(resp => {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
+                // $("#loginmodal").modal("hide");
+                this.IsmodelShow=true;
+               
                 localStorage.setItem('token', (resp.json().token));
-                jQuery("#loginmodal").modal("hide");
                 this.showRegistration = false;
                 this.showLoginScreen = false;
+                this.showLogin=false;
                 this.myAccount = true;
                 this.appService.loginDetailsbyEmail(this.loginForm.value.email).subscribe(response => {
                     localStorage.setItem('phone', JSON.stringify(response.json().data[0].mobile_number));
@@ -182,11 +235,14 @@ export class HeaderComponent implements OnInit {
                     localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
                     this.loginDetails = response.json().data[0];
                     this.phone = true;
-
+                    this.ngOnInit();
+                    window.location.reload();
                 })
             }
-            else if (resp.json().status === 404 || resp.json().status === 400) {
+            else if (resp.json().status === 404 || resp.json().status === 400 || resp.json().status === 401) {
                 swal(resp.json().message, "", "error");
+                this.router.navigate(['/address']);
+                localStorage.setItem('userId', (resp.json().id));
             }
         })
     }
@@ -194,6 +250,17 @@ export class HeaderComponent implements OnInit {
         this.appService.getCategories().subscribe(resp => {
             this.category = resp.json().categories;
         })
+    }
+    subCatData =[]
+    showSubCat(Id) {
+        this.showSubCats = true;
+        for(var i=0;i<this.category.lenght;i++){
+        for(var j=0;j<this.category[i].subcategory.lenght;j++){
+            if(Id===this.category[i].subcategory[j].category_id){
+              this.subCatData =  this.category[i].subcategory[j];
+            }
+        }
+        }
     }
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
@@ -212,7 +279,7 @@ export class HeaderComponent implements OnInit {
         }
         this.appService.forgotPassword(inData).subscribe(resp => {
             if (resp.json().status === 200) {
-                jQuery("#forgotpass").modal("hide");
+                $("#myModal").modal("hide");
                 swal(resp.json().message, "", "success");
             } else {
                 swal(resp.json().message, "", "error");
@@ -223,5 +290,68 @@ export class HeaderComponent implements OnInit {
             swal(err.json().message, "", "error");
         })
     }
-
+    lat;
+    long;
+    // getLocation(){
+    //     if(navigator.geolocation){
+    //         navigator.geolocation.getCurrentPosition(position => {
+    //             this.lat=position.coords.latitude;
+    //             this.long=position.coords.longitude;
+    //             var latlng = { lat: this.lat, lng:this.long };
+        
+    //            let geocoder = new google.maps.Geocoder();
+    //          geocoder.geocode(  {'location':latlng}, (results, status) => {
+    //          if (status == google.maps.GeocoderStatus.OK) {
+    //          let result = results[0];
+    //          let rsltAdrComponent = result.address_components;
+    //          let resultLength = rsltAdrComponent.length;
+    //          if (result != null) {
+    //          console.log(rsltAdrComponent[resultLength-5].short_name)
+    //          } else {
+    //          window.alert('Geocoder failed due to: ' + status);
+    //          }
+    //          }
+    //          });
+    //          });     
+    //        };
+    // }
+    cartCount = [];
+    cartDetails = [];
+    cartData = [];
+    billing;
+    getCart() {
+        var inData = localStorage.getItem('userId');
+        this.appService.getCart(inData).subscribe(res => {
+            this.cartData = res.json().cart_details;
+            for(var i=0;i<this.cartData.length;i++){
+                this.cartData[i].products.skuValue=this.cartData[i].products.sku_details[0].size;
+                this.cartData[i].products.skid=this.cartData[i].products.sku_details[0].skid;
+                this.cartData[i].products.selling_price=this.cartData[i].products.sku_details[0].selling_price;
+                this.cartData[i].prodName=this.cartData[i].products.product_name;
+                this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+               }
+               this.cartCount = res.json().count;
+               this.billing = res.json().selling_Price_bill;
+        }, err => {
+    
+        })
+      }
+      delCart(cartId){
+        var inData = cartId;
+      this.appService.delCart(inData).subscribe(res=> {
+      console.log(res.json());
+      swal(res.json().message,"","success");
+      this.getCart();
+      },err=> {
+      
+      })
+      }
+      search(product,action){
+        // this.appService.searchProducts(product).subscribe(res=> {
+        //     console.log(res.json());
+            this.router.navigate(['/products'], { queryParams: { product: product,action:action } });
+            // },err=> {
+            
+            // })    
+      }
 }

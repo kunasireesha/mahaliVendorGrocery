@@ -10,35 +10,27 @@
 				<h4 class="text-center"> My Cart</h4>
 				<div class="col-md-12 cart-1">
 					<div class="cart-item">
-						<div class="row items align-items-center" *ngFor="let item of cartData">
+						<div class="row items align-items-center cartData" *ngFor="let item of cartData">
 
 							<div class="col-md-3 text-center">
-								<img src="assets/images/potatoes.png">
+								<img src="{{item.products.img}}">
 							</div>
 							<div class="col-md-2 text-center">
-								<h6>{{item.cart_id}}</h6>
+								<h6>{{item.prodName}}</h6>
 							</div>
 							<div class="col-md-3">
 								<div class="sort">
-									<select>
-										<option>100gms</option>
-										<option>200 gms</option>
-										<option>300 gms</option>
-										<option>500 gms</option>
+									<select (change)="changeData($event.target.value)">
+										<option value="{{item.products.skid}}">{{item.products.skuValue}} - BD  {{item.products.selling_price}}</option>
 									</select>
 								</div>
 							</div>
-							<div class="col-md-4 cust-ltrt">
-								<p>Price: BD.1990 &nbsp;&nbsp;
-									<i class="fa fa-times-circle cust-circle" aria-hidden="true"></i>
+							<div class="col-md-4 cust-ltrt" >
+								<p>Price:{{item.products.selling_price}} &nbsp;&nbsp;
+									<i class="fa fa-times-circle cust-circle" aria-hidden="true" (click)="delCart(item.cart_id)"></i>
 								</p>
-								<div>
-									hello
-								</div>
 							</div>
-
 						</div>
-
 						<!-- <div class="row items align-items-center">
 							<div class="col-md-3 text-center">
 								<img src="assets/images/tomatoes.png">
@@ -62,15 +54,15 @@
 								</p>
 							</div>
 						</div> -->
-						<hr>
+						<!-- <hr> -->
 					</div>
-					<!-- <div class="sub-total">
+					<div class="sub-total">
 						<table class="table table-borderless">
 							<tbody>
 								<tr>
 
 									<td>Sub-Total</td>
-									<td>: BD.4551</td>
+									<td>: BD.{{billing}}</td>
 								</tr>
 								<tr>
 									<td>Delivery charges </td>
@@ -79,8 +71,8 @@
 							</tbody>
 						</table>
 						<p>*Sold by Goodluck retail stores</p>
-						<button class="btn btn-maroon" value="Checkout">Checkout</button>
-					</div> -->
+						<button class="btn btn-maroon" value="Checkout" (click)="checkout()">Checkout</button>
+					</div>
 				</div>
 
 			</div>
@@ -104,23 +96,25 @@
 					<a (click)="addAddress()" *ngIf="showAddresses">
 						<i class="fa fa-plus-circle" aria-hidden="true"></i> &nbsp;Add new delivery address</a>
 					<!-- delivery address -->
-					<div class="row del-address" *ngIf="showAddresses">
+					<div *ngIf="showAddresses">
+					<div class="row del-address"  *ngFor="let data of getAddData">
 						<div class="col-md-6">
 							<br />
 							<div>
-								<h6>Home</h6>
-								<p>Uni Space Business Center, Modern Tech park,
-									<br /> Bangalore
-									<br /> 500038
+								<h6>{{data.address_type}}</h6>
+								<p>{{data.house_no}}, {{data.landmark}},
+									<br /> {{data.state}}
+									<br /> {{data.pin_code}}
 								</p>
-								<p>Ph : 1234567891</p>
+								<p>Ph : {{data.mobile}}</p>
 							</div>
 						</div>
 						<div class="col-md-6">
-							<button class="btn btn-maroon" (click)="shipmentType()">Proceed To Pay</button>
+							<button class="btn btn-maroon" (click)="shipmentType(data.address_id)">Proceed To Pay</button>
 						</div>
 					</div>
-					<div class="row del-address" *ngIf="showAddresses">
+				</div>
+					<!-- <div class="row del-address" *ngIf="showAddresses">
 						<div class="col-md-6">
 							<br />
 							<div>
@@ -135,19 +129,18 @@
 						<div class="col-md-6">
 							<button class="btn btn-maroon" (click)="shipmentType()">Proceed To Pay</button>
 						</div>
-					</div>
+					</div> -->
 					<!-- delivery address -->
 					<!-- add address -->
 					<div class=" row addaddress " *ngIf="addresses ">
 						<div class="col-md-12 ">
-
 							<form class="details login-fields register-fields ">
 								<div class="form-group row ">
 									<label class="col-sm-4 col-md-4 col-form-label ">Full Name
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<input type="text " class="form-control ">
+										<input type="text " class="form-control " [(ngModel)]="addData.full_name" name="full_name">
 									</div>
 								</div>
 
@@ -156,7 +149,7 @@
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<input type="text " class="form-control ">
+										<input type="text " class="form-control " [(ngModel)]="addData.mobile_number" name="mobile_number">
 									</div>
 								</div>
 
@@ -165,7 +158,7 @@
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<input type="text " class="form-control ">
+										<input type="text " class="form-control " [(ngModel)]="addData.house_no" name="house_no">
 									</div>
 								</div>
 
@@ -174,9 +167,10 @@
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<select class="form-control ">
+										<!-- <select class="form-control ">
 											<option></option>
-										</select>
+										</select> -->
+										<input type="text " class="form-control " [(ngModel)]="addData.city" name="house_no">
 									</div>
 								</div>
 
@@ -185,9 +179,11 @@
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<select class="form-control ">
-											<option></option>
-										</select>
+										<!-- <select class="form-control ">
+											<option>Select state</option>
+											<option *ngFor="let state of states" [(ngModel)]="addData.state">{{state}}</option>
+										</select>  -->
+										<input type="text " class="form-control " [(ngModel)]="addData.state" name="house_no">
 									</div>
 
 								</div>
@@ -197,7 +193,7 @@
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<input type="text " class="form-control ">
+										<input type="text " class="form-control " [(ngModel)]="addData.landmark" name="landmark" >
 									</div>
 
 								</div>
@@ -206,25 +202,25 @@
 										<span>:</span>
 									</label>
 									<div class="col-sm-8 col-md-8 ">
-										<input type="text " class="form-control ">
+										<input type="text " class="form-control " [(ngModel)]="addData.pin_code" name="pin_code">
 									</div>
 								</div>
 								<div>
 									<p>Choose nick name for this address</p>
 									<p class="addresses ">
-										<a>Home</a>
-										<a>Office</a>
-										<a>Other</a>
+										<a (click)="Type('Home')">Home</a>
+										<a (click)="Type('Office')">Office</a>
+										<a (click)="Type('Other')">Other</a>
 									</p>
 									<div class="custom-control custom-checkbox ">
 										<input type="checkbox " class="custom-control-input " id="defaultUnchecked5 ">
 										<label class="custom-control-label " for="defaultUnchecked5 ">Set this as my default address</label>
 									</div>
 								</div>
+								<br/>
 								<div class="form-group row ">
-
 									<div class="col-sm-12 submit text-right ">
-										<button class="btn btn-maroon submit " type="submit " (click)="saveAddress() ">Submit</button>
+										<button class="btn btn-maroon submit " type="submit " (click)="saveAddress()">Submit</button>
 									</div>
 								</div>
 							</form>
@@ -332,14 +328,14 @@
 			<h4> Payment Method</h4>
 			<!-- total amount -->
 			<div class="row justify-content-center mb-5 ">
-				<div class="col-md-9 payment ">
+				<div class="col-md-9 payment first">
 					<div class="row ">
 						<div class="col-md-6 ">
 							<h4>Total</h4>
 						</div>
 						<div class="col-md-6 ">
 							<h4>
-								<span>BD.5642.00</span>
+								<span>BD.{{billing}}</span>
 							</h4>
 						</div>
 					</div>
@@ -350,7 +346,7 @@
 						</div>
 						<div class="col-md-6 ">
 							<h4>
-								<span>BD.5642.00</span>
+								<span>BD.{{billing}}</span>
 							</h4>
 						</div>
 					</div>
@@ -359,31 +355,32 @@
 			<!-- total amount -->
 			<!-- payment option -->
 			<div class="row justify-content-center">
-				<div class="col-md-9 payment">
+				<div class="col-md-9 payment sec">
 					<h5 class="payment">Select Payment Option</h5>
-					<div class="row">
+				
+					<div class="row" *ngFor="let pay of payOptions;let i= index">
 						<div class="col-md-12">
-							<div class="custom-control custom-radio mahali-radio">
-								<input type="radio" id="customRadio1" name="customRadio" class="custom-control-input mahali-input">
-								<label class="custom-control-label mahali-label" for="customRadio1">Credit Card/Debit Card</label>
-							</div>
-						</div>
+								<i class="far fa-circle" (click)="selePayOptn(i,pay.id)" *ngIf="seleOpt!==i"></i>
+								<i class="far fa-dot-circle" *ngIf="seleOpt==i"></i> &nbsp; &nbsp;
+								{{pay.payment_option}}
+								</div>
+						<hr>
 					</div>
-					<hr>
-					<div class="row ">
+					
+					<!-- <div class="row ">
 						<div class="col-md-12">
 							<div class="custom-control custom-radio mahali-radio">
 								<input type="radio" id="customRadio2" name="customRadio" class="custom-control-input mahali-input" checked>
 								<label class="custom-control-label mahali-label" for="customRadio2">Cash On Delivery</label>
 							</div>
 						</div>
-					</div>
+					</div> -->
 				</div>
 			</div>
 			<!-- payment option -->
 			<div class="row mt-5 justify-content-center place-order">
 				<div class="col-md-9 text-right">
-					<button class="btn btn-maroon" routerLink="/Orderplaced">Place Order</button>
+					<button class="btn btn-maroon" (click)="orderPlace()">Place Order</button>
 				</div>
 
 			</div>

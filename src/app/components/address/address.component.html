@@ -50,65 +50,66 @@
               <div class="form-group row">
                 <label for="fisrtname" class="col-sm-2 col-form-label">First Name :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="fisrtname" placeholder="First Name">
+                  <input type="text" class="form-control" id="fisrtname" name="first_name" [(ngModel)]="businessData.first_name" placeholder="First Name">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="lastname" class="col-sm-2 col-form-label">Last Name :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="lastname" placeholder="Last Name">
+                  <input type="text" class="form-control" id="last_name" name="last_name" [(ngModel)]="businessData.last_name" placeholder="Last Name">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="mobnumber" class="col-sm-2 col-form-label">Mobile no :</label>
                 <div class="col-sm-10">
-                  <input type="number" class="form-control" id="mobnumber" placeholder="Mobile Number">
+                  <input type="number" class="form-control" id="mobile_number" name="mobile_number" [(ngModel)]="businessData.mobile_number" placeholder="Mobile Number">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="emailform" class="col-sm-2 col-form-label">Email :</label>
                 <div class="col-sm-10">
-                  <input type="email" class="form-control" id="emailform" placeholder="email">
+                  <input type="email" class="form-control" id="email" name="email" [(ngModel)]="businessData.email" placeholder="email">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="businessname" class="col-sm-2 col-form-label">Business Name :</label>
                 <div class="col-sm-10">
-                  <input type="text" class="form-control" id="businessname" placeholder="Business Name">
+                  <input type="text" class="form-control" id="bussiness_name" name="bussiness_name" [(ngModel)]="businessData.bussiness_name" placeholder="Business Name">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="address" class="col-sm-2 col-form-label">Address :</label>
                 <div class="col-sm-10">
-                  <input type="textarea" class="form-control" id="address" placeholder="Address">
+                  <input type="textarea" class="form-control" id="business_address" name="business_address" [(ngModel)]="businessData.business_address" placeholder="Address">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="address" class="col-sm-2 col-form-label">Country :</label>
                 <div class="col-sm-10">
-                  <select class="custom-select" required>
+                  <!-- <select class="custom-select" required>
                     <option value="">Open this select menu</option>
                     <option value="1">IND</option>
                     <option value="2">US</option>
                     <option value="3">UK</option>
-                  </select>
+                  </select> -->
+                  <input type="text" class="form-control" id="business_country" name="business_country" [(ngModel)]="businessData.business_country" placeholder="Counrty">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="fisrtname" class="col-sm-2 col-form-label">Area :</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="fisrtname" placeholder="Area">
+                  <input type="text" class="form-control" id="business_area" name="business_area" [(ngModel)]="businessData.business_area" placeholder="Area">
                 </div>
                 <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
                 <div class="col-sm-4">
-                  <input type="text" class="form-control" id="fisrtname" placeholder="City">
+                  <input type="text" class="form-control" id="business_city" name="business_city" [(ngModel)]="businessData.business_city" placeholder="City">
                 </div>
               </div>
 
               <div class="form-group row">
                 <label for="submit" class="col-sm-2 col-form-label"></label>
                 <div class="col-sm-10">
-                  <button class="btn submit-button1" type="submit">Submit</button>
+                  <button class="btn submit-button1" type="submit" (click)="businessDetails()">Submit</button>
                 </div>
               </div>
             </form>
@@ -124,19 +125,19 @@
             <div class="form-group row">
               <label for="fisrtname" class="col-sm-2 col-form-label">VAT No :</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="fisrtname" placeholder="">
+                <input type="text" class="form-control" id="vatNo" name="business_city" [(ngModel)]="taxData.vat_number" placeholder="">
               </div>
             </div>
             <div class="form-group row">
               <label for="lastname" class="col-sm-2 col-form-label">CR No :</label>
               <div class="col-sm-10">
-                <input type="text" class="form-control" id="lastname" placeholder="">
+                <input type="text" class="form-control" id="cr_number" name="cr_number" [(ngModel)]="taxData.cr_number" placeholder="">
               </div>
             </div>
             <div class="form-group row">
               <label for="submit" class="col-sm-2 col-form-label"></label>
               <div class="col-sm-10">
-                <button class="btn submit-button1" type="submit">Submit</button>
+                <button class="btn submit-button1" type="submit" (click)="tax()">Submit</button>
               </div>
             </div>
           </div>
@@ -152,53 +153,53 @@
               <div class="form-group row">
                 <label for="holdername" class="col-sm-4 col-form-label">Account Holder Name :</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="holdername" placeholder="Account Holder Name">
+                  <input type="text" class="form-control" id="holdername" name="account_holder_name" [(ngModel)]="bankData.account_holder_name" placeholder="Account Holder Name">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="accnumber" class="col-sm-4 col-form-label">Account Number :</label>
                 <div class="col-sm-8">
-                  <input type="number" class="form-control" id="accnumber" placeholder="Account Number">
+                  <input type="text" class="form-control" id="accnumber" name="account_number" [(ngModel)]="bankData.account_number" placeholder="Account Number">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="accnumber1" class="col-sm-4 col-form-label">Re-Type Account Number :</label>
                 <div class="col-sm-8">
-                  <input type="number" class="form-control" id="accnumber1" placeholder="Re-Type Account Number">
+                  <input type="text" class="form-control" id="accnumber1" name="retype_acc" [(ngModel)]="bankData.retype_acc" placeholder="Re-Type Account Number">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="bankname" class="col-sm-4 col-form-label">Bank Name :</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="bankname" placeholder="Bank Name">
+                  <input type="text" class="form-control" id="bankname" name="bank_name" [(ngModel)]="bankData.bank_name" placeholder="Bank Name">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="ifsc" class="col-sm-4 col-form-label">IFSC Code :</label>
                 <div class="col-sm-8">
-                  <input type="text" class="form-control" id="ifsc" placeholder="IFSC Code">
+                  <input type="text" class="form-control" id="ifsc" name="ifsc_code" [(ngModel)]="bankData.ifsc_code" placeholder="IFSC Code">
                 </div>
               </div>
               <div class="form-group row">
-                <label for="fisrtname" class="col-sm-4 col-form-label">Area :</label>
+                <label for="fisrtname" class="col-sm-4 col-form-label">Area :</label> 
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" id="fisrtname" placeholder="Area">
+                  <input type="text" class="form-control" id="bank_area" name="bank_area" [(ngModel)]="bankData.bank_area" placeholder="Area">
                 </div>
                 <label for="fisrtname" class="col-sm-2 col-form-label">City :</label>
                 <div class="col-sm-3">
-                  <input type="text" class="form-control" id="fisrtname" placeholder="City">
+                  <input type="text" class="form-control" id="bank_city" name="bank_city" [(ngModel)]="bankData.bank_city" placeholder="City">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="branch" class="col-sm-4 col-form-label">Branch :</label>
                 <div class="col-sm-8">
-                  <input type="textarea" class="form-control" id="branch" placeholder="Branch">
+                  <input type="textarea" class="form-control" id="branch" name="bank_branch" [(ngModel)]="bankData.bank_branch" placeholder="Branch">
                 </div>
               </div>
               <div class="form-group row">
                 <label for="submit" class="col-sm-4 col-form-label"></label>
                 <div class="col-sm-8">
-                  <button class="btn submit-button1" type="submit">Submit</button>
+                  <button class="btn submit-button1" type="submit" (click)="bankDeatails()">Submit</button>
                 </div>
               </div>
             </form>

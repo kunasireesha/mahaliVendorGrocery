@@ -120,32 +120,29 @@
 				<a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
 				<a>Grocery</a>
 			</p>
-			<div class="row">
-				<div class="col-md-3 item">
-					<div class="card">
+			<div class="row" *ngIf="wholeProd">
+				<div class="col-md-3 item" *ngFor="let item of products">
+					<div class="card" *ngFor="let sku of item.sku_details">
 						<div class="product-image" (click)="showProduxtDetails()">
-							<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+							<img class="img-fluid" [src]="sku.product_image" alt="Card image cap">
 						</div>
 						<div class="card-block add-to-cart">
-							<h5 class="text-center">Electric Kettle </h5>
+							<h5 class="text-center">{{sku.product_name}} </h5>
 							<p class="text-center">
-								BD 7.500
-								<strike>BD 8.000</strike>
+								BD {{item.selling_price}}
+								<strike>BD {{item.actual_price}}</strike>
 							</p>
 							<div class="quantity-price text-center">
-								<select>
-									<option value="" disabled selected>500gms-Rs 20.40</option>
-									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
-									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
-									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								<select (change)="changeSize($event.target.value)">
+									<option *ngFor="let sku of item.sku_details" [value]="sku.skid">{{sku.size}}</option>
 								</select>
 							</div>
-							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button>
 						</div>
 					</div>
 				</div>
 
-				<div class="col-md-3 item">
+				<!-- <div class="col-md-3 item">
 					<div class="card">
 						<div class="product-image" (click)="showProduxtDetails()">
 							<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
@@ -311,7 +308,198 @@
 							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
 						</div>
 					</div>
+				</div> -->
+			</div>
+			
+			<div class="row" *ngIf="serProd">
+				<div class="col-md-3 item" *ngFor="let item of serProducts">
+					<div class="card" *ngFor="let sku of item.sku_details">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" [src]="sku.product_image" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">{{sku.product_name}} </h5>
+							<p class="text-center">
+								BD {{item.selling_price}}
+								<strike>BD {{item.actual_price}}</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select (change)="changeSize($event.target.value)">
+									<option *ngFor="let sku of item.sku_details" [value]="sku.skid">{{sku.size}}</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button>
+						</div>
+					</div>
 				</div>
+
+				 <!-- <div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/tomato.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/onion.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/cherry.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div>
+
+				<div class="col-md-3 item">
+					<div class="card">
+						<div class="product-image" (click)="showProduxtDetails()">
+							<img class="img-fluid" src="assets/images/pinapple.png" alt="Card image cap">
+						</div>
+						<div class="card-block add-to-cart">
+							<h5 class="text-center">Electric Kettle </h5>
+							<p class="text-center">
+								BD 7.500
+								<strike>BD 8.000</strike>
+							</p>
+							<div class="quantity-price text-center">
+								<select>
+									<option value="" disabled selected>500gms-Rs 20.40</option>
+									<option value="" data-icon="images/sample-1.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
+									<option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option>
+								</select>
+							</div>
+							<button type="text" class="btn waves-effect waves-light">Add To Cart</button>
+						</div>
+					</div>
+				</div> -->
 			</div>
 		</div>
 	</div>

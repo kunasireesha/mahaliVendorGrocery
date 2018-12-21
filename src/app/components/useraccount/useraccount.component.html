@@ -154,7 +154,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>N. Tarun Kumar</p>
+                    <p>{{accDet.account_holder_name}}</p>
                 </div>
             </div>
             <div class="row">
@@ -165,7 +165,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>0094678433235</p>
+                    <p>{{accDet.account_number}}</p>
                 </div>
             </div>
             <div class="row">
@@ -176,7 +176,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>Lorem Bank</p>
+                    <p>{{accDet.bank_name}}</p>
                 </div>
             </div>
             <div class="row">
@@ -187,7 +187,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>09143</p>
+                    <p>{{accDet.ifsc_code}}</p>
                 </div>
             </div>
             <div class="row">
@@ -198,7 +198,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>Lorem</p>
+                    <p>{{accDet.bank_area}}</p>
                 </div>
             </div>
             <div class="row">
@@ -209,7 +209,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>Lorem</p>
+                    <p>{{accDet.bank_city}}</p>
                 </div>
             </div>
             <div class="row">
@@ -220,7 +220,7 @@
                     </p>
                 </div>
                 <div class="col-md-4 col-sm-6 col-6">
-                    <p>500038</p>
+                    <p>{{accDet.bank_branch}}</p>
                 </div>
             </div>
             <div class="row">
@@ -243,7 +243,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputname1" placeholder="Vijay Kumar">
+                        <input type="text" class="form-control input-feild" id="inputname1" [(ngModel)]="accDet.account_holder_name" name="account_holder_name" placeholder="Vijay Kumar">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -252,7 +252,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" placeholder="09876547995432">
+                        <input type="email" class="form-control input-feild" id="inputEmail3" [(ngModel)]="accDet.account_number" name="account_number" placeholder="09876547995432">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -261,7 +261,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="Lorem Bank">
+                        <input type="text" class="form-control input-feild" id="inputphoneno" [(ngModel)]="accDet.bank_name" name="bank_name" placeholder="Lorem Bank">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -270,7 +270,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputhouseno" placeholder="54500">
+                        <input type="text" class="form-control input-feild" id="inputhouseno" [(ngModel)]="accDet.ifsc_code" name="ifsc_code" placeholder="54500">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -279,7 +279,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" class="form-control input-feild" id="inputstate" placeholder="Lorem">
+                        <input type="text" class="form-control input-feild" id="inputstate" [(ngModel)]="accDet.bank_area" name="bank_area" placeholder="Lorem">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -288,7 +288,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" class="form-control input-feild" id="inputcity" placeholder="Lorem">
+                        <input type="text" class="form-control input-feild" id="inputcity" [(ngModel)]="accDet.bank_city" name="bank_city" placeholder="Lorem">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -297,10 +297,10 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputpincode" placeholder="Lorem">
+                        <input type="text" class="form-control input-feild" id="inputpincode" [(ngModel)]="accDet.bank_branch" name="bank_branch" placeholder="Lorem">
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-md-6 col-sm-6">
-                                <button type="button" class="btn save-btn">Save</button>
+                                <button type="button" class="btn save-btn" (click)="saveDetails()">Save</button>
                             </div>
                             <div class="col-lg-6 col-md-6 col-sm-6">
                                 <button type="button" class="btn save-btn" (click)="cancelDetails()">Cancel</button>
@@ -321,37 +321,37 @@
                 <span class="cust-category">Category</span>
             </p>
             <div class="row">
-                <div class="col-sm-4">
-                    <ul class="fruits-list">
-                        <li (click)="showAddProducts2()">
-                            <strong>Fruits & Vegetables ></strong>
+                <div class="col-sm-6">
+                    <ul class="fruits-list" *ngFor="let item of category">
+                        <li (click)="showAddProducts2(item.id)">
+                            <strong>{{item.category_name}} ></strong>
                         </li>
-                        <li>Foodgrains, Oil & Masala</li>
+                        <!-- <li>Foodgrains, Oil & Masala</li>
                         <li>Bakery cakes & Dairy</li>
                         <li>Bevarages</li>
                         <li>Buety & Hygeine</li>
                         <li>Cleaning & Household</li>
                         <li>Kitchen, Garden & pets</li>
                         <li>Egg, Meat & fish</li>
-                        <li>Baby Care</li>
+                        <li>Baby Care</li> -->
                     </ul>
                 </div>
-                <div class="col-sm-4">
+                <div class="col-sm-6">
                     <ul class="fruits-list">
                         <li (click)="showAddProducts2()">
                             <strong>Fress Vegetables ></strong>
                         </li>
-                        <li>Foodgrains, Oil & Masala</li>
+                        <!-- <li>Foodgrains, Oil & Masala</li>
                         <li>Bakery cakes & Dairy</li>
                         <li>Bevarages</li>
                         <li>Buety & Hygeine</li>
                         <li>Cleaning & Household</li>
                         <li>Kitchen, Garden & pets</li>
                         <li>Egg, Meat & fish</li>
-                        <li>Baby Care</li>
+                        <li>Baby Care</li> -->
                     </ul>
                 </div>
-                <div class="col-sm-4">
+                <!-- <div class="col-sm-4">
                     <ul class="fruits-list">
                         <li>Foodgrains, Oil & Masala</li>
                         <li>Bakery cakes & Dairy</li>
@@ -362,7 +362,7 @@
                         <li>Egg, Meat & fish</li>
                         <li>Baby Care</li>
                     </ul>
-                </div>
+                </div> -->
             </div>
         </div>
 
@@ -402,15 +402,15 @@
                                         <tr>
                                             <th scope="row" class="cust-1">1</th>
                                             <td>
-                                                <img src="assets/images/potatoes.png" alt="Potatoes">
+                                                <img [src]="reqProds.product_image" alt="Potatoes">
                                             </td>
-                                            <td class="cust-pot">Pottatos</td>
-                                            <td class="cust-1">Brand1</td>
+                                            <td class="cust-pot">{{reqProds.product_name}}</td>
+                                            <td class="cust-1">{{reqProds.brand}}</td>
                                             <td class="cust-1">
                                                 <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
                                             </td>
                                         </tr>
-                                        <tr>
+                                        <!-- <tr>
                                             <th scope="row" class="cust-1">2</th>
                                             <td>
                                                 <img src="assets/images/tomatoes.png" alt="tomatoes">
@@ -420,8 +420,8 @@
                                             <td class="cust-1">
                                                 <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
                                             </td>
-                                        </tr>
-                                        <tr>
+                                        </tr> -->
+                                        <!-- <tr>
                                             <th scope="row" class="cust-1">3</th>
                                             <td>
                                                 <img src="assets/images/cauliflower.png" alt="cauliflower">
@@ -431,8 +431,8 @@
                                             <td class="cust-1">
                                                 <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
                                             </td>
-                                        </tr>
-                                        <tr>
+                                        </tr> -->
+                                        <!-- <tr>
                                             <th scope="row" class="cust-1">4</th>
                                             <td>
                                                 <img src="assets/images/tomatoes.png" alt="tomatoes">
@@ -442,8 +442,8 @@
                                             <td class="cust-1">
                                                 <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
                                             </td>
-                                        </tr>
-                                        <tr class="last-tr">
+                                        </tr> -->
+                                        <!-- <tr class="last-tr">
                                             <th scope="row" class="cust-1">5</th>
                                             <td>
                                                 <img src="assets/images/cauliflower.png" alt="cauliflower">
@@ -453,7 +453,7 @@
                                             <td class="cust-1">
                                                 <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
                                             </td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -463,7 +463,7 @@
                     <!--/.First slide-->
 
                     <!-- Second Slide -->
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
 
                         <div class="row">
                             <div class="col-lg-6">
@@ -548,7 +548,7 @@
                             </div>
                         </div>
 
-                    </div>
+                    </div> -->
                     <!-- ./second slide -->
 
                 </div>
@@ -583,74 +583,34 @@
                 </div>
             </div>
 
-            <div class="row address-details">
+            <div class="row address-details" *ngFor="let add of getAddData;let i=index">
                 <div class="col-lg-10 ">
-                    <h3>HOME</h3>
+                    <h3>{{add.address_type}}</h3>
                     <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near
-                        masab tank, Tolichowki,
-                        <br /> mehidipatnam , Hyderabad ,50038
+                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                        {{add.landmark}},{{add.house_no}}
+                        <br />   {{add.city}} ,{{add.pin_code}}
                         <br />
                     </P>
                     <p>
-                        <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>97005432126
+                        <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>{{add.mobile_number}}
                     </p>
                 </div>
                 <div class="col-lg-2 form-check">
-                    <div>
+                    <div *ngIf="seleOpt==i">
                         <button class="icon-btn">
                             <i class="fa fa-pencil" aria-hidden="true"></i>
                         </button>
                         <button class="icon-btn1">
-                            <i class="fa fa-trash" aria-hidden="true"></i>
+                            <i class="fa fa-trash" aria-hidden="true" (click)="delAdd(add.address_id)"></i>
                         </button>
                     </div>
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios1" value="option1"
-                        checked>
-                    <label class="form-check-label radio-btn" for="exampleRadios1">
-                    </label>
-                </div>
-            </div>
-            <div class="row address-details">
-                <div class="col-lg-10 ">
-                    <h3>OFFICE</h3>
-                    <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near
-                        masab tank, Tolichowki,
-                        <br /> mehidipatnam , Hyderabad ,50038
-                        <br />
-                    </P>
-                    <p>
-                        <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>97005432126
-                    </p>
-                </div>
-                <div class="col-lg-2 form-check">
-                    <input class="form-check-input" type="radio" name="exampleRadios" id="exampleRadios2" value="option2">
-                    <label class="form-check-label radio-btn" for="exampleRadios2">
-                    </label>
-                </div>
-            </div>
-            <div class="row address-details">
-                <div class="col-lg-10 ">
-                    <h3>OTHER</h3>
-                    <P>
-                        <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;16-11-16/A/43/1, Near
-                        masab tank, Tolichowki,
-                        <br /> mehidipatnam , Hyderabad ,50038
-                        <br />
-                    </P>
-                    <p>
-                        <i class="fa fa-phone" aria-hidden="true">&nbsp;&nbsp;&nbsp;</i>97005432126
-                    </p>
-                </div>
-                <div class="col-lg-2 form-check">
-                    <input class="form-check-input " type="radio" name="exampleRadios" id="exampleRadios3" value="option3">
-                    <label class="form-check-label radio-btn" for="exampleRadios3">
-                    </label>
+                    <i class="far fa-circle" (click)="seleAddOptn(i,add.address_id)" *ngIf="seleOpt!==i"></i>
+					<i class="far fa-dot-circle" *ngIf="seleOpt==i"></i>
                 </div>
             </div>
             <div class="col-lg-12 align-self-center">
-                <button type="button" class="btn btn-submit">Submit</button>
+                <button type="button" class="btn btn-submit" (click)="selectAdd()">Submit</button>
             </div>
         </div>
 
@@ -665,57 +625,67 @@
                     <label for="inputname1" class="col-sm-2 col-form-label">Full Name
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputname1">
+                        <input type="text" class="form-control input-feild" id="inputname1" name="full_name" [(ngModel)]="addData.full_name">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputMblnbr" class="col-sm-2 col-form-label">Mobile Number
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputNumber">
+                        <input type="text" class="form-control input-feild" id="inputNumber" name="mobile_number" [(ngModel)]="addData.mobile_number">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputhouseno" class="col-sm-2 col-form-label">House: No
                     </label>
                     <div class="col-sm-10">
-                        <input type="text" class="form-control input-feild" id="inputhouseno">
+                        <input type="text" class="form-control input-feild" id="inputhouseno" name="house_no" [(ngModel)]="addData.house_no">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputstate" class="col-sm-2 col-form-label">Landmark
                     </label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control input-feild" id="inputLand">
+                        <input type="text" class="form-control input-feild" id="inputLand" name="landmark" [(ngModel)]="addData.landmark"> 
                     </div>
                     <label for="inputcity" class="col-sm-2 col-form-label">City
                     </label>
                     <div class="col-sm-4">
-                        <select id="inputState" class="form-control input-feild">
+                        <!-- <select id="inputState" class="form-control input-feild" [(ngModel)]="addData.city">
                             <option selected>Choose City</option>
-                            <option>...</option>
-                        </select>
+                            <option *ngFor="let city of Cities" [ngValue]="city">{{city}}</option>
+                        </select> -->
+                        <input type="text" class="form-control input-feild" id="inputpincode" name="city" [(ngModel)]="addData.city">
                     </div>
                 </div>
                 <div class="form-group row">
                     <label for="inputstate" class="col-sm-2 col-form-label">State
                     </label>
                     <div class="col-sm-4">
-                        <select id="inputState" class="form-control input-feild">
+                        <!-- <select id="inputState" class="form-control input-feild" [(ngModel)]="addData.state">
                             <option selected>Choose State</option>
-                            <option>...</option>
-                        </select>
+                            <option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
+                        </select> -->
+                        <input type="text" class="form-control input-feild" id="inputpincode1" name="state" [(ngModel)]="addData.state">
                     </div>
                     <label for="inputcity" class="col-sm-2 col-form-label">Pin-code
                     </label>
                     <div class="col-sm-4">
-                        <input type="text" class="form-control input-feild" id="inputpincode">
+                        <input type="text" class="form-control input-feild" id="inputpincode2" name="pin_code" [(ngModel)]="addData.pin_code">
+                    </div>
+                    <div class="addType">
+                        <p>Choose nick name for this address</p>
+                        <p class="addresses ">
+                            <a (click)="Type('Home')">Home</a>
+                            <a (click)="Type('Office')">Office</a>
+                            <a (click)="Type('Other')">Other</a>
+                        </p>
                     </div>
                 </div>
             </form>
 
-            <button type="button" class="btn address-btn">SUBMIT</button>
-            <button type="button" class="btn address-btn">CANCEL</button>
+            <button type="button" class="btn address-btn" (click)="saveAddress()">SUBMIT</button>
+            <button type="button" class="btn address-btn" (click)="cancelAdd()">CANCEL</button>
 
         </div>
 
@@ -861,7 +831,7 @@
                     <hr>
                 </table>
             </div>
-            <div class="row arrow-btns">
+            <div class="row arrow-btns" *ngIf="editDel">
                 <button class="icon-btn">
                     <i class="fa fa-long-arrow-left" aria-hidden="true"></i>
                 </button>
@@ -907,7 +877,7 @@
                                         <img src="assets/images/potatoes.png" alt="Potatoes">
                                     </td>
                                     <td class="cst-padtp2">
-                                        <strong>Potatos</strong>
+                                        <strong>Potatoes</strong>
                                     </td>
                                     <td class="cst-padtp">
                                         <strong>BD 45</strong>
@@ -1026,18 +996,21 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
-                                        <tr (click)="showBukedOrderDetails()" class="cst-topad">
-                                            <th scope="row">1</th>
+                                        <tr  class="cst-topad" *ngFor="let ord of orders;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
+                                            <th scope="row">{{i+1}}</th>
                                             <td>
-                                                1441367
+                                                {{ord.order_id}}
                                             </td>
-                                            <td>24 July 2018,
-                                                <br /> 3:30 PM</td>
-                                            <td>Peter Mark</td>
-                                            <td>BD.107.00</td>
-                                            <td>Placed</td>
+                                            <td>
+                                                {{ord.ordered_on}} </td>
+                                            <td>{{ord.wholesaler_id}}</td>
+                                            <td>BD.{{ord.billing_amount}}</td>
+                                            <td>{{ord.order_status}}</td>
                                         </tr>
-                                        <tr (click)="showBukedOrderDetails()" class="cst-topad">
+                                        <tr>
+                                            {{this.count}}
+                                        </tr>
+                                        <!-- <tr (click)="showBukedOrderDetails()" class="cst-topad">
                                             <th scope="row">2</th>
                                             <td>
                                                 3713643
@@ -1088,7 +1061,7 @@
                                                 BD.266.00
                                             </td>
                                             <td>Delivered</td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -1098,7 +1071,7 @@
                     <!--/.First slide-->
 
                     <!-- Second Slide -->
-                    <div class="carousel-item">
+                    <!-- <div class="carousel-item">
                         <div class="row">
                             <div class="col-lg-6 col-md-6 col-sm-6 cust-vendor">
                                 <h3>Vendor Orders</h3>
@@ -1195,21 +1168,21 @@
                                 </table>
                             </div>
                         </div>
-                    </div>
+                    </div> -->
                     <!-- ./second slide -->
 
                 </div>
                 <!--/.Slides-->
 
                 <!--Controls-->
-                <div class="controls-top controls arrow-rt">
+                <!-- <div class="controls-top controls arrow-rt">
                     <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
                         <i class="fas fa-long-arrow-alt-left"></i>
                     </a>
                     <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
                         <i class="fas fa-long-arrow-alt-right"></i>
                     </a>
-                </div>
+                </div> -->
                 <!--/.Controls-->
             </div>
         </div>
@@ -1221,7 +1194,7 @@
                 <h3 class="profile-header">Vendor Order</h3>
             </div>
             <div class="order-details">
-                <p>Order no : 1441367</p>
+                <p>Order no : {{ordId}}</p>
             </div>
             <table class="table myorder-details">
                 <thead>
@@ -1234,53 +1207,17 @@
                     </tr>
                 </thead>
                 <tbody class="table-data myorder-details">
-                    <tr>
+                    <tr *ngFor="let orddata of ordData">
                         <td>
-                            <img src="assets/images/potato.png">
+                            <img [src]="orddata.product_image">
                         </td>
                         <td>
-                            <p>Potatoes
+                            <p>{{orddata.product_name}}
                             </p>
                         </td>
-                        <td>Brand 1</td>
-                        <td>1</td>
-                        <td>BD 1100</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="assets/images/tomato.png">
-                        </td>
-                        <td>
-                            <p>Tomatoes
-                            </p>
-                        </td>
-                        <td>Brand 2</td>
-                        <td>1</td>
-                        <td>BD 470</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            <img src="assets/images/cauliflower.png">
-                        </td>
-                        <td>
-                            <p>Cauliflower
-                            </p>
-                        </td>
-                        <td>Brand 3</td>
-                        <td>1</td>
-                        <td>BD 430</td>
-                    </tr>
-                    <tr>
-                        <td>
-                            Total
-                        </td>
-                        <td>
-                        </td>
-                        <td></td>
-                        <td></td>
-                        <td>
-                            <strong>BD 2000</strong>
-                        </td>
+                        <td>{{orddata.brand}}</td>
+                        <td>{{orddata.size}}</td>
+                        <td>BD {{orddata.selling_price}}</td>
                     </tr>
                 </tbody>
             </table>
@@ -1294,19 +1231,19 @@
                         <tr>
                             <td style="font-size: 16px;">Wholeseller</td>
                             <td class="prod-price">
-                                <strong>John Park</strong>
+                                <strong>{{orderDet.wholesaler_name}}</strong>
                             </td>
                         </tr>
                         <tr>
                             <td style="font-size: 16px;">Order Date & Time</td>
                             <td class="prod-price">
-                                <strong>25 July 2018, 3:41 PM</strong>
+                                <strong>{{orderDet.ordered_on}}</strong>
                             </td>
                         </tr>
                         <tr>
                             <td style="font-size: 16px;">Order Status</td>
                             <td class="prod-price">
-                                <strong>Processing</strong>
+                                <strong>{{orderDet.order_status}}</strong>
                             </td>
                         </tr>
                     </tbody>
@@ -1718,7 +1655,7 @@
 </div>
 
 <!-- Add products popup -->
-<div *ngIf="showModal">
+<div>
     <div class="modal" id="addProd" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
             <div class="modal-content">
@@ -1731,10 +1668,10 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="add-popup">
-                                <img src="assets/images/potatoes.png" alt="potato" />
+                                <img [src]="reqProds.product_image" alt="potato" />
                                 <p>
-                                    <span class="pot">Potatoes</span>
-                                    <br />Brand 1</p>
+                                    <span class="pot">{{reqProds.product_name}}</span>
+                                    <br />{{reqProds.brand}}</p>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -1743,26 +1680,26 @@
                                     <div class="form-group row">
                                         <label for="price" class="col-sm-3 col-form-label">Price</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="price" placeholder="Enter your price">
+                                            <input type="text" class="form-control" id="price" [(ngModel)]="price" name="price" placeholder="Enter your price">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="quantity" class="col-sm-3 col-form-label">Quantity</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="quantity2" placeholder="Enter your quantity">
+                                            <input type="text" class="form-control" id="quantity2" [(ngModel)]="qunt" name="qunt" placeholder="Enter your quantity">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="discount" class="col-sm-3 col-form-label">Discount</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="discount" placeholder="Enter your discount">
+                                            <input type="text" class="form-control" id="discount" [(ngModel)]="dis" name="dis"  placeholder="Enter your discount">
                                         </div>
                                     </div>
                                     <div class="form-group row">
                                         <label for="status" class="col-sm-3 col-form-label">Status</label>
                                         <div class="col-sm-8">
-                                            <input type="text" class="form-control" id="status" placeholder="Enter your status">
-                                            <button type="submit" class="btn add-button pop-save" data-dismiss="modal">SAVE</button>
+                                            <input type="text" class="form-control" id="status" [(ngModel)]="status" name="status" placeholder="Enter your status">
+                                            <button type="submit" class="btn add-button pop-save" data-dismiss="modal" (click)="save(reqProds.product_id)">SAVE</button>
                                         </div>
                                     </div>
                                 </form>

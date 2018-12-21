@@ -4,7 +4,7 @@
         <div class="col-md-12 col-lg-12">
             <ul class="navbar-nav flex-row mr-lg-0 col-xs-12 acount-details">
                 <li class="nav-item">
-                    <a class="nav-link pr-2" data-toggle="modal" data-target="#loginmodal" *ngIf="showLoginScreen">
+                    <a class="nav-link pr-2" data-toggle="modal" data-target="#loginmodal" *ngIf="showLoginScreen" (click)="showLoginPop()">
                         <i class="fa fa-user-o" aria-hidden="true"></i>
                         {{"common.login"|translate}}
                     </a>
@@ -88,7 +88,7 @@
 
 <nav class="navbar cust-navbar navbar-expand-md sticky-top navbar-dark">
     <a routerLink="/" href="#/" class="navbar-brand">
-        <img src="assets/images/logo.png" class="img-fluid cust-logo" alt="Responsive image">
+        <img src="assets/images/logo1.png" class="img-fluid cust-logo" alt="Responsive image">
     </a>
     <button class="navbar-toggler togl-btn" type="button" data-toggle="collapse" data-target="#navbar5">
         <span class="navbar-toggler-icon"></span>
@@ -96,9 +96,9 @@
     <div class="navbar-collapse collapse" id="navbar5">
         <form class="mx-2 my-auto d-inline w-100">
             <div class="input-group">
-                <input type="text" class="form-control cust-srch border border-right-0" placeholder="Search for products...">
+                <input type="text" class="form-control cust-srch border border-right-0" name="product1" [(ngModel)]="product1" placeholder="Search for products...">
                 <span class="input-group-append">
-                    <button class="btn btn-outline-secondary cust-srchbtn border border-left-0" type="button">
+                    <button class="btn btn-outline-secondary cust-srchbtn border border-left-0" type="button" (click)="search(product1,'search')">
                         <i class="fa fa-search"></i>
                     </button>
                 </span>
@@ -109,16 +109,16 @@
             <li class="nav-item cart">
                 <span class="crtt-items cust-cartitem" data-toggle="modal" data-target="#cartmodal">
                     <a>
-                        <i class="fa fa-shopping-cart" aria-hidden="true">
+                        <i class="fa fa-shopping-cart" aria-hidden="true" (click)="getCart()">
                         </i>
                     </a>
                 </span>
             </li>
             <li class="nav-item cust-itm2">
-                <span class="items cust-2">2</span>
+                <span class="items cust-2">{{cartCount}}</span>
             </li>
             <li class="nav-item cust-cost">
-                <span class="cost">BD2.170.00</span>
+                <span class="cost">BD2.{{billing}}</span>
             </li>
             <li class="nav-item">
                 <a class="nav-link" href="#" data-toggle="modal" data-target="#itemdesc">
@@ -164,9 +164,42 @@
 <div class="modal fade" id="cartmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content cust-cnt">
-            <div class="modal-body">
-
-                <div class="row ">
+            <div class="modal-body cart">
+<div class="cart-mod">
+                <div class="row " *ngFor="let item of cartData">
+                    <div class="col-md-12 col-sm-12">
+                        <span class="delete">
+                            <i class="fa fa-times-circle-o cust-del"  (click)="delCart(item.cart_id)"></i>
+                        </span>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <div class="cust-img1">
+                            <img src="{{item.products.img}}" (click)="showProduxtDetails()" height="80px" width="80px">
+                        </div>
+                    </div>
+                    <div class="col-md-2 col-sm-6">
+                        <div class="cust-potatos">
+                            <p>{{item.prodName}}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <select class="cust-slct" (change)="skuChange()">
+                            <option value="{{item.products.skid}}">{{item.products.skuValue}} - BD {{item.products.selling_price}}</option>
+                        </select>
+                    </div>
+                    <div class="col-md-4 col-sm-6">
+                        <div class="cust-potatos">
+                            <h6>Price :
+                                <span style="color: #7eba00">BD {{item.products.selling_price}}</span>
+                            </h6>
+                        </div>
+                    </div>
+                </div>
+                <div class="nodata" *ngIf="cartData.length<1">
+                    Your basket is empty. Start shopping now!
+                </div>
+            </div>
+                <!-- <div class="row ">
                     <div class="col-md-12 col-sm-12">
                         <span class="delete">
                             <i class="fa fa-times-circle-o cust-del" data-dismiss="modal" aria-hidden="true"></i>
@@ -197,8 +230,8 @@
                             </h6>
                         </div>
                     </div>
-                </div>
-                <div class="row ">
+                </div> -->
+                <!-- <div class="row ">
                     <div class="col-md-12 col-sm-12">
                         <span class="delete">
                             <i class="fa fa-times-circle-o cust-del" data-dismiss="modal" aria-hidden="true"></i>
@@ -229,40 +262,8 @@
                             </h6>
                         </div>
                     </div>
-                </div>
-                <div class="row ">
-                    <div class="col-md-12 col-sm-12">
-                        <span class="delete">
-                            <i class="fa fa-times-circle-o cust-del" data-dismiss="modal" aria-hidden="true"></i>
-                        </span>
-                    </div>
-                    <div class="col-md-2 col-sm-6">
-                        <div class="cust-img1">
-                            <img src="assets/images/pinapple.png" (click)="showProduxtDetails()" height="80px" width="80px">
-                        </div>
-                    </div>
-                    <div class="col-md-2 col-sm-6">
-                        <div class="cust-potatos">
-                            <p>Potatoes</p>
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <select class="cust-slct">
-                            <option selected>70Kgs - BD 2150</option>
-                            <option value="1">One</option>
-                            <option value="2">Two</option>
-                            <option value="3">Three</option>
-                        </select>
-                    </div>
-                    <div class="col-md-4 col-sm-6">
-                        <div class="cust-potatos">
-                            <h6>Price :
-                                <span style="color: #7eba00">BD 7.500</span>
-                            </h6>
-                        </div>
-                    </div>
-                </div>
-                <div class="row ">
+                </div> -->
+                <div class="row sub"  *ngIf="cartData.length>0">
                     <div class="col-md-4 col-sm-6">
                         <div class="cust-potatos">
                             <p>Sub Total</p>
@@ -274,12 +275,12 @@
                     <div class="col-md-4 col-sm-6">
                         <div class="cust-potatos">
                             <h6>
-                                <span style="color: #7eba00">BD 25.500</span>
+                                <span style="color: #7eba00">BD {{billing}}</span>
                             </h6>
                         </div>
                     </div>
                 </div>
-                <div class="row">
+                <div class="row del" *ngIf="cartData.length>0">
                     <div class="col-md-6 col-sm-6">
                         <div class="delivery">
                             <p> *Delivery will be added at checkout</p>
@@ -292,11 +293,11 @@
                     </div>
 
                 </div>
+                
             </div>
-            <!-- <div class="modal-footer">
-                        <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-                        <button type="button" class="btn btn-primary">Save changes</button>
-                    </div> -->
+             <!-- <div class="modal-footer">
+                
+                    </div>  -->
         </div>
     </div>
 </div>
@@ -306,7 +307,7 @@
 <!-- address modal -->
 <!-- Modal -->
 <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+    <div class="modal-dialog " role="document">
         <div class="modal-content cust-content">
             <div class="modal-header cust-mdlhdr">
 
@@ -348,7 +349,7 @@
 
 <!-- login modal -->
 <!-- Modal -->
-<div class="modal fade" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+<div class="modal fade"  [hidden]="IsmodelShow" id="loginmodal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
     <div class="modal-dialog" role="document">
         <div class="modal-content">
             <div class="modal-header cust-mdlhdr">
@@ -568,8 +569,8 @@
 <!-- ./forgot password modal -->
 
 <!-- Modal -->
-<div class="modal fade" id="itemdesc" tabindex="-1" role="dialog" aria-labelledby="itemdescLabel" aria-hidden="true">
-    <div class="modal-dialog" role="document">
+<div class="modal fade cat-model" id="itemdesc" tabindex="-1" role="dialog" aria-labelledby="itemdescLabel" aria-hidden="true">
+    <div class="modal-dialog category-popup" role="document">
         <div class="modal-content cust-subcarcont">
 
             <div class="modal-body">
@@ -577,15 +578,16 @@
                     <h5 class="text-center">Categories</h5>
                     <ul *ngFor="let cat of category">
                         <li>
-                            <i class="fa fa-caret-left" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
-                            <a (mouseenter)="showSubCat(cat.id)" (click)="showVegetables()">{{cat.category_name}}</a>
+                            <i class="fa fa-caret-left sub-cat" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
+                            <a (mouseenter)="showSubCat(cat.id)" (click)="showProbyCat(cat.id,'category')">{{cat.category_name}}</a>
                             <div class="subcatcat" *ngIf="showSubCats">
                                 <div class="subcatsCat row">
-                                    <div class="col-md-6">
-                                        <ul *ngFor="let sub of subcat">
+                                    <div class="col-md-12">
+                                        <ul *ngFor="let sub of subCatData">
                                             <!-- <h6>ladies finger</h6> -->
                                             <li>
-                                                <a>{{sub.sub_category_name}}</a>
+                                                <i class="fas fa-angle-left sub-cat"></i>
+                                                <a (click)="showProbySubCat(sub.id,'subCategory')">{{sub.sub_category_name}}</a>
                                             </li>
                                         </ul>
                                     </div>

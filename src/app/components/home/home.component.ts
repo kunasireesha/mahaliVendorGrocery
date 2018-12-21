@@ -66,8 +66,9 @@ export class HomeComponent implements OnInit {
         // this.productService.product = this.product;
         this.getWholeSellers();
         this.getProduct();
+        this.getBanners();
         // this.getGeoLocation(address)
-
+        this.getCart();
     }
     lat;
     long;
@@ -109,35 +110,63 @@ export class HomeComponent implements OnInit {
     }
 
 
-    showProduxtDetails() {
-        this.router.navigate(['/productdetails'], { queryParams: { order: 'popular' } });
+    showProduxtDetails(prodId) {
+        this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
     }
 
-    showStore() {
-        this.router.navigate(['/store'], { queryParams: { order: 'popular' } });
+    showStore(wholeId) {
+        this.router.navigate(['/store'], { queryParams: { wholeId: wholeId } });
     }
+    wholeData = [];
     getWholeSellers() {
         this.appService.getWholeSellers().subscribe(resp => {
+        this.wholeData = resp.json().data;
 
         })
     }
+    skuId;
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
             this.product = resp.json().products;
-            console.log(this.product);
         });
     }
-    addtoCart(Id) {
+    addtoCart(Id,skId) {
         var inData = {
-            "products": [Id],
+            "products": [{
+                product_id:Id,
+                sku_id:skId 
+            }],
             "vendor_id": JSON.parse(localStorage.getItem('userId'))
         }
         this.appService.addtoCart(inData).subscribe(res => {
-            console.log(res.json());
-            debugger;
+            this.cartDetails = res.json().selling_price_total;
+            this.cartCount = res.json().count;
+            this.getCart();
+            swal(res.json().message,"","success");
         }, err => {
 
         })
     }
+    mainData = [];
+    getBanners(){
+        this.appService.getBanners().subscribe(res=> {
+        this.mainData = res.json().result[0].banner_details;
+        console.log(this.mainData);
+        },err=> {
+
+        })
+    }
+    cartDetails;
+    cartCount;
+    getCart() {
+        var inData = localStorage.getItem('userId');
+        this.appService.getCart(inData).subscribe(res => {
+            this.cartDetails = res.json().cart_details;
+          this.cartCount = res.json().count;
+        }, err => {
+    
+        })
+      }
+
 
 }

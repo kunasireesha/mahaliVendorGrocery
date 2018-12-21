@@ -1,1 +1,11 @@
-
+body {
+    padding: 1em;
+  }
+  .panel-default > .panel-heading {
+      position: relative;
+  }
+  .panel-heading .fa {
+      position: absolute;
+      right: 10px;
+      top: 13px;
+  }
