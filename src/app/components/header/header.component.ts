@@ -202,6 +202,7 @@ export class HeaderComponent implements OnInit {
                 // this.myAccount = true
                 // this.showOpacity = false;
                 // this.onCloseCancel();
+                this.router.navigate(['/address']);
             }
             else if (resp.json().status === 400) {
                 swal(resp.json().message, "", "error");
