@@ -9,10 +9,12 @@ import { ActivatedRoute } from '@angular/router';
   styleUrls: ['./products.component.less']
 })
 export class ProductsComponent implements OnInit {
+  current;
   wholeId;
   product;
   serProd = false;
   wholeProd = false;
+  showSubCats = false;
   constructor(private router: Router, public productService: ProductService, private appService: appService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       if (params.action === "whole") {
@@ -32,11 +34,25 @@ export class ProductsComponent implements OnInit {
   }
 
   ngOnInit() {
+    this.getCategories();
   }
   showCategories = false;
 
-  collapse() {
+  collapse(catId) {
     this.showCategories = !this.showCategories;
+//     this.subCatData = [];
+//     for(var i=0;i<this.category.length;i++){
+// for(var j=0;j<this.category[i].subcategory.length;j++){
+//   if(catId ===this.category[i].subcategory[j].category_id ){
+//     this.subCatData.push(this.category[i].subcategory[j]);
+//           console.log(this.subCatData);
+//     this.showCategories = !this.showCategories;
+//     this.showSubCat(this.subId);
+//   }
+// }
+//     }
+
+   
 
   }
   showProduxtDetails() {
@@ -118,4 +134,43 @@ export class ProductsComponent implements OnInit {
 
     })
   }
+  category = [];
+  getCategories() {
+    this.appService.getCategories().subscribe(resp => {
+        this.category = resp.json().categories;
+        // this.showSubCat(this.subId);
+        for(var i=0;i<this.category.length;i++){
+          for(var j=0;j<this.category[i].subcategory.length;j++){
+            this.subCatData.push(this.category[i].subcategory[j]);
+            console.log(this.subCatData);
+          }
+        }
+    })
+  }
+  subCatData =[];
+  subId;
+  // showSubCat(Id) {
+  //   this.subId = Id;
+  //   this.subCatData=[];
+  //   this.showSubCats = true;
+  //   for(var i=0;i<this.category.length;i++){
+  //   for(var j=0;j<this.category[i].subcategory.length;j++){
+  //       if(Id===this.category[i].subcategory[j].category_id){
+  //         this.subCatData.push(this.category[i].subcategory[j]);
+  //         console.log(this.subCatData);
+          
+  //       }
+  //   }
+  // }
+  // }
+  selectedCat=false;
+  openSub(index){
+    this.selectedCat!== this.selectedCat;
+    this.current=index;
+  }
+//   toggle(current){
+//     this.current = current;
+//     alert(this.current);
+// this.current!== this.current;
+//   }
 }

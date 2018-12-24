@@ -26,6 +26,7 @@ export class FreshvegetablesComponent implements OnInit {
    showsub:boolean;
   //  showSubCategories:boolean;
    subcatData = [];
+   showSubCats=false;
   ngOnInit() {
     this.getCategories();
   }
@@ -50,16 +51,7 @@ export class FreshvegetablesComponent implements OnInit {
 
     })
   }
- 
-  showSubCat(Id) {
-    this.appService.getSubCat(Id).subscribe(resp => {
-        this.subcatData=resp.json().sub_category;
-        this.showsub = true;
-        console.log(this.subcatData);
-    }, error => {
-
-    })
-}
+  
   getSubProducts(){
     this.appService.productBySubCatId(this.subId).subscribe(res=> {
       this.prodData = res.json().products;
@@ -68,7 +60,6 @@ export class FreshvegetablesComponent implements OnInit {
         for(var j=0;j<this.prodData[i].sku_details.length;j++){
           this.skuData.push(this.prodData[i].sku_details[j]);
           console.log(this.skuData);
-          debugger;
         }
       }
       if(res.json().message==="No records Found"){
@@ -80,11 +71,6 @@ export class FreshvegetablesComponent implements OnInit {
   }
   category = [];
   skuData = [];
-  getCategories() {
-    this.appService.getCategories().subscribe(resp => {
-        this.category = resp.json().categories;
-    })
-}
 cartDetails;
 cartCount;
 showProduxtDetails(prodId) {
@@ -123,6 +109,34 @@ for(var i=0;i<this.skuData.length;i++){
     this.skuData[i].img = this.skuData[i].product_image;
     this.skuData[i].selling_price = this.skuData[i].selling_price;
     this.skuData[i].actual_price = this.skuData[i].actual_price;
+  }
+}
+}
+getCategories() {
+  this.appService.getCategories().subscribe(resp => {
+      this.category = resp.json().categories;
+      // this.showSubCat(this.subId);
+      for(var i=0;i<this.category.length;i++){
+        for(var j=0;j<this.category[i].subcategory.length;j++){
+          this.subCatData.push(this.category[i].subcategory[j]);
+          console.log(this.subCatData);
+        }
+      }
+  })
+}
+subCatData =[];
+
+showSubCat(Id) {
+  this.subId = Id;
+  this.subCatData=[];
+  this.showSubCats = true;
+  for(var i=0;i<this.category.length;i++){
+  for(var j=0;j<this.category[i].subcategory.length;j++){
+      if(Id===this.category[i].subcategory[j].category_id){
+        this.subCatData.push(this.category[i].subcategory[j]);
+        console.log(this.subCatData);
+        
+      }
   }
 }
 }
