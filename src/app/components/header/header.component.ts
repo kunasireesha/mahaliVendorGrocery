@@ -221,7 +221,7 @@ export class HeaderComponent implements OnInit {
         this.appService.login(this.loginForm.value).subscribe(resp => {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
-                // $("#loginmodal").modal("hide");
+                jQuery("#loginmodal").modal("hide");
                 this.IsmodelShow = true;
 
                 localStorage.setItem('token', (resp.json().token));
@@ -237,7 +237,7 @@ export class HeaderComponent implements OnInit {
                     this.loginDetails = response.json().data[0];
                     this.phone = true;
                     this.ngOnInit();
-                    window.location.reload();
+                    // window.location.reload();
                 })
             }
             else if (resp.json().status === 404 || resp.json().status === 400 || resp.json().status === 401) {
@@ -286,7 +286,7 @@ export class HeaderComponent implements OnInit {
         }
         this.appService.forgotPassword(inData).subscribe(resp => {
             if (resp.json().status === 200) {
-                $("#myModal").modal("hide");
+                jQuery("#forgotpass").modal("hide");
                 swal(resp.json().message, "", "success");
             } else {
                 swal(resp.json().message, "", "error");
