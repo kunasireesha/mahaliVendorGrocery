@@ -12,10 +12,10 @@ import { appService } from './../../services/mahaliServices/mahali.service';
 
 export class ProductdetailsComponent implements OnInit {
     product: ProductsData;
-    constructor(private route: ActivatedRoute, public productService: ProductService,private appService: appService) {
+    constructor(private route: ActivatedRoute, public productService: ProductService, private appService: appService) {
         this.route.queryParams.subscribe(params => {
             this.prodId = params.prodId;
-          });
+        });
     }
     item = {
         quantity: 1
@@ -24,11 +24,10 @@ export class ProductdetailsComponent implements OnInit {
     prodId;
     ngOnInit() {
         this.product = this.productService.product;
-        console.log(this.product);
         this.sub = this.route
             .data
             .subscribe(v => console.log(v));
-            this.getProductById();
+        this.getProductById();
 
     }
     itemIncrease() {
@@ -66,36 +65,34 @@ export class ProductdetailsComponent implements OnInit {
     skid;
     prodName;
     description;
-    getProductById(){
-        this.appService.getProductById(this.prodId).subscribe(res=> {
+    getProductById() {
+        this.appService.getProductById(this.prodId).subscribe(res => {
             this.prodsData = res.json().products;
-        this.prodData = res.json().products.sku_details;
+            this.prodData = res.json().products.sku_details;
             this.offer_price = this.prodData[0].offer_price;
             this.actual_price = this.prodData[0].actual_price;
             this.product_image = this.prodData[0].image;
             this.skid = this.prodData[0].skid;
             this.prodName = res.json().products.product_name;
             this.description = this.prodData[0].description;
-            console.log(this.prodName)
-        },err=> {
+        }, err => {
 
         })
     }
-    skuData= [];
+    skuData = [];
     offer_price = [];
     actual_price;
     product_image;
-    changeSize(skId){
-        console.log( this.prodData);
-        for(var i=0;i<this.prodData.length;i++){
-            if(parseInt(skId) ===this.prodData[i].skid){
-            this.offer_price = this.prodData[i].offer_price;
-            this.actual_price = this.prodData[i].actual_price;
-            this.product_image = this.prodData[i].image;
-            this.skid = this.prodData[i].skid;
-            this.description = this.prodData[i].description;
+    changeSize(skId) {
+        for (var i = 0; i < this.prodData.length; i++) {
+            if (parseInt(skId) === this.prodData[i].skid) {
+                this.offer_price = this.prodData[i].offer_price;
+                this.actual_price = this.prodData[i].actual_price;
+                this.product_image = this.prodData[i].image;
+                this.skid = this.prodData[i].skid;
+                this.description = this.prodData[i].description;
             }
-              } 
+        }
     }
     cartDetails;
     cartCount;
@@ -103,23 +100,22 @@ export class ProductdetailsComponent implements OnInit {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
-          this.cartCount = res.json().count;
+            this.cartCount = res.json().count;
         }, err => {
-    
+
         })
-      }
+    }
     addtoCart(id) {
         var inData = {
             "products": [{
-                product_id:id,
-                sku_id:this.skid 
+                product_id: id,
+                sku_id: this.skid
             }],
             "vendor_id": JSON.parse(localStorage.getItem('userId'))
         }
         this.appService.addtoCart(inData).subscribe(res => {
-            console.log(res.json());
             this.getCart();
-            swal(res.json().message,"","success");
+            swal(res.json().message, "", "success");
         }, err => {
 
         })

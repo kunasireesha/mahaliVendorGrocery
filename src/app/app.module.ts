@@ -79,7 +79,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MDBBootstrapModule.forRoot(),
-		Ng2CarouselamosModule,
+        Ng2CarouselamosModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
