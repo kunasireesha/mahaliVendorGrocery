@@ -6,7 +6,7 @@ import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
-var $: any;
+declare var jQuery: any;
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -195,7 +195,7 @@ export class HeaderComponent implements OnInit {
             // this.users = resp.json();
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
-                // $("#signupmodal").modal("hide");
+                jQuery("#signupmodal").modal("hide");
                 // this.showRegistration = false;
                 localStorage.setItem('userId', (resp.json().id));
                 // this.myAccount = true
@@ -284,7 +284,7 @@ export class HeaderComponent implements OnInit {
         }
         this.appService.forgotPassword(inData).subscribe(resp => {
             if (resp.json().status === 200) {
-                $("#myModal").modal("hide");
+                // $("#myModal").modal("hide");
                 swal(resp.json().message, "", "success");
             } else {
                 swal(resp.json().message, "", "error");
@@ -323,6 +323,7 @@ export class HeaderComponent implements OnInit {
     cartDetails = [];
     cartData = [];
     billing;
+
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {

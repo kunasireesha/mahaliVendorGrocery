@@ -6,28 +6,23 @@
       <div class="col-lg-3 col-md-4 col-sm-12 col-12">
         <h5>Category</h5>
         <br />
-       <div class="row">
-         <div class="col-md-12">
-            <div class="panel-group" id="accordion" role="tablist" aria-multiselectable="true">
-                <div class="panel panel-default">
-                  <div class="panel-heading" role="tab" id="headingOne" *ngFor="let item of category">
-                    <h4 class="panel-title">
-                      <a role="button" data-toggle="collapse" data-parent="#accordion" href="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
-                        {{item.category_name}}
-                      </a>
-                    </h4>
-                    <i class="fa fa-plus"></i>
-                    <i class="fa fa-minus" style="display: none"></i>
-                  </div>
-                  <div id="collapseOne" class="panel-collapse collapse" role="tabpanel" aria-labelledby="headingOne">
-                    <div class="panel-body" *ngFor="let data of subcatData">
-                   {{data.subcategory_name}}
-                    </div>
-                  </div>
+        <div class="categories">
+            <div id="panel-group">
+              <div class="panel panel-default" *ngFor="let item of category; let i = index">
+                <div class="panel-heading" (click) = "current = i;item.id">
+                <p class="panel-title">
+                    <i class="fa fa-plus" aria-hidden="true" *ngIf="i != current"></i>
+                    <i class="fa fa-minus" aria-hidden="true" *ngIf="i == current"></i>
+                   {{item.category_name}}
+                </p>
+                   <hr>
+                </div>
+                 <div id="collapse1" class="panel-collapse"  [class.collapse]='current != i' *ngFor="let subCat of subCatData">
+                <div class="panel-body subcat" *ngIf="item.id===subCat.category_id"><p class="subCat">{{subCat.sub_category_name}}</p> </div>
                 </div>
               </div>
-         </div>
-       </div>
+              </div> 
+          </div>
   
         <h5>Country</h5>
         <div class="sort">
