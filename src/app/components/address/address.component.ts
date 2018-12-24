@@ -12,7 +12,25 @@ export class AddressComponent implements OnInit {
     bussinessForm: FormGroup;
     StationaryForm: FormGroup;
     bankForm: FormGroup;
+    bussiness_first_name_errors = false;
+    bussiness_last_name_errors = false;
+    mobile_number_errors = false;
+    bussiness_email_errors = false;
+    bussiness_name_errors = false;
+    business_address_errors = false;
+    business_country_errors = false;
+    business_area_errors = false;
+    business_city_errors = false;
     submitted = false;
+    vat_number_errors = false;
+    cr_number_errors = false;
+    account_holder_name_errors = false;
+    account_number_errors = false;
+    bank_name_errors = false;
+    ifsc_code_errors = false;
+    bank_area_errors = false;
+    bank_city_errors = false;
+    bank_branch_errors = false;
     constructor(public appService: appService, private router: Router, private formBuilder: FormBuilder) { }
     //     "first_name":"JyothiN",
     //     "last_name":"sri ",
@@ -41,29 +59,29 @@ export class AddressComponent implements OnInit {
 
     ngOnInit() {
         this.bussinessForm = this.formBuilder.group({
-            bussiness_first_name: ['', Validators.required],
-            bussiness_last_name: ['', Validators.required],
-            mobile_number: ['', Validators.required],
-            bussiness_email: ['', [Validators.required, Validators.email]],
-            bussiness_name: ['', Validators.required],
-            business_address: ['', Validators.required],
-            business_country: ['', Validators.required],
-            business_area: ['', Validators.required],
-            business_city: ['', Validators.required]
+            bussiness_first_name: [''],
+            bussiness_last_name: [''],
+            mobile_number: [''],
+            bussiness_email: [''],
+            bussiness_name: [''],
+            business_address: [''],
+            business_country: [''],
+            business_area: [''],
+            business_city: ['']
         });
         this.StationaryForm = this.formBuilder.group({
-            vat_number: ['', Validators.required],
-            cr_number: ['', Validators.required]
+            vat_number: [''],
+            cr_number: ['']
         });
         this.bankForm = this.formBuilder.group({
-            account_holder_name: ['', Validators.required],
-            account_number: ['', Validators.required],
-            // re_account_number: ['', Validators.required],
-            bank_name: ['', Validators.required],
-            ifsc_code: ['', Validators.required],
-            bank_area: ['', Validators.required],
-            bank_city: ['', Validators.required],
-            bank_branch: ['', Validators.required],
+            account_holder_name: [''],
+            account_number: [''],
+            // re_account_number: [''],
+            bank_name: [''],
+            ifsc_code: [''],
+            bank_area: [''],
+            bank_city: [''],
+            bank_branch: [''],
         });
 
     }
@@ -72,12 +90,77 @@ export class AddressComponent implements OnInit {
     get f() { return this.bussinessForm.controls; }
 
     businessDetails() {
-        this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.bussinessForm.invalid) {
+        if (this.bussinessForm.value.bussiness_first_name === '') {
+            this.bussiness_first_name_errors = true;
+            return;
+        } else if (this.bussinessForm.value.bussiness_last_name === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = true;
             return;
         }
+        else if (this.bussinessForm.value.mobile_number === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = true;
+            return;
+        } else if (this.bussinessForm.value.bussiness_email === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = true;
+            return;
+        } else if (this.bussinessForm.value.bussiness_name === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = true;
+            return;
+        } else if (this.bussinessForm.value.business_address === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = true;
+            return;
+        } else if (this.bussinessForm.value.business_country === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_country_errors = true;
+            return;
+        } else if (this.bussinessForm.value.business_area === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_country_errors = false;
+            this.business_area_errors = true;
+            return;
+        } else if (this.bussinessForm.value.business_city === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_country_errors = false;
+            this.business_area_errors = false;
+            this.business_city_errors = true;
+            return;
+        }
+
+        // stop here if form is invalid
+        // if (this.bussinessForm.invalid) {
+        //     return;
+        // }
         this.appService.businessDetails(this.bussinessForm.value).subscribe(res => {
             swal(res.json().message, "", "success");
             this.showStationary();
@@ -91,12 +174,20 @@ export class AddressComponent implements OnInit {
     get f1() { return this.StationaryForm.controls; }
 
     tax() {
-        this.submitted = true;
-
-        // stop here if form is invalid
-        if (this.StationaryForm.invalid) {
+        if (this.StationaryForm.value.vat_number === '') {
+            this.vat_number_errors = true;
+            return;
+        } else if (this.StationaryForm.value.cr_number === '') {
+            this.vat_number_errors = false;
+            this.cr_number_errors = true;
             return;
         }
+
+
+        // stop here if form is invalid
+        // if (this.StationaryForm.invalid) {
+        //     return;
+        // }
         this.appService.taxDetails(this.StationaryForm.value).subscribe(res => {
             swal(res.json().message, "", "success");
             this.showBank();
@@ -110,19 +201,65 @@ export class AddressComponent implements OnInit {
     get f2() { return this.bankForm.controls; }
 
     bankDeatails() {
-        this.submitted = true;
 
-        // stop here if form is invalid
-        if (this.bankForm.invalid) {
+        if (this.bankForm.value.account_holder_name === '') {
+            this.account_holder_name_errors = true;
             return;
         }
-        // if (this.bankData.account_number == this.bankData.retype_acc) {
-            this.appService.bankDetails(this.bankForm.value).subscribe(res => {
-                swal(res.json().message, "", "success");
-                this.router.navigate(['/']);
-            }, err => {
+        else if (this.bankForm.value.account_number === '') {
+            this.account_holder_name_errors = false;
+            this.account_number_errors = true;
+            return;
+            return;
+        } else if (this.bankForm.value.bank_name === '') {
+            this.account_holder_name_errors = false;
+            this.account_number_errors = false;
+            this.bank_name_errors = true;
+            return;
+        } else if (this.bankForm.value.ifsc_code === '') {
+            this.account_holder_name_errors = false;
+            this.account_number_errors = false;
+            this.bank_name_errors = false;
+            this.ifsc_code_errors = true;
+            return;
+        } else if (this.bankForm.value.bank_area === '') {
+            this.account_holder_name_errors = false;
+            this.account_number_errors = false;
+            this.bank_name_errors = false;
+            this.ifsc_code_errors = false;
+            this.bank_area_errors = true;
+            return;
+        } else if (this.bankForm.value.bank_city === '') {
+            this.account_holder_name_errors = false;
+            this.account_number_errors = false;
+            this.bank_name_errors = false;
+            this.ifsc_code_errors = false;
+            this.bank_area_errors = false;
+            this.bank_city_errors = true;
+            return;
+        } else if (this.bankForm.value.bank_branch === '') {
+            this.account_holder_name_errors = false;
+            this.account_number_errors = false;
+            this.bank_name_errors = false;
+            this.ifsc_code_errors = false;
+            this.bank_area_errors = false;
+            this.bank_city_errors = false;
+            this.bank_branch_errors = true;
+            return;
+        }
 
-            })
+
+        // stop here if form is invalid
+        // if (this.bankForm.invalid) {
+        //     return;
+        // }
+        // if (this.bankData.account_number == this.bankData.retype_acc) {
+        this.appService.bankDetails(this.bankForm.value).subscribe(res => {
+            swal(res.json().message, "", "success");
+            this.router.navigate(['/']);
+        }, err => {
+
+        })
         // }
         //  else {
         //     swal("Account number missmatch", "", "error");

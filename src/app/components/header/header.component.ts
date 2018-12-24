@@ -86,7 +86,6 @@ export class HeaderComponent implements OnInit {
         //      let rsltAdrComponent = result.address_components;
         //      let resultLength = rsltAdrComponent.length;
         //      if (result != null) {
-        //      console.log(rsltAdrComponent[resultLength-5].short_name)
         //      } else {
         //      window.alert('Geocoder failed due to: ' + status);
         //      }
@@ -95,7 +94,7 @@ export class HeaderComponent implements OnInit {
         //      });     
         //    };
 
-        console.log(this.location);
+
         if (navigator.geolocation) {
             navigator.geolocation.getCurrentPosition(position => {
                 this.location = position.coords;
@@ -253,22 +252,21 @@ export class HeaderComponent implements OnInit {
             // this.showSubCat(this.subId);
         })
     }
-    subCatData =[];
+    subCatData = [];
     subId;
     showSubCat(Id) {
         this.subId = Id;
-        this.subCatData=[];
+        this.subCatData = [];
         this.showSubCats = true;
-        for(var i=0;i<this.category.length;i++){
-        for(var j=0;j<this.category[i].subcategory.length;j++){
-            if(Id===this.category[i].subcategory[j].category_id){
-              this.subCatData.push(this.category[i].subcategory[j]);
-              console.log(this.subCatData);
-              
+        for (var i = 0; i < this.category.length; i++) {
+            for (var j = 0; j < this.category[i].subcategory.length; j++) {
+                if (Id === this.category[i].subcategory[j].category_id) {
+                    this.subCatData.push(this.category[i].subcategory[j]);
+
+                }
             }
         }
     }
-}
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
             this.product = resp.json().products;
@@ -313,7 +311,6 @@ export class HeaderComponent implements OnInit {
     //          let rsltAdrComponent = result.address_components;
     //          let resultLength = rsltAdrComponent.length;
     //          if (result != null) {
-    //          console.log(rsltAdrComponent[resultLength-5].short_name)
     //          } else {
     //          window.alert('Geocoder failed due to: ' + status);
     //          }
@@ -346,7 +343,6 @@ export class HeaderComponent implements OnInit {
     delCart(cartId) {
         var inData = cartId;
         this.appService.delCart(inData).subscribe(res => {
-            console.log(res.json());
             swal(res.json().message, "", "success");
             this.getCart();
         }, err => {
@@ -355,7 +351,6 @@ export class HeaderComponent implements OnInit {
     }
     search(product, action) {
         // this.appService.searchProducts(product).subscribe(res=> {
-        //     console.log(res.json());
         this.router.navigate(['/products'], { queryParams: { product: product, action: action } });
         // },err=> {
 

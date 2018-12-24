@@ -85,7 +85,6 @@ export class HomeComponent implements OnInit {
     //                 let rsltAdrComponent = result.address_components;
     //                 let resultLength = rsltAdrComponent.length;
     //                 if (result != null) {
-    //                     console.log(rsltAdrComponent[resultLength - 5].short_name)
     //                 } else {
     //                     window.alert('Geocoder failed due to: ' + status);
     //                 }
@@ -156,7 +155,6 @@ export class HomeComponent implements OnInit {
     getBanners() {
         this.appService.getBanners().subscribe(res => {
             this.mainData = res.json().result[0].banner_details;
-            console.log(this.mainData);
         }, err => {
 
         })

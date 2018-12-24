@@ -55,9 +55,9 @@ export class ProductsComponent implements OnInit {
           this.products[i].product_image = this.products[i].sku_details[0].product_image;
           this.skuid = this.products[i].sku_details[0].skid;
 
-          // console.log(this.offer_price);
+
           // this.skuArr.push(this.skuData);
-          // console.log(this.skuArr);
+
           // }
         }
       }
@@ -83,9 +83,7 @@ export class ProductsComponent implements OnInit {
           this.products[i].selling_price = this.products[i].sku_details[k].selling_price;
           this.products[i].product_image = this.products[i].sku_details[k].product_image;
           this.skuid = this.products[i].sku_details[k].skid;
-          // console.log(this.offer_price);
           // this.skuArr.push(this.skuData);
-          // console.log(this.skuArr);
         }
       }
     }
@@ -113,7 +111,6 @@ export class ProductsComponent implements OnInit {
   search(product) {
     this.appService.searchProducts(product).subscribe(res => {
       this.serProducts = res.json().data;
-      console.log(this.serProducts);
     }, err => {
 
     })

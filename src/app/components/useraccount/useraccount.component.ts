@@ -103,7 +103,6 @@ export class UseraccountComponent implements OnInit {
         if (this.productForm.invalid) {
             return;
         }
-        console.log(this.productForm.value);
         this.appService.update(this.productForm.value).subscribe(resp => {
             swal("Your order under process for Approvel", "", "success");
 
@@ -492,7 +491,6 @@ export class UseraccountComponent implements OnInit {
 
         }
         this.appService.updateProfile(inDate).subscribe(response => {
-            console.log(response.json());
             swal(response.json().message, "", "success");
             this.ngOnInit();
             this.getProfile();
@@ -553,7 +551,6 @@ export class UseraccountComponent implements OnInit {
     selectAdd() {
         this.appService.setDelAdd(this.addId).subscribe(res => {
             swal(res.json().message, "", "success");
-            console.log(res.json());
         })
 
     }
