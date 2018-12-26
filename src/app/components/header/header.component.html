@@ -579,7 +579,7 @@
                     <ul *ngFor="let cat of category">
                         <li>
                             <i class="fa fa-caret-left sub-cat" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
-                            <a (mouseenter)="showSubCat(cat.id)" (click)="showProbyCat(cat.id,'category')">{{cat.category_name}}</a>
+                            <a (mouseenter)="showSubCat(cat.id)" (click)="showProbyCat(cat.id,'category',cat.category_name)">{{cat.category_name}}</a>
                             <div class="subcatcat" *ngIf="showSubCats">
                                 <div class="subcatsCat row">
                                     <div class="col-md-12">
@@ -587,7 +587,7 @@
                                             <!-- <h6>ladies finger</h6> -->
                                             <li>
                                                 <i class="fas fa-angle-left sub-cat"></i>
-                                                <a (click)="showProbySubCat(sub.id,'subCategory')">{{sub.sub_category_name}}</a>
+                                                <a (click)="showProbySubCat(sub.id,'subCategory',cat.category_name,sub.cat_name)">{{sub.sub_category_name}}</a>
                                             </li>
                                         </ul>
                                     </div>

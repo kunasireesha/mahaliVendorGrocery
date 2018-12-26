@@ -7,14 +7,18 @@ import { ActivatedRoute, NavigationExtras, Router, Params } from '@angular/route
   styleUrls: ['./freshvegetables.component.css']
 })
 export class FreshvegetablesComponent implements OnInit {
-
+  catName;
+  sunCatName;
   constructor(private route: ActivatedRoute, public router: Router, public appService: appService) {
     this.route.queryParams.subscribe(params => {
       if (params.action === 'category') {
         this.catId = params.catId;
+        this.catName = params.catName;
         this.getCatProducts();
       } else if (params.action === 'subCategory') {
         this.subId = params.subId;
+        this.catName = params.catName;
+        this.sunCatName =params.subCat || "";
         this.getSubProducts();
       }
     })

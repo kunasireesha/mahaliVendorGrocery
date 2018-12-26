@@ -5,21 +5,22 @@
 			<br />
 			<div class="categories">
 				<div id="panel-group">
-					<div class="panel panel-default" *ngFor="let item of category; let i = index">
-					  <div class="panel-heading" (click) = "current = i;item.id">
-						<p class="panel-title" (click)="toggle(i)">
-								<i class="fa fa-plus" aria-hidden="true" *ngIf="i != current"></i>
-								<i class="fa fa-minus" aria-hidden="true" *ngIf="i == current"></i>
-						   {{item.category_name}}
-						</p>
-						   <hr>
-					  </div>
-					   <div id="collapse1" class="panel-collapse"  [class.collapse]='current != i' *ngFor="let subCat of subCatData">
-						<div class="panel-body subcat" *ngIf="item.id===subCat.category_id"><p class="subCat">{{subCat.sub_category_name}}</p> </div>
-					  </div>
+				  <div class="panel panel-default" *ngFor="let item of category; let i = index">
+					<div class="panel-heading" (click) = "current = i;item.id">
+					<p class="panel-title">
+						<i class="fa fa-plus" aria-hidden="true" *ngIf="i != current"></i>
+						<i class="fa fa-minus" aria-hidden="true" *ngIf="i == current"></i>
+					   {{item.category_name}}
+					</p>
+					   <hr>
 					</div>
+					 <div id="collapse1" class="panel-collapse"  [class.collapse]='current != i' *ngFor="let subCat of subCatData">
+					<div class="panel-body subcat" *ngIf="item.id===subCat.category_id"><p class="subCat">{{subCat.sub_category_name}}</p> </div>
+					</div>
+				  </div>
 				  </div> 
-			</div>
+			  </div>
+	  
 			<h5>Sort</h5>
 			<div class="sort">
 				<select>
@@ -104,7 +105,7 @@
 			<div class="row" *ngIf="wholeProd">
 				<div class="col-lg-3 item" *ngFor="let item of products">
 					<div class="card">
-						<div class="product-image" (click)="showProduxtDetails()">
+						<div class="product-image" (click)="showProduxtDetails(item.product_id)">
 							<img class="img-fluid" [src]="item.product_image" alt="Card image cap">
 						</div>
 						<div class="card-block add-to-cart">

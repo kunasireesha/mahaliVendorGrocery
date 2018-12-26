@@ -1,6 +1,6 @@
 <div class="container products">
     <div class="fresh-veg">
-      <h4>Fresh Vegetables</h4>
+      <h4>{{catName}}</h4>
     </div>
     <div class="row">
       <div class="col-lg-3 col-md-4 col-sm-12 col-12">
@@ -85,9 +85,9 @@
       </div>
       <div class="col-lg-9 col-sm-12 col-md-8 col-12 items">
         <p>
-          <!-- <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp; -->
-          <a>Fruits & Vegetables</a>&nbsp;&nbsp;>&nbsp;
-          <a>Fresh Vegetables</a>
+          <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+          <a>{{catName}}</a>&nbsp;&nbsp;>&nbsp;
+          <a>{{sunCatName}}</a>
         </p>
         <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6 col-12 item" *ngFor="let data of skuData | slice:0:10;let i=index">
