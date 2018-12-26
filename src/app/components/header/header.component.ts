@@ -106,8 +106,8 @@ export class HeaderComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             mobile_number: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(6)]],
-            business_latitude: 16.398956,
-            business_longitude: 78.637009
+            bussiness_latitude: 16.398956,
+            bussiness_longitude: 78.637009
         });
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],

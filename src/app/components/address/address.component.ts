@@ -210,7 +210,6 @@ export class AddressComponent implements OnInit {
             this.account_holder_name_errors = false;
             this.account_number_errors = true;
             return;
-            return;
         } else if (this.bankForm.value.bank_name === '') {
             this.account_holder_name_errors = false;
             this.account_number_errors = false;
