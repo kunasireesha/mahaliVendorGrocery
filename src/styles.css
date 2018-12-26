@@ -193,7 +193,8 @@ h4 a {
   width: 1045px !important;
   position: relative;
 }
-.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:active{
-background-color: #7fba00 !important;
-color:white !important;
+
+.steps-form-2 .steps-row-2 .steps-step-2 .btn-circle-2:active {
+  background-color: #7fba00 !important;
+  color: white !important;
 }

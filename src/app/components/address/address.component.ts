@@ -268,10 +268,10 @@ export class AddressComponent implements OnInit {
 
 
 
-    showBusinessDetails :boolean =  true;
-    showStationaryData :boolean= false;
-    showBankDetails:boolean =  false;
-    showAdd:boolean= false;
+    showBusinessDetails: boolean = true;
+    showStationaryData: boolean = false;
+    showBankDetails: boolean = false;
+    showAdd: boolean = false;
 
     showBusiness() {
         this.showBusinessDetails = true;

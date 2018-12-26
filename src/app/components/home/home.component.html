@@ -43,14 +43,10 @@
     </div>
 
     <!-- Nearest Shops -->
-    <div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
+    <!-- <div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
       <br />
-      <!--Slides 1-->
       <div class="carousel-inner" role="listbox">
-
-        <!--First slide-->
         <div class="carousel-item" *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i == 0}">
-
           <div class="col-md-6">
             <div class="card" (click)="showStore(item.id)">
               <div class="row">
@@ -58,16 +54,13 @@
                   <img class="img-fluid" [src]="item.image_one" alt="Card image cap">
                 </div>
                 <div class="card-block col-md-6 recmded">
-                  <!-- <h5 class="">Spar
-										  </h5> -->
+
                   <h4>{{item.bussiness_name}}</h4>
                   <p>
                     <i class="fas fa-map-marker-alt"></i>
                     &nbsp; {{item.business_area}}, {{item.business_city}}
                     {{item.business_country}}
                   </p>
-
-
                   <i class="fa fa-clock-o" aria-hidden="true"></i>
                   &nbsp;
                   <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
@@ -77,13 +70,49 @@
           </div>
         </div>
       </div>
+    </div> -->
+
+
+    <div class="container prod-carousel">
+      <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
+        <div class="carousel-inner row w-100 mx-auto" role="listbox">
+          <div class="carousel-item col-md-6 col-lg-6" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
+
+            <div class="row">
+              <div class="col-lg-6">
+                <img class="img-fluid" [src]="item.image_one" alt="Card image cap"> </div>
+              <div class="col-lg-6 col-md-6">
+                <h4>{{item.bussiness_name}}</h4>
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  &nbsp; {{item.business_area}}, {{item.business_city}}
+                  {{item.business_country}}
+                </p>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                &nbsp;
+                <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
+              </div>
+            </div>
+          </div>
+
+          <!--                 
+            <div class="panel panel-default">
+              <div class="panel-thumbnail">
+                <a href="#" title="image 1" class="thumb">
+                  <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=1" alt="slide 1">
+                </a>
+              </div>
+            </div> -->
+          <!-- </div> -->
+        </div>
+      </div>
     </div>
 
     <div class="controls-top">
-      <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
+      <a class="btn-floating btn-small slider-btn-left" href="#carouselExample" data-slide="prev">
         <i class="fas fa-long-arrow-alt-left"></i>
       </a>
-      <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
+      <a class="btn-floating btn-small slider-btn-right" href="#carouselExample" data-slide="next">
         <i class="fas fa-long-arrow-alt-right"></i>
       </a>
     </div>
