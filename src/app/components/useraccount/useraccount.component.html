@@ -68,7 +68,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputname1" name="first_name"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputname1" name="first_name"
                             [(ngModel)]="profileData.first_name">
                     </div>
                 </div>
@@ -86,7 +86,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500"
+                        <input myNumberOnly type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500"
                             [(ngModel)]="profileData.mobile_number" name="mobile_number">
                     </div>
                 </div>
@@ -95,7 +95,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500">
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -107,17 +107,17 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputstate" class="col-sm-3 col-form-label">State
+                    <label for="inputstate" class="col-sm-3 col-form-label">Ares
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-3 pad-rt">
-                        <input type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka">
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka">
                     </div>
                     <label for="inputcity" class="col-sm-3 col-form-label city-ltpad">City
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-3 pad-lt">
-                        <input type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore">
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore">
                     </div>
                 </div>
                 <div class="form-group row">
@@ -125,7 +125,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
-                        <input type="text" class="form-control input-feild" id="inputpincode" placeholder="500038">
+                        <input myNumberOnly type="text" class="form-control input-feild" id="inputpincode" placeholder="500038">
                         <div class="row justify-content-center">
                             <div class="col-sm-5 col-lg-5">
                                 <button type="button" class="btn save-btn" (click)="updateProfile()">Save</button>
@@ -137,8 +137,6 @@
                         </div>
                     </div>
                 </div>
-
-
             </form>
         </div>
 
@@ -243,7 +241,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputname1" [(ngModel)]="accDet.account_holder_name"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputname1" [(ngModel)]="accDet.account_holder_name"
                             name="account_holder_name" placeholder="Vijay Kumar">
                     </div>
                 </div>
@@ -253,7 +251,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="email" class="form-control input-feild" id="inputEmail3" [(ngModel)]="accDet.account_number"
+                        <input myNumberOnly type="text" class="form-control input-feild" id="inputEmail3" [(ngModel)]="accDet.account_number"
                             name="account_number" placeholder="09876547995432">
                     </div>
                 </div>
@@ -263,7 +261,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputphoneno" [(ngModel)]="accDet.bank_name"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputphoneno" [(ngModel)]="accDet.bank_name"
                             name="bank_name" placeholder="Lorem Bank">
                     </div>
                 </div>
@@ -283,7 +281,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" class="form-control input-feild" id="inputstate" [(ngModel)]="accDet.bank_area"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputstate" [(ngModel)]="accDet.bank_area"
                             name="bank_area" placeholder="Lorem">
                     </div>
                 </div>
@@ -293,7 +291,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-4 col-md-4">
-                        <input type="text" class="form-control input-feild" id="inputcity" [(ngModel)]="accDet.bank_city"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputcity" [(ngModel)]="accDet.bank_city"
                             name="bank_city" placeholder="Lorem">
                     </div>
                 </div>
@@ -303,7 +301,7 @@
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
-                        <input type="text" class="form-control input-feild" id="inputpincode" [(ngModel)]="accDet.bank_branch"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputpincode" [(ngModel)]="accDet.bank_branch"
                             name="bank_branch" placeholder="Lorem">
                         <div class="row justify-content-center">
                             <div class="col-lg-6 col-md-6 col-sm-6">
@@ -633,7 +631,7 @@
                     </label>
                     <div class="col-sm-10">
                         
-                            <input type="text" class="form-control input-feild" id="inputname1" formControlName="full_name"
+                            <input alphabetsOnly type="text" class="form-control input-feild" id="inputname1" formControlName="full_name"
                                 [ngClass]="{ 'is-invalid': submitted && f1.full_name.errors }">
                             <div *ngIf="submitted && f1.full_name.errors" class="invalid-feedback">
                                 <div *ngIf="f1.full_name.errors.required">Full Name is required</div>
@@ -646,7 +644,7 @@
                     </label>
                     <div class="col-sm-10">
                        
-                            <input type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number"
+                            <input myNumberOnly type="text" class="form-control input-feild" id="inputNumber" formControlName="mobile_number"
                                 [ngClass]="{ 'is-invalid': submitted && f1.mobile_number.errors }">
                             <div *ngIf="submitted && f1.mobile_number.errors" class="invalid-feedback">
                                 <div *ngIf="f1.mobile_number.errors.required">Mobile Number is required</div>
@@ -686,7 +684,7 @@
                             <option selected>Choose City</option>
                             <option *ngFor="let city of Cities" [ngValue]="city">{{city}}</option>
                         </select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode" formControlName="city"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputpincode" formControlName="city"
                             [ngClass]="{ 'is-invalid': submitted && f1.city.errors }">
                         <div *ngIf="submitted && f1.city.errors" class="invalid-feedback">
                             <div *ngIf="f1.city.errors.required">City is required</div>
@@ -694,14 +692,14 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputstate" class="col-sm-2 col-form-label">State
+                    <label for="inputstate" class="col-sm-2 col-form-label">Area
                     </label>
                     <div class="col-sm-4">
                         <!-- <select id="inputState" class="form-control input-feild" [(ngModel)]="addData.state">
                             <option selected>Choose State</option>
                             <option *ngFor="let state of States" [ngValue]="state">{{state}}</option>
                         </select> -->
-                        <input type="text" class="form-control input-feild" id="inputpincode1" formControlName="state"
+                        <input alphabetsOnly type="text" class="form-control input-feild" id="inputpincode1" formControlName="state"
                             [ngClass]="{ 'is-invalid': submitted && f1.state.errors }">
                         <div *ngIf="submitted && f1.state.errors" class="invalid-feedback">
                             <div *ngIf="f1.state.errors.required">state is required</div>
@@ -711,7 +709,7 @@
                     </label>
                     <div class="col-sm-4">
                        
-                            <input type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code"
+                            <input myNumberOnly type="text" class="form-control input-feild" id="inputpincode2" formControlName="pin_code"
                                 [ngClass]="{ 'is-invalid': submitted && f1.pin_code.errors }">
                             <div *ngIf="submitted && f1.pin_code.errors" class="invalid-feedback">
                                 <div *ngIf="f1.pin_code.errors.required">Pin-Code is required</div>

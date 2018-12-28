@@ -42,6 +42,11 @@ import { FreshvegetablesComponent } from './components/freshvegetables/freshvege
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+// directive
+import { NumberOnlyDirective } from './directives/number';
+import { AlphabetsOnly, EmailOnly } from './directives/number';
+import { AlphaNumericOnly } from './directives/number';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -67,7 +72,11 @@ export function HttpLoaderFactory(http: HttpClient) {
         ContactComponent,
         StoreComponent,
         AddressComponent,
-        FreshvegetablesComponent
+        FreshvegetablesComponent,
+        NumberOnlyDirective,
+        AlphabetsOnly,
+        EmailOnly,
+        AlphaNumericOnly
 
     ],
     imports: [

@@ -440,7 +440,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+                                    <input alphabetsOnly type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
                                     <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.first_name.errors.required">First Name is required</div>
                                     </div>
@@ -451,7 +451,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
+                                    <input alphabetsOnly type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
                                     <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.last_name.errors.required">Last Name is required</div>
                                     </div>
@@ -474,7 +474,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="number" class="form-control" formControlName="mobile_number" class="form-control"
+                                    <input myNumberOnly type="text" class="form-control" formControlName="mobile_number" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                     <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                         <div *ngIf="f.mobile_number.errors.required">Mobile number is required</div>
