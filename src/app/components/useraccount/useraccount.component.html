@@ -43,6 +43,10 @@
                     <i class="fa fa-phone" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
                     <span>{{profileData?.mobile_number}}</span>
                 </p>
+                <p>
+                    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                    <span>{{profileData?.bussiness_name}}</span>
+                </p>
                 <span class="status-text">
                     <p>
                         <i class="fa fa-map-marker" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp; &nbsp;
@@ -53,7 +57,7 @@
             </div>
             <div class="row">
                 <div class="col align-self-center">
-                    <button type="button" class="btn edit-btn" (click)="editProfile()">Edit Profile</button>
+                    <button type="button" class="btn edit-btn cust-editpro" (click)="editProfile()">Edit Profile</button>
                 </div>
             </div>
         </div>
@@ -64,7 +68,7 @@
             <br />
             <form class="form-details">
                 <div class="form-group row">
-                    <label for="inputname1" class="col-sm-3 col-form-label">Name
+                    <label for="inputname1" class="col-sm-3 col-form-label">Name *
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
@@ -73,7 +77,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email ID
+                    <label for="inputEmail3" class="col-sm-3 col-form-label">Email ID *
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
@@ -82,7 +86,7 @@
                     </div>
                 </div>
                 <div class="form-group row">
-                    <label for="inputphoneno" class="col-sm-3 col-form-label">Phone No
+                    <label for="inputphoneno" class="col-sm-3 col-form-label">Phone No *
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-9">
@@ -327,9 +331,12 @@
             </p>
             <div class="row">
                 <div class="col-sm-6">
+                        <div class="cust-adprod">
+                            <h6>Fruits & Vegatables &nbsp;&nbsp;&nbsp;&nbsp; ></h6>
+                        </div>
                     <ul class="fruits-list" *ngFor="let item of category">
                         <li (click)="showAddProducts2(item.id)">
-                            <strong>{{item.category_name}} ></strong>
+                            <strong>{{item.category_name}} </strong>
                         </li>
                         <!-- <li>Foodgrains, Oil & Masala</li>
                         <li>Bakery cakes & Dairy</li>
@@ -342,9 +349,12 @@
                     </ul>
                 </div>
                 <div class="col-sm-6">
+                        <div class="cust-adprod">
+                                <h6>Fresh Vegatables &nbsp;&nbsp;&nbsp;&nbsp; ></h6>
+                            </div>
                     <ul class="fruits-list">
                         <li (click)="showAddProducts2()">
-                            <strong>Fress Vegetables ></strong>
+                            <strong>Fress Vegetables </strong>
                         </li>
                         <!-- <li>Foodgrains, Oil & Masala</li>
                         <li>Bakery cakes & Dairy</li>
@@ -382,16 +392,20 @@
                     <div class="carousel-item active">
 
                         <div class="row">
-                            <div class="col-lg-6">
-                                <h3 class="addprod-clr">Add Products</h3>
-                            </div>
-                            <div class="col-lg-6">
-                                <form class="form-inline form-rt">
-                                    <i class="fa fa-search item-search" aria-hidden="true"></i>
-                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
-                                        aria-label="Search">
-                                </form>
-                            </div>
+                                <div class="col-lg-12 col-md-12 col-sm-12">
+                                        <div class="row justify-content-between">
+                                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                                <h3 class="addprod-clr">Add Products</h3>
+                                            </div>
+                                            <div class="col-lg-4 col-md-5 col-sm-5">
+                                                <form class="form-inline form-rt">
+                                                    <i class="fa fa-search item-search" aria-hidden="true"></i>
+                                                    <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                                                    aria-label="Search">
+                                                </form>
+                                            </div>
+                                        </div>
+                                   </div>
                             <div class="table-responsive my-4">
                                 <table class="table cust-table">
                                     <thead class="thead-color">
@@ -570,13 +584,49 @@
                 </div>
                 <!--/.Controls-->
             </div>
-            <div class="search-notfound">
+            <!-- <div class="search-notfound">
                 <button type="submit" class="btn" data-toggle="modal" data-target="#notfound">Item not found</button>
+            </div> -->
+            <div class="search-notfound">
+                <button type="submit" class="btn" (click)="requestAdmin()">Item not found</button>
             </div>
         </div>
 
-        <!-- delivery address -->
+            <!-- Request Admin -->
+            <div class="col-lg-9" *ngIf="showRequestAdmin">
+                <div id="multi-item-example6" class="carousel slide" data-ride="carousel">
+                    <br />
+                    <div class="carousel-inner cust-inner" role="listbox">
+                        <div class="carousel-item active">
+                           <div class="col-lg-12 col-md-12 col-sm-12">
+                                <div class="row justify-content-between">
+                                    <div class="col-lg-4 col-md-5 col-sm-5">
+                                        <h3 class="addprod-clr">Add Products</h3>
+                                    </div>
+                                    <div class="col-lg-4 col-md-5 col-sm-5">
+                                        <form class="form-inline form-rt">
+                                            <i class="fa fa-search item-search" aria-hidden="true"></i>
+                                            <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search by item name"
+                                            aria-label="Search">
+                                        </form>
+                                    </div>
+                                </div>
+                                <div class="row justify-content-center">
+                                    <div class="cust-calflow">
+                                        <p>Cauliflower item is not found</p>
+                                        <button type="submit" class="btn request-admin cust-radm" data-dismiss="modal" data-toggle="modal"
+                                            data-target="#product-name">Request
+                                            Admin
+                                        </button>
+                                    </div>
+                                </div>
+                           </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
 
+        <!-- delivery address -->
         <div class="col-lg-9" *ngIf="showDeliveryAddress">
             <div class="row">
                 <div class="col-lg-4">
@@ -1645,18 +1695,28 @@
                         <tr>
                             <td style="font-size: 16px;">Order Status</td>
                             <td class="prod-price">
-                                <strong>Processing</strong>
+                                <div>
+                                    <select class="cust-slct">
+                                        <option>Processing</option>
+                                        <option>Pending</option>
+                                        <option>Delivered</option>
+                                    </select>
+                                </div>   
+                                <div class="download-slip">
+                                    <a href="">Download Delivery slip</a>
+                                </div>
+                                <div class="">
+                                    <button type="submit" class="btn cust-savechanges">Save Changes</button>
+                                </div>
                             </td>
                         </tr>
                     </tbody>
                 </table>
             </div>
         </div>
-
         <!-- ./manage order details -->
 
         <!-- notofications -->
-
         <div class="col-lg-9" *ngIf="showNotifications">
             <div class="row">
                 <div class="col-lg-6">
@@ -1783,26 +1843,6 @@
         </div>
     </div>
 
-    <!-- search not found -->
-    <div class="modal" id="notfound" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header c-modalheader">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="cust-close">&times;</span>
-                    </button>
-                </div>
-                <div class="modal-body">
-                    <p>Cauliflower item is not found</p>
-                    <button type="submit" class="btn request-admin" data-dismiss="modal" data-toggle="modal"
-                        data-target="#product-name">Request
-                        Admin
-                    </button>
-                </div>
-            </div>
-        </div>
-    </div>
-
     <!-- Product Name -->
     <div class="modal" id="product-name" tabindex="-1" role="dialog">
         <div class="modal-dialog" role="document">
@@ -1817,8 +1857,8 @@
                         <div class="form-group row">
                             <label for="quantity" class="col-sm-4 col-form-label">Product Name</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="quantity" placeholder="Enter your quantity">
-                                <button type="submit" class="btn request-admin" data-dismiss="modal">Request Admin</button>
+                                <input type="text" class="form-control" id="quantity" placeholder="">
+                                <button type="submit" class="btn request-admin popsbtn" data-dismiss="modal">SUBMIT</button>
                             </div>
                         </div>
                     </form>

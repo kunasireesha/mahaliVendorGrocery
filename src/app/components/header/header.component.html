@@ -54,7 +54,7 @@
                         {{userMobile}}
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="modal" data-target="#exampleModal">
+                <li class="nav-item cust-li2" data-toggle="modal" data-target="#exampleModal">
                     <a class="nav-link pr-2">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         {{"common.address"|translate}}
@@ -542,7 +542,7 @@
 
                                 <div class="col-sm-7 col-md-7">
                                     <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
-                                        <input type="number" formControlName="mob_number" class="form-control"
+                                        <input myNumberOnly type="text" formControlName="mob_number" class="form-control"
                                             [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
                                         <div *ngIf="forgotSubmitted && f1.mob_number.errors" class="invalid-feedback">
                                             <div *ngIf="f1.mob_number.errors.required">Mobile number is required</div>
