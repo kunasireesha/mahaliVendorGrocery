@@ -64,10 +64,10 @@ export class AddressComponent implements OnInit {
             mobile_number: [''],
             bussiness_email: [''],
             bussiness_name: [''],
-            business_address: [''],
-            business_country: [''],
-            business_area: [''],
-            business_city: ['']
+            bussiness_address: [''],
+            bussiness_country: [''],
+            bussiness_area: [''],
+            bussiness_city: ['']
         });
         this.StationaryForm = this.formBuilder.group({
             vat_number: [''],

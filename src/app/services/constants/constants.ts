@@ -24,7 +24,7 @@ export const AppSettings = {
     paymentType:baseUrl+"payment_options",
     palceOrder:baseUrl+"place_order",
     getPlaceOrd:baseUrl+"place_order/vendor_orders/vendor_id",
-    orderSummary:baseUrl+"place_order/order_summary",
+    orderSummary:baseUrl+"place_order/order_summary", 
     productByCatId:baseUrl+"products/category",
     productBySubCatId:baseUrl+"products/sub_category_id",
     businessDetails:baseUrl+"vendors/update_profile",

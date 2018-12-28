@@ -80,7 +80,7 @@
 
             <div class="row">
               <div class="col-lg-6">
-                <img class="img-fluid" [src]="item.image_one" alt="Card image cap"> </div>
+                <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)"> </div>
               <div class="col-lg-6 col-md-6">
                 <h4>{{item.bussiness_name}}</h4>
                 <p>
