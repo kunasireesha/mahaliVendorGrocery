@@ -91,7 +91,9 @@ a {
 }
 .arr-up{
   font-size: 30px;
-  color: #dfdfdf;
+  /* color: #dfdfdf; */
+  color: #696060;
+  
 }
 .cust-figcap{
   margin-top: -20px;

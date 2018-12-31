@@ -127,7 +127,7 @@ export class UseraccountComponent implements OnInit {
     showAccountDetails = false;
     editAccount = false;
     editDel = false;
-   
+    showRequestAdmin=false;
 
     profile() {
         this.showNotifications = false;
