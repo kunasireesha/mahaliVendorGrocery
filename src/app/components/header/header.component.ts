@@ -261,8 +261,8 @@ export class HeaderComponent implements OnInit {
         for (var i = 0; i < this.category.length; i++) {
             for (var j = 0; j < this.category[i].subcategory.length; j++) {
                 if (Id === this.category[i].subcategory[j].category_id) {
+                    this.category[i].subcategory[j].cat_name = this.category[i].category_name;
                     this.subCatData.push(this.category[i].subcategory[j]);
-
                 }
             }
         }
