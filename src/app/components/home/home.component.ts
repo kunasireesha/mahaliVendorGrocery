@@ -141,11 +141,11 @@ export class HomeComponent implements OnInit {
                 sku_id: skId
             }],
             "vendor_id": JSON.parse(localStorage.getItem('userId')),
-            "item_type":"grocery"
+            "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
             this.cartDetails = res.json().selling_price_total;
-            this.cartCount = res.json().count;
+            this.cartValue = res.json().count;
             this.getCart();
             swal(res.json().message, "", "success");
         }, err => {
@@ -161,12 +161,12 @@ export class HomeComponent implements OnInit {
         })
     }
     cartDetails;
-    cartCount;
+    cartValue;
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
-            this.cartCount = res.json().count;
+            this.cartValue = res.json().count;
         }, err => {
 
         })

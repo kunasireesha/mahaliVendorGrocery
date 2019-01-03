@@ -1,6 +1,6 @@
 import { appService } from './../../services/mahaliServices/mahali.service';
 import { UseraccountComponent } from './../useraccount/useraccount.component';
-import { Component, OnInit, ViewChild } from '@angular/core';
+import { Component, OnInit, ViewChild, Input } from '@angular/core';
 import { MatDialog, MatDialogConfig } from "@angular/material";
 import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
@@ -13,6 +13,7 @@ declare var jQuery: any;
     styleUrls: ['./header.component.less']
 })
 export class HeaderComponent implements OnInit {
+    @Input() cartCount: number;
     registerForm: FormGroup;
     loginForm: FormGroup;
     forgotForm: FormGroup;
@@ -168,13 +169,13 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showProbyCat(catId, action,catName) {
+    showProbyCat(catId, action, catName) {
         this.showSubCats = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action,catName:catName } });
+        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action, catName: catName } });
     }
-    showProbySubCat(SubCatId, action,catName,subCat) {
+    showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action,catName:catName,subCat:subCat } });
+        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
     }
     signOut() {
         localStorage.removeItem('token');
@@ -321,7 +322,7 @@ export class HeaderComponent implements OnInit {
     //          });     
     //        };
     // }
-    cartCount = [];
+
     cartDetails = [];
     cartData = [];
     billing;

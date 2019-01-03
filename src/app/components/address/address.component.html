@@ -1,3 +1,4 @@
+<app-header></app-header>
 <div class="container">
   <h2 class="text-center font-bold pt-4 pb-5 mb-5">
   </h2>
@@ -51,8 +52,8 @@
               <div class="form-group row">
                 <label for="fisrtname" class="col-sm-2 col-form-label">* First Name :</label>
                 <div class="col-sm-10">
-                  <input alphabetsOnly type="text" class="form-control" id="fisrtname" formControlName="bussiness_first_name" class="form-control"
-                    [ngClass]="{ 'is-invalid':  bussiness_first_name_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="fisrtname" formControlName="bussiness_first_name"
+                    class="form-control" [ngClass]="{ 'is-invalid':  bussiness_first_name_errors }">
                   <div *ngIf=" bussiness_first_name_errors" class="invalid-feedback">
                     <div *ngIf="bussiness_first_name_errors">First Name is required</div>
                   </div>
@@ -61,8 +62,8 @@
               <div class="form-group row">
                 <label for="lastname" class="col-sm-2 col-form-label"> * Last Name :</label>
                 <div class="col-sm-10">
-                  <input alphabetsOnly type="text" class="form-control" id="last_name" formControlName="bussiness_last_name" class="form-control"
-                    [ngClass]="{ 'is-invalid':  bussiness_last_name_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="last_name" formControlName="bussiness_last_name"
+                    class="form-control" [ngClass]="{ 'is-invalid':  bussiness_last_name_errors }">
                   <div *ngIf=" bussiness_last_name_errors" class="invalid-feedback">
                     <div *ngIf="bussiness_last_name_errors">Last Name is required</div>
                   </div>
@@ -71,8 +72,8 @@
               <div class="form-group row">
                 <label for="mobnumber" class="col-sm-2 col-form-label">* Mobile no :</label>
                 <div class="col-sm-10">
-                  <input myNumberOnly type="text" class="form-control" id="mobile_number" formControlName="mobile_number" class="form-control"
-                    [ngClass]="{ 'is-invalid':  mobile_number_errors }">
+                  <input myNumberOnly type="text" class="form-control" id="mobile_number" formControlName="mobile_number"
+                    class="form-control" [ngClass]="{ 'is-invalid':  mobile_number_errors }">
                   <div *ngIf=" mobile_number_errors" class="invalid-feedback">
                     <div *ngIf="mobile_number_errors">Mobile Number is required</div>
                   </div>
@@ -92,8 +93,8 @@
               <div class="form-group row">
                 <label for="businessname" class="col-sm-2 col-form-label">* Business Name :</label>
                 <div class="col-sm-10">
-                  <input alphabetsOnly type="text" class="form-control" id="bussiness_name" formControlName="bussiness_name" class="form-control"
-                    [ngClass]="{ 'is-invalid':  bussiness_name_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="bussiness_name" formControlName="bussiness_name"
+                    class="form-control" [ngClass]="{ 'is-invalid':  bussiness_name_errors }">
                   <div *ngIf="bussiness_name_errors" class="invalid-feedback">
                     <div *ngIf="bussiness_name_errors">Business Name is required</div>
                   </div>
@@ -123,16 +124,16 @@
               <div class="form-group row">
                 <label for="fisrtname" class="col-sm-2 col-form-label">* Area :</label>
                 <div class="col-sm-4">
-                  <input alphabetsOnly type="text" class="form-control" id="business_area" formControlName="bussiness_area" class="form-control"
-                    [ngClass]="{ 'is-invalid':  business_area_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="business_area" formControlName="bussiness_area"
+                    class="form-control" [ngClass]="{ 'is-invalid':  business_area_errors }">
                   <div *ngIf="business_area_errors" class="invalid-feedback">
                     <div *ngIf="business_area_errors">Area is required</div>
                   </div>
                 </div>
                 <label for="fisrtname" class="col-sm-2 col-form-label">* City :</label>
                 <div class="col-sm-4">
-                  <input alphabetsOnly type="text" class="form-control" id="business_city" formControlName="bussiness_city" class="form-control"
-                    [ngClass]="{ 'is-invalid':  business_city_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="business_city" formControlName="bussiness_city"
+                    class="form-control" [ngClass]="{ 'is-invalid':  business_city_errors }">
                   <div *ngIf="business_city_errors" class="invalid-feedback">
                     <div *ngIf="business_city_errors">City is required</div>
                   </div>
@@ -196,8 +197,8 @@
               <div class="form-group row">
                 <label for="holdername" class="col-sm-4 col-form-label">* Account Holder Name :</label>
                 <div class="col-sm-8">
-                  <input alphabetsOnly type="text" class="form-control" id="holdername" formControlName="account_holder_name" class="form-control"
-                    [ngClass]="{ 'is-invalid':  account_holder_name_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="holdername" formControlName="account_holder_name"
+                    class="form-control" [ngClass]="{ 'is-invalid':  account_holder_name_errors }">
                   <div *ngIf=" account_holder_name_errors" class="invalid-feedback">
                     <div *ngIf="account_holder_name_errors">Account Holder is required</div>
                   </div>
@@ -206,8 +207,8 @@
               <div class="form-group row">
                 <label for="accnumber" class="col-sm-4 col-form-label">* Account Number :</label>
                 <div class="col-sm-8">
-                  <input myNumberOnly type="text" class="form-control" id="accnumber" formControlName="account_number" class="form-control"
-                    [ngClass]="{ 'is-invalid': account_number_errors }">
+                  <input myNumberOnly type="text" class="form-control" id="accnumber" formControlName="account_number"
+                    class="form-control" [ngClass]="{ 'is-invalid': account_number_errors }">
                   <div *ngIf=" account_number_errors " class="invalid-feedback">
                     <div *ngIf="account_number_errors ">Account Number is required</div>
                   </div>
@@ -216,7 +217,8 @@
               <div class="form-group row">
                 <label for="accnumber1" class="col-sm-4 col-form-label">Re-Type Account Number :</label>
                 <div class="col-sm-8">
-                  <input myNumberOnly type="text" class="form-control" id="accnumber1" formControlName="re_account_number" class="form-control">
+                  <input myNumberOnly type="text" class="form-control" id="accnumber1" formControlName="re_account_number"
+                    class="form-control">
                   <!-- <div *ngIf=" f2.re_account_number.errors" class="invalid-feedback">
                                         <div *ngIf="f2.re_account_number.errors.required">Re-Type Account is required</div>
                                     </div> -->
@@ -245,16 +247,16 @@
               <div class="form-group row">
                 <label for="fisrtname" class="col-sm-4 col-form-label">* Area :</label>
                 <div class="col-sm-3">
-                  <input alphabetsOnly type="text" class="form-control" id="bank_area" formControlName="bank_area" class="form-control"
-                    [ngClass]="{ 'is-invalid':  bank_area_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="bank_area" formControlName="bank_area"
+                    class="form-control" [ngClass]="{ 'is-invalid':  bank_area_errors }">
                   <div *ngIf="bank_area_errors" class="invalid-feedback">
                     <div *ngIf="bank_area_errors">Area is required</div>
                   </div>
                 </div>
                 <label for="fisrtname" class="col-sm-2 col-form-label">* City :</label>
                 <div class="col-sm-3">
-                  <input alphabetsOnly type="text" class="form-control" id="bank_city" formControlName="bank_city" class="form-control"
-                    [ngClass]="{ 'is-invalid':  bank_city_errors }">
+                  <input alphabetsOnly type="text" class="form-control" id="bank_city" formControlName="bank_city"
+                    class="form-control" [ngClass]="{ 'is-invalid':  bank_city_errors }">
                   <div *ngIf="bank_city_errors" class="invalid-feedback">
                     <div *ngIf="bank_city_errors">City is required</div>
                   </div>
@@ -263,8 +265,8 @@
               <div class="form-group row">
                 <label for="branch" class="col-sm-4 col-form-label">* Branch :</label>
                 <div class="col-sm-8">
-                  <input alphabetsOnly type="textarea" class="form-control" id="branch" formControlName="bank_branch" class="form-control"
-                    [ngClass]="{ 'is-invalid':  bank_branch_errors }">
+                  <input alphabetsOnly type="textarea" class="form-control" id="branch" formControlName="bank_branch"
+                    class="form-control" [ngClass]="{ 'is-invalid':  bank_branch_errors }">
                   <div *ngIf="bank_branch_errors" class="invalid-feedback">
                     <div *ngIf="bank_branch_errors">Branch is required</div>
                   </div>
