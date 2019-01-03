@@ -184,6 +184,7 @@ export class HeaderComponent implements OnInit {
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
+        this.router.navigate(["/"]);
     }
     get f() { return this.registerForm.controls; }
     registration(form: FormGroup) {
