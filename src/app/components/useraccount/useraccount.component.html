@@ -100,7 +100,7 @@
             <span class="float-right">:</span>
           </label>
           <div class="col-sm-9">
-            <input alphabetsOnly type="text" class="form-control input-feild" id="inputphoneno" placeholder="8586854500">
+            <input alphabetsOnly type="text" class="form-control input-feild" id="inputphoneno" placeholder="my business">
           </div>
         </div>
         <div class="form-group row">
@@ -113,19 +113,18 @@
           </div>
         </div>
         <div class="form-group row">
-          <label for="inputstate" class="col-sm-3 col-form-label">Ares
+          <label for="inputstate" class="col-sm-3 col-form-label">Area
             <span class="float-right">:</span>
           </label>
           <div class="col-sm-3 pad-rt">
-            <input type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka" name="bussiness_city"
-              [(ngModel)]="profileData.bussiness_city">
+            <input type="text" class="form-control input-feild" id="inputstate" placeholder="Karnataka">
           </div>
           <label for="inputcity" class="col-sm-3 col-form-label city-ltpad">City
             <span class="float-right">:</span>
           </label>
           <div class="col-sm-3 pad-lt">
-            <input type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore" name="bussiness_country"
-              [(ngModel)]="profileData.bussiness_country">
+            <input type="text" class="form-control input-feild" id="inputcity" placeholder="Bangalore" name="bussiness_city"
+              [(ngModel)]="profileData.bussiness_city">
           </div>
         </div>
         <div class="form-group row">
@@ -669,7 +668,7 @@
         </div>
       </div>
       <div class="col-lg-12 align-self-center">
-        <button type="button" class="btn btn-submit" (click)="selectAdd()">Submit</button>
+        <button type="button" class="btn btn-submit" *ngIf="getAddData" (click)="selectAdd()">Submit</button>
       </div>
     </div>
 
@@ -1075,7 +1074,7 @@
                 <form class="form-inline form-rt">
                   <i class="fa fa-search item-search" aria-hidden="true"></i>
                   <input class="form-control mr-sm-2 placeholder-padding" type="search" placeholder="Search Id"
-                    aria-label="Search">
+                    aria-label="Search" [(ngModel)]="filter" name="filter">
                 </form>
               </div>
               <div class="table-responsive my-4">
@@ -1091,7 +1090,7 @@
                     </tr>
                   </thead>
                   <tbody class="cust-tbody">
-                    <tr class="cst-topad" *ngFor="let ord of orders;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
+                    <tr class="cst-topad" *ngFor="let ord of orders | filter:filter;let i =index" (click)="showBukedOrderDetails(ord.order_id)">
                       <th scope="row">{{i+1}}</th>
                       <td>
                         {{ord.order_id}}
@@ -1789,7 +1788,7 @@
                       <input type="text" class="form-control" id="price" formControlName="deal_price" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f2.deal_price.errors }">
                       <div *ngIf="submitted && f2.deal_price.errors" class="invalid-feedback">
-                        <div *ngIf="f2.deal_price.errors.required">Account Holder is
+                        <div *ngIf="f2.deal_price.errors.required">Price is
                           required</div>
                       </div>
 
@@ -1802,7 +1801,7 @@
                       <input type="text" class="form-control" id="quantity2" formControlName="quantity" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f2.quantity.errors }">
                       <div *ngIf="submitted && f2.quantity.errors" class="invalid-feedback">
-                        <div *ngIf="f2.quantity.errors.required">Account Holder is required</div>
+                        <div *ngIf="f2.quantity.errors.required">Quantity is required</div>
                       </div>
 
                     </div>
@@ -1814,7 +1813,7 @@
                       <input type="text" class="form-control" id="discount" formControlName="status" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f2.status.errors }">
                       <div *ngIf="submitted && f2.status.errors" class="invalid-feedback">
-                        <div *ngIf="f2.status.errors.required">Account Holder is required</div>
+                        <div *ngIf="f2.status.errors.required">Discount is required</div>
                       </div>
 
                     </div>
@@ -1826,7 +1825,7 @@
                       <input type="text" class="form-control" id="status" formControlName="discount" class="form-control"
                         [ngClass]="{ 'is-invalid': submitted && f2.discount.errors }">
                       <div *ngIf="submitted && f2.discount.errors" class="invalid-feedback">
-                        <div *ngIf="f2.discount.errors.required">Account Holder is required</div>
+                        <div *ngIf="f2.discount.errors.required">Status is required</div>
                       </div>
                       <button type="submit" class="btn add-button pop-save" (click)="save(reqProds.product_id)">SAVE</button>
 
@@ -1859,7 +1858,7 @@
             <div class="form-group row">
               <label for="quantity" class="col-sm-4 col-form-label">Product Name</label>
               <div class="col-sm-7">
-                <input type="text" class="form-control" id="quantity" placeholder="">
+                <input type="text" class="form-control" id="quantity" placeholder="Product name">
                 <button type="submit" class="btn request-admin popsbtn" data-dismiss="modal">SUBMIT</button>
               </div>
             </div>
