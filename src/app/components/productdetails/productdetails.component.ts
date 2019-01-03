@@ -111,7 +111,8 @@ export class ProductdetailsComponent implements OnInit {
                 product_id: id,
                 sku_id: this.skid
             }],
-            "vendor_id": JSON.parse(localStorage.getItem('userId'))
+            "vendor_id": JSON.parse(localStorage.getItem('userId')),
+            "item_type":"grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
             this.getCart();

@@ -106,8 +106,8 @@ export class HeaderComponent implements OnInit {
             email: ['', [Validators.required, Validators.email]],
             mobile_number: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(6)]],
-            business_latitude: 16.398956,
-            business_longitude: 78.637009
+            bussiness_latitude: 16.398956,
+            bussiness_longitude: 78.637009
         });
         this.loginForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -168,13 +168,13 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showProbyCat(catId, action) {
+    showProbyCat(catId, action,catName) {
         this.showSubCats = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action } });
+        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action,catName:catName } });
     }
-    showProbySubCat(SubCatId, action) {
+    showProbySubCat(SubCatId, action,catName,subCat) {
         this.showSubCats = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action } });
+        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action,catName:catName,subCat:subCat } });
     }
     signOut() {
         localStorage.removeItem('token');
@@ -266,6 +266,7 @@ export class HeaderComponent implements OnInit {
                 }
             }
         }
+        console.log(this.subCatData);
     }
     getProduct() {
         this.appService.getProduct().subscribe(resp => {

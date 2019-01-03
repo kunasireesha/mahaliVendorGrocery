@@ -42,6 +42,12 @@ import { FreshvegetablesComponent } from './components/freshvegetables/freshvege
 
 import { ReactiveFormsModule } from '@angular/forms';
 
+// directive
+import { NumberOnlyDirective } from './directives/number';
+import { AlphabetsOnly, EmailOnly } from './directives/number';
+import { AlphaNumericOnly } from './directives/number';
+import { StaticComponent } from './components/static/static.component';
+
 
 export function HttpLoaderFactory(http: HttpClient) {
     return new TranslateHttpLoader(http, 'assets/i18n/', '.json');
@@ -67,7 +73,12 @@ export function HttpLoaderFactory(http: HttpClient) {
         ContactComponent,
         StoreComponent,
         AddressComponent,
-        FreshvegetablesComponent
+        FreshvegetablesComponent,
+        NumberOnlyDirective,
+        AlphabetsOnly,
+        EmailOnly,
+        AlphaNumericOnly,
+        StaticComponent
 
     ],
     imports: [
@@ -119,6 +130,8 @@ export function HttpLoaderFactory(http: HttpClient) {
             { path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
             { path: 'addProduct', component: UseraccountComponent, data: [{ page: 'profiles' }] },
             { path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
+            { path: 'static', component: StaticComponent,data: [{ page: 'blog' }] },
+            { path: 'static', component: StaticComponent,data: [{ page: 'sellers' }] },
         ], { useHash: true })
     ],
     schemas: [NO_ERRORS_SCHEMA],

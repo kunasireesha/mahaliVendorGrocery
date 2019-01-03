@@ -54,7 +54,7 @@
                         {{userMobile}}
                     </a>
                 </li>
-                <li class="nav-item" data-toggle="modal" data-target="#exampleModal">
+                <li class="nav-item cust-li2" data-toggle="modal" data-target="#exampleModal">
                     <a class="nav-link pr-2">
                         <i class="fa fa-map-marker" aria-hidden="true"></i>
                         {{"common.address"|translate}}
@@ -144,7 +144,7 @@
                     <hr class="cust-hr" />
                     <a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myProduct">{{"common.myProducts"|translate}}</a>
                     <hr class="cust-hr" />
-                    <a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/address">{{"common.addProducts"|translate}}
+                    <a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/addProduct">{{"common.addProducts"|translate}}
                     </a>
                     <hr class="cust-hr" />
                     <a class="waves-light" data-dismiss="modal" mdbRippleRadius routerLink="/myorders">{{"common.vendorOrder"|translate}}
@@ -165,7 +165,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content cust-cnt">
             <div class="modal-body cart">
-<div class="cart-mod">
+                <div class="cart-mod">
                 <div class="row " *ngFor="let item of cartData">
                     <div class="col-md-12 col-sm-12">
                         <span class="delete">
@@ -440,7 +440,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
+                                    <input alphabetsOnly type="text" formControlName="first_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.first_name.errors }" />
                                     <div *ngIf="submitted && f.first_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.first_name.errors.required">First Name is required</div>
                                     </div>
@@ -451,7 +451,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
+                                    <input alphabetsOnly type="text" formControlName="last_name" class="form-control" [ngClass]="{ 'is-invalid': submitted && f.last_name.errors }" />
                                     <div *ngIf="submitted && f.last_name.errors" class="invalid-feedback">
                                         <div *ngIf="f.last_name.errors.required">Last Name is required</div>
                                     </div>
@@ -474,7 +474,7 @@
                                     <span class="float-right">:</span>
                                 </label>
                                 <div class="col-sm-7 col-md-7">
-                                    <input type="number" class="form-control" formControlName="mobile_number" class="form-control"
+                                    <input myNumberOnly type="text" class="form-control" formControlName="mobile_number" class="form-control"
                                         [ngClass]="{ 'is-invalid': submitted && f.mobile_number.errors }">
                                     <div *ngIf="submitted && f.mobile_number.errors" class="invalid-feedback">
                                         <div *ngIf="f.mobile_number.errors.required">Mobile number is required</div>
@@ -542,7 +542,7 @@
 
                                 <div class="col-sm-7 col-md-7">
                                     <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
-                                        <input type="number" formControlName="mob_number" class="form-control"
+                                        <input myNumberOnly type="text" formControlName="mob_number" class="form-control"
                                             [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
                                         <div *ngIf="forgotSubmitted && f1.mob_number.errors" class="invalid-feedback">
                                             <div *ngIf="f1.mob_number.errors.required">Mobile number is required</div>
@@ -579,7 +579,7 @@
                     <ul *ngFor="let cat of category">
                         <li>
                             <i class="fa fa-caret-left sub-cat" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
-                            <a (mouseenter)="showSubCat(cat.id)" (click)="showProbyCat(cat.id,'category')">{{cat.category_name}}</a>
+                            <a (mouseenter)="showSubCat(cat.id)" (click)="showProbyCat(cat.id,'category',cat.category_name)">{{cat.category_name}}</a>
                             <div class="subcatcat" *ngIf="showSubCats">
                                 <div class="subcatsCat row">
                                     <div class="col-md-12">
@@ -587,7 +587,7 @@
                                             <!-- <h6>ladies finger</h6> -->
                                             <li>
                                                 <i class="fas fa-angle-left sub-cat"></i>
-                                                <a (click)="showProbySubCat(sub.id,'subCategory')">{{sub.sub_category_name}}</a>
+                                                <a (click)="showProbySubCat(sub.id,'subCategory',cat.category_name,sub.cat_name)">{{sub.sub_category_name}}</a>
                                             </li>
                                         </ul>
                                     </div>

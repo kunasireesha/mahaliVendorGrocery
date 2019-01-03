@@ -1,4 +1,10 @@
 /* new styles */
+.btn-floating i{
+  line-height: 35px;
+}
+.cust-adprod h6{
+  font-weight: 600;
+}
 .password-submit{
   background-color:#7fba00;
 }
@@ -41,11 +47,22 @@ input[type="search"] {
 .cust-add{
   background-color: #7eba00;
     color: #fff;
-    padding: 3px 15px;
+    padding: 5px 18px;
     border-radius: 5px;
 }
 .last-tr{
   border-bottom: 1px solid #ccc;
+}
+.cust-calflow{
+  text-align: center;
+  margin-top: 30%;
+}
+.cust-calflow p{
+  font-size: 22px;
+  color: black;
+}
+.cust-radm {
+  width: 60% !important;
 }
 .form-rt{
   float: right;
@@ -92,6 +109,34 @@ input[type="search"] {
   background-color: #7eba00;
   width: 30%;
 }
+.popsbtn{
+  width: 100% !important;
+  margin-top: 15px;
+  margin-left: 0;
+}
+.cust-slct{
+  padding: 5px 30px;
+  border-radius: 5px;
+  cursor: pointer;
+}
+.download-slip{
+  margin-top: 15px;
+  float: right;
+}
+.download-slip a{
+  font-size: 15px;
+  color: #7fba00;
+  border-bottom: 1px solid #7fba00;
+}
+.cust-savechanges{
+    float: right;
+    background-color: #7eba00;
+    font-size: 16px;
+    width: 100% !important;
+    margin-top: 15px;
+    border-radius: 5px;
+}
+
 .cust-inner{
   height: auto;
 }
@@ -327,6 +372,7 @@ input[type="search"] {
   float: right;
   height: auto;
   width: auto;
+  font-weight: 600;
 }
 .btn-address:active {
   background-color: #7eba00 !important;
@@ -378,10 +424,13 @@ input[type="search"] {
 
 .btn-submit {
   background-color: #7eba00;
-  margin-left: 30%;
+  margin-left: 25%;
   margin-top: 5%;
   border-radius: 10px;
-  width: 35%;
+  width: 50%;
+  font-size: 20px;
+  padding: 0;
+  letter-spacing: 1px;
 }
 
 .radio-btn {
@@ -611,7 +660,7 @@ background:#7eba00;
 .slider-btn-left{
   box-shadow: none;
   width: 47px;
-  height: 47px;
+  height: 35px;
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -627,7 +676,7 @@ background:#7eba00;
 .slider-btn-right{
   box-shadow: none;
   width: 47px;
-  height: 47px;
+  height: 35px;
   position: relative;
   z-index: 1;
   display: inline-block;
@@ -642,7 +691,7 @@ background:#7eba00;
 }
 .slider-btn-left i , .slider-btn-right i{ 
   background: #ffffff;
-  color: #000000;
+  color: #979797;
   font-size: 14px;
 }
 .card:hover::after {
@@ -767,3 +816,10 @@ i.far.fa-dot-circle,i.far.fa-circle {
     width: 32%;
   }
 }
+
+@media screen and (min-width: 768px){
+  .cust-editpro{
+    width: 25% !important;
+  }
+}
+

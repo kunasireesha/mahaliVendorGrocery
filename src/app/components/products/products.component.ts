@@ -55,8 +55,8 @@ export class ProductsComponent implements OnInit {
    
 
   }
-  showProduxtDetails() {
-    this.router.navigate(['/productdetails'], { queryParams: { order: 'popular' } });
+  showProduxtDetails(prodId) {
+    this.router.navigate(['/productdetails'], { queryParams: { prodId:  prodId} });
   }
   products = [];
   skuid;
@@ -70,6 +70,7 @@ export class ProductsComponent implements OnInit {
           this.products[i].selling_price = this.products[i].sku_details[0].selling_price;
           this.products[i].product_image = this.products[i].sku_details[0].product_image;
           this.skuid = this.products[i].sku_details[0].skid;
+          
 
 
           // this.skuArr.push(this.skuData);
@@ -112,7 +113,8 @@ export class ProductsComponent implements OnInit {
         product_id: Id,
         sku_id: this.skuid
       }],
-      "vendor_id": JSON.parse(localStorage.getItem('userId'))
+      "vendor_id": JSON.parse(localStorage.getItem('userId')),
+      "item_type":"grocery"
     }
     this.appService.addtoCart(inData).subscribe(res => {
       this.cartDetails = res.json().selling_price_total;
