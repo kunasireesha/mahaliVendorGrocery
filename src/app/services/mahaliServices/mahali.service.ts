@@ -63,7 +63,8 @@ export class appService {
             'Content-Type': "application/JSON",
             'x-access-token': (localStorage.token),
         });
-        return this.http.put(AppSettings.updateProfile, params, { headers: headers })
+        this.vendor_id = localStorage.getItem('userId');
+        return this.http.put(AppSettings.updateProfile+"/"+this.vendor_id, params, { headers: headers })
     }
     getBanners() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });

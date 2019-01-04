@@ -105,6 +105,7 @@ export class UseraccountComponent implements OnInit {
         }
         this.appService.update(this.productForm.value).subscribe(resp => {
             swal("Your order under process for Approvel", "", "success");
+            // this.form.reset();
 
         })
 
@@ -145,7 +146,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     editProfile() {
@@ -164,7 +165,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
     accountDetails() {
         this.showNotifications = false;
@@ -182,7 +183,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = true;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
         this.getAccDet();
     }
     editAccountDetails() {
@@ -201,7 +202,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = true;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
     deliveryAddress() {
         this.showNotifications = false;
@@ -219,7 +220,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
     addAddress() {
         this.showNotifications = false;
@@ -237,7 +238,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     wishList() {
@@ -256,7 +257,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     myProducts() {
@@ -275,7 +276,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     myOrder() {
@@ -294,7 +295,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     notifications() {
@@ -313,7 +314,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     showBukedOrderDetails(ordId) {
@@ -332,7 +333,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
         this.ordDetails(ordId);
     }
     ordId;
@@ -368,7 +369,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = true;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
     offerZone() {
         this.showNotifications = false;
@@ -386,7 +387,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     addProducts() {
@@ -405,7 +406,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
     }
 
     showAddProducts2(Id) {
@@ -424,7 +425,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = false;
+        this.showRequestAdmin = false;
         this.getProducts(Id);
     }
     requestAdmin() {
@@ -443,7 +444,7 @@ export class UseraccountComponent implements OnInit {
         this.showManageUserOrders = false;
         this.showAccountDetails = false;
         this.editAccount = false;
-        // this.showRequestAdmin = true;
+        this.showRequestAdmin = true;
     }
 
 
@@ -508,8 +509,9 @@ export class UseraccountComponent implements OnInit {
     profileData = {
         first_name: '',
         email: '',
-        mobile_number: ''
-
+        mobile_number: '',
+        bussiness_area:'',
+        bussiness_city:''
     }
     getProfile() {
         this.email = (localStorage.email);
@@ -523,7 +525,9 @@ export class UseraccountComponent implements OnInit {
         var inDate = {
             first_name: this.profileData.first_name,
             email: this.profileData.email,
-            mobile_number: this.profileData.mobile_number
+            mobile_number: this.profileData.mobile_number,
+            bussiness_area:this.profileData.bussiness_area,
+            bussiness_city:this.profileData.bussiness_city
 
         }
         this.appService.updateProfile(inDate).subscribe(response => {

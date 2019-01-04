@@ -10,6 +10,8 @@ import { MatDialogModule } from '@angular/material';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
+import { Ng2SearchPipeModule } from 'ng2-search-filter'; //importing the module
+
 import swal from 'sweetalert';
 
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
@@ -91,6 +93,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserAnimationsModule,
         MDBBootstrapModule.forRoot(),
         Ng2CarouselamosModule,
+        Ng2SearchPipeModule,
         TranslateModule.forRoot({
             loader: {
                 provide: TranslateLoader,
