@@ -104,7 +104,7 @@ export class HeaderComponent implements OnInit {
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
-            email: ['', [Validators.required, Validators.email]],
+            email: ['', Validators.required],
             mobile_number: ['', [Validators.required]],
             password: ['', [Validators.required, Validators.minLength(6)]],
             bussiness_latitude: 16.398956,
