@@ -37,10 +37,49 @@
 <!-- delas -->
 <div class="container-fluid cust-productcat">
 
-  <div class="container">
+  <div class="container whole-sellers">
     <div class="cust-buy">
       <h4>Buy a Products</h4>
       <p>Your Nearest Shops</p>
+    </div>
+
+    <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
+      <div class="carousel-inner row w-100 mx-auto" role="listbox">
+        <div class="carousel-item col-md-4" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
+          <div class="panel panel-default">
+            <!-- <div class="panel-thumbnail">
+              <a href="#" title="image 1" class="thumb">
+                <img class="img-fluid mx-auto d-block" [src]="item.image_one" alt="slide 1">
+              </a>
+            </div> -->
+            <div class="row">
+              <div class="col-md-6">
+                <img class="img-fluid" [src]="item.image_one" alt="Card image cap">
+              </div>
+              <div class="card-block col-md-6 recmded">
+                <h4>{{item.bussiness_name}}</h4>
+                <p>
+                  <i class="fas fa-map-marker-alt"></i>
+                  &nbsp; {{item.business_area}}, {{item.business_city}}
+                  {{item.business_country}}
+                </p>
+                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                &nbsp;
+                <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
+              </div>
+            </div>
+          </div>
+        </div>
+
+      </div>
+      <div class="controls-top">
+        <a class="btn-floating btn-small slider-btn-left" href="#carouselExample" data-slide="prev">
+          <i class="fas fa-long-arrow-alt-left"></i>
+        </a>
+        <a class="btn-floating btn-small slider-btn-right" href="#carouselExample" data-slide="next">
+          <i class="fas fa-long-arrow-alt-right"></i>
+        </a>
+      </div>
     </div>
 
     <!-- Nearest Shops -->
@@ -74,50 +113,12 @@
     </div> -->
 
 
-    <div class="container prod-carousel">
-      <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
-        <div class="carousel-inner row w-100 mx-auto" role="listbox">
-          <div class="carousel-item col-md-6 col-lg-6" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
-            <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)">
-            <!-- <div class="row">
-              <div class="col-lg-6">
-                <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)"> </div>
-              <div class="col-lg-6 col-md-6">
-                <h4>{{item.bussiness_name}}</h4>
-                <p>
-                  <i class="fas fa-map-marker-alt"></i>
-                  &nbsp; {{item.business_area}}, {{item.business_city}}
-                  {{item.business_country}}
-                </p>
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                &nbsp;
-                <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
-              </div>
-            </div> -->
-          </div>
 
-          <!--                 
-            <div class="panel panel-default">
-              <div class="panel-thumbnail">
-                <a href="#" title="image 1" class="thumb">
-                  <img class="img-fluid mx-auto d-block" src="//via.placeholder.com/600x400?text=1" alt="slide 1">
-                </a>
-              </div>
-            </div> -->
-          <!-- </div> -->
-        </div>
-      </div>
-    </div>
-
-    <div class="controls-top">
-      <a class="btn-floating btn-small slider-btn-left" href="#carouselExample" data-slide="prev">
-        <i class="fas fa-long-arrow-alt-left"></i>
-      </a>
-      <a class="btn-floating btn-small slider-btn-right" href="#carouselExample" data-slide="next">
-        <i class="fas fa-long-arrow-alt-right"></i>
-      </a>
-    </div>
   </div>
+
+
+
+
 
   <div class="container prod-data">
 

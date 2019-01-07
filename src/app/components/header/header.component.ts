@@ -123,11 +123,7 @@ export class HeaderComponent implements OnInit {
         // this.getLocation();
         this.getCart();
     }
-
-    hideSubCats() {
-        this.showSubCats = false;
-    }
-
+   
     // showLogin() {
     //     const dialogConfig = new MatDialogConfig();
     //     dialogConfig.disableClose = true;
@@ -359,5 +355,8 @@ export class HeaderComponent implements OnInit {
         // },err=> {
 
         // })    
+    }
+    hidesub(){
+        this.showSubCats = false;
     }
 }

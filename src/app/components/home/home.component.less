@@ -551,66 +551,6 @@ p strike {
     float: right !important;
 }
 
-@media (min-width: 768px) {
-    /* show 3 items */
-    .prod-carousel .carousel-inner .active,
-    .prod-carousel .carousel-inner .active+.carousel-item,
-    .prod-carousel .carousel-inner .active+.carousel-item+.carousel-item,
-    .prod-carousel .carousel-inner .active+.carousel-item+.carousel-item+.carousel-item {
-        display: block;
-    }
-    .prod-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
-    .prod-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
-    .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item,
-    .prod-carousel .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item+.carousel-item {
-        transition: none;
-    }
-    .prod-carousel .carousel-inner .carousel-item-next,
-    .prod-carousel .carousel-inner .carousel-item-prev {
-        position: relative;
-        transform: translate3d(0, 0, 0);
-    }
-    .prod-carousel .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
-        position: absolute;
-        top: 0;
-        right: -25%;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    /* left or forward direction */
-    .prod-carousel .active.carousel-item-left+.carousel-item-next.carousel-item-left,
-    .prod-carousel .carousel-item-next.carousel-item-left+.carousel-item,
-    .prod-carousel .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
-    .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item,
-    .prod-carousel .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
-        position: relative;
-        transform: translate3d(-100%, 0, 0);
-        visibility: visible;
-    }
-    /* farthest right hidden item must be abso position for animations */
-    .prod-carousel .carousel-inner .carousel-item-prev.carousel-item-right {
-        position: absolute;
-        top: 0;
-        left: 0;
-        z-index: -1;
-        display: block;
-        visibility: visible;
-    }
-    /* right or prev direction */
-    .prod-carousel .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
-    .prod-carousel .carousel-item-prev.carousel-item-right+.carousel-item,
-    .prod-carousel .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
-    .prod-carousel .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item,
-    .prod-carousel .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item+.carousel-item {
-        position: relative;
-        transform: translate3d(100%, 0, 0);
-        visibility: visible;
-        display: block;
-        visibility: visible;
-    }
-}
-
 /* Bootstrap Lightbox using Modal */
 
 #profile-grid {
@@ -651,4 +591,127 @@ p strike {
     margin-bottom: 5%;
     cursor: pointer;
     width: 1000px;
+}
+
+//bootstrap multi image carousels
+.multi-image .carousel-control {
+    width: 4%;
+}
+
+.multi-image .carousel-control.left,
+.multi-image .carousel-control.right {
+    margin-left: 15px;
+    background-image: none;
+}
+
+@media (max-width: 767px) {
+    .multi-image .carousel-inner .active.left {
+        left: -100%;
+    }
+    .multi-image .carousel-inner .next {
+        left: 100%;
+    }
+    .multi-image .carousel-inner .prev {
+        left: -100%;
+    }
+    .active>div {
+        display: none;
+    }
+    .active>div:first-child {
+        display: block;
+    }
+}
+
+@media (min-width: 767px) and (max-width: 992px) {
+    .multi-image .carousel-inner .active.left {
+        left: -50%;
+    }
+    .multi-image .carousel-inner .next {
+        left: 50%;
+    }
+    .multi-image .carousel-inner .prev {
+        left: -50%;
+    }
+    .active>div {
+        display: none;
+    }
+    .active>div:first-child {
+        display: block;
+    }
+    .active>div:first-child+div {
+        display: block;
+    }
+}
+
+.multi-image .carousel-inner .active.left {
+    left: -55%;
+}
+
+.multi-image .carousel-inner .next {
+    left: 55%;
+}
+
+.multi-image .carousel-inner .prev {
+    left: -55%;
+}
+
+@media (min-width: 768px) {
+    /* show 3 items */
+    .carouselPrograms .carousel-inner .active,
+    .carouselPrograms .carousel-inner .active+.carousel-item,
+    .carouselPrograms .carousel-inner .active+.carousel-item+.carousel-item {
+        display: block;
+    }
+    .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left),
+    .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item,
+    .carouselPrograms .carousel-inner .carousel-item.active:not(.carousel-item-right):not(.carousel-item-left)+.carousel-item+.carousel-item {
+        transition: none;
+    }
+    .carouselPrograms .carousel-inner .carousel-item-next,
+    .carouselPrograms .carousel-inner .carousel-item-prev {
+        position: relative;
+        transform: translate3d(0, 0, 0);
+    }
+    .carouselPrograms .carousel-inner .active.carousel-item+.carousel-item+.carousel-item+.carousel-item {
+        position: absolute;
+        top: 0;
+        right: -33.333%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* left or forward direction */
+    .carouselPrograms .active.carousel-item-left+.carousel-item-next.carousel-item-left,
+    .carouselPrograms .carousel-item-next.carousel-item-left+.carousel-item,
+    .carouselPrograms .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item,
+    .carouselPrograms .carousel-item-next.carousel-item-left+.carousel-item+.carousel-item+.carousel-item {
+        position: relative;
+        transform: translate3d(-100%, 0, 0);
+        visibility: visible;
+    }
+    /* farthest right hidden item must be abso position for animations */
+    .carouselPrograms .carousel-inner .carousel-item-prev.carousel-item-right {
+        position: absolute;
+        top: 0;
+        left: 0%;
+        z-index: -1;
+        display: block;
+        visibility: visible;
+    }
+    /* right or prev direction */
+    .carouselPrograms .active.carousel-item-right+.carousel-item-prev.carousel-item-right,
+    .carouselPrograms .carousel-item-prev.carousel-item-right+.carousel-item,
+    .carouselPrograms .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item,
+    .carouselPrograms .carousel-item-prev.carousel-item-right+.carousel-item+.carousel-item+.carousel-item {
+        position: relative;
+        transform: translate3d(100%, 0, 0);
+        visibility: visible;
+        display: block;
+        visibility: visible;
+    }
+}
+
+.whole-sellers .img-fluid {
+    height: 100px;
+    width: 200px;
 }

@@ -86,6 +86,7 @@
 </div>
 
 <nav class="navbar cust-navbar navbar-expand-md sticky-top navbar-dark">
+
   <a routerLink="/" href="#/" class="navbar-brand">
     <img src="assets/images/logo1.png" class="img-fluid cust-logo" alt="Responsive image">
   </a>
@@ -121,7 +122,7 @@
         <span class="cost">BD2.{{billing}}</span>
       </li>
       <li class="nav-item">
-        <a class="nav-link" href="#" data-toggle="modal" data-target="#itemdesc">
+        <a class="nav-link" href="#" data-toggle="modal" data-target="#itemdesc" (click)="hidesub()">
           <i class="fa fa-navicon cust-navcon"></i>
         </a>
       </li>
@@ -522,6 +523,7 @@
 
 <!-- forgot password modal -->
 <div class="modal fade" id="forgotpass" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
+
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header cust-mdlhdr">
@@ -543,8 +545,8 @@
                 <div class="col-sm-7 col-md-7">
                   <form [formGroup]="forgotForm" (ngSubmit)="forgot()">
                     <input myNumberOnly type="text" formControlName="mob_number" class="form-control" [ngClass]="{ 'is-invalid': forgotSubmitted && f2.mob_number.errors }" />
-                    <div *ngIf="forgotSubmitted && f1.mob_number.errors" class="invalid-feedback">
-                      <div *ngIf="f1.mob_number.errors.required">Mobile number is required</div>
+                    <div *ngIf="forgotSubmitted && f2.mob_number.errors" class="invalid-feedback">
+                      <div *ngIf="f2.mob_number.errors.required">Mobile number is required</div>
                     </div>
                     <div class="form-group cust-frmgrp">
                       <div class="col-sm-12">
@@ -561,8 +563,11 @@
         </div>
 
 
+
       </div>
     </div>
+
+
   </div>
 </div>
 <!-- ./forgot password modal -->

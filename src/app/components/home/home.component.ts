@@ -69,6 +69,8 @@ export class HomeComponent implements OnInit {
         this.getBanners();
         // this.getGeoLocation(address)
         this.getCart();
+
+
     }
     lat;
     long;
