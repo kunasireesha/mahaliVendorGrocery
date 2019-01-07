@@ -133,6 +133,7 @@ export function HttpLoaderFactory(http: HttpClient) {
             { path: 'aboutus', component: AboutusComponent, data: [{ page: 'Aboutus' }] },
             { path: 'addProduct', component: UseraccountComponent, data: [{ page: 'profiles' }] },
             { path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
+            { path: 'accountData', component: UseraccountComponent, data: [{ page: 'accountData' }] },
             { path: 'static', component: StaticComponent,data: [{ page: 'blog' }] },
             { path: 'static', component: StaticComponent,data: [{ page: 'sellers' }] },
         ], { useHash: true })

@@ -580,10 +580,11 @@
       <div class="modal-body">
         <div class="cat-drop" role="menu">
           <h5 class="text-center">Categories</h5>
-          <ul *ngFor="let cat of category">
+          <ul *ngFor="let cat of category;let i = index">
             <li>
               <i class="fa fa-caret-left sub-cat" aria-hidden="true"></i> &nbsp;&nbsp;&nbsp;
-              <a (mouseenter)="showSubCat(cat.id)" (click)="showProbyCat(cat.id,'category',cat.category_name)">{{cat.category_name}}</a>
+              <a (mouseenter)="showSubCat(cat.id,i)" (click)="showProbyCat(cat.id,'category',cat.category_name)"
+                [ngClass]="{'activeCat':i==selectedCat}">{{cat.category_name}}</a>
               <div class="subcatcat" *ngIf="showSubCats">
                 <div class="subcatsCat row">
                   <div class="col-md-12">

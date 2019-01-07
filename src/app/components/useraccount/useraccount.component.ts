@@ -39,6 +39,8 @@ export class UseraccountComponent implements OnInit {
             this.showAddProducts = true;
         } else if (this.page === 'myproduct') {
             this.showMyProducts = true;
+        } else if (this.page === 'accountData') {
+            this.showAccountDetails = true;
         }
 
     }
@@ -128,7 +130,7 @@ export class UseraccountComponent implements OnInit {
     showAccountDetails = false;
     editAccount = false;
     editDel = false;
-    showRequestAdmin=false;
+    showRequestAdmin = false;
 
     profile() {
         this.showNotifications = false;
@@ -496,20 +498,20 @@ export class UseraccountComponent implements OnInit {
         // stop here if form is invalid
         if (this.resetForm.invalid) {
             return;
-        }else if(this.resetForm.value.password!=this.resetForm.value.new_password){
-         swal("Passwords doesn't matched","","warning");
-         return;
+        } else if (this.resetForm.value.password != this.resetForm.value.new_password) {
+            swal("Passwords doesn't matched", "", "warning");
+            return;
         }
         this.appService.changePwd(this.resetForm.value).subscribe(resp => {
-            if(resp.json().status===200){
+            if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
                 this.router.navigate(['/'])
-            }else{
+            } else {
                 swal(resp.json().message, "", "error");
             }
-          
 
-        },err=> {
+
+        }, err => {
             swal(err.json().message, "", "error");
         })
 
@@ -520,8 +522,8 @@ export class UseraccountComponent implements OnInit {
         first_name: '',
         email: '',
         mobile_number: '',
-        bussiness_area:'',
-        bussiness_city:''
+        bussiness_area: '',
+        bussiness_city: ''
     }
     getProfile() {
         this.email = (localStorage.email);
@@ -536,8 +538,8 @@ export class UseraccountComponent implements OnInit {
             first_name: this.profileData.first_name,
             email: this.profileData.email,
             mobile_number: this.profileData.mobile_number,
-            bussiness_area:this.profileData.bussiness_area,
-            bussiness_city:this.profileData.bussiness_city
+            bussiness_area: this.profileData.bussiness_area,
+            bussiness_city: this.profileData.bussiness_city
 
         }
         this.appService.updateProfile(inDate).subscribe(response => {
