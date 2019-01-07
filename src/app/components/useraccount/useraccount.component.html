@@ -423,7 +423,7 @@
                   <tbody class="cust-tbody">
                     <tr>
                       <th scope="row" class="cust-1">1</th>
-                      <td>
+                      <td class="add-img">
                         <img [src]="reqProds.product_image" alt="Potatoes">
                       </td>
                       <td class="cust-pot">{{reqProds.product_name}}</td>
@@ -476,6 +476,11 @@
                                                 <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
                                             </td>
                                         </tr> -->
+                                        <tr>
+                                          <td *ngIf="!reqProds">
+                                            No Data Found
+                                          </td>
+                                        </tr>
                   </tbody>
                 </table>
               </div>
@@ -577,21 +582,21 @@
         <!--/.Slides-->
 
         <!--Controls-->
-        <div class="controls-top controls arrow-rt">
+        <!-- <div class="controls-top controls arrow-rt">
           <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
             <i class="fas fa-long-arrow-alt-left"></i>
           </a>
           <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
             <i class="fas fa-long-arrow-alt-right"></i>
           </a>
-        </div>
+        </div> -->
         <!--/.Controls-->
       </div>
       <!-- <div class="search-notfound">
                 <button type="submit" class="btn" data-toggle="modal" data-target="#notfound">Item not found</button>
             </div> -->
       <div class="search-notfound">
-        <button type="submit" class="btn" (click)="requestAdmin()">Item not found</button>
+        <button type="submit" class="btn" (click)="requestAdmin()" *ngIf="!reqProds">Item not found</button>
       </div>
     </div>
 
