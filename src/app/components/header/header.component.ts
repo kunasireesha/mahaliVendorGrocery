@@ -123,7 +123,7 @@ export class HeaderComponent implements OnInit {
         // this.getLocation();
         this.getCart();
     }
-   
+
     // showLogin() {
     //     const dialogConfig = new MatDialogConfig();
     //     dialogConfig.disableClose = true;
@@ -252,8 +252,10 @@ export class HeaderComponent implements OnInit {
     }
     subCatData = [];
     subId;
-    showSubCat(Id) {
+    selectedCat;
+    showSubCat(Id, index) {
         this.subId = Id;
+        this.selectedCat = index;
         this.subCatData = [];
         this.showSubCats = true;
         for (var i = 0; i < this.category.length; i++) {
@@ -356,7 +358,7 @@ export class HeaderComponent implements OnInit {
 
         // })    
     }
-    hidesub(){
+    hidesub() {
         this.showSubCats = false;
     }
 }
