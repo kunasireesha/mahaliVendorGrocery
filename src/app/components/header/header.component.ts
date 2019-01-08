@@ -7,6 +7,8 @@ import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 declare var jQuery: any;
+declare var $: any;
+
 @Component({
     selector: 'app-header',
     templateUrl: './header.component.html',
@@ -172,6 +174,7 @@ export class HeaderComponent implements OnInit {
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
         this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
+        $("#itemdesc").modal("hide");
     }
     signOut() {
         localStorage.removeItem('token');
