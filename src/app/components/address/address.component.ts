@@ -91,7 +91,6 @@ export class AddressComponent implements OnInit {
     get f() { return this.bussinessForm.controls; }
 
     businessDetails() {
-
         if (this.bussinessForm.value.bussiness_first_name === '') {
             this.bussiness_first_name_errors = true;
             return;

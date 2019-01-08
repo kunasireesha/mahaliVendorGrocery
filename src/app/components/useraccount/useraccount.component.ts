@@ -3,7 +3,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
-
+import { NgForm } from '@angular/forms';
 @Component({
     selector: 'app-useraccount',
     templateUrl: './useraccount.component.html',
@@ -14,8 +14,18 @@ export class UseraccountComponent implements OnInit {
     addressForm: FormGroup;
     productForm: FormGroup
     submitted = false;
-
-
+    model: any = {}
+    full_name_errors = false;
+    mobile_number_errors = false;
+    house_no_errors = false;
+    city_error = false;
+    state_errors = false;
+    landmark_errors = false;
+    pincode_errors = false;
+    deal_price_errors = false;
+    quantity_errors = false;
+    discount_error = false;
+    status_errors = false;
     constructor(
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
@@ -60,19 +70,19 @@ export class UseraccountComponent implements OnInit {
             new_password: ['', [Validators.required, Validators.minLength(6)]],
         });
         this.addressForm = this.formBuilder.group({
-            full_name: ['', Validators.required],
-            mobile_number: ['', Validators.required],
-            house_no: ['', Validators.required],
-            city: ['', Validators.required],
-            state: ['', Validators.required],
-            landmark: ['', Validators.required],
-            pin_code: ['', Validators.required],
+            full_name: [''],
+            mobile_number: [''],
+            house_no: [''],
+            city: [''],
+            state: [''],
+            landmark: [''],
+            pin_code: [''],
         });
         this.productForm = this.formBuilder.group({
-            deal_price: ['', Validators.required],
-            quantity: ['', Validators.required],
-            status: ['', Validators.required],
-            discount: ['', Validators.required],
+            deal_price: [''],
+            quantity: [''],
+            discount: [''],
+            status: [''],
             vendor_id: localStorage.userId,
             product_id: this.productId
         });
@@ -81,34 +91,92 @@ export class UseraccountComponent implements OnInit {
     get f1() { return this.addressForm.controls; }
 
     saveAddress() {
-        this.submitted = true;
-        // stop here if form is invalid
-        if (this.addressForm.invalid) {
+        if (this.addressForm.value.full_name === '') {
+            this.full_name_errors = true;
+            return;
+        }
+        else if (this.addressForm.value.mobile_number === '') {
+            this.mobile_number_errors = true;
+            this.full_name_errors = false;
+            return;
+        }
+        else if (this.addressForm.value.house_no === '') {
+            this.house_no_errors = true;
+            this.mobile_number_errors = false;
+            this.full_name_errors = false;
+            return;
+        }
+        else if (this.addressForm.value.landmark === '') {
+            this.landmark_errors = true;
+            this.house_no_errors = false;
+            this.mobile_number_errors = false;
+            this.full_name_errors = false;
+            return;
+        }
+        else if (this.addressForm.value.city === '') {
+            this.city_error = true;
+            this.landmark_errors = false;
+            this.house_no_errors = false;
+            this.mobile_number_errors = false;
+            this.full_name_errors = false;
+            return;
+        }
+        else if (this.addressForm.value.state === '') {
+            this.state_errors = true;
+            this.city_error = false;
+            this.landmark_errors = false;
+            this.house_no_errors = false;
+            this.mobile_number_errors = false;
+            this.full_name_errors = false;
+            return;
+        }
+
+        else if (this.addressForm.value.pin_code === '') {
+            this.pincode_errors = true;
+            this.state_errors = false;
+            this.city_error = false;
+            this.landmark_errors = false;
+            this.house_no_errors = false;
+            this.mobile_number_errors = false;
+            this.full_name_errors = false;
             return;
         }
         this.appService.addaddress(this.addressForm.value).subscribe(res => {
             this.addressForm.reset();
             swal(res.json().message, "", "success");
+            this.pincode_errors = false;
             this.getAdd();
-            //   this.addressForm.reset();
-            // this.showAddresses = true;
-            //     this.addresses = false;
 
         })
     }
+
     get f2() { return this.productForm.controls; }
     productId;
     save(prodId) {
-        this.productId = prodId;
-        this.submitted = true;
-        // stop here if form is invalid
-        if (this.productForm.invalid) {
+        if (this.productForm.value.deal_price === '') {
+            this.deal_price_errors = true;
+            return;
+        } else if (this.productForm.value.quantity === '') {
+            this.quantity_errors = true;
+            this.deal_price_errors = false;
+            return;
+        } else if (this.productForm.value.discount === '') {
+            this.discount_error = true;
+            this.quantity_errors = false;
+            this.deal_price_errors = false;
+            return;
+        } else if (this.productForm.value.status === '') {
+            this.status_errors = true;
+            this.discount_error = false;
+            this.quantity_errors = false;
+            this.deal_price_errors = false;
             return;
         }
+        this.productId = prodId;
         this.appService.update(this.productForm.value).subscribe(resp => {
+            this.status_errors = false;
             swal("Your order under process for Approvel", "", "success");
-            // this.form.reset();
-
+            this.productForm.reset();
         })
 
     }
@@ -355,7 +423,7 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
-    
+
     showVendorOrderDetails() {
         this.showNotifications = false;
         this.showOrderDetails = false;
@@ -478,6 +546,11 @@ export class UseraccountComponent implements OnInit {
 
     //     })
     // }
+
+    onSubmit1() {
+
+        alert(JSON.stringify(this.model))
+    }
     itemIncrease() {
         let thisObj = this;
 
