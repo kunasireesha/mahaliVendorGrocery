@@ -43,7 +43,7 @@
                     <span>{{profileData?.mobile_number}}</span>
                 </p>
                 <p>
-                    <i class="fa fa-home" aria-hidden="true"></i>&nbsp;&nbsp;&nbsp;
+                    <img class="shop" src="assets/images/store.png">&nbsp;&nbsp;&nbsp;
                     <span>{{profileData?.bussiness_name}}</span>
                 </p>
                 <span class="status-text">
@@ -412,7 +412,7 @@
                                             <th scope="col">Item</th>
                                             <th scope="col">Item Name</th>
                                             <th scope="col">Brand</th>
-                                            <th scope="col">Action</th>
+                                            <th scope="col" class="text-center">Action</th>
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
@@ -423,8 +423,8 @@
                                             </td>
                                             <td class="cust-pot">{{reqProds.product_name}}</td>
                                             <td class="cust-1">{{reqProds.brand}}</td>
-                                            <td class="cust-1">
-                                                <a href="" class="cust-add" data-toggle="modal" data-target="#addProd">ADD</a>
+                                            <td class="cust-1 text-right">
+                                                <button class="cust-add" data-toggle="modal" data-target="#addProd">ADD</button>
                                             </td>
                                         </tr>
                                         <!-- <tr>
