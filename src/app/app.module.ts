@@ -11,7 +11,7 @@ import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { HttpModule } from '@angular/http';
 import { FormsModule } from '@angular/forms';
 import { Ng2SearchPipeModule } from 'ng2-search-filter'; //importing the module
-
+import { ImageZoomModule } from 'angular2-image-zoom';
 import swal from 'sweetalert';
 
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
@@ -89,6 +89,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         MatDialogModule,
         HttpModule,
         FormsModule,
+        ImageZoomModule,
         ReactiveFormsModule,
         BrowserAnimationsModule,
         MDBBootstrapModule.forRoot(),
@@ -134,8 +135,8 @@ export function HttpLoaderFactory(http: HttpClient) {
             { path: 'addProduct', component: UseraccountComponent, data: [{ page: 'profiles' }] },
             { path: 'myProduct', component: UseraccountComponent, data: [{ page: 'myproduct' }] },
             { path: 'accountData', component: UseraccountComponent, data: [{ page: 'accountData' }] },
-            { path: 'static', component: StaticComponent,data: [{ page: 'blog' }] },
-            { path: 'static', component: StaticComponent,data: [{ page: 'sellers' }] },
+            { path: 'static', component: StaticComponent, data: [{ page: 'blog' }] },
+            { path: 'static', component: StaticComponent, data: [{ page: 'sellers' }] },
         ], { useHash: true })
     ],
     schemas: [NO_ERRORS_SCHEMA],

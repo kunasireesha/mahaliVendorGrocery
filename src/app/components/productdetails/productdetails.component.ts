@@ -7,7 +7,7 @@ import { appService } from './../../services/mahaliServices/mahali.service';
 @Component({
     selector: 'app-productdetails',
     templateUrl: './productdetails.component.html',
-
+    styleUrls: ['./productdetails.component.less']
 })
 
 export class ProductdetailsComponent implements OnInit {
@@ -65,9 +65,16 @@ export class ProductdetailsComponent implements OnInit {
     skid;
     prodName;
     description;
+    prodImages = [];
     getProductById() {
         this.appService.getProductById(this.prodId).subscribe(res => {
-            this.prodsData = res.json().products;
+            this.prodsData = res.json().products.sku_details;
+            for (var j = 0; j < this.prodsData.length; j++) {
+                for (var k = 0; k < this.prodsData[j].images.length; k++) {
+                    this.prodImages.push(this.prodsData[j].images[k]);
+                    // console.log(this.prodImages);
+                }
+            }
             this.prodData = res.json().products.sku_details;
             this.offer_price = this.prodData[0].offer_price;
             this.actual_price = this.prodData[0].actual_price;
@@ -78,6 +85,9 @@ export class ProductdetailsComponent implements OnInit {
         }, err => {
 
         })
+    }
+    showBigImage(image) {
+        this.product_image = image;
     }
     skuData = [];
     offer_price = [];
@@ -112,7 +122,7 @@ export class ProductdetailsComponent implements OnInit {
                 sku_id: this.skid
             }],
             "vendor_id": JSON.parse(localStorage.getItem('userId')),
-            "item_type":"grocery"
+            "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
             this.getCart();
