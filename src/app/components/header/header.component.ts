@@ -50,6 +50,7 @@ export class HeaderComponent implements OnInit {
             this.userMobile = JSON.parse(localStorage.getItem('phone'));
             this.userName = (localStorage.getItem('userName'));
         }
+        this.getCart();
     }
     item = {
         quantity: 1

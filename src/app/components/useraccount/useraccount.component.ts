@@ -200,6 +200,7 @@ export class UseraccountComponent implements OnInit {
     editAccount = false;
     editDel = false;
     showRequestAdmin = false;
+    showEditAddress=false;
 
     profile() {
         this.showNotifications = false;
@@ -218,6 +219,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     editProfile() {
@@ -237,6 +239,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
     accountDetails() {
         this.showNotifications = false;
@@ -255,6 +258,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = true;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
         this.getAccDet();
     }
     editAccountDetails() {
@@ -274,6 +278,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = true;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
     deliveryAddress() {
         this.showNotifications = false;
@@ -292,6 +297,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
     addAddress() {
         this.showNotifications = false;
@@ -310,6 +316,27 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
+    }
+    showEditAdd(addId) {
+        this.showNotifications = false;
+        this.showOrderDetails = false;
+        this.showMyOrders = false;
+        this.showMyProducts = false;
+        this.showWishlist = false;
+        this.showAddAddress = false;
+        this.showDeliveryAddress = false;
+        this.editUserProfile = false;
+        this.showProfile = false;
+        this.showOfferZone = false;
+        this.showAddProducts = false;
+        this.showAddProducts5 = false;
+        this.showManageUserOrders = false;
+        this.showAccountDetails = false;
+        this.editAccount = false;
+        this.showRequestAdmin = false;
+        this.showEditAddress = true;
+        this.editAdd(addId);
     }
 
     wishList() {
@@ -329,6 +356,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     myProducts() {
@@ -348,6 +376,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     myOrder() {
@@ -367,6 +396,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     notifications() {
@@ -386,6 +416,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     showBukedOrderDetails(ordId) {
@@ -405,6 +436,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
         this.ordDetails(ordId);
     }
     ordId;
@@ -442,6 +474,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
     offerZone() {
         this.showNotifications = false;
@@ -460,6 +493,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     addProducts() {
@@ -479,6 +513,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
     }
 
     showAddProducts2(Id) {
@@ -498,6 +533,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
+        this.showEditAddress =false;
         this.getProducts(Id);
     }
     requestAdmin() {
@@ -517,6 +553,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = true;
+        this.showEditAddress =false;
     }
 
 
@@ -598,7 +635,8 @@ export class UseraccountComponent implements OnInit {
         email: '',
         mobile_number: '',
         bussiness_area: '',
-        bussiness_city: ''
+        bussiness_city: '',
+        bussiness_name:''
     }
     getProfile() {
         this.email = (localStorage.email);
@@ -614,18 +652,21 @@ export class UseraccountComponent implements OnInit {
             email: this.profileData.email,
             mobile_number: this.profileData.mobile_number,
             bussiness_area: this.profileData.bussiness_area,
-            bussiness_city: this.profileData.bussiness_city
+            bussiness_city: this.profileData.bussiness_city,
+            bussiness_name:this.profileData.bussiness_name
 
         }
         this.appService.updateProfile(inDate).subscribe(response => {
             swal(response.json().message, "", "success");
             this.ngOnInit();
             this.getProfile();
+            this.cancel();
         })
     }
     cancel() {
         this.showProfile = true;
         this.editUserProfile = false;
+        this.getProfile();
     }
     getAddData = [];
     States = ["Andhrapradhesh", "Gujarath", "Telangana"];
@@ -668,6 +709,7 @@ export class UseraccountComponent implements OnInit {
         this.showDeliveryAddress = true;
         this.editAccount = false;
         this.showAddAddress = false;
+        this.showEditAddress=false;
     }
     delAdd(delId) {
         this.appService.delAddress(delId).subscribe(res => {
@@ -702,6 +744,7 @@ export class UseraccountComponent implements OnInit {
         this.appService.updateAcc(inData).subscribe(res => {
             swal(res.json().message, "", "success");
             this.getAccDet();
+            this.cancelDetails();
         }, err => {
 
         })
@@ -709,6 +752,7 @@ export class UseraccountComponent implements OnInit {
     cancelDetails() {
         this.showAccountDetails = true;
         this.editAccount = false;
+        this.getAccDet();
     }
     orders = [];
     getOrders() {
@@ -722,6 +766,42 @@ export class UseraccountComponent implements OnInit {
     getCategories() {
         this.appService.getCategories().subscribe(resp => {
             this.category = resp.json().categories;
+        })
+    }
+    editAddData = {
+        full_name:'',
+        mobile_number:'',
+        house_no:'',
+        landmark:'',
+        city:'',
+        state:'',
+        pin_code:'',
+
+    };
+    editAdd(addId) {
+        this.appService.getAdd(addId).subscribe(resp => {
+            this.editAddData = resp.json().delivery_address[0];
+        }, err => {
+
+        })
+    }
+    UpdateAdd(addId) {
+        var indata ={
+            "full_name": this.editAddData.full_name,
+            "mobile_number": this.editAddData.mobile_number,
+            "house_no": this.editAddData.house_no,
+            "city": this.editAddData.city,
+            "state": this.editAddData.state,
+            "landmark": this.editAddData.landmark,
+            "pin_code": this.editAddData.pin_code,
+            "address_type": this.type
+        }
+        this.appService.updateAddData(indata,addId).subscribe(resp => {
+            swal(resp.json().message,"","success");
+            this.getAdd();
+            this.cancelAdd();
+        }, err => {
+
         })
     }
 
