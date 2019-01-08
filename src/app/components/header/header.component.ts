@@ -170,6 +170,7 @@ export class HeaderComponent implements OnInit {
     showProbyCat(catId, action, catName) {
         this.showSubCats = false;
         this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action, catName: catName } });
+        $("#itemdesc").modal("hide");
     }
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
