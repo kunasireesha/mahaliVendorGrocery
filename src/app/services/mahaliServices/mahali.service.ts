@@ -66,7 +66,7 @@ export class appService {
             'x-access-token': (localStorage.token),
         });
         this.vendor_id = localStorage.getItem('userId');
-        return this.http.put(AppSettings.updateProfile+"/"+this.vendor_id, params, { headers: headers })
+        return this.http.put(AppSettings.updateProfile + "/" + this.vendor_id, params, { headers: headers })
     }
     getBanners() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
@@ -177,5 +177,10 @@ export class appService {
         this.vendor_id = localStorage.userId;
         return this.http.put(AppSettings.updateProd, params, { headers: headers });
     }
+    contactUs(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.contactUsUrl, params, { headers: headers });
+    }
 }
+
 
