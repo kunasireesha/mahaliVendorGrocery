@@ -41,6 +41,7 @@ export class UseraccountComponent implements OnInit {
             this.showMyProducts = true;
         } else if (this.page === 'accountData') {
             this.showAccountDetails = true;
+            this.accountDetails();
         }
 
     }
@@ -355,7 +356,7 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
-    
+
     showVendorOrderDetails() {
         this.showNotifications = false;
         this.showOrderDetails = false;
