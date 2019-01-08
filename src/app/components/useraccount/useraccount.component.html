@@ -761,11 +761,11 @@
                     <div class="addType">
                         <p>Choose nick name for this address</p>
                         <p class="addresses ">
-                            <a (click)="Type('Home')">Home</a>
-                            <a (click)="Type('Office')">Office</a>
-                            <a (click)="Type('Other')">Other</a>
+                            <a (click)="Type('Home')" [ngClass]="{'activeAdd':type=='Home'}">Home</a>
+                            <a (click)="Type('Office')" [ngClass]="{'activeAdd':type=='Office'}">Office</a>
+                            <a (click)="Type('Other')" [ngClass]="{'activeAdd':type=='Other'}">Other</a>
                         </p>
-                    </div>
+                    </div> 
                 </div>
             </form>
 
