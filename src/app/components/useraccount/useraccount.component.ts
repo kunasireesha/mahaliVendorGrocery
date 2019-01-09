@@ -463,7 +463,6 @@ export class UseraccountComponent implements OnInit {
 
         })
     }
-
     showVendorOrderDetails() {
         this.showNotifications = false;
         this.showOrderDetails = false;
