@@ -164,11 +164,13 @@ export class HomeComponent implements OnInit {
     }
     cartDetails;
     cartValue;
+    billing;
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
             this.cartValue = res.json().count;
+            this.billing = res.json().selling_Price_bill;
         }, err => {
 
         })

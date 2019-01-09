@@ -33,7 +33,7 @@ export class NumberOnlyDirective {
 
 export class AlphabetsOnly {
     // Allow decimal numbers and negative values
-    private regex: RegExp = new RegExp(/^[a-zA-Z]*$/);
+    private regex: RegExp = new RegExp(/^[a-zA-Z ]*$/);
     // Allow key codes for special events. Reflect :
     // Backspace, tab, end, home
     // private specialKeys: Array<string> = ['Backspace', 'Tab', 'End', 'Home', '-', 'space'];

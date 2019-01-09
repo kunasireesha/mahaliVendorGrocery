@@ -55,6 +55,7 @@ export class UseraccountComponent implements OnInit {
         }
 
     }
+    typeval={};
     item = {
         quantity: 1
     }
@@ -71,13 +72,15 @@ export class UseraccountComponent implements OnInit {
             new_password: ['', [Validators.required, Validators.minLength(6)]],
         });
         this.addressForm = this.formBuilder.group({
+            // address_type:this.typeval,
             full_name: [''],
             mobile_number: [''],
             house_no: [''],
             city: [''],
             state: [''],
             landmark: [''],
-            pin_code: [''],
+            pin_code: ['']
+       
         });
         this.productForm = this.formBuilder.group({
             deal_price: [''],
@@ -89,9 +92,13 @@ export class UseraccountComponent implements OnInit {
         });
 
     }
+    Type(type) {
+        this.typeval = type;
+    }
     get f1() { return this.addressForm.controls; }
 
     saveAddress() {
+      this.addressForm.value.address_type = this.typeval;
         if (this.addressForm.value.full_name === '') {
             this.full_name_errors = true;
             return;
@@ -147,7 +154,7 @@ export class UseraccountComponent implements OnInit {
             swal(res.json().message, "", "success");
             this.pincode_errors = false;
             this.getAdd();
-
+            this.cancelAdd();
         })
     }
 
@@ -697,10 +704,8 @@ export class UseraccountComponent implements OnInit {
 
 
     }
-    type;
-    Type(type) {
-        this.type = type;
-    }
+    
+   
     //   saveAddress() {
 
 
