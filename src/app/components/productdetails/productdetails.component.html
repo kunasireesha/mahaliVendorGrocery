@@ -1,4 +1,4 @@
-<app-header [cartCount]="cartCount"></app-header><br />
+<app-header [cartCount]="cartCount" [billing]="billing"></app-header><br />
 <div class="container productDetails">
     <p>
         <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
@@ -49,7 +49,7 @@
 						</button>
 					</div> -->
 
-                    <button class="btn btn-maroon add-cart" value="{{prodsData.product_id}}" (click)="addtoCart($event.target.value)">Add
+                    <button class="btn btn-maroon add-cart" [value]="prodId" (click)="addtoCart(prodId)">Add
                         to Cart</button>
                 </div>
             </div>
