@@ -40,10 +40,12 @@ export class FreshvegetablesComponent implements OnInit {
   prodData = [];
   noData = false;
   getCatProducts() {
+    this.skuData=[];
     this.appService.productByCatId(this.catId).subscribe(res => {
       this.prodData = res.json().products;
       for (var i = 0; i < this.prodData.length; i++) {
         for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+          this.prodData[i].sku_details[j].product_name=this.prodData[i].product_name; 
           this.skuData.push(this.prodData[i].sku_details[j]);
         }
       }
@@ -59,11 +61,13 @@ export class FreshvegetablesComponent implements OnInit {
 
 
   getSubProducts() {
+    this.skuData=[];
     this.appService.productBySubCatId(this.subId).subscribe(res => {
       this.prodData = res.json().products;
       this.skuData = [];
       for (var i = 0; i < this.prodData.length; i++) {
         for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
+          this.prodData[i].sku_details[j].product_name=this.prodData[i].product_name;
           this.skuData.push(this.prodData[i].sku_details[j]);
         }
       }

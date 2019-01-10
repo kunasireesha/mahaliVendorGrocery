@@ -40,7 +40,7 @@
   <div class="container whole-sellers">
     <div class="cust-buy">
       <h4>Buy a Products</h4>
-      <p>Your Nearest Shops</p>
+      <p>Wholeseller</p>
     </div>
 
     <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
@@ -132,7 +132,10 @@
     </div>
     <ng-template #item let-item let-i="index">
       <div class="proitems">
-        <img src="{{item.product_image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+        <img *ngIf="item.product_image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+          class="img-fluid">
+        <img *ngIf="item.product_image!==''" src="{{item.product_image}}" (click)="showProduxtDetails(item.product_id)"
+          class="img-fluid">
         <p>{{item.brand}}</p>
         <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
       </div>

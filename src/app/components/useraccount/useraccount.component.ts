@@ -55,7 +55,7 @@ export class UseraccountComponent implements OnInit {
         }
 
     }
-    typeval={};
+    typeval = {};
     item = {
         quantity: 1
     }
@@ -80,7 +80,7 @@ export class UseraccountComponent implements OnInit {
             state: [''],
             landmark: [''],
             pin_code: ['']
-       
+
         });
         this.productForm = this.formBuilder.group({
             deal_price: [''],
@@ -98,7 +98,7 @@ export class UseraccountComponent implements OnInit {
     get f1() { return this.addressForm.controls; }
 
     saveAddress() {
-      this.addressForm.value.address_type = this.typeval;
+        this.addressForm.value.address_type = this.typeval;
         if (this.addressForm.value.full_name === '') {
             this.full_name_errors = true;
             return;
@@ -207,7 +207,7 @@ export class UseraccountComponent implements OnInit {
     editAccount = false;
     editDel = false;
     showRequestAdmin = false;
-    showEditAddress=false;
+    showEditAddress = false;
 
     profile() {
         this.showNotifications = false;
@@ -226,7 +226,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     editProfile() {
@@ -246,7 +246,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
     accountDetails() {
         this.showNotifications = false;
@@ -265,7 +265,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = true;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
         this.getAccDet();
     }
     editAccountDetails() {
@@ -285,7 +285,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = true;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
     deliveryAddress() {
         this.showNotifications = false;
@@ -304,7 +304,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
     addAddress() {
         this.showNotifications = false;
@@ -323,7 +323,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
     showEditAdd(addId) {
         this.showNotifications = false;
@@ -363,7 +363,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     myProducts() {
@@ -383,7 +383,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     myOrder() {
@@ -403,7 +403,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     notifications() {
@@ -423,7 +423,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     showBukedOrderDetails(ordId) {
@@ -443,7 +443,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
         this.ordDetails(ordId);
     }
     ordId;
@@ -480,7 +480,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
     offerZone() {
         this.showNotifications = false;
@@ -499,7 +499,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     addProducts() {
@@ -519,7 +519,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
     showAddProducts2(Id) {
@@ -539,7 +539,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = false;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
         this.getProducts(Id);
     }
     requestAdmin() {
@@ -559,7 +559,7 @@ export class UseraccountComponent implements OnInit {
         this.showAccountDetails = false;
         this.editAccount = false;
         this.showRequestAdmin = true;
-        this.showEditAddress =false;
+        this.showEditAddress = false;
     }
 
 
@@ -642,7 +642,7 @@ export class UseraccountComponent implements OnInit {
         mobile_number: '',
         bussiness_area: '',
         bussiness_city: '',
-        bussiness_name:''
+        bussiness_name: ''
     }
     getProfile() {
         this.email = (localStorage.email);
@@ -659,7 +659,7 @@ export class UseraccountComponent implements OnInit {
             mobile_number: this.profileData.mobile_number,
             bussiness_area: this.profileData.bussiness_area,
             bussiness_city: this.profileData.bussiness_city,
-            bussiness_name:this.profileData.bussiness_name
+            bussiness_name: this.profileData.bussiness_name
 
         }
         this.appService.updateProfile(inDate).subscribe(response => {
@@ -703,8 +703,8 @@ export class UseraccountComponent implements OnInit {
 
 
     }
-    
-   
+
+
     //   saveAddress() {
 
 
@@ -713,7 +713,7 @@ export class UseraccountComponent implements OnInit {
         this.showDeliveryAddress = true;
         this.editAccount = false;
         this.showAddAddress = false;
-        this.showEditAddress=false;
+        this.showEditAddress = false;
     }
     delAdd(delId) {
         this.appService.delAddress(delId).subscribe(res => {
@@ -773,13 +773,13 @@ export class UseraccountComponent implements OnInit {
         })
     }
     editAddData = {
-        full_name:'',
-        mobile_number:'',
-        house_no:'',
-        landmark:'',
-        city:'',
-        state:'',
-        pin_code:'',
+        full_name: '',
+        mobile_number: '',
+        house_no: '',
+        landmark: '',
+        city: '',
+        state: '',
+        pin_code: '',
 
     };
     editAdd(addId) {
@@ -790,7 +790,7 @@ export class UseraccountComponent implements OnInit {
         })
     }
     UpdateAdd(addId) {
-        var indata ={
+        var indata = {
             "full_name": this.editAddData.full_name,
             "mobile_number": this.editAddData.mobile_number,
             "house_no": this.editAddData.house_no,
@@ -800,8 +800,8 @@ export class UseraccountComponent implements OnInit {
             "pin_code": this.editAddData.pin_code,
             "address_type": this.typeval
         }
-        this.appService.updateAddData(indata,addId).subscribe(resp => {
-            swal(resp.json().message,"","success");
+        this.appService.updateAddData(indata, addId).subscribe(resp => {
+            swal(resp.json().message, "", "success");
             this.getAdd();
             this.cancelAdd();
         }, err => {
