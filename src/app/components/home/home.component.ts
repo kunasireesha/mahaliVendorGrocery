@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
     showBreadScreen = false;
     showJuiceScreen = false;
 
+
+
     showVegetables() {
         this.showVegetablesScreen = true;
         this.showAllProducts = false;
@@ -132,7 +134,6 @@ export class HomeComponent implements OnInit {
         });
     }
     addtoCart(Id, skId) {
-
         if (localStorage.userId === undefined) {
             swal('Please Login', '', 'warning');
             return;
