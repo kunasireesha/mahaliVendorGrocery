@@ -101,11 +101,13 @@ export class FreshvegetablesComponent implements OnInit {
 
     })
   }
+  billing;
   getCart() {
     var inData = localStorage.getItem('userId');
     this.appService.getCart(inData).subscribe(res => {
       this.cartDetails = res.json().cart_details;
       this.cartCount = res.json().count;
+      this.billing = res.json().selling_Price_bill;
     }, err => {
 
     })

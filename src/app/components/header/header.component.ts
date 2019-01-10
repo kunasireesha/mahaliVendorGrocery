@@ -16,6 +16,7 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
     @Input() cartCount: number;
+    @Input() billing:number;
     registerForm: FormGroup;
     loginForm: FormGroup;
     forgotForm: FormGroup;
@@ -50,6 +51,7 @@ export class HeaderComponent implements OnInit {
             this.userMobile = JSON.parse(localStorage.getItem('phone'));
             this.userName = (localStorage.getItem('userName'));
         }
+        this.getCart();
     }
     item = {
         quantity: 1
@@ -170,6 +172,7 @@ export class HeaderComponent implements OnInit {
     showProbyCat(catId, action, catName) {
         this.showSubCats = false;
         this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action, catName: catName } });
+        $("#itemdesc").modal("hide");
     }
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
@@ -326,7 +329,7 @@ export class HeaderComponent implements OnInit {
 
     cartDetails = [];
     cartData = [];
-    billing;
+    
 
     getCart() {
         var inData = localStorage.getItem('userId');

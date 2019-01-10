@@ -1,4 +1,4 @@
-<app-header [cartCount]="cartValue"></app-header>
+<app-header [cartCount]="cartValue" [billing]="billing"></app-header>
 <main role="main">
 
   <!--Carousel Wrapper-->
@@ -54,7 +54,7 @@
             </div> -->
             <div class="row">
               <div class="col-md-6">
-                <img class="img-fluid" [src]="item.image_one" alt="Card image cap">
+                <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)">
               </div>
               <div class="card-block col-md-6 recmded">
                 <h4>{{item.bussiness_name}}</h4>

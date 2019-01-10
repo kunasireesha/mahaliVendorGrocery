@@ -68,6 +68,7 @@ export class ProductdetailsComponent implements OnInit {
     prodImages = [];
     getProductById() {
         this.appService.getProductById(this.prodId).subscribe(res => {
+            this.prodId = res.json().products.product_id;
             this.prodsData = res.json().products.sku_details;
             for (var j = 0; j < this.prodsData.length; j++) {
                 for (var k = 0; k < this.prodsData[j].images.length; k++) {
@@ -106,11 +107,13 @@ export class ProductdetailsComponent implements OnInit {
     }
     cartDetails;
     cartCount;
+    billing;
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
             this.cartCount = res.json().count;
+            this.billing = res.json().selling_Price_bill;
         }, err => {
 
         })

@@ -76,7 +76,7 @@ a {
   margin: 15px 0;
 }
 .bottom-cont p {
-  float: right
+  float: right;
 }
 .bottom-cont p a{
   color: black !important;
@@ -116,3 +116,19 @@ a {
   border-top: 11px solid white;
   margin-bottom: -43px;
 }
+
+@media screen and (max-width: 767px){
+  .bottom-cont p {
+    float: initial;
+  }
+  .arr-up{
+    position: absolute;
+    margin-top: -30px;
+  }
+}
+
+@media (min-width: 768px) and (max-width: 1198.98px) { 
+  .bottom-cont p {
+    float: initial;
+  }
+ }
