@@ -128,25 +128,32 @@
         </div>
       </div>
       <div class="row" *ngIf="serProd">
-        <div class="col-md-3 item" *ngFor="let item of serProducts">
-          <div class="card" *ngFor="let sku of item.sku_details">
+        <div class="col-md-3 item" *ngFor="let item of skuData">
+          <div class="card">
             <div class="product-image" (click)="showProduxtDetails()">
-              <img class="img-fluid" [src]="sku.product_image" alt="Card image cap">
+              <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
+              <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+                class="img-fluid">
+              <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
             </div>
             <div class="card-block add-to-cart">
-              <h5 class="text-center">{{sku.product_name}} </h5>
+              <h5 class="text-center">{{item.product_name}} </h5>
               <p class="text-center">
                 BD {{item.selling_price}}
                 <strike>BD {{item.actual_price}}</strike>
               </p>
               <div class="quantity-price text-center">
                 <select (change)="changeSize($event.target.value)">
-                  <option *ngFor="let sku of item.sku_details" [value]="sku.skid">{{sku.size}}</option>
+                  <option [value]="item.skid">{{item.size}}</option>
                 </select>
               </div>
-              <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button>
+              <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+                To Cart</button>
             </div>
           </div>
+        </div>
+        <div *ngIf="noData">
+          No data
         </div>
       </div>
     </div>

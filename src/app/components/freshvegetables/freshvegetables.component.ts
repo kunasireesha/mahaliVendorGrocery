@@ -18,7 +18,7 @@ export class FreshvegetablesComponent implements OnInit {
       } else if (params.action === 'subCategory') {
         this.subId = params.subId;
         this.catName = params.catName;
-        this.sunCatName =params.subCat || "";
+        this.sunCatName = params.subCat || "";
         this.getSubProducts();
       }
     })
@@ -40,12 +40,12 @@ export class FreshvegetablesComponent implements OnInit {
   prodData = [];
   noData = false;
   getCatProducts() {
-    this.skuData=[];
+    this.skuData = [];
     this.appService.productByCatId(this.catId).subscribe(res => {
       this.prodData = res.json().products;
       for (var i = 0; i < this.prodData.length; i++) {
         for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
-          this.prodData[i].sku_details[j].product_name=this.prodData[i].product_name; 
+          this.prodData[i].sku_details[j].product_name = this.prodData[i].product_name;
           this.skuData.push(this.prodData[i].sku_details[j]);
         }
       }
@@ -61,13 +61,13 @@ export class FreshvegetablesComponent implements OnInit {
 
 
   getSubProducts() {
-    this.skuData=[];
+    this.skuData = [];
     this.appService.productBySubCatId(this.subId).subscribe(res => {
       this.prodData = res.json().products;
       this.skuData = [];
       for (var i = 0; i < this.prodData.length; i++) {
         for (var j = 0; j < this.prodData[i].sku_details.length; j++) {
-          this.prodData[i].sku_details[j].product_name=this.prodData[i].product_name;
+          this.prodData[i].sku_details[j].product_name = this.prodData[i].product_name;
           this.skuData.push(this.prodData[i].sku_details[j]);
         }
       }
@@ -94,7 +94,7 @@ export class FreshvegetablesComponent implements OnInit {
         sku_id: skId
       }],
       "vendor_id": JSON.parse(localStorage.getItem('userId')),
-      "item_type":"grocery"
+      "item_type": "grocery"
     }
     this.appService.addtoCart(inData).subscribe(res => {
       this.cartDetails = res.json().selling_price_total;
