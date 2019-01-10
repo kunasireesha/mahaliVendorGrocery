@@ -798,7 +798,7 @@ export class UseraccountComponent implements OnInit {
             "state": this.editAddData.state,
             "landmark": this.editAddData.landmark,
             "pin_code": this.editAddData.pin_code,
-            "address_type": this.type
+            "address_type": this.typeval
         }
         this.appService.updateAddData(indata,addId).subscribe(resp => {
             swal(resp.json().message,"","success");
