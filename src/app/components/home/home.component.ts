@@ -132,7 +132,6 @@ export class HomeComponent implements OnInit {
         });
     }
     addtoCart(Id, skId) {
-
         if (localStorage.userId === undefined) {
             swal('Please Login', '', 'warning');
             return;

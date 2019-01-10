@@ -1,89 +1,137 @@
 <app-header [cartCount]="cartValue" [billing]="billing"></app-header>
 <main role="main">
 
-  <!--Carousel Wrapper-->
-  <div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
-    <!--Indicators-->
-    <ol class="carousel-indicators">
-      <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
-      <li data-target="#carousel-example-1z" data-slide-to="1"></li>
-      <li data-target="#carousel-example-1z" data-slide-to="2"></li>
-    </ol>
-    <!--/.Indicators-->
-    <!--Slides-->
-    <div class="carousel-inner" role="listbox">
-      <!--First slide-->
-      <div class="carousel-item" *ngFor="let item of mainData; let i =index;" [ngClass]="{'active':i == 0}">
-        <img class="d-block w-100" [src]="item.website_banner" alt="First slide">
-      </div>
+    <!--Carousel Wrapper-->
+    <div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
+        <!--Indicators-->
+        <ol class="carousel-indicators">
+            <li data-target="#carousel-example-1z" data-slide-to="0" class="active"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="1"></li>
+            <li data-target="#carousel-example-1z" data-slide-to="2"></li>
+        </ol>
+        <!--/.Indicators-->
+        <!--Slides-->
+        <div class="carousel-inner" role="listbox">
+            <!--First slide-->
+            <div class="carousel-item" *ngFor="let item of mainData; let i =index;" [ngClass]="{'active':i == 0}">
+                <img class="d-block w-100" [src]="item.website_banner" alt="First slide">
+            </div>
 
+        </div>
+        <!--/.Slides-->
+        <!--Controls-->
+        <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
+            <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+            <span class="sr-only">Previous</span>
+        </a>
+        <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
+            <span class="carousel-control-next-icon" aria-hidden="true"></span>
+            <span class="sr-only">Next</span>
+        </a>
+        <!--/.Controls-->
     </div>
-    <!--/.Slides-->
-    <!--Controls-->
-    <a class="carousel-control-prev" href="#carousel-example-1z" role="button" data-slide="prev">
-      <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-      <span class="sr-only">Previous</span>
-    </a>
-    <a class="carousel-control-next" href="#carousel-example-1z" role="button" data-slide="next">
-      <span class="carousel-control-next-icon" aria-hidden="true"></span>
-      <span class="sr-only">Next</span>
-    </a>
-    <!--/.Controls-->
-  </div>
-  <!--/.Carousel Wrapper-->
+    <!--/.Carousel Wrapper-->
 
 </main>
 <br />
 <!-- delas -->
 <div class="container-fluid cust-productcat">
 
-  <div class="container whole-sellers">
-    <div class="cust-buy">
-      <h4>Buy a Products</h4>
-      <p>Your Nearest Shops</p>
-    </div>
-
-    <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
-      <div class="carousel-inner row w-100 mx-auto" role="listbox">
-        <div class="carousel-item col-md-4" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
-          <div class="panel panel-default">
-            <!-- <div class="panel-thumbnail">
-              <a href="#" title="image 1" class="thumb">
-                <img class="img-fluid mx-auto d-block" [src]="item.image_one" alt="slide 1">
-              </a>
-            </div> -->
-            <div class="row">
-              <div class="col-md-6">
-                <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)">
-              </div>
-              <div class="card-block col-md-6 recmded">
-                <h4>{{item.bussiness_name}}</h4>
-                <p>
-                  <i class="fas fa-map-marker-alt"></i>
-                  &nbsp; {{item.business_area}}, {{item.business_city}}
-                  {{item.business_country}}
-                </p>
-                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                &nbsp;
-                <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
-              </div>
-            </div>
-          </div>
+    <div class="container whole-sellers">
+        <div class="cust-buy">
+            <h4>Buy a Products</h4>
+            <p>Your Nearest Shops</p>
         </div>
+        <div class="container">
+            <div id="dataInfo">
+                <div id="myCarousel" class="carousel slide" data-ride="carousel">
+                    <div class="carousel-inner">
+                        <div class="carousel-item active" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
+                            <div class="row">
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 1</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural
+                                                lead-in to additional content. This content is a little bit longer.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" [src]="item.image_two" alt="Card image cap" (click)="showStore(item.id)">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 2</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural
+                                                lead-in to additional content. This content is a little bit longer.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="col-md-4">
+                                    <div class="card">
+                                        <img class="card-img-top img-fluid" [src]="item.image_three" alt="Card image cap" (click)="showStore(item.id)">
+                                        <div class="card-body">
+                                            <h4 class="card-title">Card 3</h4>
+                                            <p class="card-text">This is a longer card with supporting text below as a natural
+                                                lead-in to additional content. This content is a little bit longer.</p>
+                                            <p class="card-text"><small class="text-muted">Last updated 3 mins ago</small></p>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+                    <a class="carousel-control-prev" href="#myCarousel" role="button" data-slide="prev">
+                        <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Previous</span>
+                    </a>
+                    <a class="carousel-control-next" href="#myCarousel" role="button" data-slide="next">
+                        <span class="carousel-control-next-icon" aria-hidden="true"></span>
+                        <span class="sr-only">Next</span>
+                    </a>
+                </div>
 
-      </div>
-      <div class="controls-top">
-        <a class="btn-floating btn-small slider-btn-left" href="#carouselExample" data-slide="prev">
-          <i class="fas fa-long-arrow-alt-left"></i>
-        </a>
-        <a class="btn-floating btn-small slider-btn-right" href="#carouselExample" data-slide="next">
-          <i class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </div>
-    </div>
+            </div>
+        </div>
+        <!-- <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
+            <div class="carousel-inner row w-100 mx-auto" role="listbox">
+                <div class="carousel-item col-md-4" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
+                    <div class="panel panel-default">
+                        <div class="row">
+                            <div class="col-md-6">
+                                <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)">
+                            </div>
+                            <div class="card-block col-md-6 recmded">
+                                <h4>{{item.bussiness_name}}</h4>
+                                <p>
+                                    <i class="fas fa-map-marker-alt"></i>
+                                    &nbsp; {{item.business_area}}, {{item.business_city}} {{item.business_country}}
+                                </p>
+                                <i class="fa fa-clock-o" aria-hidden="true"></i>
+                                &nbsp;
+                                <span class="cust-time">{{item.business_from_time}} To {{item.business_end_time}}</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
 
-    <!-- Nearest Shops -->
-    <!-- <div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
+            </div>
+            <div class="controls-top">
+                <a class="btn-floating btn-small slider-btn-left" href="#carouselExample" data-slide="prev">
+                    <i class="fas fa-long-arrow-alt-left"></i>
+                </a>
+                <a class="btn-floating btn-small slider-btn-right" href="#carouselExample" data-slide="next">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
+            </div>
+        </div> -->
+
+        <!-- Nearest Shops -->
+
+        <!-- <div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
       <br />
       <div class="carousel-inner" role="listbox">
         <div class="carousel-item" *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i == 0}">
@@ -114,50 +162,50 @@
 
 
 
-  </div>
-
-
-
-
-
-  <div class="container prod-data">
-
-    <!-- products -->
-    <div class="sell-products">
-      <h4>Sell Products</h4>
     </div>
 
 
-    <div ng2-carouselamos class="slides-wrapper" [items]="product" [width]="1400" [$prev]="prev" [$next]="next" [$item]="item">
-    </div>
-    <ng-template #item let-item let-i="index">
-      <div class="proitems">
-        <img src="{{item.product_image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-        <p>{{item.brand}}</p>
-        <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
-      </div>
 
 
-    </ng-template>
+
+    <div class="container prod-data">
+
+        <!-- products -->
+        <div class="sell-products">
+            <h4>Sell Products</h4>
+        </div>
 
 
-    <div class="controls-top col-lg-12 float-right">
-      <ng-template #prev>
-        <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
-          <i class="fas fa-long-arrow-alt-left"></i>
-        </a>
-      </ng-template>
-      <ng-template #next>
-        <a class="btn-floating btn-small slider-btn-right1" href="#multi-item-example" data-slide="next">
-          <i class="fas fa-long-arrow-alt-right"></i>
-        </a>
-      </ng-template>
-    </div>
+        <div ng2-carouselamos class="slides-wrapper" [items]="product" [width]="1400" [$prev]="prev" [$next]="next" [$item]="item">
+        </div>
+        <ng-template #item let-item let-i="index">
+            <div class="proitems">
+                <img src="{{item.product_image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                <p>{{item.brand}}</p>
+                <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.sku_details[0].skid)">Add</button>
+            </div>
 
-    <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
-      <br />
-      <!--Slides-->
-      <!-- <div class="carousel-inner product-slider" role="listbox">
+
+        </ng-template>
+
+
+        <div class="controls-top col-lg-12 float-right">
+            <ng-template #prev>
+                <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example" data-slide="prev">
+                    <i class="fas fa-long-arrow-alt-left"></i>
+                </a>
+            </ng-template>
+            <ng-template #next>
+                <a class="btn-floating btn-small slider-btn-right1" href="#multi-item-example" data-slide="next">
+                    <i class="fas fa-long-arrow-alt-right"></i>
+                </a>
+            </ng-template>
+        </div>
+
+        <div id="multi-item-example" class="carousel slide carousel-multi-item container" data-ride="carousel">
+            <br />
+            <!--Slides-->
+            <!-- <div class="carousel-inner product-slider" role="listbox">
 				  <div class="row">
 					<div class="carousel-item active">
 			  
@@ -175,12 +223,12 @@
 					</div>
 				  </div>
 				</div> -->
-      <!--/.Slides-->
+            <!--/.Slides-->
 
-      <!--Controls-->
+            <!--Controls-->
 
+        </div>
     </div>
-  </div>
 </div>
 
 <br /><br /><br />

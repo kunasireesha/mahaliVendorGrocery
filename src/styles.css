@@ -4,6 +4,7 @@
 @import '~bootstrap/dist/css/bootstrap.min.css';
 @import '~@angular/material/prebuilt-themes/deeppurple-amber.css';
 
+
 body {
   min-height: 75rem;
   /* padding-top: 4.5rem; */
