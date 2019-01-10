@@ -106,7 +106,7 @@
         <a>Grocery</a>
       </p>
       <div class="row" *ngIf="wholeProd">
-        <div class="col-lg-3 item" *ngFor="let item of products">
+        <div class="col-lg-3 item" *ngFor="let item of skuData">
           <div class="card">
             <div class="product-image" (click)="showProduxtDetails(item.product_id)">
               <img class="img-fluid" [src]="item.product_image" alt="Card image cap">
@@ -119,10 +119,11 @@
               </p>
               <div class="quantity-price text-center">
                 <select (change)="changeSize($event.target.value)">
-                  <option *ngFor="let sku of item.sku_details" [value]="sku.skid">{{sku.size}}</option>
+                  <option [value]="item.skid">{{item.size}}</option>
                 </select>
               </div>
-              <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id)">Add To Cart</button>
+              <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+                To Cart</button>
             </div>
           </div>
         </div>

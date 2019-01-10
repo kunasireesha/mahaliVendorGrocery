@@ -157,7 +157,6 @@ export class UseraccountComponent implements OnInit {
             this.cancelAdd();
         })
     }
-
     get f2() { return this.productForm.controls; }
     productId;
     save(prodId) {
@@ -450,6 +449,7 @@ export class UseraccountComponent implements OnInit {
     ordData = [];
     orderDet = [];
     count;
+
     ordDetails(ordId) {
         this.ordId = ordId;
         this.appService.orderById(ordId).subscribe(resp => {
@@ -562,7 +562,10 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = false;
     }
 
-
+    status = ["Available", "Unavilable"];
+    onSelect(status) {
+        this.status = status;
+    }
     prodId;
     reqProds = [];
     getProducts(Id) {
@@ -575,7 +578,7 @@ export class UseraccountComponent implements OnInit {
     price;
     qunt;
     dis;
-    status;
+    // status;
     // save(proId) {
     //     var inData = {
     //         "vendor_id": localStorage.userId,

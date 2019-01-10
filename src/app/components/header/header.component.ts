@@ -16,7 +16,7 @@ declare var $: any;
 })
 export class HeaderComponent implements OnInit {
     @Input() cartCount: number;
-    @Input() billing:number;
+    @Input() billing: number;
     registerForm: FormGroup;
     loginForm: FormGroup;
     forgotForm: FormGroup;
@@ -329,7 +329,7 @@ export class HeaderComponent implements OnInit {
 
     cartDetails = [];
     cartData = [];
-    
+
 
     getCart() {
         var inData = localStorage.getItem('userId');

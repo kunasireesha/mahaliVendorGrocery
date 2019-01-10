@@ -61,23 +61,30 @@ export class ProductsComponent implements OnInit {
   products = [];
   skuid;
   getWholeProds() {
+    this.skuData = [];
     this.appService.wholeProducts(this.wholeId).subscribe(res => {
       this.products = res.json().products;
       for (var i = 0; i < this.products.length; i++) {
-        for (var k = 0; k < this.products[i].sku_details.length; k++) {
-          // if(parseInt(skId) ===this.products[i].sku_details[k].skid){
-          this.products[i].actual_price = this.products[i].sku_details[0].actual_price;
-          this.products[i].selling_price = this.products[i].sku_details[0].selling_price;
-          this.products[i].product_image = this.products[i].sku_details[0].product_image;
-          this.skuid = this.products[i].sku_details[0].skid;
-
-
-
-          // this.skuArr.push(this.skuData);
-
-          // }
+        for (var j = 0; j < this.products[i].sku_details.length; j++) {
+          this.products[i].sku_details[j].product_name = this.products[i].product_name;
+          this.skuData.push(this.products[i].sku_details[j]);
         }
       }
+      // for (var i = 0; i < this.products.length; i++) {
+      //   for (var k = 0; k < this.products[i].sku_details.length; k++) {
+      //     // if(parseInt(skId) ===this.products[i].sku_details[k].skid){
+      //     this.products[i].actual_price = this.products[i].sku_details[0].actual_price;
+      //     this.products[i].selling_price = this.products[i].sku_details[0].selling_price;
+      //     this.products[i].product_image = this.products[i].sku_details[0].product_image;
+      //     this.skuid = this.products[i].sku_details[0].skid;
+
+
+
+      //     // this.skuArr.push(this.skuData);
+
+      //     // }
+      //   }
+      // }
 
 
       // for (var i = 0; i < this.products.length; i++) {
@@ -108,6 +115,7 @@ export class ProductsComponent implements OnInit {
   cartDetails = [];
   cartCount = [];
   addtoCart(Id, skId) {
+    alert(skId);
     var inData = {
       "products": [{
         product_id: Id,
