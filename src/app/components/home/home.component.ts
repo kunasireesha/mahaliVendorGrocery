@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
     showBreadScreen = false;
     showJuiceScreen = false;
 
+
+
     showVegetables() {
         this.showVegetablesScreen = true;
         this.showAllProducts = false;

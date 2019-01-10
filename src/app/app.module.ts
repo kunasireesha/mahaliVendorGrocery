@@ -94,6 +94,7 @@ export function HttpLoaderFactory(http: HttpClient) {
         BrowserAnimationsModule,
         MDBBootstrapModule.forRoot(),
         Ng2CarouselamosModule,
+        
         Ng2SearchPipeModule,
         TranslateModule.forRoot({
             loader: {
