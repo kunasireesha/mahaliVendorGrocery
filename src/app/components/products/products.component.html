@@ -4,7 +4,7 @@
     <div class="col-md-3">
       <h5>Category</h5>
       <br />
-      <div class="categories">
+      <!-- <div class="categories">
         <div id="panel-group">
           <div class="panel panel-default" *ngFor="let item of category; let i = index">
             <div class="panel-heading" (click)="current = i;item.id">
@@ -22,8 +22,27 @@
             </div>
           </div>
         </div>
-      </div>
+      </div> -->
+      <div class="categories" *ngFor="let cat of category; let i = index">
+        <p [ngClass]="{'active':showCategories && i==selectedCat}">
+          <a>
+            <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
+            <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
 
+            <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
+          </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.name)">{{cat.category_name}}</span>
+        </p>
+        <hr>
+        <!-- categories -->
+
+        <div class="subCates">
+          <div *ngFor="let subCat of subCategory;let ii = index">
+            <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
+              <span (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+            </p>
+          </div>
+        </div>
+      </div>
       <h5>Sort</h5>
       <div class="sort">
         <select>
@@ -152,9 +171,9 @@
                 To Cart</button>
             </div>
           </div>
-        </div>
-        <div *ngIf="noData">
-          No data
+          <div *ngIf="!skuData">
+            No data
+          </div>
         </div>
       </div>
     </div>

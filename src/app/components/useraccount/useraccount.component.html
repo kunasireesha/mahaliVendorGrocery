@@ -407,7 +407,8 @@
                                         <form class="form-inline form-rt">
                                             <i class="fa fa-search item-search" aria-hidden="true"></i>
                                             <input class="form-control mr-sm-2 placeholder-padding" type="search"
-                                                placeholder="Search by item name" aria-label="Search">
+                                                placeholder="Search by item name" aria-label="Search" [(ngModel)]="filter"
+                                                name="filter1">
                                         </form>
                                     </div>
                                 </div>
@@ -424,7 +425,7 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
-                                        <tr>
+                                        <tr *ngFor="let reqProds of reqProds | filter:filter">
                                             <th scope="row" class="cust-1">1</th>
                                             <td class="add-img">
                                                 <img [src]="reqProds.product_image" alt="Potatoes">
@@ -432,15 +433,19 @@
                                             <td class="cust-pot">{{reqProds.product_name}}</td>
                                             <td class="cust-1">{{reqProds.brand}}</td>
                                             <td class="cust-1 text-right">
-                                                <button class="cust-add" data-toggle="modal" data-target="#addProd">ADD</button>
+                                                <button class="cust-add" data-toggle="modal" data-target="#addProd"
+                                                    (click)="getData(reqProds.product_image,reqProds.product_name,reqProds.brand)">ADD</button>
                                             </td>
-                                        </tr>
-
-                                        <tr>
-                                            <td *ngIf="!reqProds">
+                                            <td *ngIf="reqProds.length==0">
                                                 No Data Found
                                             </td>
                                         </tr>
+
+                                        <!-- <tr>
+                                            <td *ngIf="reqProds?.length==0">
+                                                No Data Found
+                                            </td>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -959,7 +964,7 @@
                                         <i class="fa fa-trash-o cust-delete" aria-hidden="true"></i>
                                     </td>
                                 </tr>
-                                <tr>
+                                <!-- <tr>
                                     <th scope="row" class="cst-padtp">
                                         <strong>2</strong>
                                     </th>
@@ -1018,7 +1023,7 @@
                                     <td class="cst-padtp">
                                         <i class="fa fa-trash-o cust-delete" aria-hidden="true"></i>
                                     </td>
-                                </tr>
+                                </tr> -->
                             </tbody>
                         </table>
                     </div>
@@ -1078,61 +1083,6 @@
                                             <td>BD.{{ord.billing_amount}}</td>
                                             <td>{{ord.order_status}}</td>
                                         </tr>
-                                        <tr>
-                                            {{this.count}}
-                                        </tr>
-                                        <!-- <tr (click)="showBukedOrderDetails()" class="cst-topad">
-                                            <th scope="row">2</th>
-                                            <td>
-                                                3713643
-                                            </td>
-                                            <td>4 May 2018,
-                                                <br /> 10:30 PM</td>
-                                            <td>John Park</td>
-                                            <td>
-                                                BD.84.00
-                                            </td>
-                                            <td>Processing</td>
-                                        </tr>
-                                        <tr (click)="showBukedOrderDetails()" class="cst-topad">
-                                            <th scope="row">3</th>
-                                            <td>
-                                                3862865
-                                            </td>
-                                            <td>17 Jan 2018,
-                                                <br /> 9:30 PM</td>
-                                            <td>Peter John</td>
-                                            <td>
-                                                BD.266.00
-                                            </td>
-                                            <td>Delivered</td>
-                                        </tr>
-                                        <tr (click)="showBukedOrderDetails()" class="cst-topad">
-                                            <th scope="row">4</th>
-                                            <td>
-                                                3862866
-                                            </td>
-                                            <td>17 Jan 2018,
-                                                <br /> 9:30 PM</td>
-                                            <td>Martix John</td>
-                                            <td>
-                                                BD.214.00
-                                            </td>
-                                            <td>Delivered</td>
-                                        </tr>
-                                        <tr class="last-tr" (click)="showBukedOrderDetails()" class="cst-topad">
-                                            <th scope="row">5</th>
-                                            <td>
-                                                3862867
-                                            </td>
-                                            <td>17 Jan 2018,
-                                                <br /> 9:30 PM</td>
-                                            <td>Peter John</td>
-                                            <td>
-                                                BD.266.00
-                                            </td>
-                                            <td>Delivered</td>
-                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -1304,7 +1254,7 @@
                         <tr>
                             <td style="font-size: 16px;">Wholeseller</td>
                             <td class="prod-price">
-                                <strong>{{orderDet.wholesaler_name}}</strong>
+                                <strong>{{orderDet.vendor_name}}</strong>
                             </td>
                         </tr>
                         <tr>
@@ -1751,10 +1701,10 @@
                     <div class="row">
                         <div class="col-sm-5">
                             <div class="add-popup">
-                                <img [src]="reqProds.product_image" alt="potato" />
+                                <img [src]="getImg" alt="potato" />
                                 <p>
-                                    <span class="pot">{{reqProds.product_name}}</span>
-                                    <br />{{reqProds.brand}}</p>
+                                    <span class="pot">{{prodName}}</span>
+                                    <br />{{brName}}</p>
                             </div>
                         </div>
                         <div class="col-sm-7">
@@ -1809,14 +1759,16 @@
                                         </div>
                                     </div> -->
                                     <div class="form-group row">
-                                        <label for="sel1" class="col-sm-3 col-form-label">Select list:</label>
+                                        <label for="sel1" class="col-sm-3 col-form-label">Status:</label>
                                         <div class="col-sm-8">
                                             <select class="form-control" id="sel1" formControlName="status" (change)="onSelect($event.target.value)"
                                                 [ngClass]="{ 'is-invalid': status_errors }">
                                                 <option *ngFor="let status of status" [ngValue]="status">{{status}}</option>
                                                 <!-- <option>Unavailable</option> -->
                                             </select>
-                                            <div *ngIf="status_errors">Status is required</div>
+                                            <div *ngIf="status_errors" class="invalid-feedback">
+                                                <div *ngIf="status_errors">Status is required</div>
+                                            </div>
                                             <button type="submit" class="btn add-button pop-save" (click)="save(reqProds.product_id)">SAVE</button>
                                         </div>
                                     </div>

@@ -115,7 +115,6 @@ export class ProductsComponent implements OnInit {
   cartDetails = [];
   cartCount = [];
   addtoCart(Id, skId) {
-    alert(skId);
     var inData = {
       "products": [{
         product_id: Id,
@@ -145,7 +144,6 @@ export class ProductsComponent implements OnInit {
           this.skuData.push(this.serProducts[i].sku_details[j]);
         }
       }
-
     }, err => {
 
     })

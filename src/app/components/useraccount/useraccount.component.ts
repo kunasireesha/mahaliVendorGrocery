@@ -4,6 +4,8 @@ import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+declare var $: any;
+
 @Component({
     selector: 'app-useraccount',
     templateUrl: './useraccount.component.html',
@@ -49,6 +51,7 @@ export class UseraccountComponent implements OnInit {
             this.showAddProducts = true;
         } else if (this.page === 'myproduct') {
             this.showMyProducts = true;
+            this.getAddedData();
         } else if (this.page === 'accountData') {
             this.showAccountDetails = true;
             this.accountDetails();
@@ -66,6 +69,7 @@ export class UseraccountComponent implements OnInit {
         this.getOrders();
         this.getCategories();
         this.ordDetails(this.ordId);
+        this.getAddedData();
         this.resetForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
@@ -88,7 +92,7 @@ export class UseraccountComponent implements OnInit {
             discount: [''],
             status: [''],
             vendor_id: localStorage.userId,
-            product_id: this.productId
+            // product_id: this.productId
         });
 
     }
@@ -160,6 +164,7 @@ export class UseraccountComponent implements OnInit {
     get f2() { return this.productForm.controls; }
     productId;
     save(prodId) {
+        this.productForm.value.product_id = prodId;
         if (this.productForm.value.deal_price === '') {
             this.deal_price_errors = true;
             return;
@@ -184,10 +189,18 @@ export class UseraccountComponent implements OnInit {
             this.status_errors = false;
             swal("Your order under process for Approvel", "", "success");
             this.productForm.reset();
+            $('#addProd').modal('hide');
         })
 
     }
-
+    getImg;
+    prodName;
+    brName;
+    getData(img, prodName, brName) {
+        this.getImg = img;
+        this.prodName = prodName;
+        this.brName = brName;
+    }
     page;
     showNotifications = false;
     showOrderDetails = false;
@@ -596,7 +609,7 @@ export class UseraccountComponent implements OnInit {
 
     onSubmit1() {
 
-        alert(JSON.stringify(this.model))
+        // alert(JSON.stringify(this.model))
     }
     itemIncrease() {
         let thisObj = this;
@@ -670,6 +683,20 @@ export class UseraccountComponent implements OnInit {
             this.ngOnInit();
             this.getProfile();
             this.cancel();
+        })
+    }
+    getVenData = [];
+    venProducts = [];
+    getAddedData() {
+        this.appService.getAddedData().subscribe(res => {
+            this.getVenData = res.json().vendor_products;
+            for (var i = 0; i < this.getVenData.length; i++) {
+                this.venProducts = this.getVenData[i].product_details;
+                console.log(this.venProducts);
+            }
+            // console.log(this.venProducts);
+        }, err => {
+
         })
     }
     cancel() {

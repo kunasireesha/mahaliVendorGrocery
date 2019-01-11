@@ -38,6 +38,7 @@ export const AppSettings = {
     reqProducts: baseUrl + "place_order/request_products/vendor",
     updateProd: baseUrl + "place_order/pricing",
     contactUsUrl: baseUrl + "contact_us",
-    getAddbyId:baseUrl+"delivery_address/address_id",
-    updateAddress:baseUrl+"delivery_address",
+    getAddbyId: baseUrl + "delivery_address/address_id",
+    updateAddress: baseUrl + "delivery_address",
+    getAddedData: baseUrl + "vendor_products"
 }
