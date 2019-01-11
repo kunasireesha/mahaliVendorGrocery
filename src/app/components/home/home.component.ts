@@ -131,6 +131,7 @@ export class HomeComponent implements OnInit {
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
             this.product = resp.json().products;
+            console.log(this.product);
         });
     }
     addtoCart(Id, skId) {
