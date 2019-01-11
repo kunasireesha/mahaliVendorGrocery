@@ -202,7 +202,7 @@ export class MycartComponent implements OnInit {
       "vendor_id": localStorage.getItem('userId'),
       "order_status": "placed",
       "wholesaler_id": localStorage.wholeSellerId,
-      "item_type":"grocery"
+      "item_type": "grocery"
     }
 
     this.appService.palceOrder(inData).subscribe(res => {

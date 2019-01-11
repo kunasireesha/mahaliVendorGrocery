@@ -22,6 +22,8 @@ export class HomeComponent implements OnInit {
     showBreadScreen = false;
     showJuiceScreen = false;
 
+
+
     showVegetables() {
         this.showVegetablesScreen = true;
         this.showAllProducts = false;
@@ -129,10 +131,10 @@ export class HomeComponent implements OnInit {
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
             this.product = resp.json().products;
+            console.log(this.product);
         });
     }
     addtoCart(Id, skId) {
-
         if (localStorage.userId === undefined) {
             swal('Please Login', '', 'warning');
             return;
@@ -164,11 +166,13 @@ export class HomeComponent implements OnInit {
     }
     cartDetails;
     cartValue;
+    billing;
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
             this.cartValue = res.json().count;
+            this.billing = res.json().selling_Price_bill;
         }, err => {
 
         })
