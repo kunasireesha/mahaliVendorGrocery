@@ -36,6 +36,7 @@ export class HeaderComponent implements OnInit {
     showOpacity = false;
     showLogin = false;
     IsmodelShow = false;
+    showCategories=false;
     subcat = [];
 
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
@@ -169,13 +170,18 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showProbyCat(catId, action, catName) {
+    showProbyCat(catId, action, catName,index) {
         this.showSubCats = false;
+        this.showCategories=false;
+        this.showOpacity=false;
+        this.selectedCat=index;
         this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action, catName: catName } });
         $("#itemdesc").modal("hide");
     }
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
+        this.showCategories=false;
+        this.showOpacity=false;
         this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
         $("#itemdesc").modal("hide");
     }
@@ -364,7 +370,10 @@ export class HeaderComponent implements OnInit {
 
         // })    
     }
+  
     hidesub() {
+        this.showCategories=!this.showCategories;
+        this.showOpacity=true;
         this.showSubCats = false;
     }
 }
