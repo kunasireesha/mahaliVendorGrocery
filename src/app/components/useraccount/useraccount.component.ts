@@ -687,12 +687,13 @@ export class UseraccountComponent implements OnInit {
     }
     getVenData = [];
     venProducts = [];
+    prodArr = [];
     getAddedData() {
         this.appService.getAddedData().subscribe(res => {
             this.getVenData = res.json().vendor_products;
             for (var i = 0; i < this.getVenData.length; i++) {
                 this.venProducts = this.getVenData[i].product_details;
-                console.log(this.venProducts);
+                this.prodArr.push(this.venProducts);
             }
             // console.log(this.venProducts);
         }, err => {
@@ -834,6 +835,17 @@ export class UseraccountComponent implements OnInit {
             swal(resp.json().message, "", "success");
             this.getAdd();
             this.cancelAdd();
+        }, err => {
+
+        })
+    }
+    deleteProd(proId) {
+        this.appService.delProd(proId).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                this.getAddedData();
+            }
+
         }, err => {
 
         })

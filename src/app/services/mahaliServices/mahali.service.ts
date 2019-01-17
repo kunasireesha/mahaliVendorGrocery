@@ -196,6 +196,10 @@ export class appService {
         this.vendor_id = localStorage.userId;
         return this.http.get(AppSettings.getAddedData + "/" + this.vendor_id, { headers: headers });
     }
+    delProd(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.delete(AppSettings.delProd + "/" + params, { headers: headers });
+    }
 }
 
 

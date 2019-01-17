@@ -40,5 +40,6 @@ export const AppSettings = {
     contactUsUrl: baseUrl + "contact_us",
     getAddbyId: baseUrl + "delivery_address/address_id",
     updateAddress: baseUrl + "delivery_address",
-    getAddedData: baseUrl + "vendor_products"
+    getAddedData: baseUrl + "vendor_products",
+    delProd: baseUrl + "vendor_products/product"
 }
