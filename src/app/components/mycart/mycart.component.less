@@ -289,9 +289,7 @@ text-decoration: underline;
         text-align: center;
     }
 }
-button.btn.btn-maroon {
-    margin-top: -12px;
-}
+
 h5.payment {
     border: none !important;
     font-size: inherit !important;
@@ -310,6 +308,13 @@ h5.payment {
         }
     }
 }
+@media screen and (max-width:767px) {
+    .del-address {
+        .btn {
+            top: 0px;
+        }
+    }
+}
 .payment.first{
     margin-top: 17px !important;
 }
@@ -322,7 +327,6 @@ h5.payment {
     padding: 4%;
 }
 .cartData:last-child {
-    border-bottom: none !important;
-    
+    border-bottom: none !important; 
 }
 
