@@ -130,7 +130,7 @@
         <a class="nav-link">
           <i class="fa fa-navicon cust-navcon"></i>
         </a>
-      </li> 
+      </li>
     </ul>
   </div>
 </nav>
@@ -550,7 +550,7 @@
 </div> -->
 
 <!-- <div class="opacity modal-backdrop" *ngIf="showOpacity"></div> -->
-  <div class="container cat-pop" *ngIf="showCategories">
+<div class="container cat-pop" *ngIf="showCategories">
   <div class="category-popup" role="document">
     <div class="cust-subcarcont">
 
@@ -559,10 +559,10 @@
           <h5 class="text-center">Categories</h5>
           <ul *ngFor="let cat of category;let i = index">
             <li>
-              <i class="fa fa-caret-left sub-cat" aria-hidden="true" (click)="showSubCat(cat.id,i)"></i> &nbsp;&nbsp;&nbsp;
-              <a  (click)="showProbyCat(cat.id,'category',cat.category_name,i)"
-                [ngClass]="{'activeCat':i==selectedCat}">{{cat.category_name}}</a>
-                <!-- subcatdiv -->
+              <i class="fa fa-caret-left sub-cat" aria-hidden="true" (click)="showSubCat(cat.id,i)"></i>
+              &nbsp;&nbsp;&nbsp;
+              <a (click)="showProbyCat(cat.id,'category',cat.category_name,i)" [ngClass]="{'activeCat':i==selectedCat}">{{cat.category_name}}</a>
+              <!-- subcatdiv -->
               <div class="subcatcat" *ngIf="showSubCats">
                 <div class="subcatsCat row">
                   <div class="col-md-12">
@@ -577,7 +577,7 @@
 
                 </div>
               </div>
-                <!--end subcatdiv -->
+              <!--end subcatdiv -->
             </li>
           </ul>
         </div>
@@ -585,7 +585,7 @@
 
     </div>
   </div>
-  </div>
+</div>
 
 <script>
   // Material Select Initialization
