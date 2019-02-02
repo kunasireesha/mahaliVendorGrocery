@@ -15,6 +15,7 @@ export class ProductsComponent implements OnInit {
   serProd = false;
   wholeProd = false;
   showSubCats = false;
+  noData: boolean;
   constructor(private router: Router, public productService: ProductService, private appService: appService, private route: ActivatedRoute) {
     this.route.queryParams.subscribe(params => {
       if (params.action === "whole") {
@@ -138,12 +139,18 @@ export class ProductsComponent implements OnInit {
     this.skuData = [];
     this.appService.searchProducts(product).subscribe(res => {
       this.serProducts = res.json().data;
-      for (var i = 0; i < this.serProducts.length; i++) {
-        for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
-          this.serProducts[i].sku_details[j].product_name = this.serProducts[i].product_name;
-          this.skuData.push(this.serProducts[i].sku_details[j]);
+      if (this.serProducts == "No products found with your search") {
+        this.noData = true;
+      } else {
+        for (var i = 0; i < this.serProducts.length; i++) {
+          for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
+            this.serProducts[i].sku_details[j].product_name = this.serProducts[i].product_name;
+            this.skuData.push(this.serProducts[i].sku_details[j]);
+          }
         }
+        this.noData = false;
       }
+
     }, err => {
 
     })

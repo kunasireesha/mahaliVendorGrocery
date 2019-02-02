@@ -110,7 +110,10 @@ export class appService {
         return this.http.get(AppSettings.paymentType, { headers: headers });
     }
     palceOrder(params) {
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        const headers = new Headers({
+            'Content-Type': "application/JSON",
+            'x-access-token': (localStorage.token),
+        });
         return this.http.post(AppSettings.palceOrder, params, { headers: headers });
     }
     getPlaceOrder() {
