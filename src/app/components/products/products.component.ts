@@ -41,20 +41,6 @@ export class ProductsComponent implements OnInit {
 
   collapse(catId) {
     this.showCategories = !this.showCategories;
-    //     this.subCatData = [];
-    //     for(var i=0;i<this.category.length;i++){
-    // for(var j=0;j<this.category[i].subcategory.length;j++){
-    //   if(catId ===this.category[i].subcategory[j].category_id ){
-    //     this.subCatData.push(this.category[i].subcategory[j]);
-    //           console.log(this.subCatData);
-    //     this.showCategories = !this.showCategories;
-    //     this.showSubCat(this.subId);
-    //   }
-    // }
-    //     }
-
-
-
   }
   showProduxtDetails(prodId) {
     this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
@@ -139,16 +125,16 @@ export class ProductsComponent implements OnInit {
     this.skuData = [];
     this.appService.searchProducts(product).subscribe(res => {
       this.serProducts = res.json().data;
-      if (this.serProducts == "No products found with your search") {
-        this.noData = true;
-      } else {
-        for (var i = 0; i < this.serProducts.length; i++) {
-          for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
-            this.serProducts[i].sku_details[j].product_name = this.serProducts[i].product_name;
-            this.skuData.push(this.serProducts[i].sku_details[j]);
-          }
+      // if (this.serProducts == "No products found with your search") {
+      //   this.noData = true;
+      // } else {
+      for (var i = 0; i < this.serProducts.length; i++) {
+        for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
+          this.serProducts[i].sku_details[j].product_name = this.serProducts[i].product_name;
+          this.skuData.push(this.serProducts[i].sku_details[j]);
         }
-        this.noData = false;
+        // }
+        // this.noData = false;
       }
 
     }, err => {

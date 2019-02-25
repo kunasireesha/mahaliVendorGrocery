@@ -21,8 +21,8 @@ export class HomeComponent implements OnInit {
     showTeaScreen = false;
     showBreadScreen = false;
     showJuiceScreen = false;
-
-
+    bannerData = [];
+    mainBannerData = [];
 
     showVegetables() {
         this.showVegetablesScreen = true;
@@ -130,7 +130,7 @@ export class HomeComponent implements OnInit {
     skuId;
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
-            this.product = resp.json().products;
+            this.product = resp.json().data.results;
             console.log(this.product);
         });
     }
@@ -159,7 +159,12 @@ export class HomeComponent implements OnInit {
     mainData = [];
     getBanners() {
         this.appService.getBanners().subscribe(res => {
-            this.mainData = res.json().result[0].banner_details;
+            this.bannerData = res.json().result;
+            for (var i = 0; i < this.bannerData.length; i++) {
+                if (this.bannerData[i].banner_position === 'Main Banners') {
+                    this.mainBannerData = this.bannerData[i].banner_details;
+                }
+            }
         }, err => {
 
         })

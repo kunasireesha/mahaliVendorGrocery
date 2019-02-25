@@ -29,6 +29,7 @@ export class HeaderComponent implements OnInit {
     myAccount: boolean = false;
     phone: boolean = false;
     showdetails = false;
+    selectedCat;
     showSubCats = false;
     showCartDetail = false;
     showLoginScreen = true;
@@ -189,11 +190,14 @@ export class HeaderComponent implements OnInit {
         localStorage.removeItem('token');
         localStorage.removeItem('email');
         localStorage.removeItem('phone');
+        localStorage.removeItem('userId');
+        localStorage.removeItem('userName');
         this.showRegistration = true;
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
         this.router.navigate(["/"]);
+        this.getCart();
     }
     get f() { return this.registerForm.controls; }
     registration(form: FormGroup) {
@@ -264,10 +268,8 @@ export class HeaderComponent implements OnInit {
     }
     subCatData = [];
     subId;
-    selectedCat;
-    showSubCat(Id, index) {
+    showSubCat(Id) {
         this.subId = Id;
-        this.selectedCat = index;
         this.subCatData = [];
         this.showSubCats = true;
         for (var i = 0; i < this.category.length; i++) {
@@ -278,7 +280,6 @@ export class HeaderComponent implements OnInit {
                 }
             }
         }
-        console.log(this.subCatData);
     }
     getProduct() {
         this.appService.getProduct().subscribe(resp => {
@@ -340,14 +341,21 @@ export class HeaderComponent implements OnInit {
     getCart() {
         var inData = localStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
-            this.cartData = res.json().cart_details;
-            for (var i = 0; i < this.cartData.length; i++) {
-                this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
-                this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
-                this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
-                this.cartData[i].prodName = this.cartData[i].products.product_name;
-                this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+            if (res.json().count === 0) {
+                this.cartCount = res.json().count;
+                this.billing = 0;
+                return;
+            } else {
+                this.cartData = res.json().cart_details;
+                for (var i = 0; i < this.cartData.length; i++) {
+                    this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+                    this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
+                    this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+                    this.cartData[i].prodName = this.cartData[i].products.product_name;
+                    this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+                }
             }
+
             this.cartCount = res.json().count;
             this.billing = res.json().selling_Price_bill;
         }, err => {

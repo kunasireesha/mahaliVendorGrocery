@@ -9,32 +9,32 @@ import { Router } from '@angular/router';
 })
 export class StoreComponent implements OnInit {
     wholeId;
-    constructor(private appService: appService,private route: ActivatedRoute,private router: Router) {
+    constructor(private appService: appService, private route: ActivatedRoute, private router: Router) {
         this.route.queryParams.subscribe(params => {
             this.wholeId = params.wholeId;
-          });
-     }
+        });
+    }
 
     ngOnInit() {
         this.getWholeById();
     }
     wholeData = [];
     shopId;
-getWholeById(){
-    this.appService.getWholesellerById(this.wholeId).subscribe(res => {
-        this.wholeData = res.json().data[0];
-        this.shopId = res.json().data[0].id;
-        localStorage.setItem('wholeSellerId',this.shopId);
-    }, err => {
+    getWholeById() {
+        this.appService.getWholesellerById(this.wholeId).subscribe(res => {
+            this.wholeData = res.json().data[0];
+            this.shopId = res.json().data[0].id;
+            localStorage.setItem('wholeSellerId', this.shopId);
+        }, err => {
 
-    })
-}
-shopNow(whole){
-    // this.appService.getWholesellerById(this.wholeId).subscribe(res => {
-    //     this.wholeData = res.json().data[0];
-    // }, err => {
+        })
+    }
+    shopNow(whole) {
+        // this.appService.getWholesellerById(this.wholeId).subscribe(res => {
+        //     this.wholeData = res.json().data[0];
+        // }, err => {
 
-    // })
-    this.router.navigate(['/products'], { queryParams: { wholeId: this.shopId,action:whole } });
-}
+        // })
+        this.router.navigate(['/products'], { queryParams: { wholeId: this.shopId, action: whole } });
+    }
 }

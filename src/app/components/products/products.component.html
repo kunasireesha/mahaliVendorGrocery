@@ -27,9 +27,11 @@
         <p [ngClass]="{'active':showCategories && i==selectedCat}">
           <a>
             <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
-            <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
+            <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat"
+              (click)="showsubCat(i,cat.id)"></i>
 
-            <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
+            <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat"
+              (click)="closesubSubCat()"></i>
           </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.name)">{{cat.category_name}}</span>
         </p>
         <hr>
@@ -141,7 +143,8 @@
                   <option [value]="item.skid">{{item.size}}</option>
                 </select>
               </div>
-              <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+              <button type="text" class="btn waves-effect waves-light"
+                (click)="addtoCart(item.product_id,item.skid)">Add
                 To Cart</button>
             </div>
           </div>
@@ -152,9 +155,10 @@
           <div class="card">
             <div class="product-image" (click)="showProduxtDetails()">
               <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-              <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)"
+              <img *ngIf="item.image===''" src="assets/images/dummy-pro.png"
+                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+              <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
                 class="img-fluid">
-              <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
             </div>
             <div class="card-block add-to-cart">
               <h5 class="text-center">{{item.product_name}} </h5>
@@ -167,7 +171,8 @@
                   <option [value]="item.skid">{{item.size}}</option>
                 </select>
               </div>
-              <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+              <button type="text" class="btn waves-effect waves-light"
+                (click)="addtoCart(item.product_id,item.skid)">Add
                 To Cart</button>
             </div>
           </div>

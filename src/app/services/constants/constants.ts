@@ -8,7 +8,7 @@ export const AppSettings = {
     updateProfile: baseUrl + 'vendors/update_profile',
     categoriesUrl: baseUrl + 'categories/',
     subCatUrl: baseUrl + 'sub_categories',
-    productUrl: baseUrl + 'products',
+    productUrl: baseUrl + 'products/getproducts',
     addToCart: baseUrl + "vendor/cart_details",
     delCart: baseUrl + 'vendor/cart_details',
     getCart: baseUrl + 'vendor/cart_details',
