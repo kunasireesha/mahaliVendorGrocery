@@ -20,7 +20,7 @@
                 <li>
                     <strong>MANAGE ORDERS</strong>
                 </li>
-                <li [ngClass]="{'active':showMyOrders || showOrderDetails}" (click)="myOrder()">Vendor Orders</li>
+                <li [ngClass]="{'active':showMyOrders || showOrderDetails}" (click)="myOrder()">My Orders</li>
                 <li [ngClass]="{'active':showOfferZone || showManageUserOrders}" (click)="offerZone()">Manage User Orders
                 </li>
             </ul>
@@ -185,7 +185,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
                     <p class="text-left">
-                        <strong>IFSC code</strong>
+                        <strong>IBAN code</strong>
                         <span class="float-right"> : </span>
                     </p>
                 </div>
@@ -218,7 +218,7 @@
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
                     <p class="text-left">
-                        <strong>Branch</strong>
+                        <strong>Branch Address</strong>
                         <span class="float-right"> : </span>
                     </p>
                 </div>
@@ -1024,7 +1024,7 @@
 
                         <div class="row resp-table">
                             <div class="col-lg-6 col-md-6 col-sm-6 cust-vendor">
-                                <h3>Vendor Orders</h3>
+                                <h3>My Orders</h3>
                             </div>
                             <div class="col-lg-3 col-md-3 col-sm-3">
                                 <div class="cust-filter" data-toggle="modal" data-target="#filter">
@@ -1191,7 +1191,7 @@
         <!-- order details -->
         <div class="col-lg-9 resp-table" *ngIf="showOrderDetails">
             <div>
-                <h3 class="profile-header">Vendor Order</h3>
+                <h3 class="profile-header">My Orders</h3>
             </div>
             <div class="order-details">
                 <p>Order no : {{ordId}}</p>
