@@ -28,6 +28,10 @@ export class UseraccountComponent implements OnInit {
     quantity_errors = false;
     discount_error = false;
     status_errors = false;
+    getImg;
+    prodName;
+    brName;
+    vend_prod_id;
     constructor(
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
@@ -41,8 +45,8 @@ export class UseraccountComponent implements OnInit {
         } else if (this.page === 'orders') {
             this.showMyOrders = true;
             this.getOrders();
-            this.ordDetails(this.ordId);
-            this.ngOnInit();
+            // this.ordDetails(this.ordId);
+            // this.ngOnInit();
         } else if (this.page === 'notifications') {
             this.showNotifications = true;
         } else if (this.page === 'offerzone') {
@@ -68,7 +72,7 @@ export class UseraccountComponent implements OnInit {
         this.getAccDet();
         this.getOrders();
         this.getCategories();
-        this.ordDetails(this.ordId);
+        // this.ordDetails(this.ordId);
         this.getAddedData();
         this.resetForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
@@ -87,11 +91,11 @@ export class UseraccountComponent implements OnInit {
 
         });
         this.productForm = this.formBuilder.group({
-            deal_price: [''],
+            price: [''],
             quantity: [''],
             discount: [''],
-            status: [''],
-            vendor_id: localStorage.userId,
+            // product_status: ['']
+            // vendor_id: localStorage.userId,
             // product_id: this.productId
         });
 
@@ -163,8 +167,9 @@ export class UseraccountComponent implements OnInit {
     }
     get f2() { return this.productForm.controls; }
     productId;
-    save(prodId) {
-        this.productForm.value.product_id = prodId;
+    save(Img) {
+        this.productForm.value.status = 1;
+        this.productForm.value.image = Img;
         if (this.productForm.value.deal_price === '') {
             this.deal_price_errors = true;
             return;
@@ -184,8 +189,8 @@ export class UseraccountComponent implements OnInit {
             this.deal_price_errors = false;
             return;
         }
-        this.productId = prodId;
-        this.appService.update(this.productForm.value).subscribe(resp => {
+        // this.productId = prodId;
+        this.appService.update(this.productForm.value, this.vend_prod_id).subscribe(resp => {
             this.status_errors = false;
             swal("Your order under process for Approvel", "", "success");
             this.productForm.reset();
@@ -193,13 +198,11 @@ export class UseraccountComponent implements OnInit {
         })
 
     }
-    getImg;
-    prodName;
-    brName;
-    getData(img, prodName, brName) {
+    getData(img, prodName, brName, VenProId) {
         this.getImg = img;
         this.prodName = prodName;
         this.brName = brName;
+        this.vend_prod_id = VenProId;
     }
     page;
     showNotifications = false;
@@ -592,14 +595,14 @@ export class UseraccountComponent implements OnInit {
     qunt;
     dis;
     // status;
+
     // save(proId) {
     //     var inData = {
-    //         "vendor_id": localStorage.userId,
-    //         "product_id": proId,
-    //         "deal_price": this.price,
+    //         "price": this.price,
     //         "quantity": this.qunt,
-    //         "status": this.status,
-    //         "discount": this.dis
+    //         "discount": this.dis,
+    //         "status": 1,
+    //         "product_status": "approved"
     //     }
     //     this.appService.update(inData).subscribe(resp => {
     //         swal("Your order under process for Approvel", "", "success");
@@ -690,11 +693,12 @@ export class UseraccountComponent implements OnInit {
     prodArr = [];
     getAddedData() {
         this.appService.getAddedData().subscribe(res => {
-            this.getVenData = res.json().vendor_products;
-            for (var i = 0; i < this.getVenData.length; i++) {
-                this.venProducts = this.getVenData[i].product_details;
-                this.prodArr.push(this.venProducts);
-            }
+            this.getVenData = res.json().data;
+            // for (var i = 0; i < this.getVenData.length; i++) {
+            //     this.venProducts = this.getVenData[i].vendor_products;
+            //     // this.prodArr.push(this.venProducts);
+
+            // }
             // console.log(this.venProducts);
         }, err => {
 

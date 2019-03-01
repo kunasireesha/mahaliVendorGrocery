@@ -5,12 +5,7 @@
         <a>Fruits & vegetables </a>&nbsp;&nbsp;>&nbsp;vegetables&nbsp;&nbsp;>&nbsp;Potato
     </p>
     <div class="row">
-        <div class="col-md-2">
-            <div class="img">
-                <img *ngFor="let img of prodImages" [src]="img" class="prod-images" (click)="showBigImage(img)">
-            </div>
-        </div>
-        <div class="col-md-4">
+        <div class="col-md-6">
             <img id="myImg" src="{{product_image}}" alt="Snow" [imageZoom]="zoomedImageSrc">
         </div>
         <div class="col-md-6 details">
@@ -19,9 +14,9 @@
                 <div class="col-md-6">
                     <div class="quantity-price text-center">
                         <select (change)="changeSize($event.target.value)">
-                            <option value="" data-icon="images/sample-1.jpg" class="left" *ngFor="let sku of prodData"
-                                value="{{sku.skid}}">{{sku.size}}
-                                - BD {{sku.offer_price}}</option>
+                            <option value="" data-icon="images/sample-1.jpg" class="left" value="{{skid}}">{{size}} - BD
+                                {{offer_price}}
+                            </option>
                             <!-- <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option> -->
                         </select>
@@ -50,12 +45,18 @@
 						</button>
 					</div> -->
 
-                    <button class="btn btn-maroon add-cart" [value]="prodId" (click)="addtoCart(prodId)">Add
-                        to Cart</button>
+                    <button class="btn btn-maroon add-cart" [value]="prodId" (click)="addtoCart(prodId)">Add to Cart</button>
                 </div>
             </div>
         </div>
 
+    </div>
+    <div class="row">
+        <div class="col-md-9">
+            <div class="img">
+                <img *ngFor="let img of prodImages" [src]="img.sku_image" class="prod-images" (click)="showBigImage(img.sku_image)">
+            </div>
+        </div>
     </div>
     <!-- The Modal -->
     <div id="myModal" class="modal">

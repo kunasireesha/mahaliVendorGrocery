@@ -352,7 +352,7 @@ export class HeaderComponent implements OnInit {
                     this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
                     this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
                     this.cartData[i].prodName = this.cartData[i].products.product_name;
-                    this.cartData[i].products.img = this.cartData[i].products.sku_details[0].image;
+                    this.cartData[i].products.img = this.cartData[i].products.sku_details[0].sku_images[0].sku_image;
                 }
             }
 

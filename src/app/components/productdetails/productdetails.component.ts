@@ -66,23 +66,27 @@ export class ProductdetailsComponent implements OnInit {
     prodName;
     description;
     prodImages = [];
+    size;
     getProductById() {
         this.appService.getProductById(this.prodId).subscribe(res => {
             this.prodId = res.json().products.product_id;
-            this.prodsData = res.json().products.sku_details;
-            for (var j = 0; j < this.prodsData.length; j++) {
-                for (var k = 0; k < this.prodsData[j].images.length; k++) {
-                    this.prodImages.push(this.prodsData[j].images[k]);
-                    // console.log(this.prodImages);
+            this.prodsData = res.json().products;
+            for (var i = 0; i < this.prodsData.length; i++) {
+                this.prodId = this.prodsData[0].product_id;
+                for (var j = 0; j < this.prodsData[i].sku_row.length; j++) {
+                    this.offer_price = this.prodsData[i].sku_row[0].offer_price;
+                    this.actual_price = this.prodsData[i].sku_row[0].actual_price;
+                    this.product_image = this.prodsData[i].sku_row[0].sku_image_row[0].sku_image;
+                    this.skid = this.prodsData[i].sku_row[0].skid;
+                    this.size = this.prodsData[i].sku_row[0].size;
+                    this.prodName = res.json().products.product_name;
+                    this.description = this.prodsData[i].sku_row[0].description;
+                    for (var k = 0; k < this.prodsData[i].sku_row[j].sku_image_row.length; k++) {
+                        this.prodImages.push(this.prodsData[i].sku_row[j].sku_image_row[k]);
+                    }
                 }
             }
-            this.prodData = res.json().products.sku_details;
-            this.offer_price = this.prodData[0].offer_price;
-            this.actual_price = this.prodData[0].actual_price;
-            this.product_image = this.prodData[0].image;
-            this.skid = this.prodData[0].skid;
-            this.prodName = res.json().products.product_name;
-            this.description = this.prodData[0].description;
+
         }, err => {
 
         })

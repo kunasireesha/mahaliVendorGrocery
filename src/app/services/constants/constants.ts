@@ -6,9 +6,9 @@ export const AppSettings = {
     forgotPw: baseUrl + 'vendors/forgot_password',
     changePwdUrl: baseUrl + 'vendors/changepassword',
     updateProfile: baseUrl + 'vendors/update_profile',
-    categoriesUrl: baseUrl + 'categories/',
+    categoriesUrl: baseUrl + 'categories/grocery/cat',
     subCatUrl: baseUrl + 'sub_categories',
-    productUrl: baseUrl + 'products/getproducts',
+    productUrl: baseUrl + 'products/getgroceryproducts',
     addToCart: baseUrl + "vendor/cart_details",
     delCart: baseUrl + 'vendor/cart_details',
     getCart: baseUrl + 'vendor/cart_details',
@@ -36,10 +36,12 @@ export const AppSettings = {
     wholeProducts: baseUrl + "/products/wholesaler_products",
     ordById: baseUrl + "place_order/order_products",
     reqProducts: baseUrl + "place_order/request_products/vendor",
-    updateProd: baseUrl + "place_order/pricing",
+    updateProd: baseUrl + "vendor/products",
     contactUsUrl: baseUrl + "contact_us",
     getAddbyId: baseUrl + "delivery_address/address_id",
     updateAddress: baseUrl + "delivery_address",
     getAddedData: baseUrl + "vendor_products",
-    delProd: baseUrl + "vendor_products/product"
+    delProd: baseUrl + "vendor_products/product",
+    getFooter: baseUrl + "footer_table/getfooter/",
+    deleteMyProd: baseUrl + "vendor/products/product"
 }

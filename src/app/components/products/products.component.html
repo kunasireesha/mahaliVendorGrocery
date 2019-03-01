@@ -1,10 +1,10 @@
 <app-header [cartCount]="cartCount"></app-header>
 <div class="container products">
-  <div class="row">
-    <div class="col-md-3">
-      <h5>Category</h5>
-      <br />
-      <!-- <div class="categories">
+    <div class="row">
+        <div class="col-md-3">
+            <h5>Category</h5>
+            <br />
+            <!-- <div class="categories">
         <div id="panel-group">
           <div class="panel panel-default" *ngFor="let item of category; let i = index">
             <div class="panel-heading" (click)="current = i;item.id">
@@ -23,164 +23,161 @@
           </div>
         </div>
       </div> -->
-      <div class="categories" *ngFor="let cat of category; let i = index">
-        <p [ngClass]="{'active':showCategories && i==selectedCat}">
-          <a>
-            <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
-            <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat"
-              (click)="showsubCat(i,cat.id)"></i>
+            <div class="categories" *ngFor="let cat of category; let i = index">
+                <p [ngClass]="{'active':showCategories && i==selectedCat}">
+                    <a>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
 
-            <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat"
-              (click)="closesubSubCat()"></i>
-          </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.name)">{{cat.category_name}}</span>
-        </p>
-        <hr>
-        <!-- categories -->
+                        <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
+                    </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.name)">{{cat.category_name}}</span>
+                </p>
+                <hr>
+                <!-- categories -->
 
-        <div class="subCates">
-          <div *ngFor="let subCat of subCategory;let ii = index">
-            <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
-              <span (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+                <div class="subCates">
+                    <div *ngFor="let subCat of subCategory;let ii = index">
+                        <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
+                            <span (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+                        </p>
+                    </div>
+                </div>
+            </div>
+            <h5>Sort</h5>
+            <div class="sort">
+                <select>
+                    <option>Popular</option>
+                    <option>low to high</option>
+                    <option>High to low</option>
+                    <option>relevence</option>
+                </select>
+            </div>
+            <h5>Country</h5>
+            <div class="sort">
+                <select>
+                    <option>India</option>
+                    <option>Bangladesh</option>
+                    <option>China</option>
+                </select>
+            </div>
+            <br>
+            <h5>Pack of size</h5>
+            <div class="brands">
+                <input type="text" placeholder="Search by Pack of size">
+                <br />
+                <div class="brand-names">
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
+                        <label class="custom-control-label" for="defaultUnchecked">100 to 500gms</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
+                        <label class="custom-control-label" for="defaultUnchecked1">500 to 700 gms</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
+                        <label class="custom-control-label" for="defaultUnchecked2">700 to 1kg</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
+                        <label class="custom-control-label" for="defaultUnchecked3">100 to 500gms</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
+                        <label class="custom-control-label" for="defaultUnchecked4">500 to 700 gms</label>
+                    </div>
+                    <div class="custom-control custom-checkbox">
+                        <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
+                        <label class="custom-control-label" for="defaultUnchecked5">700 to 1kg</label>
+                    </div>
+                </div>
+            </div>
+
+
+            <br />
+            <h5>Price</h5>
+            <div class="price">
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
+                    <label class="custom-control-label" for="defaultUnchecked6">Less than 100</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
+                    <label class="custom-control-label" for="defaultUnchecked7">Less than 200</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
+                    <label class="custom-control-label" for="defaultUnchecked8">Less than 300</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
+                    <label class="custom-control-label" for="defaultUnchecked9">Less than 400</label>
+                </div>
+                <div class="custom-control custom-checkbox">
+                    <input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
+                    <label class="custom-control-label" for="defaultUnchecked10">Less than 500</label>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-9 items">
+            <p>
+                <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
+                <a>Grocery</a>
             </p>
-          </div>
+            <div class="row" *ngIf="wholeProd">
+                <div class="col-lg-3 item" *ngFor="let item of skuData">
+                    <div class="card">
+                        <div class="product-image" (click)="showProduxtDetails(item.product_id)">
+                            <img class="img-fluid" [src]="item?.sku_image_row[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
+                        </div>
+                        <div class="card-block add-to-cart">
+                            <h5 class="text-center">{{item.product_name}} </h5>
+                            <p class="text-center">
+                                BD {{item.selling_price}}
+                                <strike>BD {{item.actual_price}}</strike>
+                            </p>
+                            <div class="quantity-price text-center">
+                                <select (change)="changeSize($event.target.value)">
+                                    <option [value]="item.skid">{{item.size}}</option>
+                                </select>
+                            </div>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+                                To Cart</button>
+                        </div>
+                    </div>
+                </div>
+                <div *ngIf="noData">
+                    {{noData}}
+                </div>
+            </div>
+            <div class="row" *ngIf="serProd">
+                <div class="col-md-3 item" *ngFor="let item of skuData">
+                    <div class="card">
+                        <div class="product-image" (click)="showProduxtDetails()">
+                            <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
+                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
+                            <img class="img-fluid" [src]="item?.sku_image_row[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
+                        </div>
+                        <div class="card-block add-to-cart">
+                            <h5 class="text-center">{{item.product_name}} </h5>
+                            <p class="text-center">
+                                BD {{item.selling_price}}
+                                <strike>BD {{item.actual_price}}</strike>
+                            </p>
+                            <div class="quantity-price text-center">
+                                <select (change)="changeSize($event.target.value)">
+                                    <option [value]="item.skid">{{item.size}}</option>
+                                </select>
+                            </div>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+                                To Cart</button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div *ngIf="noData">
+                No products found with your search
+            </div>
         </div>
-      </div>
-      <h5>Sort</h5>
-      <div class="sort">
-        <select>
-          <option>Popular</option>
-          <option>low to high</option>
-          <option>High to low</option>
-          <option>relevence</option>
-        </select>
-      </div>
-      <h5>Country</h5>
-      <div class="sort">
-        <select>
-          <option>India</option>
-          <option>Bangladesh</option>
-          <option>China</option>
-        </select>
-      </div>
-      <br>
-      <h5>Pack of size</h5>
-      <div class="brands">
-        <input type="text" placeholder="Search by Pack of size">
-        <br />
-        <div class="brand-names">
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked">
-            <label class="custom-control-label" for="defaultUnchecked">100 to 500gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked1">
-            <label class="custom-control-label" for="defaultUnchecked1">500 to 700 gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked2">
-            <label class="custom-control-label" for="defaultUnchecked2">700 to 1kg</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked3">
-            <label class="custom-control-label" for="defaultUnchecked3">100 to 500gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked4">
-            <label class="custom-control-label" for="defaultUnchecked4">500 to 700 gms</label>
-          </div>
-          <div class="custom-control custom-checkbox">
-            <input type="checkbox" class="custom-control-input" id="defaultUnchecked5">
-            <label class="custom-control-label" for="defaultUnchecked5">700 to 1kg</label>
-          </div>
-        </div>
-      </div>
-
-
-      <br />
-      <h5>Price</h5>
-      <div class="price">
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked6">
-          <label class="custom-control-label" for="defaultUnchecked6">Less than 100</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked7">
-          <label class="custom-control-label" for="defaultUnchecked7">Less than 200</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked8">
-          <label class="custom-control-label" for="defaultUnchecked8">Less than 300</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked9">
-          <label class="custom-control-label" for="defaultUnchecked9">Less than 400</label>
-        </div>
-        <div class="custom-control custom-checkbox">
-          <input type="checkbox" class="custom-control-input" id="defaultUnchecked10">
-          <label class="custom-control-label" for="defaultUnchecked10">Less than 500</label>
-        </div>
-      </div>
     </div>
-    <div class="col-md-9 items">
-      <p>
-        <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-        <a>Grocery</a>
-      </p>
-      <div class="row" *ngIf="wholeProd">
-        <div class="col-lg-3 item" *ngFor="let item of skuData">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails(item.product_id)">
-              <img class="img-fluid" [src]="item.product_image" alt="Card image cap">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">{{item.product_name}} </h5>
-              <p class="text-center">
-                BD {{item.selling_price}}
-                <strike>BD {{item.actual_price}}</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select (change)="changeSize($event.target.value)">
-                  <option [value]="item.skid">{{item.size}}</option>
-                </select>
-              </div>
-              <button type="text" class="btn waves-effect waves-light"
-                (click)="addtoCart(item.product_id,item.skid)">Add
-                To Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div class="row" *ngIf="serProd">
-        <div class="col-md-3 item" *ngFor="let item of skuData">
-          <div class="card">
-            <div class="product-image" (click)="showProduxtDetails()">
-              <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-              <img *ngIf="item.image===''" src="assets/images/dummy-pro.png"
-                (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-              <img *ngIf="item.image!==''" src="{{item.image}}" (click)="showProduxtDetails(item.product_id)"
-                class="img-fluid">
-            </div>
-            <div class="card-block add-to-cart">
-              <h5 class="text-center">{{item.product_name}} </h5>
-              <p class="text-center">
-                BD {{item.selling_price}}
-                <strike>BD {{item.actual_price}}</strike>
-              </p>
-              <div class="quantity-price text-center">
-                <select (change)="changeSize($event.target.value)">
-                  <option [value]="item.skid">{{item.size}}</option>
-                </select>
-              </div>
-              <button type="text" class="btn waves-effect waves-light"
-                (click)="addtoCart(item.product_id,item.skid)">Add
-                To Cart</button>
-            </div>
-          </div>
-        </div>
-      </div>
-      <div *ngIf="noData">
-        No products found with your search
-      </div>
-    </div>
-  </div>
 </div>

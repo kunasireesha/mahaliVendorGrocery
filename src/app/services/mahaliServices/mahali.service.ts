@@ -175,10 +175,10 @@ export class appService {
         this.vendor_id = localStorage.userId;
         return this.http.get(AppSettings.reqProducts + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
-    update(params) {
+    update(params, venId) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         this.vendor_id = localStorage.userId;
-        return this.http.put(AppSettings.updateProd, params, { headers: headers });
+        return this.http.put(AppSettings.updateProd + "/" + venId, params, { headers: headers });
     }
     contactUs(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
@@ -202,6 +202,14 @@ export class appService {
     delProd(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.delete(AppSettings.delProd + "/" + params, { headers: headers });
+    }
+    getFooter(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.getFooter, params, { headers: headers });
+    }
+    delMyProd(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.delete(AppSettings.deleteMyProd + "/" + params, { headers: headers });
     }
 }
 
