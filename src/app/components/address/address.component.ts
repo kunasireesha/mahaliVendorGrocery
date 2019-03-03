@@ -80,8 +80,8 @@ export class AddressComponent implements OnInit {
             retype_account_number: [''],
             bank_name: [''],
             ifsc_code: [''],
-            bank_area: [''],
-            bank_city: [''],
+            // bank_area: [''],
+            // bank_city: [''],
             bank_branch: [''],
         });
 
@@ -125,26 +125,28 @@ export class AddressComponent implements OnInit {
             this.bussiness_name_errors = false;
             this.business_address_errors = true;
             return;
-        } else if (this.bussinessForm.value.business_country === '') {
-            this.bussiness_first_name_errors = false;
-            this.bussiness_last_name_errors = false;
-            this.mobile_number_errors = false;
-            this.bussiness_email_errors = false;
-            this.bussiness_name_errors = false;
-            this.business_address_errors = false;
-            this.business_country_errors = true;
-            return;
-        } else if (this.bussinessForm.value.business_area === '') {
-            this.bussiness_first_name_errors = false;
-            this.bussiness_last_name_errors = false;
-            this.mobile_number_errors = false;
-            this.bussiness_email_errors = false;
-            this.bussiness_name_errors = false;
-            this.business_address_errors = false;
-            this.business_country_errors = false;
-            this.business_area_errors = true;
-            return;
-        } else if (this.bussinessForm.value.business_city === '') {
+        } 
+        // else if (this.bussinessForm.value.business_country === '') {
+        //     this.bussiness_first_name_errors = false;
+        //     this.bussiness_last_name_errors = false;
+        //     this.mobile_number_errors = false;
+        //     this.bussiness_email_errors = false;
+        //     this.bussiness_name_errors = false;
+        //     this.business_address_errors = false;
+        //     this.business_country_errors = true;
+        //     return;
+        // } else if (this.bussinessForm.value.business_area === '') {
+        //     this.bussiness_first_name_errors = false;
+        //     this.bussiness_last_name_errors = false;
+        //     this.mobile_number_errors = false;
+        //     this.bussiness_email_errors = false;
+        //     this.bussiness_name_errors = false;
+        //     this.business_address_errors = false;
+        //     this.business_country_errors = false;
+        //     this.business_area_errors = true;
+        //     return;
+        // } 
+        else if (this.bussinessForm.value.business_city === '') {
             this.bussiness_first_name_errors = false;
             this.bussiness_last_name_errors = false;
             this.mobile_number_errors = false;

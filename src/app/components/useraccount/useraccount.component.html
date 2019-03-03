@@ -193,7 +193,7 @@
                     <p>{{accDet.ifsc_code}}</p>
                 </div>
             </div>
-            <div class="row">
+            <!-- <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
                     <p class="text-left">
                         <strong>Area</strong>
@@ -214,7 +214,7 @@
                 <div class="col-md-4 col-sm-6 col-6">
                     <p>{{accDet.bank_city}}</p>
                 </div>
-            </div>
+            </div> -->
             <div class="row">
                 <div class="col-md-3 col-sm-6 col-6">
                     <p class="text-left">
@@ -272,7 +272,7 @@
                 </div>
                 <div class="form-group row">
                     <label for="inputhouseno" class="col-sm-4 col-md-4 col-form-label">
-                        <strong>IFSC Code</strong>
+                        <strong>IBAN Code</strong>
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
@@ -280,7 +280,7 @@
                             ngControl="ifsc_code" required>
                     </div>
                 </div>
-                <div class="form-group row">
+                <!-- <div class="form-group row">
                     <label for="inputstate" class="col-sm-4 col-md-4 col-form-label">
                         <strong>Area</strong>
                         <span class="float-right">:</span>
@@ -299,10 +299,10 @@
                         <input alphabetsOnly type="text" class="form-control input-feild" id="inputcity" [(ngModel)]="accDet.bank_city" name="bank_city"
                             placeholder="Lorem" ngControl="bank_city" required>
                     </div>
-                </div>
+                </div> -->
                 <div class="form-group row">
                     <label for="inputpincode" class="col-sm-4 col-md-4 col-form-label">
-                        <strong>Branch</strong>
+                        <strong>Branch Address</strong>
                         <span class="float-right">:</span>
                     </label>
                     <div class="col-sm-8 col-md-8">
@@ -1291,7 +1291,8 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody">
-                                        <tr (click)="showVendorOrderDetails()">
+                                        <h4>&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;No Data</h4>
+                                        <!-- <tr (click)="showVendorOrderDetails()">
                                             <th scope="row">1</th>
                                             <td>
                                                 1441367
@@ -1358,7 +1359,7 @@
                                                 Rs.266.00
                                             </td>
                                             <td>Delivered</td>
-                                        </tr>
+                                        </tr> -->
                                     </tbody>
                                 </table>
                             </div>
@@ -1477,14 +1478,14 @@
                 <!--/.Slides-->
 
                 <!--Controls-->
-                <div class="controls-top controls arrow-rt">
+                <!-- <div class="controls-top controls arrow-rt">
                     <a class="btn-floating btn-small slider-btn-left" href="#multi-item-example6" data-slide="prev">
                         <i class="fas fa-long-arrow-alt-left"></i>
                     </a>
                     <a class="btn-floating btn-small slider-btn-right" href="#multi-item-example6" data-slide="next">
                         <i class="fas fa-long-arrow-alt-right"></i>
                     </a>
-                </div>
+                </div> -->
                 <!--/.Controls-->
             </div>
         </div>

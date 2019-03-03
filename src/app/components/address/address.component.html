@@ -235,7 +235,7 @@
                 </div>
               </div>
               <div class="form-group row">
-                <label for="ifsc" class="col-sm-4 col-form-label">* IFSC Code :</label>
+                <label for="ifsc" class="col-sm-4 col-form-label">* IBAN Code :</label>
                 <div class="col-sm-8">
                   <input type="text" class="form-control" id="ifsc" formControlName="ifsc_code" class="form-control"
                     [ngClass]="{ 'is-invalid':  ifsc_code_errors }">
@@ -244,8 +244,8 @@
                   </div>
                 </div>
               </div>
-              <div class="form-group row">
-                <label for="fisrtname" class="col-sm-4 col-form-label">* Area :</label>
+              <!-- <div class="form-group row"> -->
+                <!-- <label for="fisrtname" class="col-sm-4 col-form-label">* Area :</label>
                 <div class="col-sm-3">
                   <input alphabetsOnly type="text" class="form-control" id="bank_area" formControlName="bank_area"
                     class="form-control" [ngClass]="{ 'is-invalid':  bank_area_errors }">
@@ -261,14 +261,14 @@
                     <div *ngIf="bank_city_errors">City is required</div>
                   </div>
                 </div>
-              </div>
+              </div> -->
               <div class="form-group row">
-                <label for="branch" class="col-sm-4 col-form-label">* Branch :</label>
+                <label for="branch" class="col-sm-4 col-form-label">* Branch Address:</label>
                 <div class="col-sm-8">
                   <input alphabetsOnly type="textarea" class="form-control" id="branch" formControlName="bank_branch"
                     class="form-control" [ngClass]="{ 'is-invalid':  bank_branch_errors }">
                   <div *ngIf="bank_branch_errors" class="invalid-feedback">
-                    <div *ngIf="bank_branch_errors">Branch is required</div>
+                    <div *ngIf="bank_branch_errors">Branch Address is required</div>
                   </div>
                 </div>
               </div>
