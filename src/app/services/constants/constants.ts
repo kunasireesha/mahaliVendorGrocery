@@ -43,5 +43,6 @@ export const AppSettings = {
     getAddedData: baseUrl + "vendor_products",
     delProd: baseUrl + "vendor_products/product",
     getFooter: baseUrl + "footer_table/getfooter/",
-    deleteMyProd: baseUrl + "vendor/products/product"
+    deleteMyProd: baseUrl + "vendor/products/product",
+    getUserOrders: baseUrl + "place_order/getuserorders"
 }

@@ -211,6 +211,10 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.delete(AppSettings.deleteMyProd + "/" + params, { headers: headers });
     }
+    getUserOrders() {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.getUserOrders, { headers: headers });
+    }
 }
 
 

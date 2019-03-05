@@ -32,6 +32,7 @@ export class UseraccountComponent implements OnInit {
     prodName;
     brName;
     vend_prod_id;
+    userOrds = [];
     constructor(
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
@@ -74,6 +75,7 @@ export class UseraccountComponent implements OnInit {
         this.getCategories();
         // this.ordDetails(this.ordId);
         this.getAddedData();
+        this.getUserOrds();
         this.resetForm = this.formBuilder.group({
             email: ['', [Validators.required, Validators.email]],
             password: ['', [Validators.required, Validators.minLength(6)]],
@@ -852,6 +854,11 @@ export class UseraccountComponent implements OnInit {
 
         }, err => {
 
+        })
+    }
+    getUserOrds() {
+        this.appService.getUserOrders().subscribe(res => {
+            this.userOrds = res.json().order;
         })
     }
 
