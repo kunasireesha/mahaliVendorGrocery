@@ -31,7 +31,7 @@ export class AddressComponent implements OnInit {
     bank_area_errors = false;
     bank_city_errors = false;
     bank_branch_errors = false;
-    retpeaccount_number_errors =false;
+    retpeaccount_number_errors = false;
     constructor(public appService: appService, private router: Router, private formBuilder: FormBuilder) { }
     //     "first_name":"JyothiN",
     //     "last_name":"sri ",
@@ -125,7 +125,7 @@ export class AddressComponent implements OnInit {
             this.bussiness_name_errors = false;
             this.business_address_errors = true;
             return;
-        } 
+        }
         // else if (this.bussinessForm.value.business_country === '') {
         //     this.bussiness_first_name_errors = false;
         //     this.bussiness_last_name_errors = false;
@@ -164,14 +164,14 @@ export class AddressComponent implements OnInit {
         //     return;
         // }
         this.appService.businessDetails(this.bussinessForm.value).subscribe(res => {
-            if(res.json().status===200){
+            if (res.json().status === 200) {
                 swal(res.json().message, "", "success");
                 this.bussinessForm.reset();
                 this.showStationary();
-            }else {
+            } else {
                 swal(res.json().message, "", "error");
             }
-          
+
         }, err => {
 
         })
@@ -197,11 +197,11 @@ export class AddressComponent implements OnInit {
         //     return;
         // }
         this.appService.taxDetails(this.StationaryForm.value).subscribe(res => {
-            if(res.json().status===200){
-            swal(res.json().message, "", "success");
-            this.StationaryForm.reset();
-            this.showBank();
-            }else {
+            if (res.json().status === 200) {
+                swal(res.json().message, "", "success");
+                this.StationaryForm.reset();
+                this.showBank();
+            } else {
                 swal(res.json().message, "", "error");
             }
         }, err => {
@@ -222,24 +222,24 @@ export class AddressComponent implements OnInit {
             this.account_holder_name_errors = false;
             this.account_number_errors = true;
             return;
-        }else if (this.bankForm.value.retype_account_number === '') {
+        } else if (this.bankForm.value.retype_account_number === '') {
             this.account_holder_name_errors = false;
             this.account_number_errors = false;
-            this.retpeaccount_number_errors =true;
+            this.retpeaccount_number_errors = true;
             return;
         }
-         else if (this.bankForm.value.bank_name === '') {
+        else if (this.bankForm.value.bank_name === '') {
             this.account_holder_name_errors = false;
             this.account_number_errors = false;
             this.bank_name_errors = true;
-            this.retpeaccount_number_errors =false;
+            this.retpeaccount_number_errors = false;
             return;
         } else if (this.bankForm.value.ifsc_code === '') {
             this.account_holder_name_errors = false;
             this.account_number_errors = false;
             this.bank_name_errors = false;
             this.ifsc_code_errors = true;
-            this.retpeaccount_number_errors =false;
+            this.retpeaccount_number_errors = false;
             return;
         } else if (this.bankForm.value.bank_area === '') {
             this.account_holder_name_errors = false;
@@ -247,7 +247,7 @@ export class AddressComponent implements OnInit {
             this.bank_name_errors = false;
             this.ifsc_code_errors = false;
             this.bank_area_errors = true;
-            this.retpeaccount_number_errors =false;
+            this.retpeaccount_number_errors = false;
             return;
         } else if (this.bankForm.value.bank_city === '') {
             this.account_holder_name_errors = false;
@@ -256,7 +256,7 @@ export class AddressComponent implements OnInit {
             this.ifsc_code_errors = false;
             this.bank_area_errors = false;
             this.bank_city_errors = true;
-            this.retpeaccount_number_errors =false;
+            this.retpeaccount_number_errors = false;
             return;
         } else if (this.bankForm.value.bank_branch === '') {
             this.account_holder_name_errors = false;
@@ -266,9 +266,9 @@ export class AddressComponent implements OnInit {
             this.bank_area_errors = false;
             this.bank_city_errors = false;
             this.bank_branch_errors = true;
-            this.retpeaccount_number_errors =false;
+            this.retpeaccount_number_errors = false;
             return;
-        }else if((this.bankForm.value.account_number)!=(this.bankForm.value.retype_account_number)){
+        } else if ((this.bankForm.value.account_number) != (this.bankForm.value.retype_account_number)) {
             this.account_holder_name_errors = false;
             this.account_number_errors = false;
             this.bank_name_errors = false;
@@ -276,9 +276,9 @@ export class AddressComponent implements OnInit {
             this.bank_area_errors = false;
             this.bank_city_errors = false;
             this.bank_branch_errors = false;
-            this.retpeaccount_number_errors =false;
-           swal("Account numbers not matched","","warning");
-           return;
+            this.retpeaccount_number_errors = false;
+            swal("Account numbers not matched", "", "warning");
+            return;
         }
 
 
@@ -288,12 +288,12 @@ export class AddressComponent implements OnInit {
         //     return;
         // }
         // if (this.bankData.account_number == this.bankData.retype_acc) {
-            // this.bankForm.reset();
+        // this.bankForm.reset();
         this.appService.bankDetails(this.bankForm.value).subscribe(res => {
-            if(res.json().status===200){
+            if (res.json().status === 200) {
                 swal(res.json().message, "", "success");
                 this.bankForm.reset();
-               this.router.navigate(['/']);
+                this.router.navigate(['/']);
             } else {
                 swal(res.json().error, "", "error");
             }
