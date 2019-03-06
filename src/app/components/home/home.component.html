@@ -1,6 +1,5 @@
 <app-header [cartCount]="cartValue" [billing]="billing"></app-header>
 <main role="main">
-
     <!--Carousel Wrapper-->
     <div id="carousel-example-1z" class="carousel slide carousel-fade slider" data-ride="carousel">
         <!--Indicators-->
@@ -16,7 +15,6 @@
             <div class="carousel-item" *ngFor="let item of mainBannerData; let i =index;" [ngClass]="{'active':i == 0}">
                 <img class="d-block w-100" src="{{item.website_banner}}" alt="First slide">
             </div>
-
         </div>
         <!--/.Slides-->
         <!--Controls-->
@@ -31,7 +29,6 @@
         <!--/.Controls-->
     </div>
     <!--/.Carousel Wrapper-->
-
 </main>
 <br />
 <!-- delas -->
@@ -55,7 +52,7 @@
 
                 <!-- The slideshow -->
                 <div class="carousel-inner no-padding my-3">
-                    <div class="carousel-item "*ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i===0}">
+                    <div class="carousel-item " *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i===0}">
                         <div class="col-xs-4 col-sm-4 col-md-12">
                             <div class="row">
                                 <div class="col-md-6">
@@ -270,7 +267,7 @@
         <div class="container-fluid">
             <div id="carouselExample" class="carousel slide" data-ride="carousel" data-interval="9000">
                 <div class="carousel-inner row w-100 mx-auto add-product" role="listbox">
-                    <div class="carousel-item col-md-3  active">
+                    <div class="carousel-item col-md-3  active" *ngIf="product[0]?.approval==='active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 1" class="thumb">
@@ -283,7 +280,7 @@
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[0]?.product_id,product[0]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3 ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[1]?.approval==='active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 3" class="thumb">
@@ -295,7 +292,7 @@
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[1]?.product_id,product[1]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3 ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[2]?.approval==='active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 4" class="thumb">
@@ -307,7 +304,7 @@
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[2]?.product_id,product[2]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3 ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[3]?.approval==='active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 5" class="thumb">
@@ -319,7 +316,7 @@
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[3]?.product_id,product[3]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3 ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[4]?.approval==='active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 6" class="thumb">
@@ -331,7 +328,7 @@
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[4]?.product_id,product[4]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3 ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[5]?.approval==='active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 7" class="thumb">
