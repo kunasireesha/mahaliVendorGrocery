@@ -76,7 +76,7 @@ export class ProductdetailsComponent implements OnInit {
                 for (var j = 0; j < this.prodsData[i].sku_row.length; j++) {
                     this.offer_price = this.prodsData[i].sku_row[0].offer_price;
                     this.actual_price = this.prodsData[i].sku_row[0].actual_price;
-                    this.product_image = this.prodsData[i].sku_row[0].sku_image_row[0].sku_image;
+                    this.product_image = this.prodsData[i].sku_row[0].sku_images[0].sku_image;
                     this.skid = this.prodsData[i].sku_row[0].skid;
                     this.size = this.prodsData[i].sku_row[0].size;
                     this.prodName = res.json().products.product_name;

@@ -53,9 +53,9 @@ export class ProductsComponent implements OnInit {
         this.appService.wholeProducts(this.wholeId).subscribe(res => {
             this.prodData = res.json().products;
             for (var i = 0; i < this.prodData.length; i++) {
-                for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
-                    this.prodData[i].sku_row[j].product_name = this.prodData[i].product_name;
-                    this.skuData.push(this.prodData[i].sku_row[j]);
+                for (var j = 0; j < this.prodData[i].sku.length; j++) {
+                    this.prodData[i].sku[j].product_name = this.prodData[i].product_name;
+                    this.skuData.push(this.prodData[i].sku[j]);
                 }
             }
             if (res.json().status === "400") {

@@ -125,7 +125,7 @@
                 <a>Grocery</a>
             </p>
             <div class="row" *ngIf="wholeProd">
-                <div class="col-lg-3 item" *ngFor="let item of skuData">
+                <!-- <div class="col-lg-3 item" *ngFor="let item of skuData">
                     <div class="card">
                         <div class="product-image" (click)="showProduxtDetails(item.product_id)">
                             <img class="img-fluid" [src]="item?.sku_image_row[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
@@ -142,6 +142,25 @@
                                 </select>
                             </div>
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
+                                To Cart</button>
+                        </div>
+                    </div>
+                </div> -->
+                <div class="col-lg-3 item" *ngFor="let data of skuData | slice:0:10;let i=index">
+                    <div class="card">
+                        <img class="img-fluid" [src]="data?.sku_images[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        <div class="card-block">
+                            <h5 class="text-center">{{data.product_name}} </h5>
+                            <p class="text-center">
+                                BD {{data.selling_price}}
+                                <strike>BD {{data.actual_price}}</strike>
+                            </p>
+                            <div class="quantity-price text-center">
+                                <select (change)="changeSize($event.target.value)">
+                                    <option [value]="data.skid">{{data.size}}</option>
+                                </select>
+                            </div>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(data.product_id,data.skid)">Add
                                 To Cart</button>
                         </div>
                     </div>
