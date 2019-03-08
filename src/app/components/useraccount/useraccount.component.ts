@@ -560,7 +560,7 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = false;
         this.getProducts(Id);
     }
-    requestAdmin() {
+    requestAdmin() {  
         this.showNotifications = false;
         this.showOrderDetails = false;
         this.showMyOrders = false;
