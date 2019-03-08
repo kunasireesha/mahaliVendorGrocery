@@ -421,8 +421,8 @@
                                         </tr>
                                     </thead>
                                     <tbody class="cust-tbody" *ngIf="( reqProds | filter : filter) as reqProds">
-                                        <tr *ngFor="let reqProds of reqProds">
-                                            <th scope="row" class="cust-1">1</th>
+                                        <tr *ngFor="let reqProds of reqProds;let i=index">
+                                            <th scope="row" class="cust-1">{{i+1}}</th>
                                             <td class="add-img">
                                                 <img [src]="reqProds.productimage" alt="Potatoes">
                                             </td>
@@ -431,20 +431,24 @@
                                             <td class="cust-1 text-right">
                                                 <button class="cust-add" data-toggle="modal" data-target="#addProd" (click)="getData(reqProds.productimage,reqProds.product_name,reqProds.brand,reqProds.vendor_product_id)">ADD</button>
                                             </td>
+                                            <!-- <tr> -->
+                                            <td *ngIf="reqProds?.length===0">
+                                                No Data Found
+                                            </td>
+                                            <!-- </tr> -->
                                         </tr>
                                         <td class="text-centre" *ngIf="reqProds.length===0">
                                             <div class="row justify-content-center">
                                                 <div class="cust-calflow">
-                                                    <p>{{filter}} item is not found</p>
-                                                    <button type="submit" class="btn request-admin cust-radm" data-dismiss="modal" data-toggle="modal" data-target="#product-name">Request
+                                                    <p>{{filter}} is not found</p>
+                                                    <button type="submit" class="btn request-admin" data-dismiss="modal" data-toggle="modal" data-target="#product-name">Request
                                                         Admin
                                                     </button>
                                                 </div>
                                             </div>
                                         </td>
-
                                         <!-- <tr>
-                                            <td *ngIf="reqProds?.length==0">
+                                            <td *ngIf="reqProds?.length===0">
                                                 No Data Found
                                             </td>
                                         </tr> -->
@@ -1733,8 +1737,9 @@
                         <div class="form-group row">
                             <label for="quantity" class="col-sm-4 col-form-label">Product Name</label>
                             <div class="col-sm-7">
-                                <input type="text" class="form-control" id="quantity" placeholder="Product name">
-                                <button type="submit" class="btn request-admin popsbtn" data-dismiss="modal">SUBMIT</button>
+                                <input type="text" class="form-control" id="quantity" placeholder="Product name" [(ngModel)]="reqProduct" name="reqProduct">
+                                <button type=" submit " class="btn request-admin popsbtn " data-dismiss="modal
+                                    " (click)="reqAdmin() ">SUBMIT</button>
                             </div>
                         </div>
                     </form>
@@ -1744,30 +1749,30 @@
     </div>
 
     <!-- Order Filter -->
-    <div class="modal" id="filter" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header c-modalheader">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="cust-close">&times;</span>
+    <div class="modal " id="filter " tabindex="-1 " role="dialog ">
+        <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header c-modalheader ">
+                    <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                        <span aria-hidden="true " class="cust-close ">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="cust-date">
+                <div class="modal-body ">
+                    <div class="container ">
+                        <div class="cust-date ">
                             <strong>Select Date</strong>
                             <form>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">From Date</label>
-                                        <input type="date" class="form-control" placeholder="From Date">
+                                <div class="form-row ">
+                                    <div class="form-group col-md-6 ">
+                                        <label for="inputEmail4 ">From Date</label>
+                                        <input type="date " class="form-control " placeholder="From Date ">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">To Date</label>
-                                        <input type="date" class="form-control" placeholder="To Date">
+                                    <div class="form-group col-md-6 ">
+                                        <label for="inputPassword4 ">To Date</label>
+                                        <input type="date " class="form-control " placeholder="To Date ">
                                     </div>
-                                    <div class="col-md-12 cust-apply">
-                                        <button type="submit" data-dismiss="modal">Apply</button>
+                                    <div class="col-md-12 cust-apply ">
+                                        <button type="submit " data-dismiss="modal ">Apply</button>
                                     </div>
                                 </div>
 
@@ -1780,40 +1785,40 @@
     </div>
 
     <!-- Vendor Order Details filter2 -->
-    <div class="modal" id="filter2" tabindex="-1" role="dialog">
-        <div class="modal-dialog" role="document">
-            <div class="modal-content">
-                <div class="modal-header c-modalheader">
-                    <button type="button" class="close" data-dismiss="modal" aria-label="Close">
-                        <span aria-hidden="true" class="cust-close">&times;</span>
+    <div class="modal " id="filter2 " tabindex="-1 " role="dialog ">
+        <div class="modal-dialog " role="document ">
+            <div class="modal-content ">
+                <div class="modal-header c-modalheader ">
+                    <button type="button " class="close " data-dismiss="modal " aria-label="Close ">
+                        <span aria-hidden="true " class="cust-close ">&times;</span>
                     </button>
                 </div>
-                <div class="modal-body">
-                    <div class="container">
-                        <div class="cust-date">
+                <div class="modal-body ">
+                    <div class="container ">
+                        <div class="cust-date ">
                             <strong>Select Date</strong>
                             <form>
-                                <div class="form-row">
-                                    <div class="form-group col-md-6">
-                                        <label for="inputEmail4">From Date</label>
-                                        <input type="date" class="form-control" placeholder="From Date">
+                                <div class="form-row ">
+                                    <div class="form-group col-md-6 ">
+                                        <label for="inputEmail4 ">From Date</label>
+                                        <input type="date " class="form-control " placeholder="From Date ">
                                     </div>
-                                    <div class="form-group col-md-6">
-                                        <label for="inputPassword4">To Date</label>
-                                        <input type="date" class="form-control" placeholder="To Date">
+                                    <div class="form-group col-md-6 ">
+                                        <label for="inputPassword4 ">To Date</label>
+                                        <input type="date " class="form-control " placeholder="To Date ">
                                     </div>
 
-                                    <div class="form-group col-md-12">
-                                        <label for="inputState">Select Type</label>
-                                        <select id="inputState" class="form-control">
+                                    <div class="form-group col-md-12 ">
+                                        <label for="inputState ">Select Type</label>
+                                        <select id="inputState " class="form-control ">
                                             <option selected>Immediate</option>
                                             <option>type 1</option>
                                             <option>type 2</option>
                                             <option>type 3</option>
                                         </select>
                                     </div>
-                                    <div class="col-md-12 cust-apply">
-                                        <button type="submit" data-dismiss="modal">Select Type</button>
+                                    <div class="col-md-12 cust-apply ">
+                                        <button type="submit " data-dismiss="modal ">Select Type</button>
                                     </div>
                                 </div>
                             </form>

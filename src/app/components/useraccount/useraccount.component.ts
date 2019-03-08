@@ -170,7 +170,7 @@ export class UseraccountComponent implements OnInit {
     get f2() { return this.productForm.controls; }
     productId;
     save(Img) {
-        this.productForm.value.status = 1;
+        // this.productForm.value.status = 1;
         this.productForm.value.image = Img;
         if (this.productForm.value.deal_price === '') {
             this.deal_price_errors = true;
@@ -859,6 +859,22 @@ export class UseraccountComponent implements OnInit {
     getUserOrds() {
         this.appService.getUserOrders().subscribe(res => {
             this.userOrds = res.json().order;
+        })
+    }
+    reqProduct;
+    reqAdmin() {
+        var inData = {
+            "category_id": this.prodId,
+            "subcategory_id": 0,
+            "product_name": this.reqProduct
+        }
+        this.appService.reqAdmin(inData).subscribe(res => {
+            if (res.json().status == 200) {
+                swal(res.json().message, "", "success");
+                $('#product-name').modal('hide');
+            } else {
+                swal(res.json().message, "", "error");
+            }
         })
     }
 

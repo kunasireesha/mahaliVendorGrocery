@@ -215,6 +215,10 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.getUserOrders, { headers: headers });
     }
+    reqAdmin(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.requestAdmin, params, { headers: headers });
+    }
 }
 
 
