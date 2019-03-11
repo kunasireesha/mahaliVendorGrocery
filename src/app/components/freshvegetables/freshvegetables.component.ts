@@ -45,9 +45,13 @@ export class FreshvegetablesComponent implements OnInit {
             this.prodData = res.json().products;
             for (var i = 0; i < this.prodData.length; i++) {
                 for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
-                    this.prodData[i].sku_row[j].product_name = this.prodData[i].product_name;
-                    this.skuData.push(this.prodData[i].sku_row[j]);
+                    this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                    this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                    this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                    this.skid = this.prodData[i].sku_row[0].skid;
                 }
+
             }
             if (res.json().message === "No records Found") {
                 this.noData = true;
@@ -59,17 +63,23 @@ export class FreshvegetablesComponent implements OnInit {
         })
     }
 
-
+    Images = [];
+    skuImages = [];
+    image = [];
+    skid;
     getSubProducts() {
         this.skuData = [];
         this.appService.productBySubCatId(this.subId).subscribe(res => {
             this.prodData = res.json().products;
-            this.skuData = [];
             for (var i = 0; i < this.prodData.length; i++) {
                 for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
-                    this.prodData[i].sku_row[j].product_name = this.prodData[i].product_name;
-                    this.skuData.push(this.prodData[i].sku_row[j]);
+                    this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                    this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                    this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                    this.skid = this.prodData[i].sku_row[0].skid;
                 }
+
             }
             if (res.json().message === "No records Found") {
                 this.noData = true;
@@ -87,11 +97,11 @@ export class FreshvegetablesComponent implements OnInit {
         this.router.navigate(['/productdetails'], { queryParams: { prodId: prodId } });
     }
 
-    addtoCart(Id, skId) {
+    addtoCart(Id) {
         var inData = {
             "products": [{
                 product_id: Id,
-                sku_id: skId
+                sku_id: this.skid
             }],
             "vendor_id": JSON.parse(localStorage.getItem('userId')),
             "item_type": "grocery"
@@ -117,12 +127,20 @@ export class FreshvegetablesComponent implements OnInit {
         })
     }
     changeSize(Id) {
-        for (var i = 0; i < this.skuData.length; i++) {
-            if (Id === this.skuData[i].skid) {
-                this.skuData[i].img = this.skuData[i].product_image;
-                this.skuData[i].selling_price = this.skuData[i].selling_price;
-                this.skuData[i].actual_price = this.skuData[i].actual_price;
+        this.skid = Id;
+        for (var i = 0; i < this.prodData.length; i++) {
+            for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                if (parseInt(Id) === this.prodData[i].sku_row[j].skid) {
+                    this.prodData[i].selling_price = this.prodData[i].sku_row[j].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku_row[j].actual_price;
+                    this.prodData[i].skid = this.prodData[i].sku_row[i].skid;
+                    for (var k = 0; k < this.prodData[i].sku_row[j].sku_images.length; k++) {
+                        this.prodData[i].image = this.prodData[i].sku_row[j].sku_images[0].sku_image;
+                    }
+                }
+
             }
+
         }
     }
 

@@ -48,15 +48,20 @@ export class ProductsComponent implements OnInit {
     products = [];
     skuid;
     prodData = [];
+    skid;
     getWholeProds() {
         this.skuData = [];
         this.appService.wholeProducts(this.wholeId).subscribe(res => {
             this.prodData = res.json().products;
             for (var i = 0; i < this.prodData.length; i++) {
                 for (var j = 0; j < this.prodData[i].sku.length; j++) {
-                    this.prodData[i].sku[j].product_name = this.prodData[i].product_name;
-                    this.skuData.push(this.prodData[i].sku[j]);
+                    this.prodData[i].selling_price = this.prodData[i].sku[0].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku[0].actual_price;
+                    this.prodData[i].image = this.prodData[i].sku[0].sku_images[0].sku_image;
+                    this.prodData[i].skid = this.prodData[i].sku[0].skid;
+                    this.skid = this.prodData[i].sku[0].skid;
                 }
+
             }
             if (res.json().status === "400") {
                 this.noData = res.json().message;
@@ -66,27 +71,31 @@ export class ProductsComponent implements OnInit {
 
         })
     }
-    changeSize(skId) {
-        for (var i = 0; i < this.products.length; i++) {
-            // for(var j = 0;j<this.cartData[i].products;j++){
-            for (var k = 0; k < this.products[i].sku_details.length; k++) {
-                if (parseInt(skId) == this.products[i].sku_details[k].skid) {
-                    this.products[i].actual_price = this.products[i].sku_details[k].actual_price;
-                    this.products[i].selling_price = this.products[i].sku_details[k].selling_price;
-                    this.products[i].product_image = this.products[i].sku_details[k].product_image;
-                    this.skuid = this.products[i].sku_details[k].skid;
-                    // this.skuArr.push(this.skuData);
+    changeSize(Id) {
+        this.skid = Id;
+        for (var i = 0; i < this.prodData.length; i++) {
+            for (var j = 0; j < this.prodData[i].sku.length; j++) {
+                if (parseInt(Id) === this.prodData[i].sku[j].skid) {
+                    this.prodData[i].selling_price = this.prodData[i].sku[j].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku[j].actual_price;
+                    this.prodData[i].skid = this.prodData[i].sku[i].skid;
+                    for (var k = 0; k < this.prodData[i].sku[j].sku_images.length; k++) {
+                        this.prodData[i].image = this.prodData[i].sku[j].sku_images[0].sku_image;
+                    }
                 }
+
             }
+
         }
     }
+
     cartDetails = [];
     cartCount = [];
-    addtoCart(Id, skId) {
+    addtoCart(Id) {
         var inData = {
             "products": [{
                 product_id: Id,
-                sku_id: skId
+                sku_id: this.skid
             }],
             "vendor_id": JSON.parse(localStorage.getItem('userId')),
             "item_type": "grocery"

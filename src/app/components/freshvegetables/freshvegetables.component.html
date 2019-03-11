@@ -93,80 +93,25 @@
                 <a>{{sunCatName}}</a>
             </p>
             <div class="row">
-                <div class="col-lg-3 col-md-6 col-sm-6 item" *ngFor="let data of skuData | slice:0:10;let i=index">
+                <div class="col-lg-3 col-md-6 col-sm-6 item" *ngFor="let data of prodData;let i=index">
                     <div class="card">
-                        <img class="img-fluid" [src]="data?.sku_images[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
                         <div class="card-block">
                             <h5 class="text-center">{{data.product_name}} </h5>
                             <p class="text-center">
-                                BD {{data.selling_price}}
-                                <strike>BD {{data.actual_price}}</strike>
+                                BD {{data?.selling_price}}
+                                <strike>BD {{data?.actual_price}}</strike>
                             </p>
                             <div class="sort">
                                 <select (change)="changeSize($event.target.value)">
-                                    <option [value]="data.skid">{{data.size}}</option>
+                                    <option *ngFor="let sku of data.sku_row" [value]="sku?.skid">{{sku?.size}}</option>
                                 </select>
                             </div>
                         </div>
-                        <button type="button" class="btn cart-btn" (click)="addtoCart(data.product_id,data.skid)">Add To
-                            Cart
+                        <button type="button" class="btn cart-btn" (click)="addtoCart(data.product_id)">Add To Cart
                         </button>
                     </div>
                 </div>
-
-                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 item potato-item">
-            <div class="card" (click)="showProduxtDetails()">
-              <img class="img-fluid image-potato" src="assets/images/potato.png" alt="Card image cap">
-              <div class="card-block">
-                <h5 class="text-center">Potato </h5>
-                <div class="sort">
-                  <select>
-                    <option>20kgs - BD 2000</option>
-                    <option>30Kgs - BD 3000</option>
-                    <option>30Kgs - BD 3000</option>
-                    <option>30Kgs - BD 3000</option>
-                  </select>
-                </div>
-              </div>
-              <button type="button" class="btn cart-btn">Add To Cart</button>
-            </div>
-          </div> -->
-
-                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
-            <div class="card" (click)="showProduxtDetails()">
-              <img class="img-fluid image-finger" src="assets/images/ladies-finger.png" alt="Card image cap">
-              <div class="card-block ladiesfinger-price">
-                <h5 class="text-center">Ladies Finger </h5>
-                <div class="sort">
-                  <select>
-                    <option>20kgs - BD 2000</option>
-                    <option>30Kgs - BD 3000</option>
-                    <option>30Kgs - BD 3000</option>
-                    <option>30Kgs - BD 3000</option>
-                  </select>
-                </div>
-              </div>
-              <button type="button" class="btn cart-btn">Add To Cart</button>
-            </div>
-          </div> -->
-
-                <!-- <div class="col-lg-3 col-md-6 col-sm-6 col-12 item">
-            <div class="card" (click)="showProduxtDetails()">
-              <img class="img-fluid image-carrot" src="assets/images/carrot.png" alt="Card image cap">
-              <div class="card-block carrot-price">
-                <h5 class="text-center">Carrot</h5>
-                <div class="sort">
-                  <select>
-                    <option>20kgs - BD 2000</option>
-                    <option>30Kgs - BD 3000</option>
-                    <option>30Kgs - BD 3000</option>
-                    <option>30Kgs - BD 3000</option>
-                  </select>
-                </div>
-              </div>
-              <button type="button" class="btn cart-btn">Add To Cart</button>
-            </div>
-          </div> -->
             </div>
             <div *ngIf="noData&&!prodData">
                 No records Found

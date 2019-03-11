@@ -63,26 +63,34 @@ export class ProductdetailsComponent implements OnInit {
     prodData = [];
     prodsData = [];
     skid;
+    skuData = [];
     prodName;
     description;
     prodImages = [];
     size;
+    selling_price;
     getProductById() {
+        this.skuData = [];
         this.appService.getProductById(this.prodId).subscribe(res => {
             this.prodId = res.json().products.product_id;
             this.prodsData = res.json().products;
             for (var i = 0; i < this.prodsData.length; i++) {
                 this.prodId = this.prodsData[0].product_id;
+                this.prodName = this.prodsData[0].product_name;
                 for (var j = 0; j < this.prodsData[i].sku_row.length; j++) {
                     this.offer_price = this.prodsData[i].sku_row[0].offer_price;
                     this.actual_price = this.prodsData[i].sku_row[0].actual_price;
+                    this.selling_price = this.prodsData[i].sku_row[0].selling_price;
                     this.product_image = this.prodsData[i].sku_row[0].sku_images[0].sku_image;
                     this.skid = this.prodsData[i].sku_row[0].skid;
+                    this.image = this.prodsData[i].sku_row[0].sku_images[0].sku_image;
                     this.size = this.prodsData[i].sku_row[0].size;
-                    this.prodName = res.json().products.product_name;
                     this.description = this.prodsData[i].sku_row[0].description;
-                    for (var k = 0; k < this.prodsData[i].sku_row[j].sku_image_row.length; k++) {
-                        this.prodImages.push(this.prodsData[i].sku_row[j].sku_image_row[k]);
+                    this.skuData.push(this.prodsData[i].sku_row[j]);
+                    console.log(this.skuData);
+                    for (var k = 0; k < this.prodsData[i].sku_row[j].sku_images.length; k++) {
+                        this.prodImages.push(this.prodsData[i].sku_row[j].sku_images[k]);
+                        console.log(this.prodImages);
                     }
                 }
             }
@@ -94,21 +102,29 @@ export class ProductdetailsComponent implements OnInit {
     showBigImage(image) {
         this.product_image = image;
     }
-    skuData = [];
     offer_price = [];
     actual_price;
     product_image;
-    changeSize(skId) {
-        for (var i = 0; i < this.prodData.length; i++) {
-            if (parseInt(skId) === this.prodData[i].skid) {
-                this.offer_price = this.prodData[i].offer_price;
-                this.actual_price = this.prodData[i].actual_price;
-                this.product_image = this.prodData[i].image;
-                this.skid = this.prodData[i].skid;
-                this.description = this.prodData[i].description;
+    image;
+    changeSize(Id) {
+        this.skid = Id;
+        for (var i = 0; i < this.prodsData.length; i++) {
+            for (var j = 0; j < this.prodsData[i].sku_row.length; j++) {
+                if (parseInt(Id) === this.prodsData[i].sku_row[j].skid) {
+                    this.selling_price = this.prodsData[i].sku_row[j].selling_price;
+                    this.actual_price = this.prodsData[i].sku_row[j].actual_price;
+                    this.skid = this.prodsData[i].sku_row[j].skid;
+                    this.description = this.prodsData[i].sku_row[j].description;
+                    for (var k = 0; k < this.prodsData[i].sku_row[j].sku_images.length; k++) {
+                        this.image = this.prodsData[i].sku_row[j].sku_images[0].sku_image;
+                    }
+                }
+
             }
+
         }
     }
+
     cartDetails;
     cartCount;
     billing;

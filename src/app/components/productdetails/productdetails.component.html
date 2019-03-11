@@ -6,7 +6,7 @@
     </p>
     <div class="row">
         <div class="col-md-6">
-            <img id="myImg" src="{{product_image}}" alt="Snow" [imageZoom]="zoomedImageSrc">
+            <img id="myImg" src="{{image}}" alt="Snow" [imageZoom]="zoomedImageSrc">
         </div>
         <div class="col-md-6 details">
             <h4>{{prodName}} </h4>
@@ -14,8 +14,8 @@
                 <div class="col-md-6">
                     <div class="quantity-price text-center">
                         <select (change)="changeSize($event.target.value)">
-                            <option value="" data-icon="images/sample-1.jpg" class="left" value="{{skid}}">{{size}} - BD
-                                {{offer_price}}
+                            <option *ngFor="let sku of skuData" [value]="sku.skid" data-icon="images/sample-1.jpg" class="left">{{sku.size}}
+                                - BD {{sku.offer_price}}
                             </option>
                             <!-- <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
               <option value="" data-icon="images/yuna.jpg" class="left">1000gms-Rs 40.80</option> -->
@@ -25,7 +25,7 @@
             </div>
 
             <br />
-            <p><strong>BD:</strong> {{offer_price}}
+            <p><strong>BD:</strong> {{selling_price}}
                 <span>
                     <strike><strong>BD : </strong> {{actual_price}}</strike>(Inclusive of all taxes)</span>
             </p>
