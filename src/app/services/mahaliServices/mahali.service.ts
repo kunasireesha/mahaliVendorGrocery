@@ -20,7 +20,7 @@ export class appService {
     changePwd(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (localStorage.token),
+            'x-access-token': (sessionStorage.token),
         });
         return this.http.post(AppSettings.changePwdUrl, params, { headers: headers });
     }
@@ -63,9 +63,9 @@ export class appService {
     updateProfile(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (localStorage.token),
+            'x-access-token': (sessionStorage.token),
         });
-        this.vendor_id = localStorage.getItem('userId');
+        this.vendor_id = sessionStorage.getItem('userId');
         return this.http.put(AppSettings.updateProfile + "/" + this.vendor_id, params, { headers: headers })
     }
     getBanners() {
@@ -83,17 +83,17 @@ export class appService {
     vendor_id
     delCart(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.getItem('userId');
+        this.vendor_id = sessionStorage.getItem('userId');
         return this.http.delete(AppSettings.delCart + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
     addaddress(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.getItem('userId');
+        this.vendor_id = sessionStorage.getItem('userId');
         return this.http.post(AppSettings.addaddress + "/" + this.vendor_id, params, { headers: headers });
     }
     getAddress() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.getItem('userId');
+        this.vendor_id = sessionStorage.getItem('userId');
         return this.http.get(AppSettings.getAddress + "/" + this.vendor_id, { headers: headers });
     }
     delAddress(params) {
@@ -102,7 +102,7 @@ export class appService {
     }
     setDelAdd(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.getItem('userId');
+        this.vendor_id = sessionStorage.getItem('userId');
         return this.http.put(AppSettings.setDelAdd + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
     paymentType() {
@@ -112,13 +112,13 @@ export class appService {
     palceOrder(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (localStorage.token),
+            'x-access-token': (sessionStorage.token),
         });
         return this.http.post(AppSettings.palceOrder, params, { headers: headers });
     }
     getPlaceOrder() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.getItem('userId');
+        this.vendor_id = sessionStorage.getItem('userId');
         return this.http.get(AppSettings.getPlaceOrd + "/" + this.vendor_id, { headers: headers });
     }
     orderSummary(ordId) {
@@ -134,27 +134,27 @@ export class appService {
         return this.http.get(AppSettings.productBySubCatId + "/" + params, { headers: headers });
     }
     businessDetails(params) {
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.businessDetails + "/" + this.vendor_id, params, { headers: headers });
     }
     taxDetails(params) {
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.taxDetails + "/" + this.vendor_id, params, { headers: headers });
     }
     bankDetails(parmas) {
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.bankDetails + "/" + this.vendor_id, parmas, { headers: headers });
     }
     getAccDetails() {
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.get(AppSettings.getAccDetails + "/" + this.vendor_id, { headers: headers });
     }
     updateAcc(params) {
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.updateAcc + "/" + this.vendor_id, params, { headers: headers });
     }
@@ -172,12 +172,12 @@ export class appService {
     }
     reqOrder(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         return this.http.get(AppSettings.reqProducts + "/" + this.vendor_id + "/" + params, { headers: headers });
     }
     update(params, venId) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         return this.http.put(AppSettings.updateProd + "/" + venId, params, { headers: headers });
     }
     contactUs(params) {
@@ -191,12 +191,12 @@ export class appService {
     }
     updateAddData(params, addId) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         return this.http.put(AppSettings.updateAddress + "/" + this.vendor_id + "/" + addId, params, { headers: headers });
     }
     getAddedData() {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        this.vendor_id = localStorage.userId;
+        this.vendor_id = sessionStorage.userId;
         return this.http.get(AppSettings.getAddedData + "/" + this.vendor_id, { headers: headers });
     }
     delProd(params) {

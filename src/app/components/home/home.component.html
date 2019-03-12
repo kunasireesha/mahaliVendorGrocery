@@ -93,91 +93,6 @@
                         </div> -->
 
                     </div>
-                    <!-- <div class="carousel-item">
-                        <div class="col-xs-4 col-sm-4 col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid" [src]="wholeData[2]?.image_one" alt="Card image cap" (click)="showStore(wholeData[2]?.id)">
-                                </div>
-                                <div class="card-block col-md-6 recmded">
-                                    <h4>{{wholeData[2]?.bussiness_name}}</h4>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        &nbsp; {{wholeData[2]?.bussiness_area}}, {{wholeData[2]?.bussiness_city}} {{wholeData[2]?.bussiness_country}}
-                                    </p>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    &nbsp;
-                                    <span class="cust-time">{{wholeData[2]?.bussiness_from_time}} To {{wholeData[2]?.bussiness_end_time}}
-                                    </span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="col-xs-4 col-sm-4 col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid" [src]="wholeData[3]?.image_one" alt="Card image cap" (click)="showStore(wholeData[3]?.id)">
-                                </div>
-                                <div class="card-block col-md-6 recmded">
-                                    <h4>{{wholeData[3]?.bussiness_name}}</h4>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        &nbsp; {{wholeData[3]?.bussiness_area}}, {{wholeData[3]?.bussiness_city}} {{wholeData[3]?.bussiness_country}}
-                                    </p>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    &nbsp;
-                                    <span class="cust-time">{{wholeData[3]?.bussiness_from_time}} To {{wholeData[3]?.bussiness_end_time}}
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> -->
-                    <!-- <div class="carousel-item">
-                        <div class="col-xs-4 col-sm-4 col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid" [src]="wholeData[4]?.image_one" alt="Card image cap"
-                                        (click)="showStore(wholeData[4]?.id)">
-                                </div>
-                                <div class="card-block col-md-6 recmded">
-                                    <h4>{{wholeData[4]?.bussiness_name}}</h4>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        &nbsp; {{wholeData[4]?.bussiness_area}}, {{  wholeData[4]?.bussiness_city}}
-                                        {{wholeData[4]?.bussiness_country}}
-                                    </p>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    &nbsp;
-                                    <span class="cust-time">{{wholeData[4]?.bussiness_from_time}} To
-                                        {{wholeData[4]?.bussiness_end_time}}
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                        <div class="col-xs-4 col-sm-4 col-md-6">
-                            <div class="row">
-                                <div class="col-md-6">
-                                    <img class="img-fluid" [src]="wholeData[5]?.image_one" alt="Card image cap"
-                                        (click)="showStore(wholeData[5]?.id)">
-                                </div>
-                                <div class="card-block col-md-6 recmded">
-                                    <h4>{{wholeData[5]?.bussiness_name}}</h4>
-                                    <p>
-                                        <i class="fas fa-map-marker-alt"></i>
-                                        &nbsp; {{wholeData[5]?.bussiness_area}}, {{wholeData[5]?.bussiness_city}}
-                                        {{wholeData[5]?.bussiness_country}}
-                                    </p>
-                                    <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                    &nbsp;
-                                    <span class="cust-time">{{wholeData[5]?.bussiness_from_time}} To
-                                        {{wholeData[5]?.bussiness_end_time}}
-                                    </span>
-                                </div>
-                            </div>
-
-                        </div>
-                    </div> -->
                 </div>
 
                 <!-- Left and right controls -->
@@ -191,72 +106,6 @@
                 </div>
             </div>
         </div>
-        <!-- <div id="carouselExample" class="carouselPrograms carousel slide" data-ride="carousel" data-interval="false">
-            <div class="carousel-inner row w-100 mx-auto" role="listbox">
-                <div class="carousel-item col-md-4" *ngFor="let item of wholeData;let i = index;" [ngClass]="{'active':i == 0}">
-                    <div class="panel panel-default">
-                        <div class="row">
-                            <div class="col-md-6">
-                                <img class="img-fluid" [src]="item.image_one" alt="Card image cap" (click)="showStore(item.id)">
-                            </div>
-                            <div class="card-block col-md-6 recmded">
-                                <h4>{{item.bussiness_name}}</h4>
-                                <p>
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    &nbsp; {{item.bussiness_area}}, {{item.bussiness_city}} {{item.bussiness_country}}
-                                </p>
-                                <i class="fa fa-clock-o" aria-hidden="true"></i>
-                                &nbsp;
-                                <span class="cust-time">{{item.bussiness_from_time}} To {{item.bussiness_end_time}}</span>
-                            </div>
-                        </div>
-                    </div>
-                </div>
-
-            </div>
-            <div class="controls-top">
-                <a class="btn-floating btn-small slider-btn-left" href="#carouselExample" data-slide="prev">
-                    <i class="fas fa-long-arrow-alt-left"></i>
-                </a>
-                <a class="btn-floating btn-small slider-btn-right" href="#carouselExample" data-slide="next">
-                    <i class="fas fa-long-arrow-alt-right"></i>
-                </a>
-            </div>
-        </div> -->
-
-        <!-- Nearest Shops -->
-
-        <!-- <div id="multi-item-example6" class="carousel slide store-location carousel-multi-item container" data-ride="carousel">
-      <br />
-      <div class="carousel-inner" role="listbox">
-        <div class="carousel-item" *ngFor="let item of wholeData;let i=index;" [ngClass]="{'active':i == 0}">
-          <div class="col-md-6">
-            <div class="card" (click)="showStore(item.id)">
-              <div class="row">
-                <div class="col-md-6">
-                  <img class="img-fluid" [src]="item.image_one" alt="Card image cap">
-                </div>
-                <div class="card-block col-md-6 recmded">
-
-                  <h4>{{item.bussiness_name}}</h4>
-                  <p>
-                    <i class="fas fa-map-marker-alt"></i>
-                    &nbsp; {{item.bussiness_area}}, {{item.bussiness_city}}
-                    {{item.bussiness_country}}
-                  </p>
-                  <i class="fa fa-clock-o" aria-hidden="true"></i>
-                  &nbsp;
-                  <span class="cust-time">{{item.bussiness_from_time}} To {{item.bussiness_end_time}}</span>
-                </div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </div>
-    </div> -->
-
-
-
     </div>
 
 
@@ -340,202 +189,174 @@
                             <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[5]?.product_id,product[5]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <!-- <div class="carousel-item col-md-3 ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[6]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
-                                <a title="image 8" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[6]?.product_image}}"
-                                        (click)="showProduxtDetails(product[6]?.product_id)">
+                                <a title="image 7" class="thumb">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[6]?.sku[0]?.sku_images[0]?.sku_image}}" (click)="showProduxtDetails(product[5]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[6]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[6]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[6]?.product_id,product[6]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[6]?.product_id,product[6]?.sku[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3" *ngIf="product[7]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[7]?.product_image}}"
-                                        (click)="showProduxtDetails(product[7]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[7]?.product_image}}" (click)="showProduxtDetails(product[7]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[7]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[7]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[7]?.product_id,product[7]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[7]?.product_id,product[7]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3" *ngIf="product[8]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[8]?.product_image}}"
-                                        (click)="showProduxtDetails(product[8]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[8]?.product_image}}" (click)="showProduxtDetails(product[8]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[8]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[8]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[8]?.product_id,product[8]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[8]?.product_id,product[8]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3 " *ngIf="product[9]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[9]?.product_image}}"
-                                        (click)="showProduxtDetails(product[9]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[9]?.product_image}}" (click)="showProduxtDetails(product[9]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[9]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[9]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[9]?.product_id,product[9]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[9]?.product_id,product[9]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[10]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[10]?.product_image}}"
-                                        (click)="showProduxtDetails(product[10]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[10]?.product_image}}" (click)="showProduxtDetails(product[10]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[10]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[10]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[10]?.product_id,product[10]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[10]?.product_id,product[10]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[11]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[11]?.product_image}}"
-                                        (click)="showProduxtDetails(product[11]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[11]?.product_image}}" (click)="showProduxtDetails(product[11]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[11]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[11]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[11]?.product_id,product[11]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[11]?.product_id,product[11]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[12]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[12]?.product_image}}"
-                                        (click)="showProduxtDetails(product[12]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[12]?.product_image}}" (click)="showProduxtDetails(product[12]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[12]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[12]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[12]?.product_id,product[12]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[12]?.product_id,product[12]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[13]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[13]?.product_image}}"
-                                        (click)="showProduxtDetails(product[13]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[13]?.product_image}}" (click)="showProduxtDetails(product[13]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[13]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[13]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[13]?.product_id,product[13]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[13]?.product_id,product[13]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[14]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[14]?.product_image}}"
-                                        (click)="showProduxtDetails(product[14]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[14]?.product_image}}" (click)="showProduxtDetails(product[14]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[14]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[14]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[14]?.product_id,product[14]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[14]?.product_id,product[14]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[15]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[15]?.product_image}}"
-                                        (click)="showProduxtDetails(product[15]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[15]?.product_image}}" (click)="showProduxtDetails(product[15]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[15]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[15]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[15]?.product_id,product[15]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[15]?.product_id,product[15]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[16]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[16]?.product_image}}"
-                                        (click)="showProduxtDetails(product[16]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[16]?.product_image}}" (click)="showProduxtDetails(product[16]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[16]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[16]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[16]?.product_id,product[16]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[16]?.product_id,product[16]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[17]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[17]?.product_image}}"
-                                        (click)="showProduxtDetails(product[17]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[17]?.product_image}}" (click)="showProduxtDetails(product[17]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[17]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[17]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[17]?.product_id,product[17]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[17]?.product_id,product[17]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[18]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[18]?.product_image}}"
-                                        (click)="showProduxtDetails(product[18]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[18]?.product_image}}" (click)="showProduxtDetails(product[18]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[18]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[18]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[18]?.product_id,product[18]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[18]?.product_id,product[18]?.sku_details[0].skid)">Add</button>
                         </div>
                     </div>
-                    <div class="carousel-item col-md-3  ">
+                    <div class="carousel-item col-md-3  " *ngIf="product[19]?.approval==='Active'">
                         <div class="panel panel-default">
                             <div class="panel-thumbnail">
                                 <a title="image 2" class="thumb">
-                                    <img class="img-fluid mx-auto d-block" src="{{product[19]?.product_image}}"
-                                        (click)="showProduxtDetails(product[19]?.product_id)">
+                                    <img class="img-fluid mx-auto d-block" src="{{product[19]?.product_image}}" (click)="showProduxtDetails(product[19]?.product_id)">
                                 </a>
                             </div>
-                            <h6 class="text-center prod-txt">{{product[19]?.brand}}
+                            <h6 class="text-center prod-txt">{{product[19]?.product_name}}
                             </h6>
-                            <button type="text" class="btn waves-effect waves-light"
-                                (click)="addtoCart(product[19]?.product_id,product[19]?.sku_details[0].skid)">Add</button>
+                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(product[19]?.product_id,product[19]?.sku_details[0].skid)">Add</button>
                         </div>
-                    </div> -->
+                    </div>
                 </div>
 
                 <div class="whole-icons controls-top whole-icons2">

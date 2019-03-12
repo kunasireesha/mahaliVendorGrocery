@@ -560,7 +560,7 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = false;
         this.getProducts(Id);
     }
-    requestAdmin() {  
+    requestAdmin() {
         this.showNotifications = false;
         this.showOrderDetails = false;
         this.showMyOrders = false;
@@ -666,7 +666,7 @@ export class UseraccountComponent implements OnInit {
         bussiness_name: ''
     }
     getProfile() {
-        this.email = (localStorage.email);
+        this.email = (sessionStorage.email);
         this.appService.loginDetailsbyEmail(this.email).subscribe(response => {
             this.profileData = response.json().data[0];
             localStorage.removeItem('userName');

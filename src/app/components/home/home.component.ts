@@ -135,7 +135,7 @@ export class HomeComponent implements OnInit {
         });
     }
     addtoCart(Id, skId) {
-        if (localStorage.userId === undefined) {
+        if (sessionStorage.userId === undefined) {
             swal('Please Login', '', 'warning');
             return;
         }
@@ -144,7 +144,7 @@ export class HomeComponent implements OnInit {
                 product_id: Id,
                 sku_id: skId
             }],
-            "vendor_id": JSON.parse(localStorage.getItem('userId')),
+            "vendor_id": JSON.parse(sessionStorage.getItem('userId')),
             "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
@@ -173,7 +173,7 @@ export class HomeComponent implements OnInit {
     cartValue;
     billing;
     getCart() {
-        var inData = localStorage.getItem('userId');
+        var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
             this.cartValue = res.json().count;

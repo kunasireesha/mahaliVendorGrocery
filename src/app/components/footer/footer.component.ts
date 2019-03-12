@@ -14,7 +14,7 @@ export class FooterComponent implements OnInit {
     }
     footerPages(link) {
         this.page = "/" + "" + link;
-        if (localStorage.userId === undefined) {
+        if (sessionStorage.userId === undefined) {
             swal("Please Login", "", "warning");
         } else {
             this.router.navigate([this.page]);

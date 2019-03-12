@@ -129,7 +129,7 @@ export class ProductdetailsComponent implements OnInit {
     cartCount;
     billing;
     getCart() {
-        var inData = localStorage.getItem('userId');
+        var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
             this.cartCount = res.json().count;
@@ -144,7 +144,7 @@ export class ProductdetailsComponent implements OnInit {
                 product_id: id,
                 sku_id: this.skid
             }],
-            "vendor_id": JSON.parse(localStorage.getItem('userId')),
+            "vendor_id": JSON.parse(sessionStorage.getItem('userId')),
             "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {

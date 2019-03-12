@@ -7,26 +7,26 @@
         <div class="col-lg-3 col-md-4 col-sm-12 col-12">
             <h5>Category</h5>
             <br />
-            <div class="categories">
-                <div id="panel-group">
-                    <div class="panel panel-default" *ngFor="let item of category; let i = index">
-                        <div class="panel-heading" (click)="current = i;item.id">
-                            <p class="panel-title">
-                                <i class="fa fa-plus" aria-hidden="true" *ngIf="i != current"></i>
-                                <i class="fa fa-minus" aria-hidden="true" *ngIf="i == current"></i>
-                                {{item.category_name}}
-                            </p>
-                            <hr>
-                        </div>
-                        <div id="collapse1" class="panel-collapse" [class.collapse]='current != i' *ngFor="let subCat of subCatData">
-                            <div class="panel-body subcat" *ngIf="item.id===subCat.category_id">
-                                <p class="subCat">{{subCat.sub_category_name}}</p>
-                            </div>
-                        </div>
+            <div class="categories" *ngFor="let cat of category; let i = index">
+                <p [ngClass]="{'active':showCategories && i==selectedCat}">
+                    <a>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="!showCategories" (click)="showsubCat(i,cat.id)"></i>
+                        <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
+
+                        <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
+                    </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.name)">{{cat.category_name}}</span>
+                </p>
+                <hr>
+                <!-- categories -->
+
+                <div class="subCates">
+                    <div *ngFor="let subCat of subCategory;let ii = index">
+                        <p *ngIf="selectedCat==i && showCategories" id="subCat" [ngClass]="{'active':showSubCategories }">
+                            <span (click)="getSubProducts(subCat.id,subCat.sub_category_name)">{{subCat.sub_category_name}}</span>
+                        </p>
                     </div>
                 </div>
             </div>
-
             <h5>Country</h5>
             <div class="sort">
                 <select>
@@ -93,6 +93,25 @@
                 <a>{{sunCatName}}</a>
             </p>
             <div class="row">
+                <!-- <div class="col-lg-3 col-md-6 col-sm-6 item" *ngFor="let data of prodData;let i=index">
+                    <div class="card">
+                        <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
+                        <div class="card-block">
+                            <h5 class="text-center">{{data.product_name}} </h5>
+                            <p class="text-center">
+                                BD {{data?.selling_price}}
+                                <strike>BD {{data?.actual_price}}</strike>
+                            </p>
+                            <div class="sort">
+                                <select (change)="changeSize($event.target.value)">
+                                    <option *ngFor="let sku of data.sku_row" [value]="sku?.skid">{{sku?.size}}</option>
+                                </select>
+                            </div>
+                        </div>
+                        <button type="button" class="btn cart-btn" (click)="addtoCart(data.product_id)">Add To Cart
+                        </button>
+                    </div>
+                </div> -->
                 <div class="col-lg-3 col-md-6 col-sm-6 item" *ngFor="let data of prodData;let i=index">
                     <div class="card">
                         <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
@@ -112,11 +131,10 @@
                         </button>
                     </div>
                 </div>
+                <div *ngIf="noData">
+                    No Products Found
+                </div>
             </div>
-            <div *ngIf="noData&&!prodData">
-                No records Found
-            </div>
-
             <!-- <div class="row">
           <div class="col-lg-3 col-md-6 col-sm-6 col-12  item">
             <div class="card" (click)="showProduxtDetails()">

@@ -39,9 +39,11 @@ export class HeaderComponent implements OnInit {
     IsmodelShow = false;
     showCategories = false;
     subcat = [];
+    subCatData = [];
+    subId;
 
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
-        if (localStorage.token === undefined) {
+        if (sessionStorage.token === undefined) {
             this.showRegistration = true;
             this.showLoginScreen = true;
             this.myAccount = false;
@@ -62,7 +64,7 @@ export class HeaderComponent implements OnInit {
     userName;
     location;
     ngOnInit() {
-        if (localStorage.token === undefined) {
+        if (sessionStorage.token === undefined) {
             this.showRegistration = true;
             this.showLoginScreen = true;
             this.myAccount = false;
@@ -171,31 +173,33 @@ export class HeaderComponent implements OnInit {
     showAddress() {
         this.router.navigate(['/address'], { queryParams: { order: 'popular' } });
     }
-    showProbyCat(catId, action, catName, index) {
+    showProbyCat(catId, action, catName) {
         this.showSubCats = false;
         this.showCategories = false;
         this.showOpacity = false;
-        this.selectedCat = index;
-        this.router.navigate(['/freshvegetables'], { queryParams: { catId: catId, action: action, catName: catName } });
+        // this.selectedCat = index;
+        this.router.navigate(['/products'], { queryParams: { catId: catId, action: action, catName: catName } });
         $("#itemdesc").modal("hide");
     }
     showProbySubCat(SubCatId, action, catName, subCat) {
         this.showSubCats = false;
         this.showCategories = false;
         this.showOpacity = false;
-        this.router.navigate(['/freshvegetables'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
+        this.router.navigate(['/products'], { queryParams: { subId: SubCatId, action: action, catName: catName, subCat: subCat } });
         $("#itemdesc").modal("hide");
     }
     signOut() {
-        localStorage.removeItem('token');
-        localStorage.removeItem('email');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('email');
         localStorage.removeItem('phone');
-        localStorage.removeItem('userId');
+        sessionStorage.removeItem('userId');
         localStorage.removeItem('userName');
         this.showRegistration = true;
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
+        localStorage.clear();
+        sessionStorage.clear();
         this.router.navigate(["/"]);
         this.getCart();
     }
@@ -211,7 +215,7 @@ export class HeaderComponent implements OnInit {
                 swal(resp.json().message, "", "success");
                 jQuery("#signupmodal").modal("hide");
                 // this.showRegistration = false;
-                localStorage.setItem('userId', (resp.json().id));
+                sessionStorage.setItem('userId', (resp.json().id));
                 // this.myAccount = true
                 // this.showOpacity = false;
                 // this.onCloseCancel();
@@ -237,15 +241,15 @@ export class HeaderComponent implements OnInit {
                 jQuery("#loginmodal").modal("hide");
                 this.IsmodelShow = true;
 
-                localStorage.setItem('token', (resp.json().token));
+                sessionStorage.setItem('token', (resp.json().token));
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.showLogin = false;
                 this.myAccount = true;
                 this.appService.loginDetailsbyEmail(this.loginForm.value.email).subscribe(response => {
                     localStorage.setItem('phone', JSON.stringify(response.json().data[0].mobile_number));
-                    localStorage.setItem('email', (response.json().data[0].email));
-                    localStorage.setItem('userId', (response.json().data[0].id));
+                    sessionStorage.setItem('email', (response.json().data[0].email));
+                    sessionStorage.setItem('userId', (response.json().data[0].id));
                     localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
                     this.loginDetails = response.json().data[0];
                     this.phone = true;
@@ -256,7 +260,7 @@ export class HeaderComponent implements OnInit {
             else if (resp.json().status === 404 || resp.json().status === 400 || resp.json().status === 401) {
                 swal(resp.json().message, "", "error");
                 this.router.navigate(['/address']);
-                localStorage.setItem('userId', (resp.json().id));
+                sessionStorage.setItem('userId', (resp.json().id));
             }
         })
     }
@@ -266,8 +270,7 @@ export class HeaderComponent implements OnInit {
             // this.showSubCat(this.subId);
         })
     }
-    subCatData = [];
-    subId;
+
     showSubCat(Id) {
         this.subId = Id;
         this.subCatData = [];
@@ -339,7 +342,7 @@ export class HeaderComponent implements OnInit {
 
 
     getCart() {
-        var inData = localStorage.getItem('userId');
+        var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             if (res.json().count === 0) {
                 this.cartCount = res.json().count;

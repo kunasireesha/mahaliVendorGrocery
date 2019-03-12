@@ -15,7 +15,9 @@ export class ProductsComponent implements OnInit {
     serProd = false;
     wholeProd = false;
     showSubCats = false;
-    noData;
+    catId;
+    catName;
+    subCatName;
     constructor(private router: Router, public productService: ProductService, private appService: appService, private route: ActivatedRoute) {
         this.route.queryParams.subscribe(params => {
             if (params.action === "whole") {
@@ -28,6 +30,19 @@ export class ProductsComponent implements OnInit {
                 this.search(this.product);
                 this.wholeProd = false;
                 this.serProd = true;
+            } else if (params.action === 'category') {
+                this.catId = params.catId;
+                this.catName = params.catName;
+                this.wholeProd = true;
+                this.serProd = false;
+                this.getCatProducts('');
+            } else if (params.action === 'subCategory') {
+                this.subId = params.subId;
+                this.catName = params.catName;
+                this.subCatName = params.subCat || "";
+                this.wholeProd = true;
+                this.serProd = false;
+                this.getSubProducts('');
             }
 
 
@@ -49,17 +64,73 @@ export class ProductsComponent implements OnInit {
     skuid;
     prodData = [];
     skid;
+    noData = false;
+    getCatProducts(id) {
+        this.skuData = [];
+        this.catId = (id === '') ? this.catId : id;
+        this.appService.productByCatId(this.catId).subscribe(res => {
+            this.prodData = res.json().products;
+            if (this.prodData != undefined) {
+                for (var i = 0; i < this.prodData.length; i++) {
+                    for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                        this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                        this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                        this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                        this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                        this.skid = this.prodData[i].sku_row[0].skid;
+                    }
+
+                }
+                this.noData = false;
+            }
+            if (res.json().status === 400) {
+                this.noData = true;
+            }
+
+
+        }, err => {
+
+        })
+    }
+    Images = [];
+    skuImages = [];
+    image = [];
+    getSubProducts(subid) {
+        this.skuData = [];
+        this.subId = (subid === '') ? this.subId : subid;
+        this.appService.productBySubCatId(this.subId).subscribe(res => {
+            this.prodData = res.json().products;
+            if (this.prodData != undefined) {
+                for (var i = 0; i < this.prodData.length; i++) {
+                    for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                        this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                        this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                        this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                        this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                        this.skid = this.prodData[i].sku_row[0].skid;
+                    }
+
+                }
+                this.noData = false;
+            }
+            if (res.json().status === 400) {
+                this.noData = true;
+            }
+        }, err => {
+
+        })
+    }
     getWholeProds() {
         this.skuData = [];
         this.appService.wholeProducts(this.wholeId).subscribe(res => {
             this.prodData = res.json().products;
             for (var i = 0; i < this.prodData.length; i++) {
-                for (var j = 0; j < this.prodData[i].sku.length; j++) {
-                    this.prodData[i].selling_price = this.prodData[i].sku[0].selling_price;
-                    this.prodData[i].actual_price = this.prodData[i].sku[0].actual_price;
-                    this.prodData[i].image = this.prodData[i].sku[0].sku_images[0].sku_image;
-                    this.prodData[i].skid = this.prodData[i].sku[0].skid;
-                    this.skid = this.prodData[i].sku[0].skid;
+                for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                    this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                    this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                    this.skid = this.prodData[i].sku_row[0].skid;
+                    this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
                 }
 
             }
@@ -74,13 +145,13 @@ export class ProductsComponent implements OnInit {
     changeSize(Id) {
         this.skid = Id;
         for (var i = 0; i < this.prodData.length; i++) {
-            for (var j = 0; j < this.prodData[i].sku.length; j++) {
-                if (parseInt(Id) === this.prodData[i].sku[j].skid) {
-                    this.prodData[i].selling_price = this.prodData[i].sku[j].selling_price;
-                    this.prodData[i].actual_price = this.prodData[i].sku[j].actual_price;
-                    this.prodData[i].skid = this.prodData[i].sku[i].skid;
-                    for (var k = 0; k < this.prodData[i].sku[j].sku_images.length; k++) {
-                        this.prodData[i].image = this.prodData[i].sku[j].sku_images[0].sku_image;
+            for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                if (parseInt(Id) === this.prodData[i].sku_row[j].skid) {
+                    this.prodData[i].selling_price = this.prodData[i].sku_row[j].selling_price;
+                    this.prodData[i].actual_price = this.prodData[i].sku_row[j].actual_price;
+                    this.prodData[i].skid = this.prodData[i].sku_row[i].skid;
+                    for (var k = 0; k < this.prodData[i].sku_row[j].sku_images.length; k++) {
+                        this.prodData[i].image = this.prodData[i].sku_row[j].sku_images[0].sku_image;
                     }
                 }
 
@@ -97,7 +168,7 @@ export class ProductsComponent implements OnInit {
                 product_id: Id,
                 sku_id: this.skid
             }],
-            "vendor_id": JSON.parse(localStorage.getItem('userId')),
+            "vendor_id": JSON.parse(sessionStorage.getItem('userId')),
             "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
@@ -116,7 +187,7 @@ export class ProductsComponent implements OnInit {
         this.appService.searchProducts(product).subscribe(res => {
             this.serProducts = res.json().data;
             // if (this.serProducts == "No products found with your search") {
-            //   this.noData = true;
+            // this.noData = true;
             // } else {
             for (var i = 0; i < this.serProducts.length; i++) {
                 for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
@@ -144,20 +215,36 @@ export class ProductsComponent implements OnInit {
             }
         })
     }
+    subCategory = [];
+    showsubCat(index, id) {
+        this.subCategory = [];
+        this.selectedCat = index;
+        this.showCategories = true;
+
+        for (var i = 0; i < this.subCatData.length; i++) {
+            if (id === this.subCatData[i].category_id) {
+                this.subCategory.push(this.subCatData[i]);
+            }
+        }
+    }
+    closesubSubCat() {
+        this.showCategories = false;
+        // this.showSubCategories = false;
+    }
     subCatData = [];
     subId;
     // showSubCat(Id) {
-    //   this.subId = Id;
-    //   this.subCatData=[];
-    //   this.showSubCats = true;
-    //   for(var i=0;i<this.category.length;i++){
-    //   for(var j=0;j<this.category[i].subcategory.length;j++){
-    //       if(Id===this.category[i].subcategory[j].category_id){
-    //         this.subCatData.push(this.category[i].subcategory[j]);
-    //         console.log(this.subCatData);
+    // this.subId = Id;
+    // this.subCatData=[];
+    // this.showSubCats = true;
+    // for(var i=0;i<this.category.length;i++){
+    // for(var j=0;j<this.category[i].subcategory.length;j++){
+    // if(Id===this.category[i].subcategory[j].category_id){
+    // this.subCatData.push(this.category[i].subcategory[j]);
+    // console.log(this.subCatData);
 
-    //       }
-    //   }
+    // }
+    // }
     // }
     // }
     selectedCat = false;
@@ -165,9 +252,9 @@ export class ProductsComponent implements OnInit {
         this.selectedCat !== this.selectedCat;
         this.current = index;
     }
-    //   toggle(current){
-    //     this.current = current;
-    //     alert(this.current);
+    // toggle(current){
+    // this.current = current;
+    // alert(this.current);
     // this.current!== this.current;
-    //   }
+    // }
 }

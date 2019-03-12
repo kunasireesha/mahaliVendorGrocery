@@ -9,17 +9,18 @@ import { ActivatedRoute, NavigationExtras, Router, Params } from '@angular/route
 export class FreshvegetablesComponent implements OnInit {
     catName;
     sunCatName;
+    showCategories = false;
     constructor(private route: ActivatedRoute, public router: Router, public appService: appService) {
         this.route.queryParams.subscribe(params => {
             if (params.action === 'category') {
                 this.catId = params.catId;
                 this.catName = params.catName;
-                this.getCatProducts();
+                this.getCatProducts('');
             } else if (params.action === 'subCategory') {
                 this.subId = params.subId;
                 this.catName = params.catName;
                 this.sunCatName = params.subCat || "";
-                this.getSubProducts();
+                this.getSubProducts('');
             }
         })
     }
@@ -39,21 +40,25 @@ export class FreshvegetablesComponent implements OnInit {
 
     prodData = [];
     noData = false;
-    getCatProducts() {
+    getCatProducts(id) {
         this.skuData = [];
+        this.catId = (id === '') ? this.catId : id;
         this.appService.productByCatId(this.catId).subscribe(res => {
             this.prodData = res.json().products;
-            for (var i = 0; i < this.prodData.length; i++) {
-                for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
-                    this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
-                    this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
-                    this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
-                    this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
-                    this.skid = this.prodData[i].sku_row[0].skid;
-                }
+            if (this.prodData != undefined) {
+                for (var i = 0; i < this.prodData.length; i++) {
+                    for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                        this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                        this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                        this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                        this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                        this.skid = this.prodData[i].sku_row[0].skid;
+                    }
 
+                }
+                this.noData = false;
             }
-            if (res.json().message === "No records Found") {
+            if (res.json().status === 400) {
                 this.noData = true;
             }
 
@@ -67,21 +72,25 @@ export class FreshvegetablesComponent implements OnInit {
     skuImages = [];
     image = [];
     skid;
-    getSubProducts() {
+    getSubProducts(subid) {
         this.skuData = [];
+        this.subId = (subid === '') ? this.subId : subid;
         this.appService.productBySubCatId(this.subId).subscribe(res => {
             this.prodData = res.json().products;
-            for (var i = 0; i < this.prodData.length; i++) {
-                for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
-                    this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
-                    this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
-                    this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
-                    this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
-                    this.skid = this.prodData[i].sku_row[0].skid;
-                }
+            if (this.prodData != undefined) {
+                for (var i = 0; i < this.prodData.length; i++) {
+                    for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                        this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                        this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                        this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                        this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                        this.skid = this.prodData[i].sku_row[0].skid;
+                    }
 
+                }
+                this.noData = false;
             }
-            if (res.json().message === "No records Found") {
+            if (res.json().status === 400) {
                 this.noData = true;
             }
         }, err => {
@@ -103,7 +112,7 @@ export class FreshvegetablesComponent implements OnInit {
                 product_id: Id,
                 sku_id: this.skid
             }],
-            "vendor_id": JSON.parse(localStorage.getItem('userId')),
+            "vendor_id": JSON.parse(sessionStorage.getItem('userId')),
             "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
@@ -117,7 +126,7 @@ export class FreshvegetablesComponent implements OnInit {
     }
     billing;
     getCart() {
-        var inData = localStorage.getItem('userId');
+        var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartDetails = res.json().cart_details;
             this.cartCount = res.json().count;
@@ -143,7 +152,22 @@ export class FreshvegetablesComponent implements OnInit {
 
         }
     }
+    subCategory = [];
+    showsubCat(index, id) {
+        this.subCategory = [];
+        this.selectedCat = index;
+        this.showCategories = true;
 
+        for (var i = 0; i < this.subCatData.length; i++) {
+            if (id === this.subCatData[i].category_id) {
+                this.subCategory.push(this.subCatData[i]);
+            }
+        }
+    }
+    closesubSubCat() {
+        this.showCategories = false;
+        // this.showSubCategories = false;
+    }
 
 
     getCategories() {

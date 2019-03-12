@@ -142,7 +142,7 @@ export class MycartComponent implements OnInit {
     billing;
     prodName;
     getCart() {
-        var inData = localStorage.getItem('userId');
+        var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartData = res.json().cart_details;
             for (var i = 0; i < this.cartData.length; i++) {
@@ -199,7 +199,7 @@ export class MycartComponent implements OnInit {
             "delivery_address_id": this.addId,
             "billing_amount": this.billing,
             "payment_type": this.payId,
-            "vendor_id": localStorage.getItem('userId'),
+            "vendor_id": sessionStorage.getItem('userId'),
             "order_status": "placed",
             "wholesaler_id": localStorage.wholeSellerId,
             "item_type": "grocery"
