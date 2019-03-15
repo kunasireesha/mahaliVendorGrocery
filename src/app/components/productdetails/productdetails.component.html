@@ -6,7 +6,7 @@
     </p>
     <div class="row">
         <div class="col-md-6">
-            <img id="myImg" src="{{image}}" alt="Snow" [imageZoom]="zoomedImageSrc">
+            <img id="myImg" src="{{product_image}}" [imageZoom]="zoomedImageSrc" alt="Snow">
         </div>
         <div class="col-md-6 details">
             <h4>{{prodName}} </h4>
@@ -14,8 +14,7 @@
                 <div class="col-md-6">
                     <div class="quantity-price text-center">
                         <select (change)="changeSize($event.target.value)">
-                            <option *ngFor="let sku of skuData" [value]="sku.skid" data-icon="images/sample-1.jpg"
-                                class="left">{{sku.size}}
+                            <option *ngFor="let sku of skuData" [value]="sku.skid" data-icon="images/sample-1.jpg" class="left">{{sku.size}}
                                 - BD {{sku.offer_price}}
                             </option>
                             <!-- <option value="" data-icon="images/office.jpg" class="left">1000gms-Rs 40.80</option>
@@ -46,8 +45,8 @@
 						</button>
 					</div> -->
 
-                    <button class="btn btn-maroon add-cart" [value]="prodId" (click)="addtoCart(prodId)">Add to
-                        Cart</button>
+                    <button class="btn btn-maroon add-cart" [value]="prodId" (click)="addtoCart(prodId)">Add to Cart
+                    </button>
                 </div>
             </div>
         </div>
@@ -56,8 +55,7 @@
     <div class="row">
         <div class="col-md-9">
             <div class="img">
-                <img *ngFor="let img of prodImages" [src]="img.sku_image" class="prod-images"
-                    (click)="showBigImage(img.sku_image)">
+                <img *ngFor="let img of prodImages" [src]="img.sku_image" class="prod-images" (click)="showBigImage(img.sku_image)">
             </div>
         </div>
     </div>

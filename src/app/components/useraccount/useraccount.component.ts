@@ -586,10 +586,16 @@ export class UseraccountComponent implements OnInit {
     }
     prodId;
     reqProds = [];
+    noData;
+    searchData;
     getProducts(Id) {
         this.prodId = Id;
         this.appService.reqOrder(Id).subscribe(resp => {
             this.reqProds = resp.json().Order;
+            // if (this.reqProds.length === 0) {
+            //     this.noData = true;
+            //     this.searchData = false;
+            // }
 
         })
     }

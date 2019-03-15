@@ -162,20 +162,23 @@ export class ProductsComponent implements OnInit {
 
     cartDetails = [];
     cartCount = [];
-    addtoCart(Id) {
+    addtoCart(Id, skid) {
         var inData = {
             "products": [{
                 product_id: Id,
-                sku_id: this.skid
+                sku_id: skid
             }],
             "vendor_id": JSON.parse(sessionStorage.getItem('userId')),
             "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
-            this.cartDetails = res.json().selling_price_total;
-            this.cartCount = res.json().count;
-            // this.getCart();
-            swal(res.json().message, "", "success");
+            if (res.json().status === 400) {
+                swal(res.json().message, "", "error");
+            } else {
+                this.cartDetails = res.json().selling_price_total;
+                this.cartCount = res.json().count;
+                swal(res.json().message, "", "success");
+            }
         }, err => {
 
         })

@@ -116,6 +116,7 @@ export class ProductdetailsComponent implements OnInit {
                     this.skid = this.prodsData[i].sku_row[j].skid;
                     this.description = this.prodsData[i].sku_row[j].description;
                     for (var k = 0; k < this.prodsData[i].sku_row[j].sku_images.length; k++) {
+                        this.product_image = this.prodsData[i].sku_row[j].sku_images[0].sku_image;
                         this.image = this.prodsData[i].sku_row[j].sku_images[0].sku_image;
                     }
                 }
@@ -148,8 +149,12 @@ export class ProductdetailsComponent implements OnInit {
             "item_type": "grocery"
         }
         this.appService.addtoCart(inData).subscribe(res => {
-            this.getCart();
-            swal(res.json().message, "", "success");
+            if (res.json().status === 400) {
+                swal(res.json().message, "", "error");
+            } else {
+                this.getCart();
+                swal(res.json().message, "", "success");
+            }
         }, err => {
 
         })
