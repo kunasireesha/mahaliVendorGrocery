@@ -24,7 +24,7 @@ export class StoreComponent implements OnInit {
         this.appService.getWholesellerById(this.wholeId).subscribe(res => {
             this.wholeData = res.json().data[0];
             this.shopId = res.json().data[0].id;
-            localStorage.setItem('wholeSellerId', this.shopId);
+            sessionStorage.setItem('wholeSellerId', this.shopId);
         }, err => {
 
         })

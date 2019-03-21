@@ -28,7 +28,7 @@ export class appService {
     forgotPassword(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            // 'x-access-token': (localStorage.token),
+            // 'x-access-token': (sessionStorage.token),
         });
         return this.http.post(AppSettings.forgotPw, params, { headers: headers });
     }
@@ -63,7 +63,7 @@ export class appService {
     updateProfile(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (sessionStorage.token),
+            // 'x-access-token': (sessionStorage.token),
         });
         this.vendor_id = sessionStorage.getItem('userId');
         return this.http.put(AppSettings.updateProfile + "/" + this.vendor_id, params, { headers: headers })
@@ -112,7 +112,7 @@ export class appService {
     palceOrder(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (sessionStorage.token),
+            // 'x-access-token': (sessionStorage.token),
         });
         return this.http.post(AppSettings.palceOrder, params, { headers: headers });
     }
@@ -186,7 +186,7 @@ export class appService {
     }
     getAdd(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
-        // this.vendor_id = localStorage.userId;
+        // this.vendor_id = sessionStorage.userId;
         return this.http.get(AppSettings.getAddbyId + "/" + params, { headers: headers });
     }
     updateAddData(params, addId) {
@@ -218,6 +218,10 @@ export class appService {
     reqAdmin(params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.post(AppSettings.requestAdmin, params, { headers: headers });
+    }
+    updateUsrOrd(ordid, params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.put(AppSettings.updateUserOrd + "/" + ordid, params, { headers: headers });
     }
 }
 

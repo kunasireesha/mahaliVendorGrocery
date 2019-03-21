@@ -97,7 +97,7 @@ export class UseraccountComponent implements OnInit {
             quantity: [''],
             discount: [''],
             // product_status: ['']
-            // vendor_id: localStorage.userId,
+            // vendor_id: sessionStorage.userId,
             // product_id: this.productId
         });
 
@@ -463,22 +463,61 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = false;
         this.ordDetails(ordId);
     }
+    showUserOrderDetails(ordId) {
+        this.showNotifications = false;
+        this.showOrderDetails = false;
+        this.showMyOrders = false;
+        this.showMyProducts = false;
+        this.showWishlist = false;
+        this.showAddAddress = false;
+        this.showDeliveryAddress = false;
+        this.editUserProfile = false;
+        this.showProfile = false;
+        this.showOfferZone = false;
+        this.showAddProducts = false;
+        this.showAddProducts5 = false;
+        this.showManageUserOrders = true;
+        this.showAccountDetails = false;
+        this.editAccount = false;
+        this.showRequestAdmin = false;
+        this.showEditAddress = false;
+        this.ordDetails(ordId);
+    }
     ordId;
     ordData = [];
     orderDet = [];
     count;
-
+    productsData = [];
+    ordAdd = [];
+    status;
+    ordIdUser;
+    Ordstatus;
     ordDetails(ordId) {
         this.ordId = ordId;
         this.appService.orderById(ordId).subscribe(resp => {
             this.ordData = resp.json().Order.products;
             for (var i = 0; i < this.ordData.length; i++) {
-                this.ordData[i].size = this.ordData[i].sku_details[0].size;
-                this.ordData[i].selling_price = this.ordData[i].sku_details[0].selling_price;
+                // this.productsData = this.ordData.products;
+                // this.ordData[i].size = this.ordData[i].sku_details[0].size;
+                // this.ordData[i].selling_price = this.ordData[i].sku_details[0].selling_price;
             }
             this.orderDet = resp.json().Order.details[0];
+            this.ordAdd = resp.json().Order.delivery_address[0];
             this.count = resp.json().Order.total_selling_price;
 
+        })
+    }
+    statusChange(orderStatus, ordId) {
+        this.Ordstatus = orderStatus;
+        this.ordIdUser = ordId;
+    }
+    orderStatus() {
+        var inData = {
+            "order_status": this.Ordstatus
+        }
+        this.appService.updateUsrOrd(this.ordIdUser, inData).subscribe(res => {
+            swal(res.json().message, "", "success");
+            this.getUserOrds();
         })
     }
     showVendorOrderDetails() {
@@ -639,7 +678,6 @@ export class UseraccountComponent implements OnInit {
 
     onSubmit() {
         this.submitted = true;
-
         // stop here if form is invalid
         if (this.resetForm.invalid) {
             return;
@@ -675,8 +713,8 @@ export class UseraccountComponent implements OnInit {
         this.email = (sessionStorage.email);
         this.appService.loginDetailsbyEmail(this.email).subscribe(response => {
             this.profileData = response.json().data[0];
-            localStorage.removeItem('userName');
-            localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
+            sessionStorage.removeItem('userName');
+            sessionStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
         })
     }
     updateProfile() {

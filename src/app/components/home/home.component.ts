@@ -134,7 +134,7 @@ export class HomeComponent implements OnInit {
             console.log(this.product);
         });
     }
-    addtoCart(Id, skId) {
+    addtoCart(Id, skId, price, wholeId) {
         if (sessionStorage.userId === undefined) {
             swal('Please Login', '', 'warning');
             return;
@@ -145,7 +145,9 @@ export class HomeComponent implements OnInit {
                 sku_id: skId
             }],
             "vendor_id": JSON.parse(sessionStorage.getItem('userId')),
-            "item_type": "grocery"
+            "item_type": "grocery",
+            "price": price,
+            "wholesaler_id": wholeId
         }
         this.appService.addtoCart(inData).subscribe(res => {
             if (res.json().status === 400) {

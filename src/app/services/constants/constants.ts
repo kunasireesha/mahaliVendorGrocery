@@ -45,5 +45,7 @@ export const AppSettings = {
     getFooter: baseUrl + "footer_table/getfooter/",
     deleteMyProd: baseUrl + "vendor/products/product",
     getUserOrders: baseUrl + "place_order/getuserorders",
-    requestAdmin: baseUrl + "products/requestnewproduct"
+    requestAdmin: baseUrl + "products/requestnewproduct",
+    updateUserOrd: baseUrl + "place_order/updateorderstatus"
+
 }

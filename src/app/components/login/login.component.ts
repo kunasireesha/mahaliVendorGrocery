@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
                 this.onCloseCancel();
-                localStorage.setItem('token', (resp.json().token));
+                sessionStorage.setItem('token', (resp.json().token));
                 this.appService.loginDetailsbyEmail(this.loginForm.value).subscribe(response => {
 
                 })
@@ -88,7 +88,7 @@ export class LoginComponent implements OnInit {
     //     this.appService.login(data).subscribe(resp => {
     //         if (resp.json().status === 200) {
     //             swal(resp.json().message, "", "success");
-    //             localStorage.setItem('token', JSON.stringify(resp.json().token));
+    //             sessionStorage.setItem('token', JSON.stringify(resp.json().token));
     //         }
     //         else if (resp.json().status === 404 || resp.json().status === 400) {
     //             swal(resp.json().message, "", "error");

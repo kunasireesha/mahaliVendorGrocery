@@ -52,10 +52,13 @@ export class HeaderComponent implements OnInit {
             this.showLoginScreen = false;
             this.myAccount = true;
             this.phone = true;
-            this.userMobile = JSON.parse(localStorage.getItem('phone'));
-            this.userName = (localStorage.getItem('userName'));
+            this.userMobile = JSON.parse(sessionStorage.getItem('phone'));
+            this.userName = (sessionStorage.getItem('userName'));
         }
         this.getCart();
+        // if (sessionStorage.type! = 'vendorGrocery') {
+        //     sessionStorage.clear();
+        // }
     }
     item = {
         quantity: 1
@@ -73,10 +76,10 @@ export class HeaderComponent implements OnInit {
             this.showLoginScreen = false;
             this.myAccount = true;
             this.phone = true;
-            this.userMobile = JSON.parse(localStorage.getItem('phone'));
-            this.userName = (localStorage.getItem('userName'));
+            this.userMobile = JSON.parse(sessionStorage.getItem('phone'));
+            this.userName = (sessionStorage.getItem('userName'));
         }
-        // if ((localStorage.token)! === undefined) {
+        // if ((sessionStorage.token)! === undefined) {
         //     this.showRegistration = false;
         //     this.showLoginScreen = false;
         //     this.myAccount = true;
@@ -191,14 +194,14 @@ export class HeaderComponent implements OnInit {
     signOut() {
         sessionStorage.removeItem('token');
         sessionStorage.removeItem('email');
-        localStorage.removeItem('phone');
+        sessionStorage.removeItem('phone');
         sessionStorage.removeItem('userId');
-        localStorage.removeItem('userName');
+        sessionStorage.removeItem('userName');
         this.showRegistration = true;
         this.showLoginScreen = true;
         this.myAccount = false;
         this.phone = false;
-        localStorage.clear();
+        sessionStorage.clear();
         sessionStorage.clear();
         this.router.navigate(["/"]);
         this.getCart();
@@ -247,11 +250,14 @@ export class HeaderComponent implements OnInit {
                 this.showLogin = false;
                 this.myAccount = true;
                 this.appService.loginDetailsbyEmail(this.loginForm.value.email).subscribe(response => {
-                    localStorage.setItem('phone', JSON.stringify(response.json().data[0].mobile_number));
+                    sessionStorage.setItem('phone', JSON.stringify(response.json().data[0].mobile_number));
                     sessionStorage.setItem('email', (response.json().data[0].email));
                     sessionStorage.setItem('userId', (response.json().data[0].id));
-                    localStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
+                    sessionStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
+                    sessionStorage.setItem('type', 'vendorGrocery');
+
                     this.loginDetails = response.json().data[0];
+                    this.router.navigate(['/']);
                     this.phone = true;
                     this.ngOnInit();
                     // window.location.reload();
@@ -260,6 +266,8 @@ export class HeaderComponent implements OnInit {
             else if (resp.json().status === 404 || resp.json().status === 400 || resp.json().status === 401) {
                 swal(resp.json().message, "", "error");
                 this.router.navigate(['/address']);
+                jQuery("#loginmodal").modal("hide");
+                jQuery("#signupmodal").modal("hide");
                 sessionStorage.setItem('userId', (resp.json().id));
             }
         })

@@ -195,22 +195,31 @@ export class MycartComponent implements OnInit {
     }
     ordData = [];
     orderPlace() {
-        var inData = {
-            "delivery_address_id": this.addId,
-            "billing_amount": this.billing,
-            "payment_type": this.payId,
-            "vendor_id": sessionStorage.getItem('userId'),
-            "order_status": "placed",
-            "wholesaler_id": localStorage.wholeSellerId,
-            "item_type": "grocery"
+        if (sessionStorage.userId === undefined) {
+            swal('Please Login', '', 'warning');
+            return;
+        } else if (this.payId != 3) {
+            swal("Please select Cash on Delivery", "", "warning");
+            return
+        } else {
+            var inData = {
+                "delivery_address_id": this.addId,
+                "billing_amount": this.billing,
+                "payment_type": this.payId,
+                "vendor_id": sessionStorage.getItem('userId'),
+                "order_status": "placed",
+                "wholesaler_id": sessionStorage.wholeSellerId,
+                "item_type": "grocery"
+            }
+
+            this.appService.palceOrder(inData).subscribe(res => {
+                this.ordData = res.json().Order[0].order_id;
+                swal(res.json().message, "", "success");
+                this.router.navigate(['/Orderplaced'], { queryParams: { orderId: this.ordData } });
+            }, err => {
+
+            })
         }
 
-        this.appService.palceOrder(inData).subscribe(res => {
-            this.ordData = res.json().Order[0].order_id;
-            swal(res.json().message, "", "success");
-            this.router.navigate(['/Orderplaced'], { queryParams: { orderId: this.ordData } });
-        }, err => {
-
-        })
     }
 }
