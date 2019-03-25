@@ -14,6 +14,8 @@ import { Ng2SearchPipeModule } from 'ng2-search-filter'; //importing the module
 import { ImageZoomModule } from 'angular2-image-zoom';
 import swal from 'sweetalert';
 import { SafePipeModule } from 'safe-pipe';
+import { ExcelService } from './services/constants/excel.service';
+
 
 import { Ng2CarouselamosModule } from 'ng2-carouselamos';
 
@@ -145,11 +147,18 @@ export function HttpLoaderFactory(http: HttpClient) {
         ], { useHash: true })
     ],
     schemas: [NO_ERRORS_SCHEMA],
-    providers: [appService],
+    providers: [appService, ExcelService],
     bootstrap: [AppComponent],
     entryComponents: [LoginComponent, RegistrationComponent, ItemsComponent, PromocodesComponent],
     exports: [BrowserModule, TranslateModule]
 })
 export class AppModule {
+    constructor() {
+        if (sessionStorage.session === undefined || sessionStorage.session === '' || sessionStorage.session === null) {
+            this.randomkey = Math.random().toString(36).substring(2, 15) + Math.random().toString(36).substring(2, 15);
+            sessionStorage.setItem('session', this.randomkey)
+        }
 
+    }
+    randomkey;
 }

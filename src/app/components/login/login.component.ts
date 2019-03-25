@@ -69,7 +69,7 @@ export class LoginComponent implements OnInit {
             if (resp.json().status === 200) {
                 swal(resp.json().message, "", "success");
                 this.onCloseCancel();
-                sessionStorage.setItem('token', (resp.json().token));
+                // sessionStorage.setItem('token', (resp.json().token));
                 this.appService.loginDetailsbyEmail(this.loginForm.value).subscribe(response => {
 
                 })

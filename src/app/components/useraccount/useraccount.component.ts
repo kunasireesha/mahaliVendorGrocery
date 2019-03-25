@@ -1,9 +1,13 @@
 import { appService } from './../../services/mahaliServices/mahali.service';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, ViewChild, ElementRef } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 import { Router } from '@angular/router';
 import { NgForm } from '@angular/forms';
+import { ExcelService } from '../../services/constants/excel.service';
+import { saveAs } from 'file-saver';
+import * as XLSX from 'xlsx';
+
 declare var $: any;
 
 @Component({
@@ -29,7 +33,9 @@ export class UseraccountComponent implements OnInit {
     discount_error = false;
     status_errors = false;
     getImg;
+    @ViewChild('table') table: ElementRef;
     prodName;
+    status;
     brName;
     vend_prod_id;
     userOrds = [];
@@ -37,7 +43,8 @@ export class UseraccountComponent implements OnInit {
         private route: ActivatedRoute,
         private formBuilder: FormBuilder,
         private appService: appService,
-        private router: Router) {
+        private router: Router,
+        private excelService: ExcelService) {
         this.page = this.route.snapshot.data[0]['page'];
         if (this.page === 'profile') {
             this.showProfile = true;
@@ -489,7 +496,7 @@ export class UseraccountComponent implements OnInit {
     count;
     productsData = [];
     ordAdd = [];
-    status;
+    // status;
     ordIdUser;
     Ordstatus;
     ordDetails(ordId) {
@@ -619,10 +626,10 @@ export class UseraccountComponent implements OnInit {
         this.showEditAddress = false;
     }
 
-    status = ["Available", "Unavilable"];
-    onSelect(status) {
-        this.status = status;
-    }
+    // status = ["Available", "Unavilable"];
+    // onSelect(status) {
+    //     this.status = status;
+    // }
     prodId;
     reqProds = [];
     noData;
@@ -920,6 +927,23 @@ export class UseraccountComponent implements OnInit {
                 swal(res.json().message, "", "error");
             }
         })
+    }
+    data;
+    exportAsXLSX(): void {
+        this.excelService.exportAsExcelFile(this.ordData, 'sample');
+        // var blob = new Blob([document.getElementById("excel-table").innerText], {
+        //     type: "application/vnd.openxmlformats-officedocument.spreadsheetml.sheet;charset=utf-8"
+        // });
+        // var fileName = 'your_file_name.xls';
+        // saveAs(blob, fileName);
+        // console.log(this.table.nativeElement);
+        // debugger;
+        // const ws: XLSX.WorkSheet = XLSX.utils.table_to_sheet(this.table.nativeElement);
+        // const wb: XLSX.WorkBook = XLSX.utils.book_new();
+        // XLSX.utils.book_append_sheet(wb, ws, 'Sheet1');
+
+        /* save to file */
+        // XLSX.writeFile(wb, 'SheetJS.xlsx');
     }
 
 }

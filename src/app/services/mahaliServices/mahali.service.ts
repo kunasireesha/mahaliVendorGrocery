@@ -20,7 +20,7 @@ export class appService {
     changePwd(params) {
         const headers = new Headers({
             'Content-Type': "application/JSON",
-            'x-access-token': (sessionStorage.token),
+            // 'x-access-token': (sessionStorage.token),
         });
         return this.http.post(AppSettings.changePwdUrl, params, { headers: headers });
     }
@@ -53,11 +53,18 @@ export class appService {
         return this.http.get(AppSettings.getWholeSellersUrl, { headers: headers })
     }
     addtoCart(params) {
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        const headers = new Headers({
+            'Content-Type': "application/JSON",
+            'session_id': (sessionStorage.session),
+        });
+
         return this.http.post(AppSettings.addToCart, params, { headers: headers });
     }
     getCart(params) {
-        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        const headers = new Headers({
+            'Content-Type': "application/JSON",
+            'session_id': sessionStorage.userId === undefined ? (sessionStorage.session) : ""
+        });
         return this.http.get(AppSettings.getCart + "/" + params, { headers: headers });
     }
     updateProfile(params) {
@@ -222,6 +229,28 @@ export class appService {
     updateUsrOrd(ordid, params) {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.updateUserOrd + "/" + ordid, params, { headers: headers });
+    }
+    otpVerify(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.otpUrl, params, { headers: headers });
+    }
+    changePwForgot(params) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.post(AppSettings.changeForgot, params, { headers: headers });
+    }
+    getCartWithoutLogin() {
+        const headers = new Headers({
+            'Content-Type': "application/JSON",
+            'session_id': (sessionStorage.session),
+        });
+        return this.http.get(AppSettings.getCartWithoutLogin, { headers: headers });
+    }
+    updateGetCart(params) {
+        const headers = new Headers({
+            'Content-Type': "application/JSON",
+            'session_id': (sessionStorage.session),
+        });
+        return this.http.put(AppSettings.updategetCart, params, { headers: headers });
     }
 }
 

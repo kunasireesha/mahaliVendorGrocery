@@ -135,10 +135,10 @@ export class HomeComponent implements OnInit {
         });
     }
     addtoCart(Id, skId, price, wholeId) {
-        if (sessionStorage.userId === undefined) {
-            swal('Please Login', '', 'warning');
-            return;
-        }
+        // if (sessionStorage.userId === undefined) {
+        //     swal('Please Login', '', 'warning');
+        //     return;
+        // }
         var inData = {
             "products": [{
                 product_id: Id,

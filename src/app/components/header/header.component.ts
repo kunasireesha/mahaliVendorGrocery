@@ -27,9 +27,12 @@ export class HeaderComponent implements OnInit {
     product: any;
     loginDetails: any;
     myAccount: boolean = false;
+    changePassForm: FormGroup;
     phone: boolean = false;
     showdetails = false;
     selectedCat;
+    cartDetails = [];
+    cartData: any = []
     showSubCats = false;
     showCartDetail = false;
     showLoginScreen = true;
@@ -38,12 +41,13 @@ export class HeaderComponent implements OnInit {
     showLogin = false;
     IsmodelShow = false;
     showCategories = false;
+    changePwSubmitted = false;
     subcat = [];
     subCatData = [];
     subId;
 
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
-        if (sessionStorage.token === undefined) {
+        if (sessionStorage.userId === undefined) {
             this.showRegistration = true;
             this.showLoginScreen = true;
             this.myAccount = false;
@@ -55,7 +59,12 @@ export class HeaderComponent implements OnInit {
             this.userMobile = JSON.parse(sessionStorage.getItem('phone'));
             this.userName = (sessionStorage.getItem('userName'));
         }
+        // if (sessionStorage.userId === "undefined") {
+        //     // this.getCartWithoutLogin();
+        // } else {
         this.getCart();
+        this.updateGetCart();
+        // }
         // if (sessionStorage.type! = 'vendorGrocery') {
         //     sessionStorage.clear();
         // }
@@ -128,11 +137,19 @@ export class HeaderComponent implements OnInit {
         this.forgotForm = this.formBuilder.group({
             mob_number: ['', [Validators.required]],
         });
+        this.changePassForm = this.formBuilder.group({
+            password: ['', [Validators.required, Validators.minLength(6)]]
+        });
         this.getCategories();
         this.getProduct();
         // this.login();
         // this.getLocation();
+        // if (sessionStorage.userId === undefined) {
+        //     this.getCartWithoutLogin();
+        // } else {
+        this.updateGetCart();
         this.getCart();
+        // }
     }
 
     // showLogin() {
@@ -192,11 +209,13 @@ export class HeaderComponent implements OnInit {
         $("#itemdesc").modal("hide");
     }
     signOut() {
-        sessionStorage.removeItem('token');
+        // sessionStorage.removeItem('token');
         sessionStorage.removeItem('email');
         sessionStorage.removeItem('phone');
         sessionStorage.removeItem('userId');
         sessionStorage.removeItem('userName');
+        sessionStorage.removeItem('token');
+        sessionStorage.removeItem('session');
         this.showRegistration = true;
         this.showLoginScreen = true;
         this.myAccount = false;
@@ -205,6 +224,7 @@ export class HeaderComponent implements OnInit {
         sessionStorage.clear();
         this.router.navigate(["/"]);
         this.getCart();
+        this.ngOnInit();
     }
     get f() { return this.registerForm.controls; }
     registration(form: FormGroup) {
@@ -244,7 +264,7 @@ export class HeaderComponent implements OnInit {
                 jQuery("#loginmodal").modal("hide");
                 this.IsmodelShow = true;
 
-                sessionStorage.setItem('token', (resp.json().token));
+                // sessionStorage.setItem('token', (resp.json().token));
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.showLogin = false;
@@ -254,7 +274,7 @@ export class HeaderComponent implements OnInit {
                     sessionStorage.setItem('email', (response.json().data[0].email));
                     sessionStorage.setItem('userId', (response.json().data[0].id));
                     sessionStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
-                    sessionStorage.setItem('type', 'vendorGrocery');
+                    sessionStorage.setItem('token', response.json().data[0].token);
 
                     this.loginDetails = response.json().data[0];
                     this.router.navigate(['/']);
@@ -311,6 +331,8 @@ export class HeaderComponent implements OnInit {
             if (resp.json().status === 200) {
                 jQuery("#forgotpass").modal("hide");
                 swal(resp.json().message, "", "success");
+                jQuery("#otpScreen").modal("show");
+                sessionStorage.setItem('mobile_number', (this.forgotForm.value.mob_number));
             } else {
                 swal(resp.json().message, "", "error");
             }
@@ -318,6 +340,51 @@ export class HeaderComponent implements OnInit {
 
         }, err => {
             swal(err.json().message, "", "error");
+        })
+    }
+    otpNumber;
+    otpScreen() {
+        var data = {
+            'otp': this.otpNumber,
+            'mobile_number': sessionStorage.mobile_number
+        }
+        this.appService.otpVerify(data).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#otpScreen").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                jQuery("#changepwd").modal("show");
+
+            } else {
+                swal(resp.json().message, "", "error");
+            }
+        })
+        // jQuery("#otpScreen").modal("hide");
+        // $('body').removeClass('modal-open');
+        // $('.modal-backdrop').remove();
+        // jQuery("#changepwd").modal("show");
+
+    }
+    get f4() { return this.changePassForm.controls; }
+    ChangePw() {
+        this.changePwSubmitted = true;
+
+        if (this.changePassForm.invalid) {
+            return;
+        }
+        this.changePassForm.value.mobile_number = sessionStorage.mobile_number;
+        this.appService.changePwForgot(this.changePassForm.value).subscribe(resp => {
+            if (resp.json().status === 200) {
+                swal(resp.json().message, "", "success");
+                jQuery("#changepwd").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+            } else {
+                swal(resp.json().message, "", "error");
+            }
+        }, err => {
+
         })
     }
     lat;
@@ -344,20 +411,28 @@ export class HeaderComponent implements OnInit {
     //          });     
     //        };
     // }
+    updateGetCart() {
+        var inData = {
+            vender_id: sessionStorage.userId
+        }
+        this.appService.updateGetCart(inData).subscribe(res => {
+            console.log(res.json().message);
+        })
+    }
 
-    cartDetails = [];
-    cartData = [];
 
 
     getCart() {
         var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
-            if (res.json().count === 0) {
-                this.cartCount = res.json().count;
-                this.billing = 0;
-                return;
-            } else {
-                this.cartData = res.json().cart_details;
+            // if (res.json().count === 0) {
+            //     this.cartCount = res.json().count;
+            //     this.billing = 0;
+            //     return;
+            // } else {
+            // if (sessionStorage.userId != undefined) {
+            this.cartData = res.json().cart_details;
+            if (this.cartData.length != "undefined") {
                 for (var i = 0; i < this.cartData.length; i++) {
                     this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
                     this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
@@ -365,14 +440,34 @@ export class HeaderComponent implements OnInit {
                     this.cartData[i].prodName = this.cartData[i].products.product_name;
                     this.cartData[i].products.img = this.cartData[i].products.sku_details[0].sku_images[0].sku_image;
                 }
+                this.cartCount = res.json().count;
+                this.billing = res.json().selling_Price_bill;
             }
+            // }
 
-            this.cartCount = res.json().count;
-            this.billing = res.json().selling_Price_bill;
+            // }
+
+
         }, err => {
 
         })
     }
+    // getCartWithoutLogin() {
+    //     this.appService.getCartWithoutLogin().subscribe(res => {
+    //         this.cartData = res.json().cart_details;
+    //         if (this.cartData.length != "undefined") {
+    //             for (var i = 0; i < this.cartData.length; i++) {
+    //                 this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
+    //                 this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
+    //                 this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+    //                 this.cartData[i].prodName = this.cartData[i].products.product_name;
+    //                 this.cartData[i].products.img = this.cartData[i].products.sku_details[0].sku_images[0].sku_image;
+    //             }
+    //             this.cartCount = res.json().count;
+    //             this.billing = res.json().selling_Price_bill;
+    //         }
+    //     })
+    // }
     delCart(cartId) {
         var inData = cartId;
         this.appService.delCart(inData).subscribe(res => {

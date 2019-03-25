@@ -1115,7 +1115,7 @@
                 <p>Order no : {{ordId}}</p>
             </div>
             <div class="table-responsive">
-                <table class="table myorder-details">
+                <table class="table myorder-details" #table [dataSource]="dataSource" id="excel-table">
                     <thead>
                         <tr>
                             <th scope="col" style="font-size:18px;">Product</th>
@@ -1351,7 +1351,7 @@
                                     </select>
                                 </div>
                                 <div class="download-slip">
-                                    <a>Download Delivery slip</a>
+                                    <a (click)="exportAsXLSX()">Download Delivery slip</a>
                                 </div>
                                 <div class="">
                                     <button type="submit" class="btn cust-savechanges" (click)="orderStatus()">Save Changes</button>

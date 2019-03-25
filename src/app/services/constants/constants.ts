@@ -33,7 +33,7 @@ export const AppSettings = {
     getAccDetails: baseUrl + "vendors/account_details",
     updateAcc: baseUrl + "vendors/update_profile",
     searchProducts: baseUrl + 'products/search',
-    wholeProducts: baseUrl + "/products/wholesaler_products",
+    wholeProducts: baseUrl + "/products/grocerywholesellerproducts",
     ordById: baseUrl + "place_order/order_products",
     reqProducts: baseUrl + "place_order/request_products/vendor",
     updateProd: baseUrl + "vendor/products",
@@ -44,8 +44,12 @@ export const AppSettings = {
     delProd: baseUrl + "vendor_products/product",
     getFooter: baseUrl + "footer_table/getfooter/",
     deleteMyProd: baseUrl + "vendor/products/product",
-    getUserOrders: baseUrl + "place_order/getuserorders",
+    getUserOrders: baseUrl + "place_order/getuserorders/grocery",
     requestAdmin: baseUrl + "products/requestnewproduct",
-    updateUserOrd: baseUrl + "place_order/updateorderstatus"
+    updateUserOrd: baseUrl + "place_order/updateorderstatus",
+    otpUrl: baseUrl + "vendors/request_otp",
+    changeForgot: baseUrl + "vendors/changepassword",
+    getCartWithoutLogin: baseUrl + "vendor/cart_details/grocerycart/session",
+    updategetCart: baseUrl + "vendor/cart_details/updateuserorvenderid/session"
 
 }
