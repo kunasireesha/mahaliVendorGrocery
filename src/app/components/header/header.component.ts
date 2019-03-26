@@ -142,14 +142,10 @@ export class HeaderComponent implements OnInit {
         });
         this.getCategories();
         this.getProduct();
-        // this.login();
-        // this.getLocation();
-        // if (sessionStorage.userId === undefined) {
-        //     this.getCartWithoutLogin();
-        // } else {
-        this.updateGetCart();
+        if (sessionStorage.userId != undefined) {
+            this.updateGetCart();
+        }
         this.getCart();
-        // }
     }
 
     // showLogin() {
@@ -172,20 +168,6 @@ export class HeaderComponent implements OnInit {
     }
     showCartItems() {
         this.showCartDetail = !this.showCartDetail;
-    }
-    itemIncrease() {
-        let thisObj = this;
-
-        thisObj.item.quantity = Math.floor(thisObj.item.quantity + 1);
-
-    }
-    itemDecrease() {
-        let thisObj = this;
-        if (thisObj.item.quantity === 1) {
-            return;
-        }
-        thisObj.item.quantity = Math.floor(thisObj.item.quantity - 1);
-
     }
     showProduxtDetails() {
         this.router.navigate(['/productdetails'], { queryParams: { order: 'popular' } });
@@ -221,10 +203,10 @@ export class HeaderComponent implements OnInit {
         this.myAccount = false;
         this.phone = false;
         sessionStorage.clear();
-        sessionStorage.clear();
         this.router.navigate(["/"]);
         this.getCart();
         this.ngOnInit();
+        location.reload();
     }
     get f() { return this.registerForm.controls; }
     registration(form: FormGroup) {
@@ -417,6 +399,7 @@ export class HeaderComponent implements OnInit {
         }
         this.appService.updateGetCart(inData).subscribe(res => {
             console.log(res.json().message);
+            this.getCart();
         })
     }
 
@@ -437,6 +420,7 @@ export class HeaderComponent implements OnInit {
                     this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
                     this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
                     this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+                    this.cartData[i].products.offer_price = this.cartData[i].products.sku_details[0].offer_price;
                     this.cartData[i].prodName = this.cartData[i].products.product_name;
                     this.cartData[i].products.img = this.cartData[i].products.sku_details[0].sku_images[0].sku_image;
                 }
@@ -489,5 +473,57 @@ export class HeaderComponent implements OnInit {
         this.showCategories = !this.showCategories;
         this.showOpacity = true;
         this.showSubCats = false;
+    }
+    //modify cart
+    itemIncrease(cartId) {
+        for (var i = 0; i < this.cartData.length; i++) {
+            if (this.cartData[i].cart_id === cartId) {
+                this.cartData[i].quantity = this.cartData[i].quantity + 1;
+                this.modifyCart(this.cartData[i].quantity, cartId);
+                // this.getCart();
+                return;
+            }
+        }
+    }
+
+    itemDecrease(cartId) {
+        for (var i = 0; i < this.cartData.length; i++) {
+            if (this.cartData[i].cart_id === cartId) {
+                if (this.cartData[i].quantity === 1) {
+                    this.delCart(cartId);
+                    return;
+                } else {
+                    this.cartData[i].quantity = this.cartData[i].quantity - 1;
+                    this.modifyCart(this.cartData[i].quantity, cartId);
+                }
+                // this.getCart();
+                return;
+            }
+        }
+
+    }
+
+    modifyCart(quantity, cartId) {
+        var params = {
+            "quantity": quantity
+        }
+
+        this.appService.modifyCart(params, cartId).subscribe(resp => {
+            if (resp.json().status === 200) {
+                // swal(resp.json().message, "", "success");
+                jQuery("#signupmodal").modal("hide");
+                $('body').removeClass('modal-open');
+                $('.modal-backdrop').remove();
+                this.getCart();
+                // this.showRegistration = false;
+                // localStorage.setItem('userId', (resp.json().reg_id));
+                // this.myAccount = true
+                // this.showOpacity = false;
+                // this.onCloseCancel();
+                // this.router.navigate(['/address']);
+            }
+        }, err => {
+
+        })
     }
 }

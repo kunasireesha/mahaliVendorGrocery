@@ -170,7 +170,7 @@
     <div class="modal-dialog" role="document">
         <div class="modal-content cust-cnt">
             <div class="modal-body cart">
-                <div class="cart-mod">
+                <!-- <div class="cart-mod">
                     <div class="row " *ngFor="let item of cartData">
                         <div class="col-md-12 col-sm-12 col-lg-12">
                             <span class="delete">
@@ -187,18 +187,7 @@
                                 <p>{{item.prodName}}</p>
                             </div>
                         </div>
-                        <!-- <div class="col-lg-3 col-md-3 col-sm-3 text-right mt-3">
-                            <div class="quantity">
-                                <button class="minus-btn" type="button" name="button" (click)="itemDecrease(item.cart_id)">
-                                    <i class="fa fa-minus " aria-hidden="true"></i>
-                                </button>
 
-                                <input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly" value="{{item.quantity}}" />
-                                <button class="plus-btn" type="button" name="button" (click)="itemIncrease(item.cart_id)">
-                                    <i class="fa fa-plus" aria-hidden="true"></i>
-                                </button>
-                            </div>
-                        </div> -->
                         <div class="col-md-4 col-sm-4">
                             <select class="cust-slct" (change)="skuChange()">
                                 <option value="{{item.products.skid}}">{{item.products.skuValue}} - BD {{item.products.selling_price}}
@@ -213,6 +202,53 @@
                             </div>
                         </div>
                     </div>
+                    <div class="nodata" *ngIf="cartData.length<1">
+                        Your basket is empty. Start shopping now!
+                    </div>
+                </div> -->
+                <div class="cart-mod">
+                    <div class="row cart-division" *ngFor="let item of cartData">
+                        <div class="col-md-12 col-sm-12 col-lg-12">
+                            <span class="delete">
+                                <!-- <i class="fa fa-times-circle-o cust-del" (click)="delCart(item.cart_id)"></i> -->
+                                <img class="cust-del img" src="assets/images/error.png" (click)="delCart(item.cart_id)">
+                            </span>
+                        </div>
+                        <div class="col-lg-2 col-md-2 col-sm-2">
+                            <div class="cust-img1">
+                                <img src="{{item.products.img}}" (click)="showProduxtDetails()" height="80px" width="80px">
+                            </div>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 product-cart">
+                            <p>{{item.prodName}}</p>
+                            <select class="cust-slct" (change)="skuChange()">
+                                <option value="{{item.products.skid}}">{{item.products.skuValue}} - BD {{item.products.offer_price}}
+                                </option>
+                            </select>
+                        </div>
+                        <div class="col-lg-3 col-md-3 col-sm-3 text-right mt-3">
+                            <div class="quantity">
+                                <button class="minus-btn" type="button" name="button" (click)="itemDecrease(item.cart_id)">
+                                    <i class="fa fa-minus " aria-hidden="true"></i>
+                                </button>
+
+                                <input type="text" name="quantity" [(ngModel)]="item.quantity" readonly="readonly" value="{{item.quantity}}" />
+                                <button class="plus-btn" type="button" name="button" (click)="itemIncrease(item.cart_id)">
+                                    <i class="fa fa-plus" aria-hidden="true"></i>
+                                </button>
+                            </div>
+                        </div>
+                        <div class="col-lg-4 col-md-4 col-sm-4">
+                            <div class="cust-potatos">
+                                <h6>Price :
+                                    <span style="color: #7eba00">BD {{item.products.selling_price}}</span>
+                                </h6>
+                                <span class="text-actual"><strike>BD&nbsp;{{item.products.actual_price}}</strike></span>
+                            </div>
+
+                        </div>
+                    </div>
+
                     <div class="nodata" *ngIf="cartData.length<1">
                         Your basket is empty. Start shopping now!
                     </div>

@@ -145,10 +145,18 @@ export class MycartComponent implements OnInit {
         var inData = sessionStorage.getItem('userId');
         this.appService.getCart(inData).subscribe(res => {
             this.cartData = res.json().cart_details;
+            this.cartData.sort(function (a, b) {
+                var keyA = new Date(a.added_on),
+                    keyB = new Date(b.added_on)
+                if (keyA < keyB) return -1;
+                if (keyA > keyB) return 1;
+                return 0;
+            });
             for (var i = 0; i < this.cartData.length; i++) {
                 this.cartData[i].products.skuValue = this.cartData[i].products.sku_details[0].size;
                 this.cartData[i].products.skid = this.cartData[i].products.sku_details[0].skid;
                 this.cartData[i].products.selling_price = this.cartData[i].products.sku_details[0].selling_price;
+                this.cartData[i].products.offer_price = this.cartData[i].products.sku_details[0].offer_price;
                 this.cartData[i].prodName = this.cartData[i].products.product_name;
                 this.cartData[i].products.img = this.cartData[i].products.sku_details[0].sku_images[0].sku_image;
             }
@@ -221,5 +229,57 @@ export class MycartComponent implements OnInit {
             })
         }
 
+    }
+    itemIncrease(cartId) {
+
+        for (var i = 0; i < this.cartData.length; i++) {
+            if (this.cartData[i].cart_id === cartId) {
+                this.cartData[i].quantity = this.cartData[i].quantity + 1;
+                this.modifyCart(this.cartData[i].quantity, cartId);
+                // this.getCart();
+                return;
+            }
+        }
+    }
+
+    itemDecrease(cartId) {
+        for (var i = 0; i < this.cartData.length; i++) {
+            if (this.cartData[i].cart_id === cartId) {
+                if (this.cartData[i].quantity === 1) {
+                    this.delCart(cartId);
+                    return;
+                } else {
+                    this.cartData[i].quantity = this.cartData[i].quantity - 1;
+                    this.modifyCart(this.cartData[i].quantity, cartId);
+                }
+                // this.getCart();
+                return;
+            }
+        }
+
+    }
+
+    //modify cart
+
+    modifyCart(quantity, cartId) {
+        var params = {
+            "quantity": quantity
+        }
+
+        this.appService.modifyCart(params, cartId).subscribe(resp => {
+            if (resp.json().status === 200) {
+                // swal(resp.json().message, "", "success");
+                // jQuery("#signupmodal").modal("hide");
+                this.getCart();
+                // this.showRegistration = false;
+                // localStorage.setItem('userId', (resp.json().reg_id));
+                // this.myAccount = true
+                // this.showOpacity = false;
+                // this.onCloseCancel();
+                // this.router.navigate(['/address']);
+            }
+        }, err => {
+
+        })
     }
 }

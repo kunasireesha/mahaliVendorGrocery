@@ -50,6 +50,7 @@ export const AppSettings = {
     otpUrl: baseUrl + "vendors/request_otp",
     changeForgot: baseUrl + "vendors/changepassword",
     getCartWithoutLogin: baseUrl + "vendor/cart_details/grocerycart/session",
-    updategetCart: baseUrl + "vendor/cart_details/updateuserorvenderid/session"
+    updategetCart: baseUrl + "vendor/cart_details/updateuserorvenderid/session",
+    modifyCart: baseUrl + "vendor/cart_details",
 
 }

@@ -252,6 +252,10 @@ export class appService {
         });
         return this.http.put(AppSettings.updategetCart, params, { headers: headers });
     }
+    modifyCart(params, cartId) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.put(AppSettings.modifyCart + '/' + cartId, params, { headers: headers });
+    }
 }
 
 
