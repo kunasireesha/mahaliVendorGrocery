@@ -436,6 +436,16 @@ export class HeaderComponent implements OnInit {
 
         })
     }
+    viewCart() {
+        if (sessionStorage.userId === undefined) {
+            jQuery("#loginmodal").modal("show");
+        } else {
+            this.router.navigate(["/mycart"]);
+        }
+    }
+
+
+
     // getCartWithoutLogin() {
     //     this.appService.getCartWithoutLogin().subscribe(res => {
     //         this.cartData = res.json().cart_details;

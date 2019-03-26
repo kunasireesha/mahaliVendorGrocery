@@ -18,14 +18,19 @@ export class ProductsComponent implements OnInit {
     catId;
     catName;
     subCatName;
+    noData1;
+    prodData1 = [];
+    subCatName1;
+    catName1;
     constructor(private router: Router, public productService: ProductService, private appService: appService, private route: ActivatedRoute) {
         this.route.queryParams.subscribe(params => {
-            if (params.action === "whole") {
-                this.wholeId = params.wholeId;
-                this.getWholeProds();
-                this.wholeProd = true;
-                this.serProd = false;
-            } else if (params.action === "search") {
+            // if (params.action === "whole") {
+            //     this.wholeId = params.wholeId;
+            //     this.getWholeProds();
+            //     this.wholeProd = true;
+            //     this.serProd = false;
+            // } else 
+            if (params.action === "search") {
                 this.product = params.product;
                 this.search(this.product);
                 this.wholeProd = false;
@@ -35,14 +40,14 @@ export class ProductsComponent implements OnInit {
                 this.catName = params.catName;
                 this.wholeProd = true;
                 this.serProd = false;
-                this.getCatProducts('');
+                this.getCatProducts('','');
             } else if (params.action === 'subCategory') {
                 this.subId = params.subId;
-                this.catName = params.catName;
+                this.catName1 = params.catName;
                 this.subCatName = params.subCat || "";
                 this.wholeProd = true;
                 this.serProd = false;
-                this.getSubProducts('');
+                this.getSubProducts('','');
             }
 
 
@@ -65,9 +70,9 @@ export class ProductsComponent implements OnInit {
     prodData = [];
     skid;
     noData = false;
-    getCatProducts(id) {
-        this.skuData = [];
+    getCatProducts(id, catName) {
         this.catId = (id === '') ? this.catId : id;
+        this.catName1 = (catName === '') ? this.catName : catName;
         this.appService.productByCatId(this.catId).subscribe(res => {
             this.prodData = res.json().products;
             if (this.prodData != undefined) {
@@ -82,6 +87,7 @@ export class ProductsComponent implements OnInit {
 
                 }
                 this.noData = false;
+                this.noData1 = false;
             }
             if (res.json().status === 400) {
                 this.noData = true;
@@ -91,13 +97,14 @@ export class ProductsComponent implements OnInit {
         }, err => {
 
         })
+        this.subCatName1 = '';
     }
     Images = [];
     skuImages = [];
     image = [];
-    getSubProducts(subid) {
-        this.skuData = [];
+    getSubProducts(subid, subCatName) {
         this.subId = (subid === '') ? this.subId : subid;
+        this.subCatName1 = (subCatName === '') ? this.subCatName : subCatName;
         this.appService.productBySubCatId(this.subId).subscribe(res => {
             this.prodData = res.json().products;
             if (this.prodData != undefined) {
@@ -112,32 +119,11 @@ export class ProductsComponent implements OnInit {
 
                 }
                 this.noData = false;
+                this.noData1 = false;
             }
             if (res.json().status === 400) {
                 this.noData = true;
             }
-        }, err => {
-
-        })
-    }
-    getWholeProds() {
-        this.skuData = [];
-        this.appService.wholeProducts(this.wholeId).subscribe(res => {
-            this.prodData = res.json().products;
-            for (var i = 0; i < this.prodData.length; i++) {
-                for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
-                    this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
-                    this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
-                    this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
-                    this.skid = this.prodData[i].sku_row[0].skid;
-                    this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
-                }
-
-            }
-            if (res.json().status === "400") {
-                this.noData = res.json().message;
-            }
-
         }, err => {
 
         })
@@ -183,22 +169,26 @@ export class ProductsComponent implements OnInit {
 
         })
     }
-    serProducts = [];
-    skuData = [];
     search(product) {
-        this.skuData = [];
+        this.catName1 = this.subCatName1 = ''
         this.appService.searchProducts(product).subscribe(res => {
-            this.serProducts = res.json().data;
-            // if (this.serProducts == "No products found with your search") {
-            // this.noData = true;
-            // } else {
-            for (var i = 0; i < this.serProducts.length; i++) {
-                for (var j = 0; j < this.serProducts[i].sku_details.length; j++) {
-                    this.serProducts[i].sku_details[j].product_name = this.serProducts[i].product_name;
-                    this.skuData.push(this.serProducts[i].sku_details[j]);
+            this.prodData = res.json().data;
+            if (this.prodData != undefined) {
+                for (var i = 0; i < this.prodData.length; i++) {
+                    for (var j = 0; j < this.prodData[i].sku_row.length; j++) {
+                        this.prodData[i].selling_price = this.prodData[i].sku_row[0].selling_price;
+                        this.prodData[i].actual_price = this.prodData[i].sku_row[0].actual_price;
+                        this.prodData[i].image = this.prodData[i].sku_row[0].sku_images[0].sku_image;
+                        this.prodData[i].skid = this.prodData[i].sku_row[0].skid;
+                        this.skid = this.prodData[i].sku_row[0].skid;
+                    }
+
                 }
-                // }
-                // this.noData = false;
+                this.noData = false;
+                this.noData1 = false;
+            }
+            if (res.json().status === 400) {
+                this.noData1 = true;
             }
 
         }, err => {

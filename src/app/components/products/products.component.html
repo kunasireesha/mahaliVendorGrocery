@@ -30,7 +30,7 @@
                         <i class="fa fa-plus" aria-hidden="true" *ngIf="showCategories && i!==selectedCat" (click)="showsubCat(i,cat.id)"></i>
 
                         <i class="fa fa-minus" aria-hidden="true" *ngIf="showCategories && i==selectedCat" (click)="closesubSubCat()"></i>
-                    </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.name)">{{cat.category_name}}</span>
+                    </a> &nbsp;&nbsp;<span (click)="getCatProducts(cat.id,cat.category_name)">{{cat.category_name}}</span>
                 </p>
                 <hr>
                 <!-- categories -->
@@ -122,31 +122,10 @@
         <div class="col-md-9 items">
             <p>
                 <a routerLink="/">Home</a>&nbsp;&nbsp;>&nbsp;
-                <a *ngIf="catName">{{catName}}</a>&nbsp;&nbsp;>&nbsp;
-                <a *ngIf="subCatName">{{subCatName}}</a>
+                <a *ngIf="catName1"><a *ngIf="catName1">{{catName1}}</a>&nbsp;&nbsp;>&nbsp;</a>
+                <a *ngIf="subCatName1"><a *ngIf="subCatName1">{{subCatName1}}</a></a>
             </p>
             <div class="row" *ngIf="wholeProd">
-                <!-- <div class="col-lg-3 item" *ngFor="let item of skuData">
-<div class="card">
-<div class="product-image" (click)="showProduxtDetails(item.product_id)">
-<img class="img-fluid" [src]="item?.sku_image_row[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
-</div>
-<div class="card-block add-to-cart">
-<h5 class="text-center">{{item.product_name}} </h5>
-<p class="text-center">
-BD {{item.selling_price}}
-<strike>BD {{item.actual_price}}</strike>
-</p>
-<div class="quantity-price text-center">
-<select (change)="changeSize($event.target.value)">
-<option [value]="item.skid">{{item.size}}</option>
-</select>
-</div>
-<button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
-To Cart</button>
-</div>
-</div>
-</div> -->
                 <div class="col-lg-3 col-md-6 col-sm-6 item" *ngFor="let data of prodData;let i=index">
                     <div class="card">
                         <img class="img-fluid" [src]="data.image" alt="Card image cap" (click)="showProduxtDetails(data.product_id)">
@@ -167,33 +146,33 @@ To Cart</button>
                         </button>
                     </div>
                 </div>
-                <div *ngIf="noData">
-                    No Products Found
-                </div>
+            </div>
+            <div *ngIf="noData">
+                No Products Found
             </div>
             <div class="row" *ngIf="serProd">
-                <div class="col-md-3 item" *ngFor="let item of skuData">
+                <div class="col-md-3 item" *ngFor="let item of prodData">
                     <div class="card">
-                        <div class="product-image" (click)="showProduxtDetails()">
-                            <!-- <img class="img-fluid" [src]="item.image" alt="Card image cap"> -->
-                            <img *ngIf="item.image===''" src="assets/images/dummy-pro.png" (click)="showProduxtDetails(item.product_id)" class="img-fluid">
-                            <img class="img-fluid" [src]="item?.sku_image_row[0]?.sku_image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
-                        </div>
-                        <div class="card-block add-to-cart">
+                        <img class="img-fluid" [src]="item.image" alt="Card image cap" (click)="showProduxtDetails(item.product_id)">
+                        <div class="card-block">
                             <h5 class="text-center">{{item.product_name}} </h5>
                             <p class="text-center">
-                                BD {{item.selling_price}}
-                                <strike>BD {{item.actual_price}}</strike>
+                                BD {{item?.selling_price}}
+                                <strike>BD {{item?.actual_price}}</strike>
                             </p>
-                            <div class="quantity-price text-center">
+                            <div class="sort">
                                 <select (change)="changeSize($event.target.value)">
-                                    <option [value]="item.skid">{{item.size}}</option>
+                                    <option *ngFor="let sku of item.sku_row" [value]="sku?.skid">{{sku?.size}}</option>
                                 </select>
                             </div>
-                            <button type="text" class="btn waves-effect waves-light" (click)="addtoCart(item.product_id,item.skid)">Add
-                                To Cart</button>
                         </div>
+                        <button type="button" class="btn cart-btn" (click)="addtoCart(item.product_id,item.skid)">Add To
+                            Cart
+                        </button>
                     </div>
+                </div>
+                <div *ngIf="noData1">
+                    No Products Found
                 </div>
             </div>
             <!-- <div *ngIf="noData">
