@@ -52,5 +52,8 @@ export const AppSettings = {
     getCartWithoutLogin: baseUrl + "vendor/cart_details/grocerycart/session",
     updategetCart: baseUrl + "vendor/cart_details/updateuserorvenderid/session",
     modifyCart: baseUrl + "vendor/cart_details",
+    wholeCatProds: baseUrl + "products/grocery_cat_products",
+    wholeSubCatProds: baseUrl + "products/grocery_subcat_products",
+    wholeByLoc: baseUrl + "wholesalers/getwsbasedonpincode"
 
 }

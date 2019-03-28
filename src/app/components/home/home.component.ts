@@ -122,10 +122,18 @@ export class HomeComponent implements OnInit {
     }
     wholeData = [];
     getWholeSellers() {
-        this.appService.getWholeSellers().subscribe(resp => {
-            this.wholeData = resp.json().data;
+        if (sessionStorage.userId === undefined) {
+            this.appService.getWholeSellers().subscribe(resp => {
+                this.wholeData = resp.json().data;
 
-        })
+            })
+        } else {
+            this.appService.wholeByLoc().subscribe(resp => {
+                this.wholeData = resp.json().data;
+
+            })
+        }
+
     }
     skuId;
     getProduct() {

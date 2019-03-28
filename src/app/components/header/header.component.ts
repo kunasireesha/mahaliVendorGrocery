@@ -6,6 +6,7 @@ import { LoginComponent } from '../../components/login/login.component';
 import { Router } from '@angular/router';
 import { RegistrationComponent } from '../../components/registration/registration.component';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+// import { } from 'googlemaps';
 declare var jQuery: any;
 declare var $: any;
 
@@ -45,7 +46,8 @@ export class HeaderComponent implements OnInit {
     subcat = [];
     subCatData = [];
     subId;
-
+    latlocation;
+    lanLocation;
     constructor(public dialog: MatDialog, private router: Router, public appService: appService, private formBuilder: FormBuilder) {
         if (sessionStorage.userId === undefined) {
             this.showRegistration = true;
@@ -116,11 +118,11 @@ export class HeaderComponent implements OnInit {
         //    };
 
 
-        if (navigator.geolocation) {
-            navigator.geolocation.getCurrentPosition(position => {
-                this.location = position.coords;
-            });
-        }
+        // if (navigator.geolocation) {
+        //     navigator.geolocation.getCurrentPosition(position => {
+        //         this.location = position.coords;
+        //     });
+        // }
         this.registerForm = this.formBuilder.group({
             first_name: ['', Validators.required],
             last_name: ['', Validators.required],
@@ -146,6 +148,7 @@ export class HeaderComponent implements OnInit {
             this.updateGetCart();
         }
         this.getCart();
+        // this.geoLocation();
     }
 
     // showLogin() {
@@ -246,7 +249,7 @@ export class HeaderComponent implements OnInit {
                 jQuery("#loginmodal").modal("hide");
                 this.IsmodelShow = true;
 
-                // sessionStorage.setItem('token', (resp.json().token));
+                sessionStorage.setItem('token', (resp.json().token));
                 this.showRegistration = false;
                 this.showLoginScreen = false;
                 this.showLogin = false;
@@ -256,8 +259,7 @@ export class HeaderComponent implements OnInit {
                     sessionStorage.setItem('email', (response.json().data[0].email));
                     sessionStorage.setItem('userId', (response.json().data[0].id));
                     sessionStorage.setItem('userName', (response.json().data[0].first_name) + " " + (response.json().data[0].last_name));
-                    sessionStorage.setItem('token', response.json().data[0].token);
-
+                    sessionStorage.setItem('pincode', response.json().data[0].bussiness_pincode);
                     this.loginDetails = response.json().data[0];
                     this.router.navigate(['/']);
                     this.phone = true;
@@ -536,4 +538,37 @@ export class HeaderComponent implements OnInit {
 
         })
     }
+    // geoLocation() {
+    //     // localStorage.setItem('id_warehouse', "2");
+    //     // localStorage.setItem('parent_warehouseid', "1");
+    //     // localStorage.setItem('wh_pincode', '560078');
+    //     if (navigator.geolocation) {
+    //         navigator.geolocation.getCurrentPosition(position => {
+    //             this.latlocation = position.coords.latitude;
+    //             this.lanLocation = position.coords.longitude;
+    //             var latlng = { lat: this.latlocation, lng: this.lanLocation };
+    //             let geocoder = new google.maps.Geocoder();
+    //             geocoder.geocode({ 'location': latlng }, (results, status) => {
+    //                 // console.log(results);
+    //                 // debugger;
+    //                 if (status == google.maps.GeocoderStatus.OK) {
+    //                     let result = results[0];
+    //                     console.log(result);
+    //                     debugger;
+    //                     // this.getPin = JSON.parse(results[0].address_components[5].long_name);
+    //                     // localStorage.setItem('wh_pincode', this.getPin);
+    //                     // this.postVillageName(this.getPin);
+    //                     let rsltAdrComponent = result.address_components;
+    //                     let resultLength = rsltAdrComponent.length;
+    //                     if (result != null) {
+    //                         //  console.log(rsltAdrComponent[resultLength-5].short_name)
+    //                     } else {
+    //                         window.alert('Geocoder failed due to: ' + status);
+    //                     }
+    //                 }
+    //             });
+    //         });
+
+    //     }
+    // }
 }

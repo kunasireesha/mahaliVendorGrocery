@@ -256,6 +256,20 @@ export class appService {
         const headers = new Headers({ 'Content-Type': "application/JSON" });
         return this.http.put(AppSettings.modifyCart + '/' + cartId, params, { headers: headers });
     }
+    wholeCatProds(wholeId, catId) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.wholeCatProds + '/' + wholeId + "/" + catId, { headers: headers });
+    }
+    wholeSubCatProds(wholeId, subId) {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        return this.http.get(AppSettings.wholeCatProds + '/' + wholeId + "/" + subId, { headers: headers });
+    }
+    pinCode;
+    wholeByLoc() {
+        const headers = new Headers({ 'Content-Type': "application/JSON" });
+        this.pinCode = sessionStorage.pinCode;
+        return this.http.get(AppSettings.wholeByLoc + "/" + this.pinCode, { headers: headers });
+    }
 }
 
 

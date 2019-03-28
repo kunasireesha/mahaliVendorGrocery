@@ -31,6 +31,11 @@ export class AddressComponent implements OnInit {
     bank_area_errors = false;
     bank_city_errors = false;
     bank_branch_errors = false;
+    pin_code_errors = false;
+    showBusinessDetails = true;
+    showStationaryData: boolean = false;
+    showBankDetails: boolean = false;
+    showAdd: boolean = false;
     retpeaccount_number_errors = false;
     constructor(public appService: appService, private router: Router, private formBuilder: FormBuilder) { }
     //     "first_name":"JyothiN",
@@ -68,7 +73,8 @@ export class AddressComponent implements OnInit {
             bussiness_address: [''],
             bussiness_country: [''],
             bussiness_area: [''],
-            bussiness_city: ['']
+            bussiness_city: [''],
+            bussiness_pincode: [''],
         });
         this.StationaryForm = this.formBuilder.group({
             vat_number: [''],
@@ -117,7 +123,7 @@ export class AddressComponent implements OnInit {
             this.bussiness_email_errors = false;
             this.bussiness_name_errors = true;
             return;
-        } else if (this.bussinessForm.value.business_address === '') {
+        } else if (this.bussinessForm.value.bussiness_address === '') {
             this.bussiness_first_name_errors = false;
             this.bussiness_last_name_errors = false;
             this.mobile_number_errors = false;
@@ -125,15 +131,56 @@ export class AddressComponent implements OnInit {
             this.bussiness_name_errors = false;
             this.business_address_errors = true;
             return;
+        } else if (this.bussinessForm.value.bussiness_area === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_area_errors = true;
+            return;
+        } else if (this.bussinessForm.value.bussiness_city === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_area_errors = false;
+            this.business_city_errors = true;
+            return;
+        } else if (this.bussinessForm.value.bussiness_country === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_area_errors = false;
+            this.business_city_errors = false;
+            this.business_country_errors = true;
+            return;
+        } else if (this.bussinessForm.value.bussiness_pincode === '') {
+            this.bussiness_first_name_errors = false;
+            this.bussiness_last_name_errors = false;
+            this.mobile_number_errors = false;
+            this.bussiness_email_errors = false;
+            this.bussiness_name_errors = false;
+            this.business_address_errors = false;
+            this.business_area_errors = false;
+            this.business_city_errors = false;
+            this.business_country_errors = false;
+            this.pin_code_errors = true;
+            return;
         }
-        // else if (this.bussinessForm.value.business_country === '') {
+        // else if (this.bussinessForm.value.business_address === '') {
         //     this.bussiness_first_name_errors = false;
         //     this.bussiness_last_name_errors = false;
         //     this.mobile_number_errors = false;
         //     this.bussiness_email_errors = false;
         //     this.bussiness_name_errors = false;
-        //     this.business_address_errors = false;
-        //     this.business_country_errors = true;
+        //     this.business_address_errors = true;
         //     return;
         // } else if (this.bussinessForm.value.business_area === '') {
         //     this.bussiness_first_name_errors = false;
@@ -142,22 +189,43 @@ export class AddressComponent implements OnInit {
         //     this.bussiness_email_errors = false;
         //     this.bussiness_name_errors = false;
         //     this.business_address_errors = false;
-        //     this.business_country_errors = false;
         //     this.business_area_errors = true;
         //     return;
-        // } 
-        else if (this.bussinessForm.value.business_city === '') {
-            this.bussiness_first_name_errors = false;
-            this.bussiness_last_name_errors = false;
-            this.mobile_number_errors = false;
-            this.bussiness_email_errors = false;
-            this.bussiness_name_errors = false;
-            this.business_address_errors = false;
-            this.business_country_errors = false;
-            this.business_area_errors = false;
-            this.business_city_errors = true;
-            return;
-        }
+        // } else if (this.bussinessForm.value.business_city === '') {
+        //     this.bussiness_first_name_errors = false;
+        //     this.bussiness_last_name_errors = false;
+        //     this.mobile_number_errors = false;
+        //     this.bussiness_email_errors = false;
+        //     this.bussiness_name_errors = false;
+        //     this.business_address_errors = false;
+        //     this.business_area_errors = false;
+        //     this.business_city_errors = true;
+        //     return;
+        // } else if (this.bussinessForm.value.business_country === '') {
+        //     this.bussiness_first_name_errors = false;
+        //     this.bussiness_last_name_errors = false;
+        //     this.mobile_number_errors = false;
+        //     this.bussiness_email_errors = false;
+        //     this.bussiness_name_errors = false;
+        //     this.business_address_errors = false;
+        //     this.business_area_errors = false;
+        //     this.business_city_errors = false;
+        //     this.business_country_errors = true;
+        //     return;
+        // } else if (this.bussinessForm.value.business_pincode === '') {
+        //     this.bussiness_first_name_errors = false;
+        //     this.bussiness_last_name_errors = false;
+        //     this.mobile_number_errors = false;
+        //     this.bussiness_email_errors = false;
+        //     this.bussiness_name_errors = false;
+        //     this.business_address_errors = false;
+        //     this.business_country_errors = false;
+        //     this.business_area_errors = false;
+        //     this.business_city_errors = false;
+        //     this.pin_code_errors = true;
+        //     return;
+        // }
+
 
         // stop here if form is invalid
         // if (this.bussinessForm.invalid) {
@@ -308,11 +376,6 @@ export class AddressComponent implements OnInit {
     }
 
 
-
-    showBusinessDetails: boolean = true;
-    showStationaryData: boolean = false;
-    showBankDetails: boolean = false;
-    showAdd: boolean = false;
 
     showBusiness() {
         this.showBusinessDetails = true;
